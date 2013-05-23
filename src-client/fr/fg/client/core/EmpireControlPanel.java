@@ -96,7 +96,6 @@ import fr.fg.client.core.SelectionTools;
 import fr.fg.client.core.SwapDialog;
 import fr.fg.client.core.UpdateManager;
 import fr.fg.client.core.Utilities;
-import fr.fg.client.core.ControlPanel.ControlHandler;
 import fr.fg.client.core.settings.Settings;
 import fr.fg.client.openjwt.core.SoundManager;
 

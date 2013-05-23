@@ -20,7 +20,6 @@ along with Fallen Galaxy. If not, see <http://www.gnu.org/licenses/>.
 package fr.fg.server.task.minutely;
  
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
  
@@ -30,15 +29,10 @@ import org.json.JSONObject;
 import fr.fg.client.data.ChatMessageData;
 import fr.fg.server.action.chat.SendMessage;
 import fr.fg.server.core.ChatManager;
-import fr.fg.server.core.ContainerTools;
 import fr.fg.server.data.DataAccess;
 import fr.fg.server.data.Event;
-import fr.fg.server.data.Fleet;
-import fr.fg.server.data.Item;
 import fr.fg.server.data.LotteryTicket;
 import fr.fg.server.data.Player;
-import fr.fg.server.data.Structure;
-import fr.fg.server.events.GameEventsDispatcher;
 import fr.fg.server.core.UpdateTools;
 import fr.fg.server.util.LoggingSystem;
 import fr.fg.server.util.Utilities;

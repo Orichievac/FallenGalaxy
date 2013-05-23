@@ -24,7 +24,6 @@ import java.util.Map;
 
 import fr.fg.server.core.TreatyTools;
 import fr.fg.server.core.UpdateTools;
-import fr.fg.server.data.AllyTreaty;
 import fr.fg.server.data.DataAccess;
 import fr.fg.server.data.Event;
 import fr.fg.server.data.IllegalOperationException;

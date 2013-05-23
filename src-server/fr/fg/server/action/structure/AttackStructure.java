@@ -20,7 +20,6 @@ along with Fallen Galaxy. If not, see <http://www.gnu.org/licenses/>.
 package fr.fg.server.action.structure;
 
 import java.awt.Point;
-import java.util.List;
 import java.util.Map;
 
 import fr.fg.server.core.FleetTools;

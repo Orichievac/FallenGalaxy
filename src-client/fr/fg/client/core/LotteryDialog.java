@@ -21,9 +21,6 @@ package fr.fg.client.core;
  
 import java.util.HashMap;
  
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -32,15 +29,12 @@ import fr.fg.client.ajax.Action;
 import fr.fg.client.ajax.ActionCallbackAdapter;
 import fr.fg.client.animation.ToolTipTimeUpdater;
 import fr.fg.client.data.AnswerData;
-import fr.fg.client.data.ItemData;
 import fr.fg.client.data.LotteryInfoData;
-import fr.fg.client.i18n.DynamicMessages;
 import fr.fg.client.i18n.Formatter;
 import fr.fg.client.i18n.StaticMessages;
 import fr.fg.client.openjwt.OpenJWT;
 import fr.fg.client.openjwt.animation.TimerManager;
 import fr.fg.client.openjwt.core.Config;
-import fr.fg.client.openjwt.core.ToolTipManager;
 import fr.fg.client.openjwt.ui.JSButton;
 import fr.fg.client.openjwt.ui.JSComboBox;
 import fr.fg.client.openjwt.ui.JSDialog;

@@ -19,8 +19,6 @@ along with Fallen Galaxy. If not, see <http://www.gnu.org/licenses/>.
 
 package fr.fg.client.data;
 
-import java.util.List;
-
 import com.google.gwt.core.client.JavaScriptObject;
 
 import fr.fg.client.core.Utilities;

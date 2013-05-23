@@ -21,16 +21,12 @@ package fr.fg.server.test.action;
 
 import java.io.File;
 import java.io.PrintStream;
-import java.net.URLEncoder;
-
 import junit.framework.TestCase;
 
 import org.json.JSONObject;
 
 import fr.fg.server.data.DataAccess;
 import fr.fg.server.data.Player;
-import fr.fg.server.servlet.ActionServlet;
-import fr.fg.server.servlet.AjaxServlet;
 
 public class TestAction extends TestCase {
 	// ------------------------------------------------------- CONSTANTES -- //

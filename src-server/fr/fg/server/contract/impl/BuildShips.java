@@ -19,7 +19,6 @@ along with Fallen Galaxy. If not, see <http://www.gnu.org/licenses/>.
 
 package fr.fg.server.contract.impl;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;

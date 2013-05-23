@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.fg.server.data.base.StructureBase;
-import fr.fg.server.util.LoggingSystem;
 import fr.fg.server.util.Utilities;
 
 public class Structure extends StructureBase {

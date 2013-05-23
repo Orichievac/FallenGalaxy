@@ -28,9 +28,7 @@ import java.util.List;
 import org.apache.commons.lang.RandomStringUtils;
 import org.eclipse.jetty.continuation.Continuation;
 
-import fr.fg.client.core.Client;
 import fr.fg.client.data.PlayerInfosData;
-import fr.fg.client.data.PlayerStarSystemData;
 import fr.fg.server.core.AiTools;
 import fr.fg.server.core.UpdateTools;
 import fr.fg.server.data.base.PlayerBase;

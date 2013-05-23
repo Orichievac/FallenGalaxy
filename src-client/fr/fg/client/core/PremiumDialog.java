@@ -26,8 +26,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -40,7 +38,6 @@ import fr.fg.client.data.CountryData;
 import fr.fg.client.data.PaymentOptionData;
 import fr.fg.client.data.PremiumStateData;
 import fr.fg.client.data.PricingData;
-import fr.fg.client.i18n.StaticMessages;
 import fr.fg.client.openjwt.core.Config;
 import fr.fg.client.openjwt.ui.JSButton;
 import fr.fg.client.openjwt.ui.JSComboBox;

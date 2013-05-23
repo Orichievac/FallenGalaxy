@@ -27,13 +27,11 @@ import fr.fg.server.core.Update;
 import fr.fg.server.core.UpdateTools;
 import fr.fg.server.data.Ally;
 import fr.fg.server.data.DataAccess;
-import fr.fg.server.data.GameConstants;
 import fr.fg.server.data.IllegalOperationException;
 import fr.fg.server.data.Player;
 import fr.fg.server.i18n.Badwords;
 import fr.fg.server.servlet.Action;
 import fr.fg.server.servlet.Session;
-import fr.fg.server.util.Utilities;
 
 public class CreateAlly extends Action {
 

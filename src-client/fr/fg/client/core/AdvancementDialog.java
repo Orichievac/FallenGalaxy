@@ -19,10 +19,7 @@ along with Fallen Galaxy. If not, see <http://www.gnu.org/licenses/>.
 
 package fr.fg.client.core;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -31,7 +28,6 @@ import com.google.gwt.user.client.ui.Widget;
 import fr.fg.client.ajax.Action;
 import fr.fg.client.data.AdvancementData;
 import fr.fg.client.data.AdvancementsData;
-import fr.fg.client.data.AllyNewsData;
 import fr.fg.client.i18n.DynamicMessages;
 import fr.fg.client.i18n.StaticMessages;
 import fr.fg.client.openjwt.OpenJWT;

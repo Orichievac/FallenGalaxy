@@ -30,8 +30,6 @@ import fr.fg.server.data.DataAccess;
 import fr.fg.server.data.Effect;
 import fr.fg.server.data.Fleet;
 import fr.fg.server.data.IllegalOperationException;
-import fr.fg.server.data.Item;
-import fr.fg.server.data.ItemContainer;
 import fr.fg.server.data.Player;
 import fr.fg.server.data.Report;
 import fr.fg.server.data.Skill;

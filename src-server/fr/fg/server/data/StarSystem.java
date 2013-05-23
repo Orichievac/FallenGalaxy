@@ -26,7 +26,6 @@ import fr.fg.server.data.base.StarSystemBase;
 import fr.fg.server.events.GameEventsDispatcher;
 import fr.fg.server.events.impl.BuiltShipsEvent;
 import fr.fg.server.util.Config;
-import fr.fg.server.util.LoggingSystem;
 import fr.fg.server.util.Utilities;
 
 public class StarSystem extends StarSystemBase {

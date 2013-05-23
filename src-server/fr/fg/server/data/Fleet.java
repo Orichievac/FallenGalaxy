@@ -30,7 +30,6 @@ import fr.fg.server.events.GameEventsDispatcher;
 import fr.fg.server.events.impl.FleetLocationUpdateEvent;
 import fr.fg.server.events.impl.FleetMovementReloadUpdateEvent;
 import fr.fg.server.events.impl.JumpFinishedEvent;
-import fr.fg.server.util.LoggingSystem;
 import fr.fg.server.util.Utilities;
 
 public class Fleet extends FleetBase {

@@ -23,7 +23,6 @@ import java.util.Map;
 
 
 import fr.fg.server.core.SystemTools;
-import fr.fg.server.core.TreatyTools;
 import fr.fg.server.data.Player;
 import fr.fg.server.servlet.Action;
 import fr.fg.server.servlet.Session;

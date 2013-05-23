@@ -34,7 +34,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.jdom.CDATA;
 import org.jdom.Element;
 
-import fr.fg.client.data.EventData;
 import fr.fg.server.data.Ally;
 import fr.fg.server.data.DataAccess;
 import fr.fg.server.data.Event;

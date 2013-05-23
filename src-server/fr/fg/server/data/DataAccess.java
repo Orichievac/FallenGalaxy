@@ -20,13 +20,11 @@ along with Fallen Galaxy. If not, see <http://www.gnu.org/licenses/>.
 package fr.fg.server.data;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 import fr.fg.server.dao.DataLayer;
 import fr.fg.server.dao.PersistentData;
-import fr.fg.server.util.LoggingSystem;
 
 public class DataAccess {
 	// ------------------------------------------------------- CONSTANTES -- //

@@ -39,7 +39,6 @@ import fr.fg.server.data.Player;
 import fr.fg.server.data.Treaty;
 import fr.fg.server.servlet.Action;
 import fr.fg.server.servlet.Session;
-import fr.fg.server.util.LoggingSystem;
 import fr.fg.server.util.Utilities;
 
 public class Apply extends Action {

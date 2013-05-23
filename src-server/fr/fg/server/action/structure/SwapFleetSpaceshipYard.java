@@ -24,7 +24,6 @@ import java.util.Map;
 
 import fr.fg.server.core.FleetTools;
 import fr.fg.server.core.StructureTools;
-import fr.fg.server.core.Update;
 import fr.fg.server.core.UpdateTools;
 import fr.fg.server.data.DataAccess;
 import fr.fg.server.data.Fleet;
@@ -34,7 +33,6 @@ import fr.fg.server.data.ItemContainer;
 import fr.fg.server.data.Player;
 import fr.fg.server.data.Ship;
 import fr.fg.server.data.Slot;
-import fr.fg.server.data.StarSystem;
 import fr.fg.server.data.Structure;
 import fr.fg.server.data.StructureSpaceshipYard;
 import fr.fg.server.servlet.Action;

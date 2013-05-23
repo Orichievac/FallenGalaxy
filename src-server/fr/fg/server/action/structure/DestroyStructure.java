@@ -34,7 +34,6 @@ import fr.fg.server.data.StorehouseResources;
 import fr.fg.server.data.Structure;
 import fr.fg.server.servlet.Action;
 import fr.fg.server.servlet.Session;
-import fr.fg.server.util.LoggingSystem;
 
 public class DestroyStructure extends Action {
 	// ------------------------------------------------------- CONSTANTES -- //

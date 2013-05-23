@@ -21,7 +21,6 @@ package fr.fg.server.task.hourly;
 
 
 import java.awt.Point;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,11 +32,9 @@ import fr.fg.server.data.Fleet;
 import fr.fg.server.data.GameConstants;
 import fr.fg.server.data.Player;
 import fr.fg.server.data.PnjDefender;
-import fr.fg.server.data.StorehouseResources;
 import fr.fg.server.data.Structure;
 import fr.fg.server.data.StructureModule;
 import fr.fg.server.util.Config;
-import fr.fg.server.util.LoggingSystem;
 import fr.fg.server.util.Utilities;
 
 public class UpdateDefenseHangar extends Thread {

@@ -29,7 +29,6 @@ import fr.fg.client.animation.ToolTipTextUpdater;
 import fr.fg.client.animation.ToolTipTimeUpdater;
 import fr.fg.client.core.Client;
 import fr.fg.client.core.EmpireUpdater;
-import fr.fg.client.core.selection.SelectionListener;
 import fr.fg.client.core.selection.SelectionManager;
 import fr.fg.client.data.FleetData;
 import fr.fg.client.data.IndexedAreaData;

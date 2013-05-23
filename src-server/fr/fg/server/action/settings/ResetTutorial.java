@@ -25,7 +25,6 @@ import fr.fg.server.data.DataAccess;
 import fr.fg.server.data.Player;
 import fr.fg.server.servlet.Action;
 import fr.fg.server.servlet.Session;
-import fr.fg.server.util.Utilities;
 
 public class ResetTutorial extends Action{
 	// ------------------------------------------------------- CONSTANTES -- //

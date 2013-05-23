@@ -23,7 +23,6 @@ import java.awt.Point;
 import java.util.Map;
 
 import fr.fg.server.core.FleetTools;
-import fr.fg.server.core.Update;
 import fr.fg.server.core.UpdateTools;
 import fr.fg.server.data.DataAccess;
 import fr.fg.server.data.Fleet;

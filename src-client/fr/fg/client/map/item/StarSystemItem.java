@@ -29,11 +29,8 @@ import com.google.gwt.user.client.Event;
 import fr.fg.client.animation.LoopClassNameUpdater;
 import fr.fg.client.animation.RotationUpdater;
 import fr.fg.client.core.Client;
-import fr.fg.client.core.Utilities;
-import fr.fg.client.data.LadderPlayerData;
 import fr.fg.client.data.PlanetData;
 import fr.fg.client.data.StarSystemData;
-import fr.fg.client.data.TradeCenterData;
 import fr.fg.client.i18n.StaticMessages;
 import fr.fg.client.map.UIItemRenderingHints;
 import fr.fg.client.openjwt.animation.FastMath;
@@ -42,7 +39,6 @@ import fr.fg.client.openjwt.animation.TimerManager;
 import fr.fg.client.openjwt.core.Config;
 import fr.fg.client.openjwt.core.TextManager;
 import fr.fg.client.openjwt.core.TextManager.OutlineText;
-import fr.fg.client.data.LadderData;
 
 
 public class StarSystemItem extends AnimatedItem {

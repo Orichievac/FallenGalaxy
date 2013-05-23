@@ -25,7 +25,6 @@ package fr.fg.server.action.player;
 import java.util.Map;
 
 import fr.fg.server.core.MessageTools;
-import fr.fg.server.core.UpdateTools;
 import fr.fg.server.data.DataAccess;
 import fr.fg.server.data.IllegalOperationException;
 import fr.fg.server.data.Player;

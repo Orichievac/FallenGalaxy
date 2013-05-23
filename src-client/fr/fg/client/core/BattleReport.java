@@ -39,7 +39,6 @@ import fr.fg.client.ajax.ActionCallbackAdapter;
 import fr.fg.client.animation.WidthUpdater;
 import fr.fg.client.data.AbilityData;
 import fr.fg.client.data.AnswerData;
-import fr.fg.client.data.FleetData;
 import fr.fg.client.data.GroupData;
 import fr.fg.client.data.ReportActionAbilityData;
 import fr.fg.client.data.ReportActionData;

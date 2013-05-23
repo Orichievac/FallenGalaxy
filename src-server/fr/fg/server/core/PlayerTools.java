@@ -35,7 +35,6 @@ import fr.fg.server.data.Player;
 import fr.fg.server.data.Sector;
 import fr.fg.server.data.StarSystem;
 import fr.fg.server.data.Structure;
-import fr.fg.server.util.LoggingSystem;
 
 public class PlayerTools {
 	// ------------------------------------------------------- CONSTANTES -- //

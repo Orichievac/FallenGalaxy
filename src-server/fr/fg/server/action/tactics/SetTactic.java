@@ -22,7 +22,6 @@
 	
 	import java.awt.Point;
 	import java.util.ArrayList;
-	import java.util.List;
 	import java.util.Map;
 	
 	
@@ -36,7 +35,6 @@
 	import fr.fg.server.data.GameConstants;
 	import fr.fg.server.data.IllegalOperationException;
 	import fr.fg.server.data.Player;
-	import fr.fg.server.data.Ship;
 	import fr.fg.server.data.Slot;
 	import fr.fg.server.data.StarSystem;
 	import fr.fg.server.servlet.Action;

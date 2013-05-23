@@ -25,17 +25,14 @@ package fr.fg.client.core.player;
 import java.util.HashMap;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.Widget;
 
 import fr.fg.client.ajax.Action;
 import fr.fg.client.ajax.ActionCallback;
 import fr.fg.client.ajax.ActionCallbackAdapter;
-import fr.fg.client.core.UpdateManager;
 import fr.fg.client.core.settings.Settings;
 import fr.fg.client.data.AnswerData;
-import fr.fg.client.data.PlayerCardData;
 import fr.fg.client.i18n.StaticMessages;
 import fr.fg.client.openjwt.ui.JSButton;
 import fr.fg.client.openjwt.ui.JSDialog;

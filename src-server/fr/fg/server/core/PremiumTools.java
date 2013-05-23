@@ -22,8 +22,6 @@ package fr.fg.server.core;
 import java.util.List;
 import java.util.TreeMap;
 
-import org.json.JSONObject;
-
 import apikit.api.AllopassAPI;
 import apikit.model.AllopassKeyword;
 import apikit.model.AllopassMarket;

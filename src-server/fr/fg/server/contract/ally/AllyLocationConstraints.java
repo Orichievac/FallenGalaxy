@@ -21,7 +21,6 @@ package fr.fg.server.contract.ally;
 
 import fr.fg.server.data.Ally;
 import fr.fg.server.data.Area;
-import fr.fg.server.data.Player;
 import fr.fg.server.data.Sector;
 
 public interface AllyLocationConstraints {

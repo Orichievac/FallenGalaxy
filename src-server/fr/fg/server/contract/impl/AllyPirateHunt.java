@@ -19,7 +19,6 @@ along with Fallen Galaxy. If not, see <http://www.gnu.org/licenses/>.
 
 package fr.fg.server.contract.impl;
 
-import java.awt.Point;
 import java.util.List;
 
 import fr.fg.server.data.Skill;
@@ -35,17 +34,12 @@ import fr.fg.server.contract.ally.AllyRequirementsFactory;
 import fr.fg.server.contract.dialog.DialogEntry;
 import fr.fg.server.core.UpdateTools;
 import fr.fg.server.data.Ally;
-import fr.fg.server.data.Area;
 import fr.fg.server.data.Contract;
-import fr.fg.server.data.ContractAttendee;
-import fr.fg.server.data.ContractReward;
 import fr.fg.server.data.DataAccess;
 import fr.fg.server.data.Event;
 import fr.fg.server.data.Fleet;
 import fr.fg.server.data.GameConstants;
 import fr.fg.server.data.Player;
-import fr.fg.server.data.Ship;
-import fr.fg.server.data.StarSystem;
 import fr.fg.server.events.GameEvent;
 import fr.fg.server.events.GameEventListener;
 import fr.fg.server.events.GameEventsDispatcher;

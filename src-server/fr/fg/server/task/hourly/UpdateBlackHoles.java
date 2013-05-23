@@ -29,7 +29,6 @@ import fr.fg.server.data.Area;
 import fr.fg.server.data.DataAccess;
 import fr.fg.server.data.Fleet;
 import fr.fg.server.data.GameConstants;
-import fr.fg.server.data.Item;
 import fr.fg.server.data.ItemContainer;
 import fr.fg.server.data.Slot;
 import fr.fg.server.data.StellarObject;

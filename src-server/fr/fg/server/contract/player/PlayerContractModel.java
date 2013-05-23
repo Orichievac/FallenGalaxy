@@ -29,7 +29,6 @@ import fr.fg.server.contract.ContractModel;
 import fr.fg.server.core.UpdateTools;
 import fr.fg.server.data.Ally;
 import fr.fg.server.data.Area;
-import fr.fg.server.data.Connection;
 import fr.fg.server.data.Contract;
 import fr.fg.server.data.ContractArea;
 import fr.fg.server.data.ContractAttendee;

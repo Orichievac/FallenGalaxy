@@ -32,7 +32,6 @@ import fr.fg.server.data.IllegalOperationException;
 import fr.fg.server.data.Player;
 import fr.fg.server.servlet.Action;
 import fr.fg.server.servlet.Session;
-import fr.fg.server.util.LoggingSystem;
 
 public class Apply extends Action {
 	// ------------------------------------------------------- CONSTANTES -- //

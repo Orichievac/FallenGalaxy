@@ -24,7 +24,6 @@ import java.util.Date;
 import java.util.HashMap;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.json.client.JSONString;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ClickListener;
@@ -35,7 +34,6 @@ import fr.fg.client.ajax.ActionCallback;
 import fr.fg.client.ajax.ActionCallbackAdapter;
 import fr.fg.client.core.AreaContainer;
 import fr.fg.client.core.Client;
-import fr.fg.client.core.Tutorial;
 import fr.fg.client.core.UpdateManager;
 import fr.fg.client.core.Utilities;
 import fr.fg.client.core.player.PlayerCardDialog;

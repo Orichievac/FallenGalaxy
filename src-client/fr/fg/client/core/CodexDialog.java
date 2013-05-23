@@ -29,17 +29,12 @@ import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.ScrollPanel;
-
 import fr.fg.client.ajax.Action;
 import fr.fg.client.ajax.ActionCallback;
-import fr.fg.client.core.settings.Settings;
 import fr.fg.client.data.AnswerData;
-import fr.fg.client.data.PlayerInfosData;
 import fr.fg.client.i18n.StaticMessages;
 import fr.fg.client.openjwt.ui.JSDialog;
 import fr.fg.client.openjwt.ui.JSLabel;
-import fr.fg.client.openjwt.ui.JSOptionPane;
 import fr.fg.client.openjwt.ui.JSRowLayout;
 import fr.fg.client.openjwt.ui.JSScrollPane;
 

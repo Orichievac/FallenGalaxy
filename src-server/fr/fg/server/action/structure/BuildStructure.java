@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import fr.fg.server.contract.NpcHelper;
 import fr.fg.server.core.AiTools;
 import fr.fg.server.core.FleetTools;
 import fr.fg.server.core.Update;

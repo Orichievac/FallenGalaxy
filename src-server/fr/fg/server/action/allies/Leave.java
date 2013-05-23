@@ -35,7 +35,6 @@ import fr.fg.server.data.DataAccess;
 import fr.fg.server.data.Election;
 import fr.fg.server.data.ElectionVoter;
 import fr.fg.server.data.Event;
-import fr.fg.server.data.GameConstants;
 import fr.fg.server.data.IllegalOperationException;
 import fr.fg.server.data.Player;
 import fr.fg.server.data.Sector;

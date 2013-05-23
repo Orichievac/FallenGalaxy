@@ -19,9 +19,6 @@ along with Fallen Galaxy. If not, see <http://www.gnu.org/licenses/>.
 
 package fr.fg.client.core;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 
 import com.google.gwt.core.client.GWT;
@@ -37,7 +34,6 @@ import fr.fg.client.ajax.Action;
 import fr.fg.client.ajax.ActionCallbackAdapter;
 import fr.fg.client.animation.BlinkUpdater;
 import fr.fg.client.core.selection.SelectionManager;
-import fr.fg.client.data.AllyInfluenceData;
 import fr.fg.client.data.AnswerData;
 import fr.fg.client.data.GalaxyAreaData;
 import fr.fg.client.data.GalaxyJumpData;

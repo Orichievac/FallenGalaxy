@@ -19,9 +19,6 @@ along with Fallen Galaxy. If not, see <http://www.gnu.org/licenses/>.
 
 package fr.fg.client.map.item;
 
-import java.util.ArrayList;
-import java.util.Date;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
@@ -30,7 +27,6 @@ import fr.fg.client.animation.BlinkUpdater;
 import fr.fg.client.data.LotteryData;
 import fr.fg.client.i18n.StaticMessages;
 import fr.fg.client.map.UIItemRenderingHints;
-import fr.fg.client.openjwt.animation.TimerHandler;
 import fr.fg.client.openjwt.animation.TimerManager;
 import fr.fg.client.openjwt.core.Config;
 

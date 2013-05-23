@@ -19,8 +19,6 @@ along with Fallen Galaxy. If not, see <http://www.gnu.org/licenses/>.
 
 package fr.fg.server.contract.impl;
 
-import java.awt.Point;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -36,14 +34,8 @@ import fr.fg.server.contract.ally.AllyLocationConstraints;
 import fr.fg.server.contract.ally.AllyLocationConstraintsFactory;
 import fr.fg.server.contract.ally.AllyRequirements;
 import fr.fg.server.contract.ally.AllyRequirementsFactory;
-import fr.fg.server.contract.dialog.DialogEntry;
 import fr.fg.server.contract.dialog.Parameter;
 import fr.fg.server.contract.dialog.ParameterType;
-import fr.fg.server.contract.player.PlayerContractModel;
-import fr.fg.server.contract.player.PlayerLocationConstraints;
-import fr.fg.server.contract.player.PlayerLocationConstraintsFactory;
-import fr.fg.server.contract.player.PlayerRequirements;
-import fr.fg.server.contract.player.PlayerRequirementsFactory;
 import fr.fg.server.core.UpdateTools;
 import fr.fg.server.data.Ally;
 import fr.fg.server.data.Area;
@@ -56,7 +48,6 @@ import fr.fg.server.data.GameConstants;
 import fr.fg.server.data.Player;
 import fr.fg.server.data.Ship;
 import fr.fg.server.data.Slot;
-import fr.fg.server.data.StarSystem;
 import fr.fg.server.events.GameEvent;
 import fr.fg.server.events.GameEventListener;
 import fr.fg.server.events.GameEventsDispatcher;

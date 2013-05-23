@@ -24,7 +24,6 @@ import java.util.List;
 import fr.fg.server.data.base.ContractBase;
 import fr.fg.server.events.GameEventsDispatcher;
 import fr.fg.server.events.impl.ContractStateUpdateEvent;
-import fr.fg.server.util.LoggingSystem;
 import fr.fg.server.util.Utilities;
 
 public class Contract extends ContractBase {

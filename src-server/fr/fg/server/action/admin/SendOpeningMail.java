@@ -29,7 +29,6 @@ import fr.fg.server.data.DataAccess;
 import fr.fg.server.data.Player;
 import fr.fg.server.i18n.Messages;
 import fr.fg.server.servlet.Action;
-import fr.fg.server.servlet.ServerController;
 import fr.fg.server.servlet.Session;
 import fr.fg.server.util.Config;
 import fr.fg.server.util.JSONStringer;

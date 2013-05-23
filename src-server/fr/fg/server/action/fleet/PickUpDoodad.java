@@ -49,7 +49,6 @@ import fr.fg.server.i18n.Messages;
 import fr.fg.server.servlet.Action;
 import fr.fg.server.servlet.Session;
 import fr.fg.server.util.Config;
-import fr.fg.server.util.LoggingSystem;
 import fr.fg.server.util.Utilities;
 
 public class PickUpDoodad extends Action {

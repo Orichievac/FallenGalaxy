@@ -26,7 +26,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
-import fr.fg.client.data.FleetData;
 import fr.fg.client.data.PlayerAreaData;
 import fr.fg.client.data.PlayerGeneratorData;
 import fr.fg.client.data.PlayerSectorData;

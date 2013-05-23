@@ -21,19 +21,6 @@ package fr.fg.client.openjwt;
 
 import java.util.HashMap;
 
-import com.google.gwt.http.client.Request;
-import com.google.gwt.http.client.RequestBuilder;
-import com.google.gwt.http.client.RequestCallback;
-import com.google.gwt.http.client.RequestException;
-import com.google.gwt.http.client.Response;
-import com.google.gwt.http.client.URL;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.xml.client.Document;
-import com.google.gwt.xml.client.Element;
-import com.google.gwt.xml.client.Node;
-import com.google.gwt.xml.client.NodeList;
-import com.google.gwt.xml.client.XMLParser;
-
 public class XmlStyle {
 	// ------------------------------------------------------- CONSTANTES -- //
 	// -------------------------------------------------------- ATTRIBUTS -- //

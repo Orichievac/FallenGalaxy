@@ -19,7 +19,6 @@ along with Fallen Galaxy. If not, see <http://www.gnu.org/licenses/>.
 
 package fr.fg.server.scheduler.impl;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +47,6 @@ import fr.fg.server.events.GameEventsDispatcher;
 import fr.fg.server.events.impl.FleetMovementReloadUpdateEvent;
 import fr.fg.server.events.impl.JumpFinishedEvent;
 import fr.fg.server.scheduler.JobScheduler;
-import fr.fg.server.util.Config;
 import fr.fg.server.util.LoggingSystem;
 
 public class FleetMovementScheduler extends JobScheduler<Integer> implements GameEventListener {

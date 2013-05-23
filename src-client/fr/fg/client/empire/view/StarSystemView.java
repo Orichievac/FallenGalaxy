@@ -49,7 +49,6 @@ import fr.fg.client.map.miniitem.StarSystemMiniItem;
 import fr.fg.client.openjwt.animation.Callback;
 import fr.fg.client.openjwt.animation.CallbackHandler;
 import fr.fg.client.openjwt.animation.TimerManager;
-import fr.fg.client.openjwt.core.Config;
 import fr.fg.client.openjwt.core.Point;
 import fr.fg.client.openjwt.core.TextManager;
 import fr.fg.client.openjwt.core.ToolTipListener;
