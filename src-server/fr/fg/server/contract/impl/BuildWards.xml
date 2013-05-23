@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dialogs SYSTEM "../dialog/dialogs.dtd">
+
+<dialogs>
+	<key name="xp" value="getFleetXpReward"/>
+	<key name="iconXp" value="getXpImg"/>
+	
+	<dialog type="reward">
+		<entry name="&init;">
+			<option target="what"/>
+			<option target="fastReward"/>
+		</entry>
+		
+		<entry name="what">
+			<option target="reward"/>
+		</entry>
+		
+		<entry name="reward">
+			<option target="update" condition="mayFleetGetReward"/>
+			<option target="cancel"/>
+		</entry>
+		
+		<entry name="fastReward">
+			<option target="update" condition="mayFleetGetReward"/>
+			<option target="cancel"/>
+		</entry>
+		
+		<entry name="update">
+			<option target="&eod;"/>
+		</entry>
+		
+		<entry name="cancel">
+			<option target="&eod;"/>
+		</entry>
+	</dialog>
+</dialogs>

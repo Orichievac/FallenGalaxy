@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dialogs SYSTEM "../dialog/dialogs.dtd">
+
+<dialogs>
+	<dialog type="recipientReward">
+		<entry name="&init;">
+			<option target="&eod;"/>
+		</entry>
+	</dialog>
+</dialogs>

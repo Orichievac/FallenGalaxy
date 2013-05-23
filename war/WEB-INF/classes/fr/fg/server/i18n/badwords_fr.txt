@@ -1,0 +1,296 @@
+dans ton q		SINGLE
+dan ton q		SINGLE
+den ton q		SINGLE
+debile profond	SINGLE
+face de pet		SINGLE
+fils de pute	SINGLE
+fis de pute		SINGLE
+front national	SINGLE
+casse toi		SINGLE
+casses toi		SINGLE
+casse vou		SINGLE
+casse vous		SINGLE
+cassez vou		SINGLE
+cassez vous		SINGLE
+f u				SINGLE
+la ferme		SINGLE
+la fermer		SINGLE
+mangeur de phallus	SINGLE
+mangeuse de phallus	SINGLE
+peter la rondele	SINGLE
+sale por		SINGLE
+sale porc		START
+sa race			SINGLE
+shut up			SINGLE
+suce ma bite	SINGLE
+suce ma verge	SINGLE
+suceur de gland	START
+ta gueule		SINGLE
+ta guele		SINGLE
+tu suce			START
+tu susse		START
+trou de bale	START
+trou du cu		SINGLE
+trou du cul		SINGLE
+abruti			START
+anculer			START
+anal			SINGLE
+anus			START
+ancule			START
+ashole			START
+a=s=s			SINGLE
+auschwitz		SINGLE
+auchwitz		SINGLE
+auchvitz		SINGLE
+auschvitz		SINGLE
+baltringue		START
+batar			START
+bais"e			START
+baize			START
+baisabl			START
+baizabl			START
+battar			SINGLE
+bedo			SINGLE
+benladen		SINGLE
+bite			SINGLE
+bites			SINGLE
+bitch			START
+biatch			START
+blero			START
+blerau			START
+blereau			START
+branle			START
+boche			SINGLE
+boches			SINGLE
+bordel			SINGLE
+bougnoul		START
+boufon			START
+bordel			SINGLE
+bute			SINGLE
+burne			SINGLE
+burnes			SINGLE
+c=a=c=a			SINGLE
+c=a=c=as		SINGLE
+ca=tin			START
+ca=t1			SINGLE
+chate			SINGLE
+chates			SINGLE
+chian			SINGLE
+chiant			START
+chiass			START
+chier			SINGLE
+chie			SINGLE
+chieur			SINGLE
+chieurs			SINGLE
+chienne			START
+chiotte			START
+chiure			START
+chodepiss		START
+conar			SINGLE
+conard			START
+conasse			START
+conne			SINGLE
+connerie		START
+counerie		START
+con				SINGLE
+concon			START
+cons			SINGLE
+couill			START
+cretin			START
+cret1			SINGLE
+crevar			START
+creve			SINGLE
+crever			SINGLE
+creves			SINGLE
+crevez			SINGLE
+cu"				SINGLE
+cuu				SINGLE
+cul				SINGLE
+culay			SINGLE
+cunilingus		SINGLE
+cumshot			START
+cyprine			START
+de=mer			SINGLE
+de=bile			START
+de=merde		START
+dick			START
+dtc				SINGLE
+dugland			START
+ducon			SINGLE
+dukon			SINGLE
+ejacul			START
+emerd			START
+enmerd			START
+encul			START
+enflure			START
+enfoir			START
+erection		START
+facho			SINGLE
+fasciste		START
+fachiste		START
+fellation		SINGLE
+felation		SINGLE
+fellassion		SINGLE
+fdp				SINGLE
+fiotte			SINGLE
+fion			SINGLE
+fions			SINGLE
+fn				SINGLE
+foufoune		START
+foutr			START
+foutr			END
+foutre			END
+foutaise		START
+foutese			START
+fuck			START
+fuking			SINGLE
+fuk				SINGLE
+ganja			SINGLE
+garce			SINGLE
+garces			SINGLE
+garse			SINGLE
+garses			SINGLE
+gay				SINGLE
+gays			SINGLE
+gland			SINGLE
+gouine			START
+grognasse		START
+geule			START
+gueule			START
+hitler			SINGLE
+homo			SINGLE
+homos			SINGLE
+homosex			START
+iech			SINGLE
+imbecil			START
+jancule			START
+jejacul			START
+jemerd			START
+jenmerd			START
+jencul			START
+khatin			START
+khat1			SINGLE
+khonar			SINGLE
+khonard			START
+khonasse		START
+khonne			SINGLE
+khonnerie		START
+khounerie		START
+khon			SINGLE
+khons			SINGLE
+khouill			START
+khretin			START
+khret1			SINGLE
+khrevar			START
+khreve			START
+khu				SINGLE
+khul			SINGLE
+khulay			SINGLE
+mairde			SINGLE
+mange-merde		START
+mangemerde		START
+masturb			START
+mer=d			START
+mer=de			END
+mongol			START
+motherfucker	START
+mrd				SINGLE
+nazi			START
+negre			START
+negro			START
+nique			START
+nik"e			SINGLE
+niker			SINGLE
+ntm				SINGLE
+oinj			SINGLE
+p=d				SINGLE
+payday			START
+partouze		START
+partouse		START
+pedale			START
+pe=de			SINGLE
+pedes			SINGLE
+penis			SINGLE
+pedoque			START
+petace			START
+petasse			START
+pedophile		START
+petasse			START
+phalus			SINGLE
+poufiasse		START
+pouffiasse		START
+pourriture		SINGLE
+porn			SINGLE
+porno			SINGLE
+prepuce			START
+ptain			START
+ptin			SINGLE
+pussy			SINGLE
+putain			START
+put1			SINGLE
+pu=t=e			START
+putin			SINGLE
+racaille		SINGLE
+raclur			START
+rectoragi		START
+rectum			SINGLE
+rectal			START
+saleop			SINGLE
+salepute		START
+salo			SINGLE
+salop			START
+salaud			START
+salaup			START
+saloupio		START
+scrotum			START
+sphincter		START
+sperm			START
+suck			SINGLE
+sucks			SINGLE
+sex				SINGLE
+sexe			START
+sexuel			START
+shit			START
+sphinctere		START
+sucer			SINGLE
+suce			SINGLE
+suseuse			START
+suceuse			START
+sodo			SINGLE
+sodom			START
+stfu			SINGLE
+stupid			START
+tain			SINGLE
+tantouze		START
+taggle			SINGLE
+taggl			SINGLE
+tageul			SINGLE
+tapette			START
+tafiole			START
+tarlouze		START
+tepu			SINGLE
+testicule		START
+t=in			SINGLE
+touze			START
+tous"e"			SINGLE
+troudbal		START
+troudebal		START
+trouduk			START
+tg				SINGLE
+trouduc			START
+vagin			START
+vag1			SINGLE
+vaseline		START
+verge			SINGLE
+viol			SINGLE
+viols			SINGLE
+viole			SINGLE
+violes			SINGLE
+violer			SINGLE
+vtff			SINGLE
+vtfe			SINGLE
+vtfm			SINGLE
+weed			SINGLE
+ytler			SINGLE
+zoophile		START
+zoophilie		START

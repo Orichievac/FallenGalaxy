@@ -1,0 +1,3648 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE action-mapping SYSTEM "action-mapping.dtd">
+
+<action-mapping package="fr.fg.server.action">
+	<!-- ================================================== CONSTANTES ==== -->
+	
+	<!-- Formats -->
+	<constant name="formatPath"     	value="fr.fg.server.servlet.format"/>
+	<constant name="boolean"        	value="${formatPath}.BooleanFormat"/>
+	<constant name="enum"           	value="${formatPath}.EnumFormat"/>
+	<constant name="int"            	value="${formatPath}.IntegerFormat"/>
+	<constant name="intRange"       	value="${formatPath}.IntegerRangeFormat"/>
+	<constant name="long"            	value="${formatPath}.LongFormat"/>
+	<constant name="longRange"       	value="${formatPath}.LongRangeFormat"/>
+	<constant name="string"         	value="${formatPath}.StringFormat"/>
+	<constant name="stringRange"    	value="${formatPath}.SizedStringFormat"/>
+	<constant name="name"				value="${formatPath}.NameStringFormat"/>
+	<constant name="wildcardname"		value="${formatPath}.WildcardNameStringFormat"/>
+	<constant name="alphabetic"			value="${formatPath}.AlphabeticFormat"/>
+	<constant name="email"				value="${formatPath}.EmailStringFormat"/>
+	
+	<!-- Constantes des formats -->
+	<constant name="superiorEqual"  	value="1"/>
+	<constant name="inferiorEqual"  	value="2"/>
+	<constant name="between"        	value="3"/>
+	<constant name="notEqual"       	value="4"/>
+	
+	<!-- Droits d'accès -->
+	<constant name="user"					value="0"/>
+	<constant name="premium"				value="1"/>
+	<constant name="moderator"				value="2"/>
+	<constant name="premium+moderator"		value="3"/>
+	<constant name="administrator"			value="4"/>
+	<constant name="premium+administrator"	value="5"/>
+	<constant name="super_administrator"	value="8"/>
+	
+	<!-- ===================================================== ACTIONS ==== -->
+	
+	<!-- Déconnexion du jeu -->
+	<action name="initialization" class="login.Initialization" connection="login_or_logout"/>
+	
+	<!-- Connexion au jeu -->
+	<action name="login" class="login.LogIn" connection="logout">
+		<action-param name="login">
+			<param-format class="name"/>
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="4"/>
+				<arg value="30"/>
+			</param-format>
+		</action-param>
+		<action-param name="password">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="4"/>
+				<arg value="50"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="closeaccount" class="player.CloseAccount">
+		<action-param name="password">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="4"/>
+				<arg value="50"/>
+			</param-format>
+		</action-param>
+		<action-param name="reason">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="250"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Connexion au jeu -->
+	<action name="getfirstsystem" class="login.GetFirstSystem">
+		<action-param name="near">
+			<param-format class="name"/>
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="30"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Déconnexion du jeu -->
+	<action name="logout" class="login.LogOut"/>
+	
+	<!-- Inscription d'un nouveau joueur -->
+	<action name="register" class="login.Register" connection="logout">
+		<action-param name="login">
+			<param-format class="name"/>
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="4"/>
+				<arg value="20"/>
+			</param-format>
+		</action-param>
+		<action-param name="password">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="4"/>
+				<arg value="50"/>
+			</param-format>
+		</action-param>
+		<action-param name="email">
+			<param-format class="email"/>
+		</action-param>
+		<action-param name="birthday">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="10"/>
+			</param-format>
+		</action-param>
+		<action-param name="sponsor">
+			<param-format class="name"/>
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="20"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="killpolling" class="KillPolling"/>
+	
+	   <action name="setaway" class="player.SetAway">
+                <action-param name="away">
+                        <param-format class="boolean"/>
+                </action-param>
+        </action>
+	
+	<!-- Récupération du mot de passe -->
+	<action name="recoverpassword" class="login.RecoverPassword" connection="logout">
+		<action-param name="email">
+			<param-format class="email"/>
+		</action-param>
+	</action>
+	
+	<action name="getarea" class="GetArea">
+		<action-param name="area">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="setareaname" class="SetAreaName">
+		<action-param name="area">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="name">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="4"/>
+				<arg value="20"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+	</action>
+	
+	<action name="getgalaxy" class="GetGalaxy"/>
+	
+	<!-- Récupération  d'un rapport de combat -->
+	<action name="getreport" class="GetReport">
+		<action-param name="report">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Récupération  d'un rapport de combat par son code de hashage -->
+	<action name="getreportbyhash" class="GetReportByHash" connection="login_or_logout">
+		<action-param name="hash">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="16"/>
+				<arg value="16"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Demande de mise à jour -->
+	<action name="update" class="player.Update">
+		<action-param name="type">
+			<param-format class="enum">
+				<arg value="fleets+area"/>
+				<arg value="xp"/>
+				<arg value="systems"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Obtenir le nom du serveur -->
+	<action name="serverinfos" class="GetServerInfos" connection="login_or_logout" />
+	
+	<!-- ===================================================== PREMIUM ==== -->
+	
+	<action name="premium/getstate" class="premium.GetPremiumState"/>
+	
+	<action name="premium/validatecode" class="premium.ValidateCode">
+		<action-param name="code">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="10"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- ===================================================== MARKERS ==== -->
+	
+	<action name="markers/add" class="markers.CreateMarker">
+		<action-param name="area">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="x">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="y">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="message">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="4"/>
+				<arg value="200"/>
+			</param-format>
+		</action-param>
+		<action-param name="visibility">
+			<param-format class="enum">
+				<arg value="player"/>
+				<arg value="ally"/>
+				<arg value="allied"/>
+			</param-format>
+		</action-param>
+		<action-param name="galaxy">
+			<param-format class="boolean"/>
+		</action-param>
+	</action>
+	
+	<action name="markers/delete" class="markers.DeleteMarker">
+		<action-param name="marker">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- ==================================================== CONTRACT ==== -->
+	
+	<action name="contracts/get" class="contract.GetContracts"/>
+	
+	<action name="contracts/apply" class="contract.Apply">
+		<action-param name="id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="contracts/decline" class="contract.Decline">
+		<action-param name="id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="contracts/giveup" class="contract.GiveUp">
+		<action-param name="id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- ======================================================== BANK ==== -->
+	
+	<action name="bank/getaccount" class="bank.GetAccount">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="bank/transfer" class="bank.Transfer">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="resource0">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="resource1">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="resource2">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="resource3">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	 <!-- ===================================================== LOTTERY ==== -->
+       
+        <!-- Récupération de l'état de la loterie -->
+        <action name="lottery/getinfo" class="lottery.GetLotteryInformation">
+                <action-param name="fleet">
+                        <param-format class="intRange">
+                                <arg value="superiorEqual"/>
+                                <arg value="1"/>
+                        </param-format>
+                </action-param>
+        </action>
+       
+        <!-- Achat d'un ticket de loterie -->
+        <action name="lottery/buyticket" class="lottery.BuyLotteryTicket">
+                <action-param name="fleet">
+                        <param-format class="intRange">
+                                <arg value="superiorEqual"/>
+                                <arg value="1"/>
+                        </param-format>
+                </action-param>
+                <action-param name="level">
+                        <param-format class="intRange">
+                                <arg value="between"/>
+                                <arg value="0"/>
+                                <arg value="5"/>
+                        </param-format>
+                </action-param>
+                <action-param name="number">
+                        <param-format class="intRange">
+                                <arg value="between"/>
+                                <arg value="0"/>
+                                <arg value="3"/>
+                        </param-format>
+                </action-param>
+        </action>
+	
+	<!-- ======================================================= TRADE ==== -->
+	
+	<!-- Récupération des taux de change d'un centre de commerce -->
+	<action name="trade/getrates" class="trade.GetRates">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Echange de ressources dans un centre de commerce -->
+	<action name="trade/change" class="trade.Change">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="resource">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="count">
+			<param-format class="longRange">
+				<arg value="notEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- ====================================================== FLEETS ==== -->
+	
+	<!-- Déplacement d'une flotte -->
+	<action name="movefleets" class="fleet.MoveFleets">
+		<action-param name="fleet0">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet1" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet2" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet3" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet4" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet5" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet6" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet7" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet8" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="x">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="y">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Déplacement d'une flotte -->
+	<action name="trainfleet" class="fleet.TrainFleet">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Déplacement d'une flotte -->
+	<action name="pickupdoodad" class="fleet.PickUpDoodad">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Déplacement d'une flotte -->
+	<action name="fleet/destroystuff" class="fleet.DestroyStuff">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="index">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="type">
+			<param-format class="enum">
+				<arg value="ship"/>
+				<arg value="resource"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Saut hyperspatial d'une flotte -->
+	<action name="hyperspace" class="fleet.JumpHyperspace">
+		<action-param name="fleet0">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet1" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet2" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet3" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet4" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet5" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet6" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet7" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet8" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="type">
+			<param-format class="enum">
+				<arg value="area"/>
+				<arg value="sector"/>
+			</param-format>
+		</action-param>
+		<action-param name="target">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	<action name="tactics/settactic" class="tactics.SetTactic">
+	<action-param name="system">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet0">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet1" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet2" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet3" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet4" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet5" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet6" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet7" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet8" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot_id_0">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+    <action-param name="tactic_slot0_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot_id_1">
+			<param-format class="intRange">
+	<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		  <action-param name="tactic_slot1_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+			</action-param>
+			<action-param name="slot_id_2">
+			<param-format class="intRange">
+		<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		  <action-param name="tactic_slot2_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+			</action-param>
+			<action-param name="slot_id_3">
+			<param-format class="intRange">
+	<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		  <action-param name="tactic_slot3_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+			</action-param>
+			<action-param name="slot_id_4">
+			<param-format class="intRange">
+	<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		  <action-param name="tactic_slot4_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+			</action-param>
+		</action>
+	
+	<action name="settactics" class="fleet.SetFleetTactics">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot0_front">
+			<param-format class="boolean"/>
+		</action-param>
+		<action-param name="slot1_front">
+			<param-format class="boolean"/>
+		</action-param>
+		<action-param name="slot2_front">
+			<param-format class="boolean"/>
+		</action-param>
+		<action-param name="slot3_front">
+			<param-format class="boolean"/>
+		</action-param>
+		<action-param name="slot4_front">
+			<param-format class="boolean"/>
+		</action-param>
+		<action-param name="skirmish_action0_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="skirmish_action0_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="skirmish_action1_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="skirmish_action1_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="skirmish_action2_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="skirmish_action2_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="skirmish_action3_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="skirmish_action3_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="skirmish_action4_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="skirmish_action4_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action0_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action0_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action1_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action1_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action2_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action2_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action3_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action3_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action4_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action4_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action5_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action5_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action6_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action6_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action7_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action7_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action8_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action8_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action9_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action9_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action10_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action10_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action11_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action11_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action12_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action12_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action13_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action13_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action14_slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="battle_action14_ability">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="-1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Saut hyperspatial d'une flotte -->
+	<action name="canceljump" class="fleet.CancelJump">
+		<action-param name="fleet0">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet1" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet2" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet3" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet4" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet5" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet6" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet7" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet8" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Sonde d'un système pour en déterminer ses caractéristiques -->
+	<action name="probesystem" class="skill.ProbeSystem">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="setfleetskill" class="fleet.SetFleetSkill">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="skill">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="15"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Modifie le nom d'une flotte -->
+	<action name="setfleetname" class="fleet.SetFleetName">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="name">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="20"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+	</action>
+	
+	<!-- Modifie le tag d'une flotte -->
+	<action name="setfleetstag" class="fleet.SetFleetsTag">
+		<action-param name="fleet0">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet1" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet2" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet3" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet4" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet5" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet6" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet7" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet8" required="false">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="tag">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="7"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Modifie le raccourci d'une flotte -->
+	<action name="setshortcut" class="player.SetShortcut">
+		<action-param name="id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="type">
+			<param-format class="enum">
+				<arg value="fleet"/>
+				<arg value="system"/>
+				<arg value="structure"/>
+			</param-format>
+		</action-param>
+		<action-param name="shortcut">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="9"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Attaquer une flotte -->
+	<action name="battle" class="fleet.Battle">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="enemy">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="mode">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="bombing">
+			<param-format class="boolean"/>
+		</action-param>
+	</action>
+	
+	<!-- Capture un système -->
+	<action name="colonizeorcapture" class="fleet.ColonizeOrCapture">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+		<!-- Migre un système -->
+	<action name="migration" class="fleet.Migration">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="system">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Annule la migration d'un système en cours -->
+	<action name="cancelmigration" class="fleet.CancelMigration">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Annule une colonisation en cours -->
+	<action name="cancelcolonization" class="fleet.CancelColonization">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Echange de vaisseaux / ressources entre deux flottes -->
+	<action name="swapfleets" class="fleet.SwapFleets">
+		<action-param name="fleet0">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet1">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot00_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot01_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot02_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot03_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot04_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot10_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot11_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot12_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot13_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot14_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot00_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot01_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot02_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot03_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot04_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot10_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot11_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot12_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot13_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot14_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item0_type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="item0_id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item0_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item1_type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="item1_id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item1_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item2_type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="item2_id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item2_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item3_type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="item3_id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item3_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Echange de vaisseaux / ressources entre une flotte et un système -->
+	<action name="swapfleetsystem" class="fleet.SwapFleetSystem">
+		<action-param name="system">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot10_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot11_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot12_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot13_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot14_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot10_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot11_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot12_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot13_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot14_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item0_type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="item0_id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item0_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item1_type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="item1_id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item1_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item2_type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="item2_id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item2_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item3_type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="item3_id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item3_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Echange de vaisseaux / ressources entre une flotte et un système -->
+	<action name="swapfleetstation" class="fleet.SwapFleetSpaceStation">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="station">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="item0_type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="item0_id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item0_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item1_type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="item1_id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item1_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item2_type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="item2_id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item2_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item3_type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="item3_id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item3_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Echange de vaisseaux / ressources entre une flotte et un système -->
+	<action name="fundstation" class="station.FundSpaceStation">
+		<action-param name="station">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="credits">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Modifie le nom d'une station -->
+	<action name="setspacestationname" class="station.SetSpaceStationName">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="name">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="20"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+	</action>
+	
+	<action name="talk" class="fleet.Talk">
+		<action-param name="source">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="target">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="option">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="10"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- ================================================ STRUCTURE ==== -->
+	
+	<action name="structure/build" class="structure.BuildStructure">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="15"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="structure/buildships" class="structure.BuildShips">
+		<action-param name="structure">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="2"/>
+			</param-format>
+		</action-param>
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="count">
+			<param-format class="longRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="1000000000"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="structure/destroy" class="structure.DestroyStructure">
+		<action-param name="structure">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="structure/destroystuff" class="structure.DestroyStuff">
+		<action-param name="id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="index">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="9"/>
+			</param-format>
+		</action-param>
+		<action-param name="count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="type">
+			<param-format class="enum">
+				<arg value="ship"/>
+				<arg value="resource"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="structure/attack" class="structure.AttackStructure">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="structure/upgrademodule" class="structure.UpgradeModule">
+		<action-param name="structure">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="30"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="structure/caststasis" class="structure.CastStasis">
+		<action-param name="structure">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="target">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="structure/buyfleet" class="structure.BuyFleet">
+		<action-param name="structure">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Modifie le nom d'une structure -->
+	<action name="structure/setname" class="structure.SetStructureName">
+		<action-param name="id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="name">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="20"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+	</action>
+	
+	<!-- Démonte la structure -->
+	<action name="structure/dismount" class="structure.DismountStructure">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Répare la structure -->
+	<action name="structure/repair" class="structure.RepairStructure">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- (Dés)Active la structure -->
+	<action name="structure/activate" class="structure.ActivateStructure">
+		<action-param name="structure">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="activate">
+			<param-format class="boolean"/>
+		</action-param>
+	</action>
+	
+		<!-- Annule le démontage de la structure-->
+	<action name="structure/canceldismount" class="fleet.CancelDismount">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Démonte la structure -->
+	<action name="structure/mount" class="structure.MountStructure">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="item">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Echange de vaisseaux / ressources entre une flotte et un silo -->
+	<action name="structure/swapfleetstorehouse" class="structure.SwapFleetStorehouse">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="structure">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="item0_type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="item0_id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item0_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item1_type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="item1_id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item1_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item2_type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="item2_id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item2_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item3_type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="item3_id">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="item3_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Echange de vaisseaux / ressources entre une flotte et une structure -->
+	<action name="structure/swapfleetspaceshipyard" class="structure.SwapFleetSpaceshipYard">
+		<action-param name="structure">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot0_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot1_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot2_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot3_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot4_id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot0_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot1_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot2_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot3_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot4_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- ==================================================== SKILL ==== -->
+	
+	<action name="skill/mining" class="skill.Mining">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="skill/buildward" class="skill.BuildWard">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="ward">
+			<param-format class="enum">
+				<arg value="observer"/>
+				<arg value="observer_invisible"/>
+				<arg value="sentry"/>
+				<arg value="sentry_invisible"/>
+				<arg value="stun"/>
+				<arg value="stun_invisible"/>
+				<arg value="mine"/>
+				<arg value="mine_invisible"/>
+			</param-format>
+		</action-param>
+		<action-param name="power">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="99"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="skill/defuse" class="skill.Defuse">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="target">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="skill/buildspacestation" class="station.BuildSpaceStation">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="skill/destroyward" class="skill.DestroyWard">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="skill/destroyspacestation" class="station.DestroySpaceStation">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="password" required="false">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="30"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="skill/createdelude" class="skill.CreateDelude">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="skill/setdefensivelink" class="skill.SetDefensiveLink">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="target">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="skill/setoffensivelink" class="skill.SetOffensiveLink">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="target">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="skill/emp" class="skill.CastEmp">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="target">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="skill/swapfleetposition" class="skill.SwapFleetPosition">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="target">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="skill/switchstealth" class="skill.SwitchStealth">
+		<action-param name="fleet">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- ===================================================== TACTICS ==== -->
+	
+	<action name="tactics/save" class="tactics.SaveTactic">
+		<action-param name="name">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="50"/>
+			</param-format>
+		</action-param>
+		<action-param name="hash">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="60"/>
+			</param-format>
+		</action-param>
+	
+	<action-param name="slot_id_0">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+    <action-param name="tactic_slot0_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot_id_1">
+			<param-format class="intRange">
+	<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		  <action-param name="tactic_slot1_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+			</action-param>
+			<action-param name="slot_id_2">
+			<param-format class="intRange">
+		<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		  <action-param name="tactic_slot2_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+			</action-param>
+			<action-param name="slot_id_3">
+			<param-format class="intRange">
+	<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		  <action-param name="tactic_slot3_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+			</action-param>
+			<action-param name="slot_id_4">
+			<param-format class="intRange">
+	<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		  <action-param name="tactic_slot4_count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+			</action-param>
+	</action>
+	
+	
+	<action name="tactics/delete" class="tactics.DeleteTactic">
+		<action-param name="hash">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="60"/>
+			</param-format>
+		</action-param>
+	
+	</action>
+	
+		<action name="tactics/set" class="tactics.SetTactic">
+		<action-param name="hash">
+			
+		</action-param>
+	</action>
+	
+	<!-- ==================================================== RESEARCH ==== -->
+	
+	<action name="research/get" class="research.GetResearches"/>
+	
+	<action name="research/set" class="research.SetResearch">
+		<action-param name="queue0">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="queue1">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="queue2">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- ===================================================== SYSTEMS ==== -->
+	
+	<action name="systems/build" class="systems.Build">
+		<action-param name="system">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="build_id">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="30"/>
+			</param-format>
+		</action-param>
+		<action-param name="build_level">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="queue_id">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="30"/>
+			</param-format>
+		</action-param>
+		<action-param name="queue_level">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+				<action-param name="third_id">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="30"/>
+			</param-format>
+		</action-param>
+		<action-param name="third_level">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="systems/buildships" class="systems.BuildShips">
+		<action-param name="system">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="slot">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="-1"/>
+				<arg value="2"/>
+			</param-format>
+		</action-param>
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="count">
+			<param-format class="longRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="1000000000"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="systems/destroy" class="systems.DestroyBuilding">
+		<action-param name="system">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="id">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="30"/>
+			</param-format>
+		</action-param>
+		<action-param name="level">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="systems/destroystuff" class="systems.DestroyStuff">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="index">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="9"/>
+			</param-format>
+		</action-param>
+		<action-param name="count">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="type">
+			<param-format class="enum">
+				<arg value="ship"/>
+				<arg value="resource"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="systems/setname" class="systems.SetSystemName">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="name">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="20"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+	</action>
+	
+	<action name="buyfleet" class="systems.BuyFleet">
+		<action-param name="system">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="systems/leave" class="systems.LeaveSystem">
+		<action-param name="system">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="password">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="30"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="pushfleets" class="systems.PushFleets">
+		<action-param name="system">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- ==================================================== SETTINGS ==== -->
+	
+	<!-- Modification des préférences -->
+	<action name="setsettings" class="settings.SetSettings">
+		<action-param name="grid">
+			<param-format class="boolean"/>
+		</action-param>
+		<action-param name="brightness">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="fleetsSkin">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="10"/>
+			</param-format>
+		</action-param>
+		<action-param name="theme">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="250"/>
+			</param-format>
+		</action-param>
+		<action-param name="censorship">
+			<param-format class="boolean"/>
+		</action-param>
+		<action-param name="generalvol">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="100"/>
+			</param-format>
+		</action-param>
+		<action-param name="soundvol">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="100"/>
+			</param-format>
+		</action-param>
+		<action-param name="musicvol">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="100"/>
+			</param-format>
+		</action-param>
+		<action-param name="graphics">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+		<action-param name="optimConnect">
+			<param-format class="boolean"/>
+		</action-param>
+	</action>
+	
+	<!-- Modification des préférences -->
+	<action name="setfleetnamesettings" class="settings.SetFleetNameSettings">
+		<action-param name="prefix">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="12"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+		<action-param name="suffix">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="2"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Modification du mot de passe -->
+	<action name="setpassword" class="settings.SetPassword">
+		<action-param name="password">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="4"/>
+				<arg value="30"/>
+			</param-format>
+		</action-param>
+		<action-param name="newpassword">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="4"/>
+				<arg value="30"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Masque une section du tutorial -->
+	<action name="hidetutorial" class="settings.HideTutorial">
+		<action-param name="section">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="resettuto" class="settings.ResetTutorial" />
+	<!-- ======================================================== CHAT ==== -->
+	
+	<!-- Envoi d'un message sur le chat -->
+	<action name="chat/addmessage" class="chat.SendMessage">
+		<action-param name="message">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="180"/>
+			</param-format>
+		</action-param>
+		<action-param name="channel">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="21"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="chat/setchannelenable" class="chat.SetChannelEnable">
+		<action-param name="channel">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="20"/>
+			</param-format>
+		</action-param>
+		<action-param name="enable">
+			<param-format class="boolean"/>
+		</action-param>
+	</action>
+	
+	<!-- ==================================================== MESSAGES ==== -->
+	
+	<!-- Réception de messages -->
+	<action name="messages/get" class="messages.GetMessages">
+		<action-param name="update">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Envoi d'un message -->
+	<action name="messages/add" class="messages.SendMessage">
+		<action-param name="player">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="30"/>
+			</param-format>
+			<!--TODO Modification pour pouvoir envoyer des messages à tous les joueurs  -->
+			<param-format class="wildcardname"/>
+		</action-param>
+		<action-param name="title">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="30"/>
+			</param-format>
+		</action-param>
+		<action-param name="content">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="4000"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Suppression d'un message -->
+	<action name="messages/delete" class="messages.DeleteMessage">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Flag un message comme lu -->
+	<action name="messages/setread" class="messages.SetRead">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Bookmark un message -->
+	<action name="messages/bookmark" class="messages.BookmarkMessage">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="messages/getmotd" class="messages.GetMotd">
+		<action-param name="type">
+		<param-format class="enum">
+				<arg value="chat"/>
+				<arg value="ingame"/>
+			</param-format>
+		</action-param>
+	</action>
+	<!-- ======================================================== ALLY ==== -->
+	
+	<!-- Postuler à une alliance -->
+	<action name="allies/apply" class="allies.Apply">
+		<action-param name="ally">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="30"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+		<action-param name="cv">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="4000"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Créer une alliance -->
+	<action name="allies/createally" class="allies.CreateAlly">
+		<action-param name="name">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="4"/>
+				<arg value="20"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+		<action-param name="tag">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="2"/>
+				<arg value="3"/>
+			</param-format>
+			<param-format class="alphabetic"/>
+		</action-param>
+		<action-param name="organization">
+			<param-format class="enum">
+				<arg value="tyranny"/>
+				<arg value="warmonger"/>
+				<arg value="democracy"/>
+				<arg value="oligarchy"/>
+				<arg value="anarchy"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Récupération des infos d'alliance -->
+	<action name="allies/getplayerally" class="allies.GetPlayerAlly">
+		<action-param name="update">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	 
+	<!-- Accepter un joueur dans l'alliance -->
+	<action name="allies/accept" class="allies.Accept">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="update">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Kicker un joueur de l'alliance -->
+	<action name="allies/kick" class="allies.Kick">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="update">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Ajouter une news d'alliance -->
+	<action name="allies/addnews" class="allies.AddNews">
+		<action-param name="title">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="30"/>
+			</param-format>
+		</action-param>
+		<action-param name="content">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="4000"/>
+			</param-format>
+		</action-param>
+		<action-param name="parent">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="update">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Marque une news comme lue -->
+	<action name="allies/setnewsread" class="allies.SetNewsRead">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+		<!-- Marque toutes les news comme lues -->
+	<action name="allies/setallnewsread" class="allies.SetAllNewsRead"/>
+	
+	<!-- Epingler une news d'alliance -->
+	<action name="allies/sticknews" class="allies.StickNews">
+		<action-param name="news">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Supprimer une news d'alliance -->
+	<action name="allies/deletenews" class="allies.DeleteNews">
+		<action-param name="news">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	
+	
+	<!-- Annuler sa candidature -->
+	<action name="allies/cancelapply" class="allies.CancelApply"/>
+	
+	<!-- Refuser la candidature d'un joueur -->
+	<action name="allies/decline" class="allies.Decline">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="update">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Vote pour élire un joueur -->
+	<action name="allies/elect" class="allies.Elect">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Délégation des droits de leader -->
+	<action name="allies/delegate" class="allies.Delegate">
+		<action-param name="target">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Quitter l'alliance -->
+	<action name="allies/leave" class="allies.Leave">
+		<action-param name="newleader" required="false">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="30"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+	</action>
+	
+	<action name="allies/getdescription" class="allies.GetDescription">
+		<action-param name="name">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="4"/>
+				<arg value="30"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+	</action>
+	
+	<!-- Changer la description de l'alliance -->
+	<action name="allies/setdescription" class="allies.SetDescription">
+		<action-param name="description">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="10000"/>
+			</param-format>
+		</action-param>
+		<action-param name="update">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Changer le rang d'un joueur -->
+	<action name="allies/setrank" class="allies.SetRank">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="rank">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="update">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Changer la couleur du territoire de l'alliance -->
+	<action name="allies/setterritorycolor" class="allies.SetTerritoryColor">
+		<action-param name="color">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="12"/>
+			</param-format>
+		</action-param>
+		<action-param name="update">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Changer les droits des membres l'alliance -->
+	<action name="allies/setright" class="allies.SetRight">
+		<action-param name="right">
+			<param-format class="enum">
+				<arg value="manage_contracts"/>
+				<arg value="manage_diplomacy"/>
+				<arg value="manage_stations"/>
+				<arg value="accept"/>
+				<arg value="manage_news"/>
+				<arg value="manage_description"/>
+			</param-format>
+		</action-param>
+		<action-param name="rank">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="4"/>
+			</param-format>
+		</action-param>
+		<action-param name="update">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Voter pour accepter un joueur dans l'alliance -->
+	<action name="allies/voteaccept" class="allies.VoteAccept">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="vote">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="3"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Voter pour kicker un joueur de l'alliance -->
+	<action name="allies/votekick" class="allies.VoteKick">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="vote">
+			<param-format class="enum">
+				<arg value="yes"/>
+				<arg value="no"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Déclarer la guerre à une alliance -->
+	<action name="allies/declarewar" class="allies.DeclareWar">
+		<action-param name="ally">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="30"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+	</action>
+	
+	<!-- Proposer une trêve à une alliance -->
+	<action name="allies/offerpeace" class="allies.OfferPeace">
+		<action-param name="ally">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="30"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+		<action-param name="accept">
+			<param-format class="boolean"/>
+		</action-param>
+	</action>
+	
+	<!-- Proposer une alliance à une alliance -->
+	<action name="allies/offerally" class="allies.OfferAlly">
+		<action-param name="ally">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="30"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+				<action-param name="type" required="false">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="2"/>
+			</param-format>
+		</action-param>
+		<action-param name="accept">
+			<param-format class="boolean"/>
+		</action-param>
+	</action>
+	
+	<!-- Annuler une alliance -->
+	<action name="allies/breakally" class="allies.BreakAlly">
+		<action-param name="ally">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="30"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+	</action>
+	
+	<!-- ====================================================== PLAYER ==== -->
+	
+	<action name="setadvancement" class="player.SetAdvancement">
+		<action-param name="type">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="9"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="deletepoints" class="player.DeletePoints">
+	</action>
+	
+		<action name="deletetwopoints" class="player.DeleteTwoPoints">
+	</action>
+	
+	<!-- Recuperation des traités du joueur -->
+	<action name="gettreaties" class="player.GetTreaties"/>
+	
+	<!-- Recuperation des systèmes du joueur -->
+	<action name="getsystems" class="player.GetSystems"/>
+	
+	<!-- Récupération des events du joueur -->
+	<action name="getevents" class="player.GetEvents">
+		<action-param name="date">
+			<param-format class="longRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="getachievements" class="player.GetAchievements"/>
+	
+	<action name="setdiplomacystate" class="player.SetDiplomacyState">
+		<action-param name="active">
+			<param-format class="boolean"/>
+		</action-param>
+	</action>
+	
+	<!-- Déclarer la guerre à une alliance -->
+	<action name="declarewar" class="player.DeclareWar">
+		<action-param name="player">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="30"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+	</action>
+	
+	<!-- Annulation d'une alliance -->
+	<action name="breakally" class="player.BreakAlly">
+		<action-param name="player">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="30"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+	</action>
+	
+	<!-- Proposition de trêve -->
+	<action name="offerpeace" class="player.OfferPeace">
+		<action-param name="player">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="30"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+		<action-param name="accept">
+			<param-format class="boolean" />
+		</action-param>
+	</action>
+	
+	<!-- Proposition d'alliance -->
+	<action name="offerally" class="player.OfferAlly">
+		<action-param name="player">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="30"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+		<action-param name="type" required="false">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="2"/>
+			</param-format>
+		</action-param>
+		<action-param name="accept">
+			<param-format class="boolean" />
+		</action-param>
+	</action>
+	
+	<action name="sendbugreport" class="player.SendBugReport">
+		<action-param name="subject">
+			<param-format class="string"/>
+		</action-param>
+		<action-param name="content">
+			<param-format class="string"/>
+		</action-param>
+	</action>
+	
+	<!-- ====================================================== LADDER ==== -->
+	
+	<!-- Classement des joueurs et des alliances -->
+	<action name="ladder/get" class="ladder.GetLadder">
+		<action-param name="ladder">
+			<param-format class="enum">
+				<arg value="players"/>
+				<arg value="allies"/>
+			</param-format>
+		</action-param>
+		<action-param name="range">
+			<param-format class="intRange">
+				<arg value="between"/>
+				<arg value="0"/>
+				<arg value="9"/>
+			</param-format>
+		</action-param>
+		<action-param name="self">
+			<param-format class="boolean"/>
+		</action-param>
+	</action>
+	
+	<action name="ladder/search" class="ladder.Search">
+		<action-param name="ladder">
+			<param-format class="enum">
+				<arg value="players"/>
+				<arg value="allies"/>
+			</param-format>
+		</action-param>
+		<action-param name="search">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="30"/>
+			</param-format>
+			<param-format class="wildcardname"/>
+		</action-param>
+	</action>
+	
+	<!-- ======================================================= ADMIN ==== -->
+	
+	<!-- Etat du serveur -->
+	<action name="getstatus" class="admin.GetStatus" connection="login_or_logout" method="get"/>
+	
+	<action name="admin/creategalaxy" class="admin.CreateGalaxy" rights="super_administrator" method="get"/>
+	
+	<action name="admin/maintenance" class="admin.Maintenance" rights="super_administrator" method="get">
+		<action-param name="param1" required="false">
+			<param-format class="stringRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="param2" required="false">
+			<param-format class="stringRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="param3" required="false">
+			<param-format class="stringRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="param4" required="false">
+			<param-format class="stringRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="param5" required="false">
+			<param-format class="stringRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="admin/runtask" class="admin.RunTask" rights="super_administrator" method="get">
+		<action-param name="task">
+			<param-format class="string"/>
+		</action-param>
+		<action-param name="period">
+			<param-format class="enum">
+				<arg value="minutely"/>
+				<arg value="hourly"/>
+				<arg value="daily"/>
+				<arg value="weekly"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="admin/getparameter" class="admin.GetParameter" connection="login_or_logout" method="get">
+		<action-param name="key">
+			<param-format class="string"/>
+		</action-param>
+		<action-param name="parameter">
+			<param-format class="enum">
+				<arg value="media"/>
+				<arg value="master"/>
+				<arg value="path"/>
+				<arg value="context"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="admin/shutdown" class="admin.Shutdown" connection="login_or_logout" method="get">
+		<action-param name="key">
+			<param-format class="string"/>
+		</action-param>
+		<action-param name="length">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="0"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="admin/sendopeningmail" class="admin.SendOpeningMail" rights="super_administrator" method="get"/>
+	
+	
+	<!-- =============================== PANEL ADMIN =============================== -->
+	
+	<action name="admin/getbanned" class="admin.GetBanned" rights="moderator"/>
+	
+	<action name="admin/unban" class="admin.Unban" rights="moderator" >
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="admin/ban" class="admin.BanPlayer" rights="moderator">
+		<action-param name="login">
+			<param-format class="string">
+			</param-format>
+		</action-param>
+		<action-param name="bangame">
+			<param-format class="boolean"/>
+		</action-param>
+		<action-param name="time">
+			<param-format class="long"/>
+		</action-param>
+		<action-param name="reason">
+			<param-format class="string"/>
+		</action-param>
+	</action>
+	
+	<action name="admin/changemotd" class="admin.ChangeMotd" rights="administrator">
+		<action-param name="type">
+			<param-format class="intRange">
+					<arg value="superiorEqual"/>
+					<arg value="0"/>
+			</param-format>
+		</action-param>
+		<action-param name="content">
+			<param-format class="string"/>
+		</action-param>
+	</action>
+	
+	<action name="admin/getmotd" class="admin.GetMotd" rights="moderator"/>
+	
+	<action name="admin/getscripts" class="admin.GetScripts" rights="administrator"/>
+	
+	<action name="admin/usescript" class="admin.UseScript" rights="administrator">
+		<action-param name="name">
+			<param-format class="string">
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="admin/checkmultiplesaccounts" class="admin.CheckMultiplesAccounts" rights="administrator">
+		<action-param name="player1">
+			<param-format class="string">
+			</param-format>
+		</action-param>
+		<action-param name="player2">
+			<param-format class="string">
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- ==================================================== CONTACTS ==== -->
+	
+	<!-- Ajoute un joueur à la liste de contact/ignorés -->
+	<action name="contact/add" class="contact.AddContact">
+		<action-param name="player">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="30"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+		<action-param name="type">
+			<param-format class="enum">
+				<arg value="friend"/>
+				<arg value="ignore"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<!-- Récupère la liste des contacts du joueur -->
+	<action name="contact/get" class="contact.GetContacts"/>
+	
+	<!-- Retire un joueur de la liste de contacts -->
+	<action name="contact/delete" class="contact.DeleteContact">
+		<action-param name="player">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="30"/>
+			</param-format>
+			<param-format class="name"/>
+		</action-param>
+	</action>
+	
+	<!-- Gestion des cartes des joueurs -->
+	<action name="setPlayerCard" class="player.SetPlayerCard">
+		<action-param name="id">
+			<param-format class="int"/>
+		</action-param>
+		<action-param name="description">
+			<param-format class="string"/>
+		</action-param>
+	</action>
+	
+	<action name="getPlayerCard" class="player.GetPlayerCard">
+		<action-param name="login">
+			<param-format class="string"/>
+		</action-param>
+	</action>
+	
+	
+	<!-- ================================================== CHANGELOGS ==== -->
+	
+	<action name="changelog/getlast" class="changelog.GetLastChangelogs" connection="login_or_logout"/>
+	
+	<action name="changelog/add" class="changelog.AddChangelog" rights="super_administrator">
+		<action-param name="text">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="4000"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="changelog/edit" class="changelog.EditChangelog" rights="super_administrator">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+		<action-param name="text">
+			<param-format class="stringRange">
+				<arg value="between"/>
+				<arg value="1"/>
+				<arg value="4000"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+	<action name="changelog/delete" class="changelog.DeleteChangelog" rights="super_administrator">
+		<action-param name="id">
+			<param-format class="intRange">
+				<arg value="superiorEqual"/>
+				<arg value="1"/>
+			</param-format>
+		</action-param>
+	</action>
+	
+</action-mapping>

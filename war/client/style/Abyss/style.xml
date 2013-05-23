@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<style>
+	<component type="Button">
+		<property>
+			<key>innerHtml</key>
+			<value><![CDATA[<div unselectable="on" class="button-content"></div><div id="${label}" class="button-icon" unselectable="on"></div>]]></value>
+		</property>
+		<property>
+			<key>height</key>
+			<value>28</value>
+		</property>
+		<property>
+			<key>horizontalMargin</key>
+			<value>16</value>
+		</property>
+	</component>
+	
+	<component type="Label">
+		<property>
+			<key>height</key>
+			<value>28</value>
+		</property>
+	</component>
+	
+	<component type="TextField">
+		<property>
+			<key>innerHtml</key>
+			<value><![CDATA[<div unselectable="on" class="textfield-content"><input id="${text}" type="text" value=""/></div>]]></value>
+		</property>
+		<property>
+			<key>width</key>
+			<value>100</value>
+		</property>
+		<property>
+			<key>height</key>
+			<value>28</value>
+		</property>
+		<property>
+			<key>horizontalMargin</key>
+			<value>12</value>
+		</property>
+		<property>
+			<key>verticalMargin</key>
+			<value>16</value>
+		</property>
+	</component>
+	
+	<component type="PasswordField">
+		<property>
+			<key>innerHtml</key>
+			<value><![CDATA[<div unselectable="on" class="textfield-content"><input id="${text}" type="password" value=""/></div>]]></value>
+		</property>
+		<property>
+			<key>width</key>
+			<value>100</value>
+		</property>
+		<property>
+			<key>height</key>
+			<value>28</value>
+		</property>
+		<property>
+			<key>horizontalMargin</key>
+			<value>12</value>
+		</property>
+		<property>
+			<key>verticalMargin</key>
+			<value>16</value>
+		</property>
+	</component>
+	
+	<component type="TextPane">
+		<property>
+			<key>horizontalMargin</key>
+			<value>2</value>
+		</property>
+		<property>
+			<key>verticalMargin</key>
+			<value>2</value>
+		</property>
+	</component>
+	
+	<component type="ScrollPane">
+		<property>
+			<key>scrollUpButtonWidth</key>
+			<value>17</value>
+		</property>
+		<property>
+			<key>scrollUpButtonHeight</key>
+			<value>17</value>
+		</property>
+		<property>
+			<key>scrollDownButtonWidth</key>
+			<value>17</value>
+		</property>
+		<property>
+			<key>scrollDownButtonHeight</key>
+			<value>17</value>
+		</property>
+		<property>
+			<key>scrollBubbleWidth</key>
+			<value>17</value>
+		</property>
+		<property>
+			<key>scrollBubbleMinHeight</key>
+			<value>17</value>
+		</property>
+	</component>
+	
+	<component type="ComboBox">
+		<property>
+			<key>height</key>
+			<value>28</value>
+		</property>
+	</component>
+	
+	<component type="Dialog">
+		<property>
+			<key>innerHtml</key>
+			<value><![CDATA[<div id="${titlebar}" class="dialog-titlebar" unselectable="on">
+<div id="${close}" class="dialog-close" unselectable="on"></div>
+<div id="${title}" class="dialog-title" unselectable="on"></div>
+</div>
+<div class="dialog-right" unselectable="on">
+<div id="${content}" class="dialog-content" unselectable="on"></div>
+</div>]]></value>
+		</property>
+		<property>
+			<key>horizontalMargin</key>
+			<value>14</value>
+		</property>
+		<property>
+			<key>verticalMargin</key>
+			<value>40</value>
+		</property>
+	</component>
+	
+	<component type="TabbedPane">
+		<property>
+			<key>height</key>
+			<value>28</value>
+		</property>
+	</component>
+	
+	<component type="Tab">
+		<property>
+			<key>innerHtml</key>
+			<value><![CDATA[<div id="${label}" unselectable="on" class="tab-content"></div>]]></value>
+		</property>
+		<property>
+			<key>height</key>
+			<value>26</value>
+		</property>
+		<property>
+			<key>horizontalMargin</key>
+			<value>20</value>
+		</property>
+		<property>
+			<key>verticalMargin</key>
+			<value>2</value>
+		</property>
+	</component>
+</style>

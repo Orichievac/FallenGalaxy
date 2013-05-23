@@ -1,0 +1,8 @@
+body			 { cursor: url('style/FallenCraft2Blue/images/cursors/cursor.cur'), default; }
+.dialog-close    { cursor: url('style/FallenCraft2Blue/images/cursors/cursor.cur'), default !important; }
+.button          { cursor: url('style/FallenCraft2Blue/images/cursors/cursor.cur'), default !important; }
+.listItem        { cursor: url('style/FallenCraft2Blue/images/cursors/cursor.cur'), default !important; }
+.tab   		     { cursor: url('style/FallenCraft2Blue/images/cursors/cursor.cur'), default !important; }
+.moveCursor      { cursor: url('style/FallenCraft2Blue/images/cursors/move.cur'),   move !important; }
+.textfield input { cursor: url('style/FallenCraft2Blue/images/cursors/text.cur'),   text !important; }
+.textarea input  { cursor: url('style/FallenCraft2Blue/images/cursors/text.cur'),   text !important; }

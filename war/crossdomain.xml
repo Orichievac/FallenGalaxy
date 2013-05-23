@@ -1,0 +1,4 @@
+<cross-domain-policy>
+	<allow-access-from domain="fallengalaxy.eu"/>
+	<allow-access-from domain="*.fallengalaxy.eu"/>
+</cross-domain-policy>

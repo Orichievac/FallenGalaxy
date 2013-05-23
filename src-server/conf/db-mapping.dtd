@@ -1,0 +1,49 @@
+<!ELEMENT db-mapping (table*)>
+<!ATTLIST db-mapping
+	package			CDATA ''
+>
+
+<!ELEMENT table (column|primary-key|index|foreign-key)*>
+<!ATTLIST table
+	name			ID #REQUIRED
+	class			CDATA #IMPLIED
+	package			CDATA #IMPLIED
+	cache			(true|false) 'true'
+	allow-delete	(true|false) 'true'
+>
+
+<!ELEMENT column EMPTY>
+<!ATTLIST column
+	name			CDATA #REQUIRED
+	type			(boolean|byte|short|int|long|float|double|string|timestamp) #IMPLIED
+	reftype			CDATA #IMPLIED
+	java-type		CDATA #IMPLIED
+	db-type			CDATA #IMPLIED
+	enum-values		CDATA #IMPLIED
+	nullable		(true|false) #IMPLIED
+	signed			(true|false) #IMPLIED
+>
+
+<!ELEMENT primary-key EMPTY>
+<!ATTLIST primary-key
+	name			CDATA #REQUIRED
+	generator		(none|increment) 'none'
+>
+
+<!ELEMENT index EMPTY>
+<!ATTLIST index
+	name			CDATA #REQUIRED
+	type			(unique|multiple) 'unique'
+>
+
+<!ELEMENT foreign-key (references)>
+<!ATTLIST foreign-key
+	name			CDATA #REQUIRED
+>
+
+<!ELEMENT references EMPTY>
+<!ATTLIST references
+	table			IDREF #REQUIRED
+	column			CDATA #REQUIRED
+	on-delete		(set-null|set-zero|cascade|restrict|no-action) #REQUIRED
+>

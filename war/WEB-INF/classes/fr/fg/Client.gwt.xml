@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module rename-to="client">
+	<inherits name="com.google.gwt.i18n.I18N"/>
+ 	<inherits name="fr.fg.client.openjwt.OpenJWT"/>
+	<inherits name="com.allen_sauer.gwt.voices.gwt-voices"/>
+	<inherits name="gwt.canvas.gwt-canvas"/>
+	
+	<extend-property name="locale" values="fr"/>
+	<!--
+	<extend-property name="locale" values="en"/>
+  	-->
+  	
+	<entry-point class="fr.fg.client.core.Client"/>
+	
+	<replace-with class="fr.fg.client.core.impl.AreaContainerImplMobile">
+		<when-type-is class="fr.fg.client.core.impl.AreaContainerImpl"/>
+		<when-property-is name="mobile" value="true"/>
+	</replace-with>
+</module>

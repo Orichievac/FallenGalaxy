@@ -1,0 +1,567 @@
+/*-------------------------------------------------------------- OPENJWT ----*/
+
+/********************************* IMPORTS ***********************************/
+
+@import url('../FallenCraft2/base.css');
+
+
+/********************************* GENERAL ***********************************/
+
+/* Corps de la page */
+body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background-color: black;
+	color: white;
+}
+
+/* Police par défaut */
+body, table, input {
+	font-family: Lucida Grande, Bitstream Vera Sans, Verdana, sans-serif;
+	font-size: 12px;
+}
+
+/* Liens hypertexte */
+a       { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+
+/********************************* DIALOGS ***********************************/
+
+/* Barre de titre du dialogue */
+.dialog-titlebar {
+	position: relative;
+	margin-left: 2px;
+}
+
+/* Titre du dialogue */
+.dialog-title {
+	height: 28px;
+	min-width: 132px;
+	line-height: 28px;
+	margin-right: 6px;
+	margin-left: -2px;
+	padding-left: 12px;
+	padding-top: 3px;
+	font-weight: bold;
+	color: white;
+	font-variant: small-caps;
+}
+
+/* Bouton pour fermer le dialogue */
+.dialog-close {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	width: 26px;
+	height: 24px;
+	cursor: pointer;
+	background-position: 0 -467px;
+}
+
+/* Bouton pour fermer le dialogue au survol de la souris */
+.dialog-close:hover { background-position: 0 -563px; }
+
+/* Bordure droite du dialogue */
+.dialog-right {
+	padding-right: 24px;
+	margin-left: 6px;
+}
+
+/* Contenu du dialogue */
+.dialog-content {
+	padding: 1px 1px 31px 31px;
+	margin-left: -6px;
+}
+
+/* Dégradé progressif lorsque la souris passe au dessus du bouton */
+.dialog-close-state0	{ background-position: 0 -467px !important; }
+.dialog-close-state1	{ background-position: 0 -491px !important; }
+.dialog-close-state2	{ background-position: 0 -515px !important; }
+.dialog-close-state3	{ background-position: 0 -539px !important; }
+.dialog-close-state4	{ background-position: 0 -563px !important; }
+
+
+/***************************** STANDARD DIALOGS ******************************/
+
+/* Dimensions de l'icone du dialogue */
+.standard .icon {
+	width: 80px;
+	height: 90px;
+	vertical-align: middle;
+}
+
+/* Dimensions du message du dialogue */
+.standard {
+	width: 300px;
+	padding-right: 20px;
+	text-align: justify;
+}
+
+/* Dialogue sans icone */
+.standard.plain .icon, .dialog .standard.plain .icon div {
+	width: 0;
+	height: 0;
+}
+
+/* Augmente l'espace du message quand il n'y a pas d'icone */
+.standard.plain {
+	width: 280px;
+	padding: 0 20px;
+}
+
+/* Elément contenant l'image de l'icone */
+.standard .icon div {
+	width: 48px;
+	height: 48px;
+	margin: auto;
+}
+
+
+/********************************* BUTTONS ***********************************/
+
+/* Marge entre le texte du bouton et les bords */
+.button {
+	position: relative;
+	padding-left: 8px;
+	margin-right: 8px;
+	font-variant: small-caps;
+}
+
+.button-content {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: -8px;
+	width: 8px;
+}
+
+/* Arrière-plan des boutons */
+.button				{ background-position:    0 -1px; }
+.button-content		{ background-position: 100% -1px; }
+
+/* Enfonce légèrement le bouton quand on clique dessus (Firefox & Opera) */
+.buttonActive .button-content { padding-top: 1px; }
+
+/* Buttons au survol de la souris */
+.button:hover					{ background-position:    0 -121px; }
+.button:hover .button-content	{ background-position: 100% -121px; }
+
+/* Dégradé progressif lorsque la souris passe au dessus du bouton */
+.button-state0					{ background-position:    0   -1px !important; }
+.button-state1					{ background-position:    0  -31px !important; }
+.button-state2					{ background-position:    0  -61px !important; }
+.button-state3					{ background-position:    0  -91px !important; }
+.button-state4					{ background-position:    0 -121px !important; }
+.button-state0 .button-content	{ background-position: 100%   -1px !important; }
+.button-state1 .button-content	{ background-position: 100%  -31px !important; }
+.button-state2 .button-content	{ background-position: 100%  -61px !important; }
+.button-state3 .button-content	{ background-position: 100%  -91px !important; }
+.button-state4 .button-content	{ background-position: 100% -121px !important; }
+
+/* Bouton sélectionné */
+.button-selected				 { background-position:    0 -121px !important; }
+.button-selected .button-content { background-position: 100% -121px !important; }
+
+
+/******************************** TEXTFIELDS *********************************/
+
+/* Champ texte */
+.textfield {
+	margin: 3px;
+	border: 1px solid #303030;
+	padding: 4px 2px;
+	background-color: black;
+}
+
+* html .textfield { margin-right: 2px !important; }
+
+/* Wrapper pour éviter que le champ ne déborde sur la bordure sur MSIE */
+.textfield-content { position: relative; }
+
+/* Contenu du champ */
+.textfield input {
+	display: block;
+	height: 14px;
+	border: 0;
+	color: white;
+	margin-top: -1px;
+	background-color: black;
+}
+
+/* Eclaircit la bordure quand la souris est au dessus du champ texte */
+div.textfield:hover {
+	margin: 2px;
+	border: 2px solid #606060;
+}
+
+/* Police standard sur les champs password, à cause d'un bug d'affichage sous
+ * MSIE */
+.textfield.password input { font-family: Arial, Helvetica, sans-serif; }
+
+
+/******************************** TEXTAREAS **********************************/
+
+/* Champ texte */
+.textarea {
+	padding: 3px;
+	margin: 0;
+	border: 0;
+}
+
+/* Contenu du champ */
+.textarea textarea {
+	padding: 4px 2px;
+	margin: 0;
+	color: white;
+	background-color: black;
+	border: 1px solid #303030;
+}
+
+/* Correction décalage de 1 pixel sous MSIE */
+* html .textarea textarea { margin-top: -1px; }
+
+/* Eclaircit la bordure quand la souris est au dessus du champ texte */
+.textarea textarea:hover {
+	padding: 2px;
+	border: 2px solid #606060;
+}
+
+
+/******************************** TEXTPANES **********************************/
+
+/* Panneau texte */
+.textPane iframe {
+	border: 1px solid #303030;
+	margin: 0;
+}
+
+.textPaneFrame { padding: 4px 2px; }
+
+.textPaneFrame p {
+	margin: 0;
+	padding: 0;
+}
+
+.textPane .button .button-content { background: none !important; }
+
+.textPane .button.bold          		{ background-position: -136px -332px; }
+.textPane .button.italic        		{ background-position: -166px -332px; }
+.textPane .button.underline     		{ background-position: -196px -332px; }
+.textPane .button.justifyLeft   		{ background-position: -226px -332px; }
+.textPane .button.justifyCenter 		{ background-position: -256px -332px; }
+.textPane .button.justifyRight  		{ background-position: -286px -332px; }
+.textPane .button.justifyFull   		{ background-position: -316px -332px; }
+.textPane .button.insertImg   			{ background-position: -346px -332px; }
+.textPane .button.bold:hover          	{ background-position: -136px -452px; }
+.textPane .button.italic:hover        	{ background-position: -166px -452px; }
+.textPane .button.underline:hover     	{ background-position: -196px -452px; }
+.textPane .button.justifyLeft:hover   	{ background-position: -226px -452px; }
+.textPane .button.justifyCenter:hover 	{ background-position: -256px -452px; }
+.textPane .button.justifyRight:hover  	{ background-position: -286px -452px; }
+.textPane .button.justifyFull:hover   	{ background-position: -316px -452px; }
+.textPane .button.insertImg:hover   	{ background-position: -346px -452px; }
+.textPane .button-state0.bold 			{ background-position: -136px -332px !important; }
+.textPane .button-state0.italic        	{ background-position: -166px -332px !important; }
+.textPane .button-state0.underline     	{ background-position: -196px -332px !important; }
+.textPane .button-state0.justifyLeft   	{ background-position: -226px -332px !important; }
+.textPane .button-state0.justifyCenter 	{ background-position: -256px -332px !important; }
+.textPane .button-state0.justifyRight  	{ background-position: -286px -332px !important; }
+.textPane .button-state0.justifyFull   	{ background-position: -316px -332px !important; }
+.textPane .button-state0.insertImg   	{ background-position: -346px -332px !important; }
+.textPane .button-state1.bold 			{ background-position: -136px -362px !important; }
+.textPane .button-state1.italic        	{ background-position: -166px -362px !important; }
+.textPane .button-state1.underline     	{ background-position: -196px -362px !important; }
+.textPane .button-state1.justifyLeft   	{ background-position: -226px -362px !important; }
+.textPane .button-state1.justifyCenter 	{ background-position: -256px -362px !important; }
+.textPane .button-state1.justifyRight  	{ background-position: -286px -362px !important; }
+.textPane .button-state1.justifyFull   	{ background-position: -316px -362px !important; }
+.textPane .button-state1.insertImg   	{ background-position: -346px -362px !important; }
+.textPane .button-state2.bold 			{ background-position: -136px -392px !important; }
+.textPane .button-state2.italic        	{ background-position: -166px -392px !important; }
+.textPane .button-state2.underline     	{ background-position: -196px -392px !important; }
+.textPane .button-state2.justifyLeft   	{ background-position: -226px -392px !important; }
+.textPane .button-state2.justifyCenter 	{ background-position: -256px -392px !important; }
+.textPane .button-state2.justifyRight  	{ background-position: -286px -392px !important; }
+.textPane .button-state2.justifyFull   	{ background-position: -316px -392px !important; }
+.textPane .button-state2.insertImg   	{ background-position: -346px -392px !important; }
+.textPane .button-state3.bold 			{ background-position: -136px -422px !important; }
+.textPane .button-state3.italic        	{ background-position: -166px -422px !important; }
+.textPane .button-state3.underline     	{ background-position: -196px -422px !important; }
+.textPane .button-state3.justifyLeft   	{ background-position: -226px -422px !important; }
+.textPane .button-state3.justifyCenter 	{ background-position: -256px -422px !important; }
+.textPane .button-state3.justifyRight  	{ background-position: -286px -422px !important; }
+.textPane .button-state3.justifyFull   	{ background-position: -316px -422px !important; }
+.textPane .button-state3.insertImg   	{ background-position: -346px -422px !important; }
+.textPane .button-state4.bold 			{ background-position: -136px -452px !important; }
+.textPane .button-state4.italic        	{ background-position: -166px -452px !important; }
+.textPane .button-state4.underline     	{ background-position: -196px -452px !important; }
+.textPane .button-state4.justifyLeft   	{ background-position: -226px -452px !important; }
+.textPane .button-state4.justifyCenter 	{ background-position: -256px -452px !important; }
+.textPane .button-state4.justifyRight  	{ background-position: -286px -452px !important; }
+.textPane .button-state4.justifyFull   	{ background-position: -316px -452px !important; }
+.textPane .button-state4.insertImg   	{ background-position: -346px -452px !important; }
+
+
+/******************************** SCROLLPANES ********************************/
+
+/* Arrière-plan et dimensions de la piste de la barre de défilement */
+.scrollTrack {
+	width: 17px;
+	background-position: -119px -332px;
+}
+
+/* Dimensions de l'ascenseur de la barre de défilement */
+.scrollBar .scrollBubble {
+	width: 17px !important;
+	margin-top: 17px;
+	padding: 0 !important;
+}
+
+/* Empeche des décalages quand on clique sur les boutons */
+.scrollUp .button-content, .scrollDown .button-content,
+.scrollBubble .button-content { padding: 0 !important; }
+
+.scrollBubble .button-content {
+	position: absolute;
+	bottom: 0;
+	top: 3px;
+	left: 0;
+	right: 0;
+}
+
+.scrollBubble .button-icon {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 9px;
+	height: 10px;
+	margin: -5px 3px 0 4px;
+	padding: 0;
+	line-height: 1px !important;
+}
+
+/* Arrière-plan des boutons de la barre de défilement */
+.scrollUp								{ background-position:     0 -332px; }
+.scrollDown								{ background-position: -17px -332px; }
+.scrollBubble							{ background-position: -34px -332px; }
+.scrollBubble .button-content			{ background-position: -34px   100%; }
+.scrollBubble .button-icon				{ background-position:     0 -417px; }
+
+.scrollUp .button-content, .scrollDown .button-content { background: none !important; }
+
+/* Arrière-plan des boutons de la barre de défilement au survol de la souris */
+.scrollUp:hover							{ background-position:      0 -383px; }
+.scrollDown:hover						{ background-position:  -17px -383px; }
+.scrollBubble:hover                 	{ background-position: -102px -332px; }
+.scrollBubble:hover .button-content 	{ background-position: -102px   100%; }
+.scrollBubble:hover .button-icon    	{ background-position:      0 -457px; }
+
+/* Dégradé progressif lorsque la souris passe au dessus des boutons de la barre de défilement */
+.scrollUp-state0						{ background-position:      0 -332px !important; }
+.scrollUp-state1						{ background-position:      0 -349px !important; }
+.scrollUp-state2						{ background-position:      0 -366px !important; }
+.scrollUp-state3						{ background-position:      0 -383px !important; }
+.scrollUp-state4						{ background-position:      0 -383px !important; }
+.scrollDown-state0						{ background-position:  -17px -332px !important; }
+.scrollDown-state1						{ background-position:  -17px -349px !important; }
+.scrollDown-state2						{ background-position:  -17px -366px !important; }
+.scrollDown-state3						{ background-position:  -17px -383px !important; }
+.scrollDown-state4						{ background-position:  -17px -383px !important; }
+.scrollBubble-state0					{ background-position:  -34px -332px !important; }
+.scrollBubble-state1					{ background-position:  -51px -332px !important; }
+.scrollBubble-state2					{ background-position:  -68px -332px !important; }
+.scrollBubble-state3					{ background-position:  -85px -332px !important; }
+.scrollBubble-state4					{ background-position: -102px -332px !important; }
+.scrollBubble-state0 .button-content	{ background-position:  -34px   100% !important; }
+.scrollBubble-state1 .button-content	{ background-position:  -51px   100% !important; }
+.scrollBubble-state2 .button-content	{ background-position:  -68px   100% !important; }
+.scrollBubble-state3 .button-content	{ background-position:  -85px   100% !important; }
+.scrollBubble-state4 .button-content	{ background-position: -102px   100% !important; }
+.scrollBubble-state0 .button-icon		{ background-position:      0 -417px !important; }
+.scrollBubble-state1 .button-icon		{ background-position:      0 -427px !important; }
+.scrollBubble-state2 .button-icon		{ background-position:      0 -437px !important; }
+.scrollBubble-state3 .button-icon		{ background-position:      0 -447px !important; }
+.scrollBubble-state4 .button-icon		{ background-position:      0 -457px !important; }
+
+
+/********************************* TOOLTIPS **********************************/
+
+/* Couleurs de l'arrière-plan, du texte et de la bordure des tooltips */
+.tooltip {
+	padding: 2px;
+	color: white;
+	border: 1px solid #404040;
+	background-color: #141414;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+
+/* Réduit la taille de la police */
+.tooltip, .tooltip * { font-size: 10px; }
+
+
+/*********************************** LISTS ***********************************/
+
+/* Ligne de séparation entre les items d'une liste */
+.listItem {
+	padding: 2px;
+	border-top: 1px solid #202020;
+	width: 100%;
+}
+
+/* Ligne de séparation en dessous du dernier item d'une liste */
+.listItem-last { border-bottom: 1px solid #202020; }
+
+/* Arrière-plan des items au survol de la souris */
+.listItem:hover { background-color: #202020; }
+
+/* Dégradé progressif lorsque la souris passe au dessus d'un item de la liste */
+.listItem-state0 { background-color: #000000 !important; }
+.listItem-state1 { background-color: #080808 !important; }
+.listItem-state2 { background-color: #101010 !important; }
+.listItem-state3 { background-color: #181818 !important; }
+.listItem-state4 { background-color: #202020 !important; }
+
+/* Item sélectionné dans la liste */
+.listItem-selected { background-color: #303030 !important; }
+
+/* Item sélectionné au survol de la souris */
+.listItem-selected:hover { background-color: #404040 !important; }
+
+
+/********************************* COMBOBOX **********************************/
+
+.comboBox { position: relative; }
+
+.comboBox .button-content { width: 22px; }
+
+.comboBox .selectedItem .button-icon { padding-right: 14px; }
+
+/* Liste déroulante */
+.comboBox .list {
+	position: absolute;
+	left: 4px;
+	margin-top: -3px;
+	border: 1px solid #202020;
+	background-color: black;
+	z-index: 100000;
+}
+
+.comboBox .selectedItem .button-content		  { background-position: 100% -151px; }
+.comboBox .selectedItem:hover .button-content { background-position: 100% -271px; }
+
+.comboBox .selectedItem.button-state0 .button-content { background-position: 100% -151px !important; }
+.comboBox .selectedItem.button-state1 .button-content { background-position: 100% -181px !important; }
+.comboBox .selectedItem.button-state2 .button-content { background-position: 100% -211px !important; }
+.comboBox .selectedItem.button-state3 .button-content { background-position: 100% -241px !important; }
+.comboBox .selectedItem.button-state4 .button-content { background-position: 100% -271px !important; }
+
+.comboBox .selectedItem.button-selected .button-content { background-position: 100% -271px !important; }
+
+
+/********************************* TABBEDPANE ********************************/
+
+.tabbedPane { background-position: 0 -300px; }
+
+.tab {
+	float: left;
+	margin-top: 2px;
+	padding: 0 10px;
+}
+
+
+/*-------------------------------------------------------------- OPENJWT ----*/
+
+/********************************* GENERAL ***********************************/
+
+/* Liens hypertexte */
+a { color: red; }
+
+
+/********************************* DIALOGS ***********************************/
+
+/* Barre de titre du dialogue */
+.dialog-titlebar	{ background: url('images/ojwt.png') 100% -300px no-repeat; }
+
+/* Titre du dialogue */
+.dialog-title		{ background: url('images/ojwt.png') 0 -300px no-repeat; }
+
+/* Bouton pour fermer le dialogue */
+.dialog-close		{ background-image: url('images/ojwt.png'); }
+
+/* Bouton pour fermer le dialogue au survol de la souris */
+.dialog-close:hover	{ background-image: url('images/ojwt.png'); }
+
+/* Bordure droite du dialogue */
+.dialog-right		{ background: url('images/ojwt.png') 100% 100% no-repeat; }
+
+/* Contenu du dialogue */
+.dialog-content		{ background: url('images/ojwt.png') -136px 100% no-repeat; }
+
+
+/***************************** STANDARD DIALOGS ******************************/
+
+/* Icones standard */
+.standard.question    .icon div { background: url('images/ojwt.png') -376px -332px no-repeat; }
+.standard.information .icon div { background: url('images/ojwt.png') -426px -332px no-repeat; }
+.standard.warning     .icon div { background: url('images/ojwt.png') -476px -332px no-repeat; }
+.standard.error       .icon div { background: url('images/ojwt.png') -526px -332px no-repeat; }
+
+
+/********************************* BUTTONS ***********************************/
+
+/* Arrière-plan des boutons */
+.button				{ background-image: url('images/ojwt.png'); }
+.button-content		{ background-image: url('images/ojwt.png'); }
+
+
+/******************************** SCROLLPANES ********************************/
+
+/* Arrière-plan de la piste de la barre de défilement */
+.scrollTrack		{ background-image: url('images/ojwt.png'); }
+
+/* Poignée sur la barre de défilement */
+.scrollBubble, .scrollBubble .button-content, .scrollBubble .button-icon {
+	background-image: url('images/ojwt.png');
+}
+
+/* Boutons défilement vers le haut / bas */
+.scrollUp, .scrollDown { background-image: url('images/ojwt.png'); }
+
+
+/********************************* TABBEDPANE ********************************/
+
+.tabbedPane { background-image: url('images/ojwt.png'); }
+
+.tab { background-image: url('images/ojwt.png'); }
+
+
+/*-------------------------------------------------------- FALLEN GALAXY ----*/
+
+body { cursor: url('images/cursors/cursor.ico'), default; }
+
+/* Curseurs personnalisés */
+.dialog-close    { cursor: url('images/cursors/cursor.ico'), default; }
+.button          { cursor: url('images/cursors/cursor.ico'), default; }
+.listItem        { cursor: url('images/cursors/cursor.ico'), default; }
+.tab		     { cursor: url('images/cursors/cursor.ico'), default; }
+.moveCursor      { cursor: url('images/cursors/move.ico'),   move; }
+.textfield input { cursor: url('images/cursors/text.ico'),   text; }
+.textarea input  { cursor: url('images/cursors/text.ico'),   text; }
+
+.title { color: red; }
+
+#toolbar, #namePanel, #controlPanel, #selectionInfo .info,
+#progressBar, #progressBar .container, #progressBar .currentProgress,
+.miniMap, .miniMap .miniMapMask {
+	background-image: url('images/gui.png');
+}
+
+.lowres #toolbar, .lowres #namePanel, .lowres #controlPanel,
+.lowres #selectionInfo .info, .lowres #progressBar,
+.lowres #progressBar .container, .lowres #progressBar .currentProgress,
+.lowres .miniMap, .lowres .miniMap .miniMapMask {
+	background-image: url('images/gui_small.png') !important;
+}

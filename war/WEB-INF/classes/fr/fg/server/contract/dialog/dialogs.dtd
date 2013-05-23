@@ -1,0 +1,26 @@
+<!ENTITY init "init">
+<!ENTITY eod "EOD">
+
+<!ELEMENT dialogs (key*,dialog*)>
+
+<!ELEMENT key EMPTY>
+<!ATTLIST key
+	name		CDATA #REQUIRED
+	value		CDATA #REQUIRED
+>
+
+<!ELEMENT dialog (entry+)>
+<!ATTLIST dialog
+	type		ID	#REQUIRED
+>
+
+<!ELEMENT entry (option+)>
+<!ATTLIST entry
+	name		CDATA #REQUIRED
+>
+
+<!ELEMENT option EMPTY>
+<!ATTLIST option
+	target		CDATA #REQUIRED
+	condition	CDATA #IMPLIED
+>

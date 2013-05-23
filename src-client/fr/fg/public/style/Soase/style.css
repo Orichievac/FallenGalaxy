@@ -1,0 +1,864 @@
+
+/*------------------------------------------------ CURSEURS ----*/
+
+body { cursor: url('images/cursors/cursor.ico'), default; }
+
+/* Curseurs personnalisés */
+.dialog-close    { cursor: url('images/cursors/cursor.ico'), default; }
+.button          { cursor: url('images/cursors/cursor.ico'), default; }
+.listItem        { cursor: url('images/cursors/cursor.ico'), default; }
+.tab		     { cursor: url('images/cursors/cursor.ico'), default; }
+.moveCursor      { cursor: url('images/cursors/move.ico'),   move; }
+.textfield input { cursor: url('images/cursors/text.ico'),   text; }
+.textarea input  { cursor: url('images/cursors/text.ico'),   text; }
+
+
+/* Police par défaut */
+body, table, input {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	color: #ccc;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+/* Liens hypertexte */
+a {
+	color: #00a4c3;
+	text-decoration: none;
+}
+
+a:hover { text-decoration: underline; }
+
+/*------------------------------------------------ COMPOSANTS GRAPHIQUES ----*/
+
+.label { font-variant: small-caps; }
+
+/* Boutons */
+.button {
+	padding: 2px;
+	height: 28px;
+	font-variant: small-caps;
+}
+
+.button-right {
+	width: 100%;
+	height: 28px;
+	background: url('images/button_right.png') 100% 0 no-repeat;
+}
+
+.button-left {
+	width: 100%;
+	height: 28px;
+	background: url('images/button_left.png') 0 0 no-repeat;
+}
+
+.button-icon { padding: 0 6px; }
+
+.button.ok 	   .button-left, .button.yes .button-left { background: url('images/button_left.png') 0 -56px no-repeat; }
+.button.cancel .button-left, .button.no  .button-left { background: url('images/button_left.png') 0 -112px no-repeat; }
+
+.button:hover .button-right { background: url('images/button_right.png') 100% -28px no-repeat; }
+.button:hover .button-left { background: url('images/button_left.png') 0 -28px no-repeat; }
+
+.button:hover.ok     .button-left, .button:hover.yes .button-left { background: url('images/button_left.png') 0 -84px no-repeat; }
+.button:hover.cancel .button-left, .button:hover.no  .button-left { background: url('images/button_left.png') 0 -140px no-repeat; }
+
+.button.ok .button-icon, .button.yes .button-icon, .button.cancel .button-icon, .button.no .button-icon { padding-left: 16px; }
+
+.checkBox .button-right { background: url('images/checkbox.png') 0 0 no-repeat !important; }
+.checkBox .button-left  { background: none !important; }
+.checkBox:hover .button-right { background: url('images/checkbox.png') 0 -56px no-repeat !important; }
+.checkBox:hover .button-left  { background: none !important; }
+.checkBox.checked .button-right { background: url('images/checkbox.png') 0 -28px no-repeat !important; }
+.checkBox.checked .button-left  { background: none !important; }
+.checkBox.checked:hover .button-right { background: url('images/checkbox.png') 0 -84px no-repeat !important; }
+.checkBox.checked:hover .button-left  { background: none !important; }
+
+/* Champs textes */
+.textfield {
+	position: relative;
+	margin: 2px;
+	border-left: 1px solid #00a4c3;
+}
+
+.textfield-right {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 28px;
+	padding: 0 10px 0 5px;
+	background: url('images/textfield_right.png') 100% 0 no-repeat;
+}
+
+/* Contenu des champs texte */
+.textfield input {
+	height: 16px;
+	margin-top: 5px;
+	border: 0;
+	background-color: transparent;
+	font-variant: small-caps;
+}
+
+.textfield:hover { border-left: 1px solid white; }
+
+.textfield:hover .textfield-right { background: url('images/textfield_right.png') 100% -28px no-repeat; }
+
+/* Fenêtres */
+.dialog-container {
+	position: relative;
+}
+
+/* Barre de titre des fenêtres */
+.dialog-titlebar {
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	display: block;
+	width: 100%;
+	height: 28px;
+	color: white;
+}
+
+.dialog-titlebar-left {
+	position: relative;
+	left: 0;
+	right: 0;
+	margin-right: 10px;
+	height: 39px;
+	background: url('images/dialog_titlebar_left.png') 0 0 no-repeat;
+}
+
+.dialog-titlebar-right {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 28px;
+	width: 65px;
+	background: url('images/dialog_titlebar_right.png') 0 0 no-repeat;
+}
+
+.dialog-title-left {
+	position: absolute;
+	top: 2px;
+	left: 24px;
+	height: 26px;
+	background: url('images/dialog_title_left.png') 0 0 no-repeat;
+}
+
+.dialog-title-right {
+	padding: 4px 20px;
+	height: 22px;
+	background: url('images/dialog_title_right.png') 100% 0 no-repeat;
+}
+
+/* Bouton pour fermer les fenêtres */
+.dialog-close {
+	position: absolute;
+	top: 3px;
+	right: 8px;
+	width: 34px;
+	height: 22px;
+	background: url('images/dialog_close.png') 0 0 no-repeat;
+}
+
+.dialog-close:hover {
+	background: url('images/dialog_close.png') 0 -22px no-repeat;
+}
+
+.dialog-content {
+	float: left;
+	margin-top: 28px;
+	background: url('images/dialog_background.png') 0 0 repeat;
+}
+
+.dialog-left {
+	padding-left: 20px;
+	background: url('images/dialog_left.png') 0 0 no-repeat;
+}
+
+.dialog-right {
+	padding: 11px 20px 26px 0;
+	background: url('images/dialog_right.png') 100% 0 no-repeat;
+}
+
+.dialog-bottom {
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+
+.dialog-bottom-left {
+	position: absolute;
+	left: 0;
+	right: 20px;
+	bottom: -4px;
+	height: 24px;
+	background: url('images/dialog_bottom_left.png') 0 100% no-repeat;
+}
+
+.dialog-bottom-right {
+	position: absolute;
+	right: 0;
+	bottom: -4px;
+	width: 20px;
+	height: 24px;
+	background: url('images/dialog_bottom_right.png') 0 100% no-repeat;
+}
+
+/* Listes */
+.list {
+	position: relative;
+	border: 1px solid #00a4c3;
+}
+
+.list:hover { border-color: white; }
+
+.list-background {
+	width: 100%;
+	height: 100%;
+}
+
+.list-inner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 0 0 1px 1px;
+	border: 1px solid transparent;
+}
+
+/* Items des listes */
+.listItem {
+	margin: 1px;
+	padding: 2px;
+	width: 100%;
+}
+
+/* Item sélectionné dans les listes */
+.listItem-selected {
+	color: #ffc705 !important;
+	background: url('images/list_item.png') right center repeat-y;
+}
+
+.listItem:hover {
+	color: white;
+	background: url('images/list_item_over.png') right center repeat-y;
+}
+
+/* Barre de défilement */
+.scrollUp   {
+	margin: 0 !important;
+	padding: 2px;
+	background: url('images/scrollbar_buttons.png') 0 0 no-repeat;
+}
+
+.scrollDown {
+	margin: 0 !important;
+	padding: 2px;
+	background: url('images/scrollbar_buttons.png') -19px 0 no-repeat;
+}
+
+.scrollUp:hover   { background-position: 0 -20px; }
+.scrollDown:hover { background-position: -19px -20px; }
+
+.scrollUp .button-right, .scrollUp .button-left, .scrollDown .button-right,
+.scrollDown .button-left, .scrollBubble .button-left, .scrollBubble .button-right {
+	background: none !important;
+}
+
+.scrollTrack {
+	top: 19px;
+	bottom: 19px;
+	height: auto;
+	background: url('images/scrollbar_track.png') 0 0 no-repeat;
+}
+
+.scrollBubble {
+	margin: 2px 0 !important;
+	padding: 0 2px;
+	background: url('images/scrollbar_bubble_top.png') 0 0 no-repeat !important;
+}
+
+.scrollBubble .button-right {
+	position: absolute;
+	top: 6px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 19px !important;
+	height: auto !important;
+	background: url('images/scrollbar_bubble.png') 0 100% no-repeat !important;
+}
+
+/* Poignée sur les listes déroulantes */
+.comboBox .selectedItem { background: url('images/combobox_handle.png') right center no-repeat; }
+
+/* Listes déroulantes */
+.comboBox { font-variant: small-caps; }
+
+.comboBox .list {
+	background: url('images/list_background.png') 100% 100% no-repeat;
+	border-bottom-width: 0;
+	border-right-width: 0;
+	border-color: #939598;
+}
+
+.comboBox .list:hover { border-color: white; }
+
+.comboBox .list:hover .list-background { background: url('images/list_background_over.png') 100% 100% no-repeat; }
+
+.comboBox .list-inner {
+	border-bottom-width: 0;
+	border-right-width: 0;
+	right: 1px;
+	bottom: 1px;
+	padding: 0;
+	border-color: #3e3e3e;
+}
+
+.comboBox .button-right {
+	background-image: url("images/combobox_button_right.png") !important;
+}
+
+/*.comboBox .scrollTrack { background-position: -19px 0; }*/
+
+.comboBox .listItem-selected { background-image: url('images/combobox_list_item.png'); }
+
+.comboBox .listItem:hover { background-image: url('images/combobox_list_item_over.png'); }
+
+.comboBox .scrollUp   {
+	margin: 0 !important;
+	padding: 2px;
+	background: url('images/scrollbar_buttons.png') 0 0 no-repeat;
+}
+
+.comboBox .scrollDown {
+	margin: 0 !important;
+	padding: 2px;
+	background: url('images/scrollbar_buttons.png') -19px 0 no-repeat;
+}
+
+.comboBox .scrollUp:hover   { background-position: 0 -20px; }
+.comboBox .scrollDown:hover { background-position: -19px -20px; }
+
+.comboBox .scrollUp .button-right, .comboBox .scrollUp .button-left, .comboBox .scrollDown .button-right,
+.comboBox .scrollDown .button-left, .comboBox .scrollBubble .button-left, .comboBox .scrollBubble .button-right {
+	background: none !important;
+}
+
+.comboBox .scrollTrack {
+	top: 19px;
+	bottom: 19px;
+	height: auto;
+	background: url('images/scrollbar_track.png') -19px 0 no-repeat;
+}
+
+.comboBox .scrollBubble {
+	margin: 2px 0 !important;
+	padding: 0 2px;
+	background: url('images/scrollbar_bubble_top.png') 0 0 no-repeat !important;
+}
+
+.comboBox .scrollBubble .button-right {
+	position: absolute;
+	top: 6px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 19px !important;
+	height: auto !important;
+	background: url('images/scrollbar_bubble.png') 0 100% no-repeat !important;
+}
+
+.tabbedPane { border-bottom: 1px solid #666; }
+
+.tab {
+	border: 1px solid #666;
+	padding: 4px;
+	margin: 0 1px;
+	border-bottom-width: 0;
+}
+
+.tab-selected { background-color: #444; }
+
+.tooltip { font-size: 10px; }
+
+.tooltip-top {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+
+.tooltip-top-left {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 10px;
+	height: 4px;
+	background: url('images/tooltip_top_left.png') 0 100% no-repeat;
+}
+
+.tooltip-top-right {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 10px;
+	height: 4px;
+	background: url('images/tooltip_top_right.png') 0 100% no-repeat;
+}
+
+.tooltip-content {
+	margin-top: 4px;
+	background: url('images/tooltip_background.png') 0 0 repeat;
+}
+
+.tooltip-left {
+	padding-left: 12px;
+	background: url('images/tooltip_left.png') 0 0 no-repeat;
+}
+
+.tooltip-right {
+	padding: 6px 12px 8px 0;
+	background: url('images/tooltip_right.png') 100% 0 no-repeat;
+}
+
+.tooltip-bottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+
+.tooltip-bottom-left {
+	position: absolute;
+	left: 0;
+	right: 10px;
+	bottom: -4px;
+	height: 8px;
+	background: url('images/tooltip_bottom_left.png') 0 100% no-repeat;
+}
+
+.tooltip-bottom-right {
+	position: absolute;
+	right: 0;
+	bottom: -4px;
+	width: 10px;
+	height: 8px;
+	background: url('images/tooltip_bottom_right.png') 0 100% no-repeat;
+}
+
+/* Messagerie */
+.unread {
+	color: #d0ad3b !important;	
+}
+
+.button.bold .content {
+	width: 16px !important;
+	background: url("images/editor/bold.png") no-repeat center center;
+}
+
+.button.italic .content {
+	width: 16px !important;
+	background: url("images/editor/italic.png") no-repeat center center;
+}
+
+.button.underline .content {
+	width: 16px !important;
+	background: url("images/editor/underline.png") no-repeat center center;
+}
+
+.button.justifyLeft .content {
+	width: 16px !important;
+	background: url("images/editor/justifyL.png") no-repeat center center;
+}
+
+.button.justifyRight .content {
+	width: 16px !important;
+	background: url("images/editor/justifyR.png") no-repeat center center;
+}
+
+.button.justifyCenter .content {
+	width: 16px !important;
+	background: url("images/editor/justifyC.png") no-repeat center center;
+}
+
+.button.insertImg .content {
+	width: 16px !important;
+	background: url("images/editor/image.png") no-repeat center center;
+}
+
+.viewport .messageDate {
+	background: url("images/postSeparator.png") no-repeat center bottom transparent;
+	
+	height: 17px !important;
+}
+
+/*-------------------------------------------------- INTERFACE GRAPHIQUE ----*/
+
+/* Nom du secteur ou de l'objet sélectionné */
+#namePanel {
+	top: 5px;
+	left: 50%;
+	width: 170px;
+	height: 25px;
+	margin-left: -293px;
+	line-height: 25px;
+	font-weight: bold;
+	font-variant: small-caps;
+	color: #00a4c3;
+}
+
+/* Barre de progression (XP, habitants...) */
+#progressBar {
+	top: 8px;
+	left: 50%;
+	width: 170px;
+	height: 21px;
+	margin-left: 171px;
+	line-height: 21px;
+	font-weight: bold;
+	font-variant: small-caps;
+}
+
+/* Piste de la barre de progression */
+#progressBar .container { width: 125px; }
+
+/* Valeur de la progression */
+#progressBar .currentProgress {
+	height: 21px;
+	background: url('images/progress_bar.png') 0 0 no-repeat;
+}
+
+#selectionInfo {
+	position: absolute;
+	top: 39px;
+	left: 50%;
+	margin-left: 150px;
+	width: 171px !important;
+	height: 136px !important;
+	background: url('images/selection_info.png') 0 0 no-repeat;
+}
+
+#selectionInfo .info div{
+	height:18px;
+}
+
+#selectionInfo .info, .lowres #selectionInfo .info {
+	width: 145px !important;
+	height: 102px !important;
+	line-height: 18px !important;
+	margin: 14px 0 0 26px !important;
+	padding: 0 !important;
+}
+
+#selectionInfo .star, #selectionInfo .spaceStation { display: none; }
+
+/* Libellé de la barre de progression */
+#progressBar .barLabel {
+	width: 100%;
+	text-align: center;
+	font-size: 12px;
+}
+
+/* Lagomètre */
+#lagometer {
+	top: 10px;
+	right: 10px;
+}
+
+/* Panneau des missions en cours */
+#missionPanel {
+	top: 110px;
+	right: 10px;
+}
+
+/* Barre d'outils */
+#toolbar {
+	top: 0;
+	left: 50%;
+	width: 422px;
+	height: 42px;
+	margin-left: -333px;
+	padding: 12px 0 0 245px;
+	background: url('images/toolbar.png') 0 0 no-repeat;
+}
+
+/* Vue empire */
+#empireView {
+	top: 50px;
+	left: 0px;
+}
+
+#influencePanel {
+	top: 50px;
+	right: 10px;
+	width: 200px;
+}
+
+#controlPanel {
+	bottom: 0px;
+	left: 166px;
+	width: 317px;
+	height: 103px;
+}
+
+#chatMessages {
+	left: 578px;
+	bottom: 40px;
+	height: 108px;
+}
+
+#chatBar {
+	left: 602px;
+	bottom: 3px;
+	width: 360px;
+}
+
+#chatBar .textfield input {
+	background-color: black !important;
+}
+
+#chatBar .textfield {
+	border:1px solid #303030 !important;
+	height: 20px !important;
+	background-color: black !important;
+}
+
+#chatBar .textfield-right {
+	background: none;
+	padding-left: 0;
+	margin-top: -4px;
+}
+
+#controlPanel {
+	bottom: 0;
+	left: 208px;
+	width: 329px;
+	height: 120px;
+	padding: 19px 0 0 30px;
+	background: url('images/controls.png') 0 0 no-repeat;
+}
+
+.miniMap {
+	bottom: 0;
+	left: 0;
+	padding: 17px 28px 6px 20px;
+	background: url('images/minimap.png') 0 0 no-repeat;
+}
+
+.miniMap .miniMapMask { background: url('images/minimap_mask.png') 0 0 no-repeat; }
+
+/* Dialogues */
+
+.talk {
+	background-color: black;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-op-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border:solid 1px #454545;
+	padding:10px 10px 10px 119px !important;
+}
+
+.talk .answer {
+	color: #2da7c0;
+}
+
+.talk .answer:hover {
+	color: #87c2ce !important;
+}
+
+
+/*------------------------------------------------ COMBATS ----*/
+
+
+.powerBar {
+	width: 141px;
+	height: 30px;
+	right: 100px;
+	padding-left: 30px;
+}
+
+.powerBar .container {
+	width: 108px;
+	height: 2px; 
+	background-color: black;
+	border: 1px solid #104761;
+}
+
+.powerBar .container .currentProgress {
+	height: 2px;
+	background-color: #2b6f8e;
+}
+
+.powerBar.bottom {
+	bottom: 40px;
+	height: 16px;
+	padding-top: 62px;
+	background: url("images/battleInfosBottom.png") no-repeat;
+}
+
+.powerBar.bottom .barLabel {
+	margin-top: -28px;
+}
+
+.powerBar.bottom .side {
+	color: #2874D8;
+	display: block !important;
+	margin-top:-55px;
+	text-align: center;
+	width: 110px;
+}
+
+.powerBar.top {
+	top: 50px;
+	height: 71px;
+	background: url("images/battleInfosTop.png") no-repeat scroll 0 -50px;
+}
+
+.powerBar.top .barLabel {
+	padding-top: 17px;
+}
+
+.powerBar.top .side {
+	display: block !important;
+	color: red;
+	padding-top: 40px;
+	text-align: center;
+	width: 110px;
+}
+
+.xpView {
+	width: 141px;
+	height: 30px;
+	right: 100px;
+	padding-left: 30px;
+}
+
+.xpView.bottom {
+	bottom: 0;
+	padding-bottom: 10px;
+	background: url("images/battleInfosBottom.png") no-repeat scroll 0 -81px;
+}
+
+.xpView.top {
+	top: 0;
+	padding-top: 20px;
+	background: url("images/battleInfosTop.png") no-repeat;
+}
+
+
+
+/********************************** ICONES ***********************************/
+
+/* Boutons de la barre d'outils */
+#toolbar .button {
+	width: 24px !important;
+	height: 24px !important;
+	padding: 0 !important;
+	background-image: url('images/icons.png') !important;
+}
+
+#toolbar .button-left  { background: none !important; }
+#toolbar .button-right { background: none !important; }
+#toolbar .button-icon  { background: none !important; }
+
+#toolbar .iconContracts	{ background-position:   -3px -4px !important; }
+#toolbar .iconAlly		{ background-position:  -33px -4px !important; }
+#toolbar .iconResearch	{ background-position:  -63px -4px !important; }
+#toolbar .iconDiplomacy { background-position:  -93px -4px !important; }
+#toolbar .iconMap		{ background-position: -123px -4px !important; }
+#toolbar .iconEvents	{ background-position: -153px -4px !important; }
+#toolbar .iconMessages	{ background-position: -183px -4px !important; }
+#toolbar .iconLadder	{ background-position: -213px -4px !important; }
+#toolbar .iconMenu		{ background-position: -243px -4px !important; }
+#toolbar .button-selected.iconContracts, #toolbar .iconContracts:hover	{ background: url('images/icons.png')   -3px -34px no-repeat !important; }
+#toolbar .button-selected.iconAlly,		 #toolbar .iconAlly:hover		{ background: url('images/icons.png')  -33px -34px no-repeat !important; }
+#toolbar .button-selected.iconResearch,	 #toolbar .iconResearch:hover	{ background: url('images/icons.png')  -63px -34px no-repeat !important; }
+#toolbar .button-selected.iconDiplomacy, #toolbar .iconDiplomacy:hover	{ background: url('images/icons.png')  -93px -34px no-repeat !important; }
+#toolbar .button-selected.iconMap,		 #toolbar .iconMap:hover		{ background: url('images/icons.png') -123px -34px no-repeat !important; }
+#toolbar .button-selected.iconEvents,	 #toolbar .iconEvents:hover		{ background: url('images/icons.png') -153px -34px no-repeat !important; }
+#toolbar .button-selected.iconMessages,	 #toolbar .iconMessages:hover	{ background: url('images/icons.png') -183px -34px no-repeat !important; }
+#toolbar .button-selected.iconLadder,	 #toolbar .iconLadder:hover		{ background: url('images/icons.png') -213px -34px no-repeat !important; }
+#toolbar .button-selected.iconMenu,		 #toolbar .iconMenu:hover		{ background: url('images/icons.png') -243px -34px no-repeat !important; }
+
+.iconSearch { background: url('images/icons.png') -570px 0 no-repeat !important; }
+
+/* Icones des onglets */
+.tabIcon, .events .icon {
+	width: 18px;
+	height: 18px;
+	vertical-align: middle;
+}
+
+.iconMsgInbox		 { background: url('images/icons.png') -276px -7px no-repeat; }
+.iconMsgSent		 { background: url('images/icons.png') -306px -7px no-repeat; }
+.iconMsgArchives	 { background: url('images/icons.png') -336px -7px no-repeat; }
+.iconAllyNews		 { background: url('images/icons.png') -186px -7px no-repeat; }
+.iconAllyMembers	 { background: url('images/icons.png') -366px -7px no-repeat; }
+.iconAllyDescription { background: url('images/icons.png') -396px -7px no-repeat; }
+.iconAllyProducts	 { background: url('images/icons.png') -456px -7px no-repeat; }
+.iconAllySettings	 { background: url('images/icons.png') -246px -7px no-repeat; }
+
+/* Icones de boutons */
+.iconAlly			.button-icon { background: url('images/icons.png')  -31px 0 no-repeat; }
+.iconDiplomacy		.button-icon { background: url('images/icons.png')  -91px 0 no-repeat; }
+.iconResearch		.button-icon { background: url('images/icons.png')  -61px 0 no-repeat; }
+.iconBattle			.button-icon { background: url('images/icons.png') -721px 0 no-repeat; }
+.iconCharge			.button-icon { background: url('images/icons.png') -751px 0 no-repeat; }
+.iconEmp			.button-icon { background: url('images/icons.png') -781px 0 no-repeat; }
+.iconColonization	.button-icon { background: url('images/icons.png') -811px 0 no-repeat; }
+.iconSwap			.button-icon { background: url('images/icons.png') -841px 0 no-repeat; }
+.iconExport			.button-icon { background: url('images/icons.png') -481px 0 no-repeat; }
+.iconImport			.button-icon { background: url('images/icons.png') -511px 0 no-repeat; }
+.iconSave			.button-icon { background: url('images/icons.png') -541px 0 no-repeat; }
+.iconAdd			.button-icon { background: url('images/icons.png') -601px 0 no-repeat; }
+.iconDelete			.button-icon { background: url('images/icons.png') -631px 0 no-repeat; }
+.iconLeft			.button-icon { background: url('images/icons.png') -661px 0 no-repeat; }
+.iconRight			.button-icon { background: url('images/icons.png') -691px 0 no-repeat; }
+.iconDelete			.button-icon { background: url('images/icons.png') -871px 0 no-repeat; }
+.iconStructure		.button-icon { background: url('images/icons.png') -961px 0 no-repeat; }
+
+.dialog-title-right img {
+	vertical-align: middle;
+	width: 16px;
+	height: 16px;
+	background-image: url('images/icons.png');
+}
+
+img.iconContracts	{ background-position:   -7px -7px !important; }
+img.iconAlly		{ background-position:  -37px -7px !important; }
+img.iconResearch	{ background-position:  -67px -8px !important; }
+img.iconDiplomacy	{ background-position:  -97px -7px !important; }
+img.iconMap			{ background-position: -126px -7px !important; }
+img.iconEvents		{ background-position: -157px -7px !important; }
+img.iconMessages	{ background-position: -188px -8px !important; }
+img.iconLadder		{ background-position: -216px -7px !important; }
+img.iconMenu		{ background-position: -247px -8px !important; }
+
+/* Icones des évènements */
+.events .iconAlly			 { background: url('images/icons.png')  -36px -6px no-repeat; }
+.events .iconDiplomacy		 { background: url('images/icons.png')  -96px -6px no-repeat; }
+.events .iconResearch		 { background: url('images/icons.png')  -66px -6px no-repeat; }
+.events .iconBattle			 { background: url('images/icons.png') -726px -6px no-repeat; }
+.events .iconCharge			 { background: url('images/icons.png') -756px -6px no-repeat; }
+.events .iconEmp			 { background: url('images/icons.png') -786px -6px no-repeat; }
+.events .iconColonization	 { background: url('images/icons.png') -816px -6px no-repeat; }
+.events .iconSwap			 { background: url('images/icons.png') -846px -6px no-repeat; }
+.events .iconStructure		 { background: url('images/icons.png') -966px -6px no-repeat; }
+
+/* Clignotement des boutons */
+.blinking, #toolbar .blinking { background-image: none !important; }
+
+
+
+.title { color: #00a4c3; }
+.emphasize { color: #ffcc00; }
+.tooltip .title { font-size: 11px; }

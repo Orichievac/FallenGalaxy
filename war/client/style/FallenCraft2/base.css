@@ -1,0 +1,935 @@
+﻿/*-------------------------------------------------------------- OPENJWT ----*/
+
+/********************************* GENERAL ***********************************/
+
+/* Corps de la page */
+body {
+	background-color: black;
+	color: white;
+}
+
+/* Police par défaut */
+body, table, input {
+	font-family: Lucida Grande, Bitstream Vera Sans, Verdana, sans-serif;
+	font-size: 12px;
+}
+
+/* Liens hypertexte */
+a       { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+
+/********************************* DIALOGS ***********************************/
+
+/* Barre de titre du dialogue */
+.dialog-titlebar {
+	position: relative;
+	margin-left: 2px;
+}
+
+/* Titre du dialogue */
+.dialog-title {
+	height: 32px;
+	line-height: 30px;
+	margin-right: 6px;
+	margin-left: -2px;
+	padding-left: 8px;
+	font-weight: bold;
+	color: white;
+}
+
+/* Bouton pour fermer le dialogue */
+.dialog-close {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	width: 26px;
+	height: 24px;
+	cursor: pointer;
+	background-position: 0 -677px;
+}
+
+/* Bouton pour fermer le dialogue au survol de la souris */
+.dialog-close:hover { background-position: 0 -773px; }
+
+/* Bordure droite du dialogue */
+.dialog-right {
+	padding-right: 6px;
+	margin-left: 2px;
+}
+
+/* Contenu du dialogue */
+.dialog-content {
+	padding: 1px 1px 7px 7px;
+	margin-left: -2px;
+}
+
+/* Dégradé progressif lorsque la souris passe au dessus du bouton */
+.dialog-close-state0	{ background-position: 0 -677px !important; }
+.dialog-close-state1	{ background-position: 0 -701px !important; }
+.dialog-close-state2	{ background-position: 0 -725px !important; }
+.dialog-close-state3	{ background-position: 0 -749px !important; }
+.dialog-close-state4	{ background-position: 0 -773px !important; }
+
+
+/********************************* BUTTONS ***********************************/
+
+/* Marge entre le texte du bouton et les bords */
+.button-icon { padding-right: 8px; }
+.button		 { padding-left:  8px; }
+
+/* Arrière-plan des boutons */
+.button				{ background-position:    0 0; }
+.button-content		{ background-position: 100% 0; }
+
+/* Enfonce légèrement le bouton quand on clique dessus (Firefox & Opera) */
+.buttonActive .button-content { padding-top: 1px; }
+
+/* Buttons au survol de la souris */
+.button:hover					{ background-position:    0 -120px; }
+.button:hover .button-content	{ background-position: 100% -120px; }
+
+/* Dégradé progressif lorsque la souris passe au dessus du bouton */
+.button-state0					{ background-position:    0      0 !important; }
+.button-state1					{ background-position:    0  -30px !important; }
+.button-state2					{ background-position:    0  -60px !important; }
+.button-state3					{ background-position:    0  -90px !important; }
+.button-state4					{ background-position:    0 -120px !important; }
+.button-state0 .button-content	{ background-position: 100%      0 !important; }
+.button-state1 .button-content	{ background-position: 100%  -30px !important; }
+.button-state2 .button-content	{ background-position: 100%  -60px !important; }
+.button-state3 .button-content	{ background-position: 100%  -90px !important; }
+.button-state4 .button-content	{ background-position: 100% -120px !important; }
+
+/* Bouton sélectionné */
+.button-selected				 { background-position:    0 -120px !important; }
+.button-selected .button-content { background-position: 100% -120px !important; }
+
+
+/******************************** TEXTFIELDS *********************************/
+
+/* Champ texte */
+.textfield {
+	margin: 3px;
+	border: 1px solid #303030;
+	padding: 4px 2px;
+	background-color: black;
+}
+
+* html .textfield { margin-right: 2px !important; }
+
+/* Wrapper pour éviter que le champ ne déborde sur la bordure sur MSIE */
+.textfield-content { position: relative; }
+
+/* Contenu du champ */
+.textfield input {
+	display: block;
+	height: 14px;
+	border: 0;
+	color: white;
+	margin-top: -1px;
+	background-color: black;
+}
+
+/* Eclaircit la bordure quand la souris est au dessus du champ texte */
+div.textfield:hover {
+	margin: 2px;
+	border: 2px solid #606060;
+}
+
+/* Police standard sur les champs password, à cause d'un bug d'affichage sous
+ * MSIE */
+.textfield.password input { font-family: Arial, Helvetica, sans-serif; }
+
+
+/******************************** TEXTAREAS **********************************/
+
+/* Champ texte */
+.textarea {
+	padding: 3px;
+	margin: 0;
+	border: 0;
+}
+
+/* Contenu du champ */
+.textarea textarea {
+	padding: 4px 2px;
+	margin: 0;
+	color: white;
+	background-color: black;
+	border: 1px solid #303030;
+}
+
+/* Correction décalage de 1 pixel sous MSIE */
+* html .textarea textarea { margin-top: -1px; }
+
+/* Eclaircit la bordure quand la souris est au dessus du champ texte */
+.textarea textarea:hover {
+	padding: 2px;
+	border: 2px solid #606060;
+}
+
+
+/******************************** TEXTPANES **********************************/
+
+/* Panneau texte */
+.textPane iframe {
+	border: 1px solid #303030;
+	margin: 0;
+}
+
+.textPaneFrame { padding: 4px 2px; }
+
+.textPaneFrame p {
+	margin: 0;
+	padding: 0;
+}
+
+.textPane .button .button-content { background: none !important; }
+
+.textPane .button.bold          		{ background-position: -136px -542px; }
+.textPane .button.italic        		{ background-position: -166px -542px; }
+.textPane .button.underline     		{ background-position: -196px -542px; }
+.textPane .button.justifyLeft   		{ background-position: -226px -542px; }
+.textPane .button.justifyCenter 		{ background-position: -256px -542px; }
+.textPane .button.justifyRight  		{ background-position: -286px -542px; }
+.textPane .button.justifyFull   		{ background-position: -316px -542px; }
+.textPane .button.insertImg   			{ background-position: -346px -542px; }
+.textPane .button.bold:hover          	{ background-position: -136px -662px; }
+.textPane .button.italic:hover        	{ background-position: -166px -662px; }
+.textPane .button.underline:hover     	{ background-position: -196px -662px; }
+.textPane .button.justifyLeft:hover   	{ background-position: -226px -662px; }
+.textPane .button.justifyCenter:hover 	{ background-position: -256px -662px; }
+.textPane .button.justifyRight:hover  	{ background-position: -286px -662px; }
+.textPane .button.justifyFull:hover   	{ background-position: -316px -662px; }
+.textPane .button.insertImg:hover   	{ background-position: -346px -662px; }
+.textPane .button-state0.bold 			{ background-position: -136px -542px !important; }
+.textPane .button-state0.italic        	{ background-position: -166px -542px !important; }
+.textPane .button-state0.underline     	{ background-position: -196px -542px !important; }
+.textPane .button-state0.justifyLeft   	{ background-position: -226px -542px !important; }
+.textPane .button-state0.justifyCenter 	{ background-position: -256px -542px !important; }
+.textPane .button-state0.justifyRight  	{ background-position: -286px -542px !important; }
+.textPane .button-state0.justifyFull   	{ background-position: -316px -542px !important; }
+.textPane .button-state0.insertImg   	{ background-position: -346px -542px !important; }
+.textPane .button-state1.bold 			{ background-position: -136px -572px !important; }
+.textPane .button-state1.italic        	{ background-position: -166px -572px !important; }
+.textPane .button-state1.underline     	{ background-position: -196px -572px !important; }
+.textPane .button-state1.justifyLeft   	{ background-position: -226px -572px !important; }
+.textPane .button-state1.justifyCenter 	{ background-position: -256px -572px !important; }
+.textPane .button-state1.justifyRight  	{ background-position: -286px -572px !important; }
+.textPane .button-state1.justifyFull   	{ background-position: -316px -572px !important; }
+.textPane .button-state1.insertImg   	{ background-position: -346px -572px !important; }
+.textPane .button-state2.bold 			{ background-position: -136px -602px !important; }
+.textPane .button-state2.italic        	{ background-position: -166px -602px !important; }
+.textPane .button-state2.underline     	{ background-position: -196px -602px !important; }
+.textPane .button-state2.justifyLeft   	{ background-position: -226px -602px !important; }
+.textPane .button-state2.justifyCenter 	{ background-position: -256px -602px !important; }
+.textPane .button-state2.justifyRight  	{ background-position: -286px -602px !important; }
+.textPane .button-state2.justifyFull   	{ background-position: -316px -602px !important; }
+.textPane .button-state2.insertImg   	{ background-position: -346px -602px !important; }
+.textPane .button-state3.bold 			{ background-position: -136px -632px !important; }
+.textPane .button-state3.italic        	{ background-position: -166px -632px !important; }
+.textPane .button-state3.underline     	{ background-position: -196px -632px !important; }
+.textPane .button-state3.justifyLeft   	{ background-position: -226px -632px !important; }
+.textPane .button-state3.justifyCenter 	{ background-position: -256px -632px !important; }
+.textPane .button-state3.justifyRight  	{ background-position: -286px -632px !important; }
+.textPane .button-state3.justifyFull   	{ background-position: -316px -632px !important; }
+.textPane .button-state3.insertImg   	{ background-position: -346px -632px !important; }
+.textPane .button-state4.bold 			{ background-position: -136px -662px !important; }
+.textPane .button-state4.italic        	{ background-position: -166px -662px !important; }
+.textPane .button-state4.underline     	{ background-position: -196px -662px !important; }
+.textPane .button-state4.justifyLeft   	{ background-position: -226px -662px !important; }
+.textPane .button-state4.justifyCenter 	{ background-position: -256px -662px !important; }
+.textPane .button-state4.justifyRight  	{ background-position: -286px -662px !important; }
+.textPane .button-state4.justifyFull   	{ background-position: -316px -662px !important; }
+.textPane .button-state4.insertImg   	{ background-position: -346px -662px !important; }
+
+
+/******************************** SCROLLPANES ********************************/
+
+/* Arrière-plan et dimensions de la piste de la barre de défilement */
+.scrollTrack {
+	width: 17px;
+	background-position: -119px -542px;
+}
+
+/* Dimensions de l'ascenseur de la barre de défilement */
+.scrollBar .scrollBubble {
+	width: 17px !important;
+	margin-top: 17px;
+	padding: 0 !important;
+}
+
+/* Empeche des décalages quand on clique sur les boutons */
+.scrollUp .button-content, .scrollDown .button-content,
+.scrollBubble .button-content { padding: 0 !important; }
+
+.scrollBubble .button-content {
+	position: absolute;
+	bottom: 0;
+	top: 3px;
+	left: 0;
+	right: 0;
+}
+
+.scrollBubble .button-icon {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 9px;
+	height: 10px;
+	margin: -5px 3px 0 4px;
+	padding: 0;
+	line-height: 1px !important;
+}
+
+/* Arrière-plan des boutons de la barre de défilement */
+.scrollUp								{ background-position:     0 -542px; }
+.scrollDown								{ background-position: -17px -542px; }
+.scrollBubble							{ background-position: -34px -542px; }
+.scrollBubble .button-content			{ background-position: -34px   100%; }
+.scrollBubble .button-icon				{ background-position:     0 -627px; }
+
+.scrollUp .button-content, .scrollDown .button-content { background: none !important; }
+
+/* Arrière-plan des boutons de la barre de défilement au survol de la souris */
+.scrollUp:hover							{ background-position:      0 -593px; }
+.scrollDown:hover						{ background-position:  -17px -593px; }
+.scrollBubble:hover                 	{ background-position: -102px -542px; }
+.scrollBubble:hover .button-content 	{ background-position: -102px   100%; }
+.scrollBubble:hover .button-icon    	{ background-position:      0 -667px; }
+
+/* Dégradé progressif lorsque la souris passe au dessus des boutons de la barre de défilement */
+.scrollUp-state0						{ background-position:      0 -542px !important; }
+.scrollUp-state1						{ background-position:      0 -559px !important; }
+.scrollUp-state2						{ background-position:      0 -576px !important; }
+.scrollUp-state3						{ background-position:      0 -593px !important; }
+.scrollUp-state4						{ background-position:      0 -593px !important; }
+.scrollDown-state0						{ background-position:  -17px -542px !important; }
+.scrollDown-state1						{ background-position:  -17px -559px !important; }
+.scrollDown-state2						{ background-position:  -17px -576px !important; }
+.scrollDown-state3						{ background-position:  -17px -593px !important; }
+.scrollDown-state4						{ background-position:  -17px -593px !important; }
+.scrollBubble-state0					{ background-position:  -34px -542px !important; }
+.scrollBubble-state1					{ background-position:  -51px -542px !important; }
+.scrollBubble-state2					{ background-position:  -68px -542px !important; }
+.scrollBubble-state3					{ background-position:  -85px -542px !important; }
+.scrollBubble-state4					{ background-position: -102px -542px !important; }
+.scrollBubble-state0 .button-content	{ background-position:  -34px   100% !important; }
+.scrollBubble-state1 .button-content	{ background-position:  -51px   100% !important; }
+.scrollBubble-state2 .button-content	{ background-position:  -68px   100% !important; }
+.scrollBubble-state3 .button-content	{ background-position:  -85px   100% !important; }
+.scrollBubble-state4 .button-content	{ background-position: -102px   100% !important; }
+.scrollBubble-state0 .button-icon		{ background-position:      0 -627px !important; }
+.scrollBubble-state1 .button-icon		{ background-position:      0 -637px !important; }
+.scrollBubble-state2 .button-icon		{ background-position:      0 -647px !important; }
+.scrollBubble-state3 .button-icon		{ background-position:      0 -657px !important; }
+.scrollBubble-state4 .button-icon		{ background-position:      0 -667px !important; }
+
+
+/********************************* TOOLTIPS **********************************/
+
+/* Couleurs de l'arrière-plan, du texte et de la bordure des tooltips */
+.tooltip {
+	padding: 2px;
+	color: white;
+	border: 1px solid #202020;
+	background: url('images/mask.png') 0 0 repeat;	
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+/* Réduit la taille de la police */
+.tooltip, .tooltip * { font-size: 10px; }
+
+
+/*********************************** LISTS ***********************************/
+
+/* Ligne de séparation entre les items d'une liste */
+.listItem {
+	padding: 2px;
+	border-top: 1px solid #202020;
+	width: 100%;
+	background-color: black;
+}
+
+/* Ligne de séparation en dessous du dernier item d'une liste */
+.listItem-last { border-bottom: 1px solid #202020; }
+
+/* Arrière-plan des items au survol de la souris */
+.listItem:hover { background-color: #202020; }
+
+/* Dégradé progressif lorsque la souris passe au dessus d'un item de la liste */
+.listItem-state0 { background-color: #000000 !important; }
+.listItem-state1 { background-color: #080808 !important; }
+.listItem-state2 { background-color: #101010 !important; }
+.listItem-state3 { background-color: #181818 !important; }
+.listItem-state4 { background-color: #202020 !important; }
+
+/* Item sélectionné dans la liste */
+.listItem-selected { background-color: #303030 !important; }
+
+/* Item sélectionné au survol de la souris */
+.listItem-selected:hover { background-color: #404040 !important; }
+
+
+/********************************* COMBOBOX **********************************/
+
+.comboBox .selectedItem .button-icon { padding-right: 22px; }
+
+/* Liste déroulante */
+.comboBox .list {
+	left: 4px;
+	margin-top: -3px;
+	border: 1px solid #202020;
+	background-color: black;
+}
+
+.comboBox .selectedItem .button-content		  { background-position: 100% -150px; }
+.comboBox .selectedItem:hover .button-content { background-position: 100% -270px; }
+
+.comboBox .selectedItem.button-state0 .button-content { background-position: 100% -150px !important; }
+.comboBox .selectedItem.button-state1 .button-content { background-position: 100% -180px !important; }
+.comboBox .selectedItem.button-state2 .button-content { background-position: 100% -210px !important; }
+.comboBox .selectedItem.button-state3 .button-content { background-position: 100% -240px !important; }
+.comboBox .selectedItem.button-state4 .button-content { background-position: 100% -270px !important; }
+
+.comboBox .selectedItem.button-selected .button-content { background-position: 100% -270px !important; }
+
+
+/********************************* TABBEDPANE ********************************/
+
+.tabbedPane { background-position: 0 -300px; }
+
+.tab {
+	float: left;
+	margin-top: 1px;
+	padding-left: 10px;
+}
+
+.tab-content  { padding-right: 10px; }
+
+.tab-selected .tab-content {
+	line-height: 23px;
+	padding-bottom: 2px;
+}
+
+/* Arrière-plan des onglets */
+.tab						{ background-position:    0 -330px; }
+.tab-content				{ background-position: 100% -330px; }
+
+/* Onglets au survol de la souris */
+.tab:hover					{ background-position:    0 -450px; }
+.tab:hover .tab-content		{ background-position: 100% -450px; }
+
+/* Dégradé progressif lorsque la souris passe au dessus de l'onglet */
+.tab-state0					{ background-position:    0 -330px !important; }
+.tab-state1					{ background-position:    0 -360px !important; }
+.tab-state2					{ background-position:    0 -390px !important; }
+.tab-state3					{ background-position:    0 -420px !important; }
+.tab-state4					{ background-position:    0 -450px !important; }
+.tab-state0 .tab-content	{ background-position: 100% -330px !important; }
+.tab-state1 .tab-content	{ background-position: 100% -360px !important; }
+.tab-state2 .tab-content	{ background-position: 100% -390px !important; }
+.tab-state3 .tab-content	{ background-position: 100% -420px !important; }
+.tab-state4 .tab-content	{ background-position: 100% -450px !important; }
+
+.tab .tab-label img, .tab-state0 .tab-label img {
+	opacity: .5;
+	-moz-opacity: .5;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+}
+
+.tab-state1 .tab-label img {
+	opacity: .62;
+	-moz-opacity: .62;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=62);
+}
+
+.tab-state2 .tab-label img {
+	opacity: .75;
+	-moz-opacity: .75;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=75);
+}
+
+.tab-state3 .tab-label img {
+	opacity: .88;
+	-moz-opacity: .88;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=88);
+}
+
+.tab-state4 .tab-label img, .tab:hover .tab-label img, .tab-selected .tab-label img {
+	opacity: 1 !important;
+	-moz-opacity: 1 !important;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=100) !important;
+}
+
+.tab, .tab-state0			{ color: #7f7f7f; }
+.tab-state1					{ color: #9e9e9e; }
+.tab-state2					{ color: #bfbfbf; }
+.tab-state3					{ color: #e0e0e0; }
+.tab-state4, .tab:hover		{ color: white; }
+
+/* Onglet sélectionné */
+.tab-selected			  	{ background-position:    0 -480px !important; }
+.tab-selected .tab-content	{ background-position: 100% -480px !important; }
+
+.tab-selected				{ color: white !important; }
+
+
+/*-------------------------------------------------------- FALLEN GALAXY ----*/
+
+/******************************** INTERFACE **********************************/
+
+#missionPanel {
+	top: 50px;
+	right: 10px;
+}
+
+#influencePanel {
+	top: 50px;
+	right: 10px;
+	width: 200px;
+}
+
+#lagometer {
+	top: 10px;
+	right: 10px;
+}
+
+/* Barre d'outils */
+#toolbar {
+	top: 0;
+	left: 0;
+	width: 293px;
+	height: 37px;
+	padding: 8px 0 0 16px;
+}
+
+.lowres #toolbar {
+	height: 34px !important;
+	padding: 6px 0 0 16px !important;
+	background-position: 0 0 !important;
+}
+
+#controlPanel {
+	bottom: 0px;
+	left: 166px;
+	width: 317px;
+	height: 103px;
+	background-position: -166px -119px;
+}
+
+.lowres #controlPanel {
+	left: 126px;
+	background-position: -126px -94px !important;
+}
+
+/* Nom du secteur */
+#namePanel {
+	bottom: 103px;
+	left: 171px;
+	width: 163px;
+	height: 41px;
+	padding-right: 20px;
+	line-height: 38px;
+	background-position: -171px -78px;
+}
+
+/* Nom du secteur en petite résolution */
+.lowres #namePanel {
+	bottom: 102px;
+	left: 131px !important;
+	height: 36px !important;
+	line-height: 33px;
+	background-position: -131px -62px !important;
+}
+
+#namePanel, #namePanel * {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.lowres #namePanel, .lowres #namePanel * { font-size: 11px !important; }
+
+#empireView {
+	top: 50px;
+	left: 0px;
+}
+
+.lowres #empireView { top: 40px !important; }
+
+
+/********************************** ICONES ***********************************/
+
+/* Boutons de la barre d'outils */
+#toolbar .button { background-image: url('images/icons.png') !important; }
+#toolbar .button-icon    { background: none !important; }
+#toolbar .button-content { background: none !important; }
+
+#toolbar .iconContracts	{ background-position:   -3px -4px !important; }
+#toolbar .iconAlly		{ background-position:  -33px -4px !important; }
+#toolbar .iconResearch	{ background-position:  -63px -4px !important; }
+#toolbar .iconDiplomacy { background-position:  -93px -4px !important; }
+#toolbar .iconMap		{ background-position: -123px -4px !important; }
+#toolbar .iconEvents	{ background-position: -153px -4px !important; }
+#toolbar .iconMessages	{ background-position: -183px -4px !important; }
+#toolbar .iconLadder	{ background-position: -213px -4px !important; }
+#toolbar .iconMenu		{ background-position: -243px -4px !important; }
+#toolbar .button-selected.iconContracts, #toolbar .iconContracts:hover	{ background: url('images/icons.png')   -3px -34px no-repeat !important; }
+#toolbar .button-selected.iconAlly,		 #toolbar .iconAlly:hover		{ background: url('images/icons.png')  -33px -34px no-repeat !important; }
+#toolbar .button-selected.iconResearch,	 #toolbar .iconResearch:hover	{ background: url('images/icons.png')  -63px -34px no-repeat !important; }
+#toolbar .button-selected.iconDiplomacy, #toolbar .iconDiplomacy:hover	{ background: url('images/icons.png')  -93px -34px no-repeat !important; }
+#toolbar .button-selected.iconMap,		 #toolbar .iconMap:hover		{ background: url('images/icons.png') -123px -34px no-repeat !important; }
+#toolbar .button-selected.iconEvents,	 #toolbar .iconEvents:hover		{ background: url('images/icons.png') -153px -34px no-repeat !important; }
+#toolbar .button-selected.iconMessages,	 #toolbar .iconMessages:hover	{ background: url('images/icons.png') -183px -34px no-repeat !important; }
+#toolbar .button-selected.iconLadder,	 #toolbar .iconLadder:hover		{ background: url('images/icons.png') -213px -34px no-repeat !important; }
+#toolbar .button-selected.iconMenu,		 #toolbar .iconMenu:hover		{ background: url('images/icons.png') -243px -34px no-repeat !important; }
+
+.iconSearch { background: url('images/icons.png') -570px 0 no-repeat !important; }
+
+/* Icones des onglets */
+.tabIcon, .events .icon, .iconPremiumCalling, .iconPremiumSms {
+	width: 18px;
+	height: 18px;
+	vertical-align: middle;
+}
+
+.iconMsgInbox		 { background: url('images/icons.png') -276px -7px no-repeat; }
+.iconMsgSent		 { background: url('images/icons.png') -306px -7px no-repeat; }
+.iconMsgArchives	 { background: url('images/icons.png') -336px -7px no-repeat; }
+.iconAllyNews		 { background: url('images/icons.png') -186px -7px no-repeat; }
+.iconAllyMembers	 { background: url('images/icons.png') -366px -7px no-repeat; }
+.iconAllyDescription { background: url('images/icons.png') -396px -7px no-repeat; }
+.iconAllyProducts	 { background: url('images/icons.png') -456px -7px no-repeat; }
+.iconAllySettings	 { background: url('images/icons.png') -246px -7px no-repeat; }
+
+/* Icones de boutons */
+.iconAlly			.button-icon { background: url('images/icons.png')  -38px 0 no-repeat; }
+.iconDiplomacy		.button-icon { background: url('images/icons.png')  -98px 0 no-repeat; }
+.iconResearch		.button-icon { background: url('images/icons.png')  -68px 0 no-repeat; }
+.iconBattle			.button-icon { background: url('images/icons.png') -728px 0 no-repeat; }
+.iconCharge			.button-icon { background: url('images/icons.png') -758px 0 no-repeat; }
+.iconEmp			.button-icon { background: url('images/icons.png') -788px 0 no-repeat; }
+.iconColonization	.button-icon { background: url('images/icons.png') -818px 0 no-repeat; }
+.iconSwap			.button-icon { background: url('images/icons.png') -848px 0 no-repeat; }
+.iconExport			.button-icon { background: url('images/icons.png') -487px 0 no-repeat; }
+.iconReplenishment	.button-icon { background: url('images/icons.png') -305px -30px no-repeat; }
+.iconImport			.button-icon { background: url('images/icons.png') -517px 0 no-repeat; }
+.iconSave			.button-icon { background: url('images/icons.png') -547px 0 no-repeat; }
+.iconAdd			.button-icon { background: url('images/icons.png') -607px 0 no-repeat; }
+.iconDelete			.button-icon { background: url('images/icons.png') -637px 0 no-repeat; }
+.iconLeft			.button-icon { background: url('images/icons.png') -667px 0 no-repeat; }
+.iconRight			.button-icon { background: url('images/icons.png') -697px 0 no-repeat; }
+.iconDelete			.button-icon { background: url('images/icons.png') -877px 0 no-repeat; }
+.iconStructure		.button-icon { background: url('images/icons.png') -967px 0 no-repeat; }
+.iconBlackhole		.button-icon { background: url('images/icons.png') -967px -32px no-repeat; }
+.iconWards			.button-icon { background: url('images/icons.png') -937px -34px no-repeat; }
+
+.dialog-title img {
+	vertical-align: middle;
+	width: 16px;
+	height: 16px;
+	background-image: url('images/icons.png');
+}
+
+img.iconContracts	{ background-position:   -7px -7px !important; }
+img.iconAlly		{ background-position:  -37px -7px !important; }
+img.iconResearch	{ background-position:  -67px -8px !important; }
+img.iconDiplomacy	{ background-position:  -97px -7px !important; }
+img.iconMap			{ background-position: -126px -7px !important; }
+img.iconEvents		{ background-position: -157px -7px !important; }
+img.iconMessages	{ background-position: -188px -8px !important; }
+img.iconLadder		{ background-position: -216px -7px !important; }
+img.iconMenu		{ background-position: -247px -8px !important; }
+
+/* Icones des évènements */
+.events .iconAlly			 { background: url('images/icons.png')  -36px -6px no-repeat; }
+.events .iconDiplomacy		 { background: url('images/icons.png')  -96px -6px no-repeat; }
+.events .iconResearch		 { background: url('images/icons.png')  -66px -6px no-repeat; }
+.events .iconBattle			 { background: url('images/icons.png') -726px -6px no-repeat; }
+.events .iconCharge			 { background: url('images/icons.png') -756px -6px no-repeat; }
+.events .iconEmp			 { background: url('images/icons.png') -786px -6px no-repeat; }
+.events .iconColonization	 { background: url('images/icons.png') -816px -6px no-repeat; }
+.events .iconSwap			 { background: url('images/icons.png') -846px -6px no-repeat; }
+.events .iconStructure		 { background: url('images/icons.png') -966px -6px no-repeat; }
+.events .iconBlackhole		 { background: url('images/icons.png') -966px -38px no-repeat; }
+.events .iconWards			 { background: url('images/icons.png') -936px -38px no-repeat; }
+
+
+/* Clignotement des boutons */
+.blinking, #toolbar .blinking { background-image: none !important; }
+
+/* Check boxes */
+.checkBox	.button-icon { background: url('images/icons.png') -907px 0 no-repeat; }
+.checked	.button-icon { background: url('images/icons.png') -937px 0 no-repeat !important; }
+
+
+
+#talks {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border: 1px solid #202020;
+	background: url('images/mask.png') 0 0 repeat;	
+}
+
+/* Classement */
+.playerLadder {
+	padding-left: 2px;
+	height: 23px !important;
+	line-height: 23px !important;
+	background-color: #202020;
+	border-bottom: 1px solid black;
+}
+
+.link {
+	color: red;
+	text-decoration: none;
+}
+.link:hover { text-decoration: underline; }
+
+tr.odd { background-color: #101010; }
+
+
+
+.fleetPowerBar, .payloadBar {
+	position: relative;
+	height: 18px !important;
+	margin-top: 2px;
+	line-height: 18px !important;
+}
+
+.fleetPowerBar {
+	width: 255px;
+	background: url('images/payload.png') 0 0 no-repeat;
+}
+
+.payloadBar    {
+	width: 203px;
+	background: url('images/payload.png') 0 -48px no-repeat;
+}
+
+.currentFleetPower, .currentPayload {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 18px;
+}
+
+.currentFleetPower         { background: url('images/payload.png') 0 -16px no-repeat; }
+.currentFleetPower.invalid { background: url('images/payload.png') 0 -32px no-repeat; }
+.currentPayload            { background: url('images/payload.png') 0 -64px no-repeat; }
+.currentPayload.overload   { background: url('images/payload.png') 0 -80px no-repeat; }
+
+.fleetPowerValue, .payloadValue {
+	position: absolute;	
+	top: 0;
+	left: 0;
+	height: 18px;
+	width: 100%;
+	line-height: 16px;
+}
+
+.fleetPowerValue, .payloadValue * { font-size: 11px !important; }
+
+
+.horizontalSeparator {
+	height: 1px;
+	font-size: 1px;
+	background-color: #202020;
+}
+
+.messageHeader {
+	background-color: #101010;
+	border: 1px solid #202020;
+	padding: 5px;
+	font-weight: bold;
+}
+
+.messageDate { color: #808080; }
+
+.unread * { font-weight: bold; }
+
+.title { font-weight: bold; }
+
+.emphasize {
+	color: #ffcc00;
+	font-weight: bold;
+}
+
+.deemphasize {
+	color: #808080;
+	font-weight: normal;
+}
+
+.textFieldHelp input { color: #606060 !important; }
+
+
+
+
+/******************************* INFOS SELECTION *****************************/
+
+#selectionInfo {
+	position: absolute;
+	z-index: 30;
+	bottom: 0;
+	left: 0;
+	background-color: black;
+}
+
+#selectionInfo .info { background-position: -660px 0; }
+
+.lowres #selectionInfo .info { background-position: -600px 0 !important; }
+
+
+/**************************** BARRE DE PROGRESSION ***************************/
+
+#progressBar {
+	left: 344px;
+	bottom: 103px;
+	width: 139px;
+	height: 30px;
+	background-position: -344px -89px;
+}
+
+.lowres #progressBar {
+	left: 305px !important;
+	background-position: -305px -67px !important;
+}
+
+#progressBar .container {
+	width: 125px !important;
+	height: 19px;
+	margin: 8px 0 0 3px;
+	background-position: 0 -102px;
+}
+
+.lowres #progressBar .container { margin: 8px 0 0 2px !important; }
+
+#progressBar .currentProgress {
+	height: 19px;
+	background-position: 0 -121px !important;
+}
+
+#progressBar .barLabel {
+	width: 125px;
+	line-height: 20px;
+	text-align: center;
+	font-size: 12px;
+}
+
+.lowres #progressBar .barLabel {
+	font-size: 11px !important;
+}
+
+#progressBar .container, #progressBar .currentProgress { background-image: url('images/payload.png'); }
+
+
+/********************************** CHAT *************************************/
+
+/* Chat */
+#chatMessages {
+	left: 498px;
+	bottom: 40px;
+	height: 108px;
+}
+
+.lowres #chatMessages { left: 458px; }
+
+#chatBar {
+	left: 532px;
+	bottom: 3px;
+	width: 360px;
+}
+
+.lowres #chatBar { left: 492px; }
+
+
+/********************************* MINIMAP ***********************************/
+
+/* Positionne la minimap dans le coin supérieur droit de l'écran */
+.miniMap {
+	bottom: 0;
+	left: 0;
+	padding: 16px 11px 0 0;
+	background-position: 0 -46px;
+}
+
+/* Minimap en petite résolution */
+.lowres .miniMap { background-position: 0 -64px !important; }
+
+/* Masque sur la minimap */
+.miniMap .miniMapMask { background-position: -500px 0; }
+
+/* Masque sur la minimap en petite résolution */
+.lowres .miniMap .miniMapMask { background-position: -480px 0 !important; }
+
+
+/********************************* COMBATS ***********************************/
+
+.powerBar {
+	right: 140px;
+	width: 195px;
+	height: 31px;
+}
+
+.xpView {
+	right: 40px;
+	width: 60px;
+	height: 19px;
+}
+
+.powerBar.top {
+	top: 0;
+	background-position: -500px -160px;
+}
+
+.powerBar.bottom {
+	bottom: 0;
+	background-position: -500px -191px;
+}
+
+.xpView.top {
+	top: 0;
+	padding: 3px 26px 9px 14px;
+	background-position: -695px -160px;
+}
+
+.xpView.bottom {
+	bottom: 0;
+	padding: 9px 26px 3px 14px;
+	background-position: -695px -191px;
+}
+
+.lowres .powerBar.top	 { background-position: -480px -138px !important; }
+.lowres .powerBar.bottom { background-position: -480px -169px !important; }
+.lowres .xpView.top		 { background-position: -675px -138px !important; }
+.lowres .xpView.bottom	 { background-position: -675px -169px !important; }
+
+.powerBar .container {
+	width: 125px !important;
+	height: 19px;
+	background-position: 0 -102px;
+}
+
+.powerBar.top	 .container { margin: 3px 0 0 59px; }
+.powerBar.bottom .container { margin: 9px 0 0 59px; }
+
+.powerBar .currentProgress { height: 19px; }
+
+.powerBar.top	 .currentProgress { background-position: -125px -102px; }
+.powerBar.bottom .currentProgress { background-position: -125px -121px; }
+
+.powerBar .barLabel, .xpView .xpLabel {
+	width: 125px;
+	line-height: 20px;
+	text-align: center;
+	font-size: 12px;
+}
+
+.xpView .xpLabel {
+	width: 60px;
+	font-size: 11px;
+}
+
+.powerBar .container, .powerBar .currentProgress { background-image: url('images/payload.png'); }

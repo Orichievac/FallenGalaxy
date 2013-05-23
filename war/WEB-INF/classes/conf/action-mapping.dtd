@@ -1,0 +1,40 @@
+<!ELEMENT action-mapping (constant*,action*)>
+<!ATTLIST action-mapping
+	package		CDATA ''
+>
+
+<!-- Constant definition -->
+<!ELEMENT constant EMPTY>
+<!ATTLIST constant
+	name        CDATA #REQUIRED
+	value       CDATA #REQUIRED
+>
+
+<!-- Action definition -->
+<!ELEMENT action (action-param)*>
+<!ATTLIST action
+	name        CDATA #REQUIRED
+	class       CDATA #REQUIRED
+	method      (get|post) "post"
+	rights		CDATA #IMPLIED
+	connection	(login|logout|login_or_logout) "login"
+>
+
+<!-- Action parameter definition -->
+<!ELEMENT action-param (param-format)*>
+<!ATTLIST action-param
+	name        CDATA #REQUIRED
+	required    (false|true) "true"
+>
+
+<!-- Parameter format definition -->
+<!ELEMENT param-format (arg)*>
+<!ATTLIST param-format
+	class       CDATA #REQUIRED
+>
+
+<!-- Format arguments definition -->
+<!ELEMENT arg EMPTY>
+<!ATTLIST arg
+	value       CDATA #REQUIRED
+>

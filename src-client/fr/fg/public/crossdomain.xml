@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<!-- Allow sound files access for Fallen Galaxy servers -->
+<cross-domain-policy>
+    <allow-access-from domain="*.fallengalaxy.eu"/>
+</cross-domain-policy>

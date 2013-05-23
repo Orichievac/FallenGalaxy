@@ -1,0 +1,4530 @@
+﻿/*-------------------------------------------------------------- OPENJWT ----*/
+
+/********************************* GENERAL ***********************************/
+
+/* Alignement du texte */
+.left    { text-align: left; }
+.center  { text-align: center; }
+.right   { text-align: right; }
+.justify { text-align: justify; }
+#namePanel .position {font-size : 12px; color:red;}
+
+/* Désactive la sélection de certains éléments sur Firefox */
+.button, .list, .comboBox, .dialog-titlebar, .dialog .standard, .label,
+.scrollBar, .tooltip, img, .tabbedPane { -moz-user-select: none; }
+
+
+
+/********************************* LAYOUTS ***********************************/
+
+.rowLayout { float: left; }
+
+/* Retour à la ligne après chaque ligne du RowLayout */
+.rowLayout .separator {
+	float: left;
+	height: 1px;
+	font-size: 1px;
+}
+
+/********************************* ID cachée pour Ericc ***********************************/
+
+#namePanel.hiden {
+display: none;
+}
+
+
+/********************************* DIALOGS ***********************************/
+
+/* Position par défaut des dialogues */
+.dialog {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+
+/* MSIE6 ne gère pas le position: fixed */
+* html .dialog {
+	position: absolute;
+}
+
+/* Filtre pour bloquer le reste dans la page quand une fenêtre
+ * modale est ouverte */
+.dialog-blocker, .dialog-blocker * {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.dialog .clearer { clear: both; }
+
+
+/***************************** STANDARD DIALOGS ******************************/
+
+/* Dimensions de l'icone du dialogue */
+.standard .icon {
+	width: 80px;
+	height: 90px;
+	vertical-align: middle;
+}
+
+/* Dimensions du message du dialogue */
+.standard {
+	width: 300px;
+	padding-right: 20px;
+	text-align: justify;
+}
+
+/* Dialogue sans icone */
+.standard.plain .icon, .dialog .standard.plain .icon div {
+	width: 0;
+	height: 0;
+}
+
+/* Augmente l'espace du message quand il n'y a pas d'icone */
+.standard.plain {
+	width: 280px;
+	padding: 0 20px;
+}
+
+/* Elément contenant l'image de l'icone */
+.standard .icon div {
+	width: 48px;
+	height: 48px;
+	margin: auto;
+}
+
+/* Icones standard */
+.standard.question    .icon div { background: url('images/graphics.png')   -0px -1431px no-repeat; }
+.standard.information .icon div { background: url('images/graphics.png')  -50px -1431px no-repeat; }
+.standard.warning     .icon div { background: url('images/graphics.png') -100px -1431px no-repeat; }
+.standard.error       .icon div { background: url('images/graphics.png') -150px -1431px no-repeat; }
+
+
+/********************************* BUTTONS ***********************************/
+
+/* Bouton */
+.button {
+	float: left;
+	display: block;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+	overflow: hidden;
+}
+
+
+/********************************** LABELS ***********************************/
+
+/* Label */
+.label {
+	float: left;
+	display: block;
+}
+
+
+/******************************** TEXTFIELDS *********************************/
+
+/* Champ texte */
+.textfield {
+	float: left;
+	display: block;
+	overflow: hidden;
+}
+
+.textfield input {
+	display: block;
+	width: 100%;
+}
+
+
+/********************************* TEXTAREAS *********************************/
+
+/* Champ texte */
+.textarea {
+	float: left;
+	display: block;
+}
+
+
+/********************************* TEXTPANES *********************************/
+
+/* Champ texte */
+.textPane {
+	float: left;
+	display: block;
+}
+
+
+/********************************** PANELS ***********************************/
+
+/* Panel */
+.panel {
+	float: left;
+	position: relative;
+}
+
+
+/******************************** SCROLLPANES ********************************/
+
+/* Scrollpane */
+.scrollPane {
+	float: left;
+	position: relative;
+	overflow: hidden;
+	
+}
+
+/* Vue sur le contenu du scrollpane */
+.viewport {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* Barre de défilement */
+.scrollBar {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+/* Piste de la barre de défilement */
+.scrollTrack {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+}
+
+/* Ascenseur de la barre de défilement */
+.scrollBar .scrollBubble {
+	position: absolute;
+}
+
+/* Bouton pour faire défiler vers la haut la scrollbar */
+.scrollUp {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+/* Bouton pour faire défiler vers la bas la scrollbar */
+.scrollDown {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+
+/********************************* TOOLTIPS **********************************/
+
+/* Infobulles */
+.tooltip {
+	position: absolute !important;
+	z-index: 1000000;
+}
+
+
+/*********************************** LISTS ***********************************/
+
+/* Liste */
+.list { float: left; }
+
+/* Curseur en forme de main au survol des items d'une liste */
+.listItem { cursor: pointer; }
+
+
+/********************************** COMBOBOX *********************************/
+
+.comboBox {
+	position: relative;
+	float: left;
+}
+
+/* Liste déroulante */
+.comboBox .list {
+	position: absolute;
+	z-index: 100000;
+}
+
+
+/*********************************** FORMS ***********************************/
+
+.form {
+	float: left;
+	position: relative;
+}
+
+
+/********************************* TABBEDPANE ********************************/
+
+.tabbedPane { float: left; }
+
+.tab {
+	cursor: pointer;
+	float: left;
+}
+
+
+/**************************** TEXTE AVEC CONTOURS ****************************/
+
+/* Texte avec contours */
+.outlineText .outline {
+	position: absolute;
+	float: left;
+	-moz-user-select: none;
+	overflow: visible;
+}
+
+.outlineText .outline, .outlineText .outline * { color: black !important }
+
+.outlineText .outline * { background: none !important; }
+
+.outlineText .outline img { visibility: hidden; }
+
+.outlineText .content { position: absolute; }
+
+.outlineText .advancedOutline { position: static; }
+.outlineText .advancedOutline-outline { text-shadow: 0px 1px 0 black, 1px 0px 0 black, 0px -1px 0 black, -1px 0px 0 black; }
+.outlineText .advancedOutline-shadow { text-shadow: 1px 1px 0 black; }
+
+
+/*-------------------------------------------------------- FALLEN GALAXY ----*/
+
+/********************************* GENERAL ***********************************/
+
+html { overflow: hidden; }
+
+/* Corps de la page */
+body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+#serverShutdown {
+	position: absolute;
+	z-index: 90;
+	top: 10px;
+	left: 50%;
+	width: 300px;
+	margin-left: -150px;
+	color: red;
+	text-align: center;
+}
+
+/* Calque en surimpression des images, pour éviter qu'on puisse les sélectionner */
+.preventSelect {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+p { margin: 0; }
+
+.small { font-size: 11px; }
+.x-small { font-size: 10px; }
+
+/* Ressources */
+.resource, .clock, .goToLocation {
+	width: 16px;
+	height: 16px;
+	vertical-align: middle;
+	background-image: url('images/graphics.png');
+	background-repeat: no-repeat;
+}
+
+.resource.r0 { background-position: -378px -40px; }
+.resource.r1 { background-position: -394px -40px; }
+.resource.r2 { background-position: -410px -40px; }
+.resource.r3 { background-position: -426px -40px; }
+.resource.r4 { background-position: -522px -54px; }
+.resource.b { background-position: -452px -718px; }
+.resource.research	{ background-position: -442px -40px; }
+.resource.credits	{ background-position: -458px -40px; }
+.resource.xp		{ background-position: -471px -56px; }
+.clock				{ background-position: -474px -40px; }
+.goToLocation		{ background-position: -490px -40px; }
+.goToLocation:hover	{ background-position: -506px -40px; }
+.resource.energy	{ background-position: -522px -40px; }
+
+.overflow { color:red !important; }
+
+.growing { color:#fff45d !important; }
+
+.systemResStock { height:20px};
+
+/* Fenetre de login */
+.label.error, .panel.error { color: red; }
+
+.swapIcon, .tag, .star {
+	width: 30px;
+	height: 30px;
+	float: left;
+	vertical-align: middle;
+}
+
+.product {
+	width: 16px;
+	height: 16px;
+	vertical-align: middle;
+	background: url('images/graphics.png');
+}
+
+.tag				{ background: url('images/graphics.png')       0      0 no-repeat; }
+.star				{ background: url('images/stars.png')          0 -225px no-repeat; }
+.spaceStationIcon	{ background: url('images/graphics.png')  -492px -487px no-repeat; }
+.storehouseIcon		{ background: url('images/structures.png')     0      0 no-repeat; }
+.spaceshipYardIcon	{ background: url('images/structures.png') -30px      0 no-repeat; }
+
+.list.members .star, .combobox.election .star { float: right; }
+
+/* Preview des skin de flottes dans les options */
+.viewport .fleetskinPreview {
+	background-image:url("images/graphics.png");
+	height:40px;
+	margin-left:20px;
+	margin-top:-10px;
+	width:40px;
+}
+
+/* Joueur AI */
+.ai {
+	width: 9px;
+	height: 10px;
+	background: url('images/graphics.png') -378px -56px no-repeat;
+}
+
+/* Vaisseaux */
+.spaceship {
+	width: 50px;
+	height: 50px;
+	vertical-align: bottom;
+	background: url('images/ships.png') 0 0 no-repeat;
+}
+
+/* Stats de vaisseaux */
+.stat {
+	width: 14px;
+	height: 14px;
+	vertical-align: middle;
+	background-image: url('images/graphics.png');
+	background-repeat: no-repeat;
+}
+
+.s-none {
+	height: 20px;
+	background: none !important;
+}
+
+.s-struct            { background-position: -189px -54px; }
+.s-shield            { background-position: -203px -54px; }
+.s-dodge             { background-position: -217px -54px; }
+.s-accuracy          { background-position: -231px -54px; }
+.s-damage            { background-position: -245px -54px; }
+.s-death             { background-position: -259px -54px; }
+.s-cooldown          { background-position: -273px -54px; }
+.s-cooldown-disabled { background-position: -287px -54px; }
+.s-power			 { background-position: -343px -54px; }
+.s-small-cooldown    { background-position: -457px -56px; }
+
+.bookmark {
+	float: left;
+	width: 14px;
+	height: 14px;
+	background: url('images/graphics.png') -490px -717px no-repeat;
+}
+
+.achievement { margin-bottom: 20px; }
+
+.achievement .details {
+	padding: 6px;
+}
+
+.achievement .progressBar {
+	float: left;
+	margin: 1px 10px 0 2px;
+	width: 300px;
+	height: 12px;
+	background-color: #202020;
+}
+
+.achievement .progressBar .currentProgress {
+	height: 100%;
+	background-color: #707070;
+}
+
+
+
+/********************************* INTERFACE *********************************/
+
+#missionPanel {
+	position: absolute !important;
+	z-index: 60;
+	width: 0;
+	overflow: visible !important;
+	-moz-user-select: none;
+}
+
+#influencePanel {
+	position: absolute !important;
+	z-index: 60;
+	-moz-user-select: none;
+}
+
+#lagometer {
+	position: absolute;
+	z-index: 90;
+	-moz-user-select: none;
+}
+
+/* Barre d'outils */
+#toolbar {
+	position: absolute;
+	z-index: 20;
+	-moz-user-select: none;
+}
+
+#controlPanel {
+	position: absolute;
+	z-index: 21;
+	-moz-user-select: none;
+	overflow: hidden;
+}
+
+/* Nom du secteur */
+#namePanel {
+	position: absolute;
+	z-index: 22;
+	text-align: center;
+	-moz-user-select: none;
+}
+
+#progressBar, .powerBar, .xpView {
+	position: absolute;
+	z-index: 50;
+}
+
+#progressBar .container, .powerBar .container { position: relative; }
+
+#progressBar .currentProgress, .powerBar .currentProgress { position: absolute; }
+
+#progressBar .outlineText, .powerBar .outlineText, .xpView .outlineText { position: absolute; }
+
+#chatMessages {
+	position: absolute;
+	z-index: 50;
+}
+
+#chatBar {
+	position: absolute;
+	z-index: 50;
+}
+
+
+/******************************* INFOS SELECTION *****************************/
+
+#selectionInfo {
+	z-index: 30;
+	width: 160px;
+	height: 160px;
+}
+
+.lowres #selectionInfo {
+	width: 120px;
+	height: 120px;
+}
+
+#selectionInfo * { font-size: 10px !important; }
+
+#selectionInfo .star, #selectionInfo .spaceStation, #selectionInfo .structure { position: absolute; }
+
+#selectionInfo .star, #selectionInfo .spaceStation { margin: 20px; }
+#selectionInfo .structure-storehouse { margin: 40px; }
+
+.lowres #selectionInfo .star, .lowres #selectionInfo .spaceStation { margin: 0; }
+.lowres #selectionInfo .structure-storehouse { margin: 20px; }
+
+#selectionInfo .star {
+	width: 120px;
+	height: 120px;
+	background-image: url('images/stars.png');
+}
+
+#selectionInfo .spaceStation {
+	width: 120px;
+	height: 120px;
+	background: url('images/graphics_low.png') -390px -390px no-repeat !important;
+}
+1
+#selectionInfo .structure-storehouse {
+	width: 80px;
+	height: 80px;
+	background: url('images/structures.png') -160px 0 no-repeat !important;
+}
+
+#selectionInfo .info {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	font-weight: bold;
+	font-size: 11px;
+	line-height: 24px;
+	padding: 5px 0 0 10px;
+}
+
+.lowres #selectionInfo .info {
+	width: 118px !important;
+	height: 116px !important;
+	line-height: 18px !important;
+	padding: 0 0 0 2px !important;
+}
+
+.lowres #selectionInfo .info .systemResStock{
+	height:16px;	
+}
+
+.production {
+	color: #00c000;
+	font-weight: normal;
+}
+
+.dayProduction {
+color: #FF0000;
+}
+
+
+/*********************************** COMBATS *********************************/
+
+/* Batailes entre flottes */
+.environmentPanel, .battlePanel, .effectsArea, .toolTipPanel {
+	z-index: 2;
+	position: absolute !important;
+	left: 50%;
+	top: 50%;
+	width: 500px;
+	height: 600px;
+	margin: -300px 0 0 -250px;
+}
+
+.topFleetTactics, .bottomFleetTactics {
+	z-index: 3;
+	position: absolute !important;
+	top: 50%;
+	width: 25px;
+	height: 448px;
+	margin-top: -224px;
+}
+
+.bottomFleetTactics { left: 45px; }
+.topFleetTactics	{ left: 10px; }
+
+.bottomFleetTactics .action, .topFleetTactics .action {
+	width: 25px;
+	height: 28px;
+	float: left;
+	background-image: url('images/graphics.png');
+}
+
+.bottomFleetTactics .action	{ background-position:  -474px -611px; }
+.topFleetTactics	.action	{ background-position:  -502px -611px; }
+
+.actionAbility {
+	width: 25px;
+	height: 25px;
+	background-image: url('images/abilities.png');
+}
+
+.miniActionAbility {
+	width: 16px;
+	height: 16px;
+	background-image: url('images/abilities.png');
+}
+
+.actionAbility.noAction 	{ background-position: -1075px -100px !important; }
+.miniActionAbility.noAction { background-position: -1084px -125px !important; }
+
+.bottomFleetTactics .actionAbility, .topFleetTactics .actionAbility {
+	margin-bottom: 3px;
+}
+
+.bottomFleetTactics .action-selected .selection,
+.topFleetTactics .action-selected .selection {
+	width: 21px;
+	height: 21px;
+	border: 2px solid white;
+}
+
+.shoot {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	margin: -15px 0 0 -15px;
+	background: url('images/graphics_low.png') 0 0 no-repeat;
+}
+
+.effect {
+	position: absolute;
+	background: url('images/effects.png') 0 0 no-repeat;
+}
+
+.floatingText {
+	text-align: center;
+	font-weight: bold;
+	font-size: 11px !important;
+	color: red;
+}
+
+.topFleet, .bottomFleet, .fleetToolTip {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+}
+
+.topFleet .spaceship, .bottomFleet .spaceship {
+	position: absolute;
+	left: 25px;
+}
+
+.spaceship-label { font-size: 10px !important; }
+
+.topFleet .spaceship {
+	top: 50px;
+	background-image: url('images/ships_down.png') !important;
+}
+.bottomFleet .spaceship { top: 0px; }
+
+.spaceship-label { font-weight: bold; text-align: center; }
+.topFleet    .spaceship-label .type { color: red; }
+.bottomFleet .spaceship-label .type { color: #2874d8; }
+
+
+/**************************** MISSIONS & INFLUENCE ***************************/
+
+#missionPanel .mission {
+	width: 160px;
+	text-align: right !important;
+	margin-bottom: 20px;
+	margin-left: -160px;
+}
+
+#missionPanel .mission * { font-size: 10px; }
+
+#missionPanel .missionName { font-size: 11px !important; }
+#missionPanel .missionName, #missionPanel .missionPlayers { font-weight: bold; }
+
+.mission-waiting	.missionName { color: #808080; }
+.mission-running	.missionName { color: #ffff40; }
+.mission-finalizing	.missionName { color: #ff793f; }
+.mission:hover		.missionName { color: red; }
+
+#influencePanel .influence {
+	width: 200px;
+	text-align: right !important;
+}
+
+#influencePanel, #influencePanel * { font-size: 11px !important; }
+
+#influencePanel .header {
+	font-weight: bold;
+	color: #ffff40;
+}
+
+#influencePanel .header:hover { color: red; }
+
+.faction {
+	width: 30px;
+	height: 24px;
+	vertical-align: middle;
+	background-image: url('images/graphics.png');
+}
+
+.faction-gdo			{ background-position:     0 -2214px; }
+.faction-brotherhood	{ background-position: -30px -2214px; }
+.faction-network		{ background-position: -60px -2214px; }
+
+
+/********************************* CAPACITES *********************************/
+
+/* Planification des actions d'une flotte */
+.list.actions .action { height: 50px; }
+.list.actions .title { font-size: 11px; }
+
+.list .unavailable, .list .unavailable * { color: #808080 !important; }
+
+.list.actions .cooldown {
+	position: absolute;
+	right: 0;
+	padding: 3px 6px 0 0;
+	color: #1d97d5;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.list.actions .cooldown.disabled { color: red; }
+
+/* Capacités */
+.ability {
+	width: 50px;
+	height: 50px;
+	margin-left: 1px;
+	background: url('images/abilities.png') 0 0 no-repeat;
+}
+
+.miniAbility {
+	width: 16px;
+	height: 16px;
+	background: url('images/abilities.png') 0 -100px no-repeat;
+}
+
+.ability-shot    { color: #ffc001 !important; }
+.ability-buff    { color: #1b87da !important; }
+.ability-debuff  { color: #c00000 !important; }
+.ability-special { color: #008000 !important; }
+
+/********************************* CLASSEMENT ********************************/
+
+/* Classement */
+.medal {
+	float: left;
+	width: 16px;
+	height: 16px;
+	margin-right: 4px;
+}
+.medal.gold      { background: url('images/graphics_low.png') -480px -1135px no-repeat; }
+.medal.silver    { background: url('images/graphics_low.png') -496px -1135px no-repeat; }
+.medal.bronze    { background: url('images/graphics_low.png') -512px -1135px no-repeat; }
+.medal.goldCup   { background: url('images/graphics_low.png') -480px -1151px no-repeat; }
+.medal.silverCup { background: url('images/graphics_low.png') -496px -1151px no-repeat; }
+
+.ladder .rank { font-size: 11px; }
+
+.t-enemy   { color: #ff0000; }
+.t-allied  { color: #005fda; }
+.t-ally    { color: #09b9c1; }
+.t-player  { color: #00C000; }
+
+
+/********************************* DIPLOMATIE ********************************/
+
+/* Diplomatie */
+.listItem          .treaty .allied { color: #009fda; }
+.listItem          .treaty .war    { color: red; }
+.listItem          .treaty .date   { color: #808080; }
+.listItem.selected .treaty *       { color: white; }
+
+
+/********************************* DIALOGUES *********************************/
+
+#talks {
+	position: absolute;
+	z-index: 100000;
+	top: 60px;
+	left: 50%;
+	width: 500px;
+	margin-left: -250px;
+	padding: 4px;
+}
+
+.talk .avatar {
+	float: left;
+	margin: 2px 10px 2px -110px;
+	width: 100px;
+	height: 100px;
+}
+
+.talk {
+	width: 386px;
+	font-size: 12px !important;
+	text-align: justify;
+	padding-left: 114px;
+}
+
+.talk * { font-size: 12px !important; }
+
+.talk .answer {
+	font-size: 12px !important;
+	color: #ffff40;
+}
+
+.talker {
+	padding-top: 2px;
+	font-weight: bold;
+	font-size: 12px !important;
+	color: #ffff40;
+	margin-bottom: 4px;
+}
+
+.talk .answer:hover			{ color: red !important; }
+.talk .invalidAnswer		{ color: #808080; }
+.talk .invalidAnswer:hover	{ color: #808080 !important; }
+
+.talk .emphasize {
+	color: #ffff40;
+	font-weight: normal !important;
+}
+
+
+/****************************** ASTUCE DU JOUR *******************************/
+
+#tipOfTheDay {
+	position: absolute;
+	z-index: 20;
+	bottom: 20px;
+	left: 50%;
+	width: 335px;
+	min-height: 14px;
+	margin-left: -182px;
+	text-align: center;
+	padding: 8px 10px 8px 10px;
+	border: 1px solid #202020;
+	background-color: black;
+	opacity: .6;
+	-moz-opacity: .6;
+	-moz-user-select: none;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+
+#tipOfTheDay .icon {
+	float: left;
+	width: 25px;
+	height: 25px;
+	padding-right: 5px;
+	background: url('images/graphics.png') -490px -692px no-repeat;
+}
+
+#changelog-container {
+	z-index: 20;
+	position: absolute;
+	right: 0;
+	background: url('images/changelog_bg.png') 0 0 repeat-y;
+	-moz-opacity: .6;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+}
+
+#changelog {
+	padding: 12px 0;
+	font-size: 11px;
+	width: 252px !important;
+}
+
+#changelog .title {
+	font-size: 13px;
+	padding: 16px;
+}
+
+#changelog .entry {
+	padding: 6px 16px 16px;
+}
+
+#changelog .date {
+	color: #c0c0c0;
+}
+
+/*********************************** LOGO ************************************/
+
+#logo {
+	z-index: 20;
+	position: absolute;
+	top: 6%;
+	left: 50%;
+	width: 368px;
+	height: 95px;
+	margin-left: -184px;
+	background-image: url('images/logo.png');
+}
+
+/********************************* LAGOMETRE *********************************/
+
+#lagometer {
+	width: 15px;
+	height: 11px;
+	background-image: url('images/graphics_low.png');
+}
+
+#lagometer.lag3 { background-position: -480px -1080px; }
+#lagometer.lag2 { background-position: -480px -1091px; }
+#lagometer.lag1 { background-position: -480px -1102px; }
+#lagometer.lag0 { background-position: -480px -1113px; }
+#lagometer.lag-disconnected { background-position: -480px -1124px; }
+
+
+/********************************** GALAXIE **********************************/
+
+.galaxyMapContainer {
+	position: absolute;
+	z-index: 20;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+/* Panel scrollable contenant les secteurs visibles ou visités du joueur */
+.galaxyMap {
+	position: absolute;
+	-moz-user-select: none;
+}
+
+.galaxyMapContainer .galaxy { background: url('images/galaxy.jpg') center no-repeat; }
+
+/* Balises */
+.galaxyMarker {
+	vertical-align: middle;
+	width: 11px;
+	height: 11px;
+	background: url('images/graphics.png') -500px -56px no-repeat;
+}
+
+.galaxyMissionMarker {
+	vertical-align: middle;
+	width: 11px;
+	height: 11px;
+	background: url('images/graphics.png') -489px -56px no-repeat;
+}
+
+.galaxyHyperspaceBonus {
+	vertical-align: middle;
+	width: 11px;
+	height: 11px;
+	background: url('images/graphics.png') -511px -56px no-repeat;
+}
+
+.galaxyProduct {
+	vertical-align: middle;
+	width: 11px;
+	height: 11px;
+	background-image: url('images/graphics.png');
+}
+
+.missionMarkerName {
+	color: #ffff40;
+	font-weight: bold;
+}
+
+/* Secteur visible du joueur sur la carte de la galaxie */
+.mapLocation {
+	position: absolute !important;
+	width: 50px;
+	height: 50px;
+	margin: -25px 0 0 -25px;
+	background-image: url('images/graphics.png');
+	overflow: visible !important;
+}
+
+.mapLocation:hover { visibility: visible !important; }
+
+.ma-player  { background-position:      0 -1013px; }
+.ma-ally    { background-position:  -50px -1013px; }
+.ma-visited { background-position: -100px -1013px; }
+.ma-unknown { background-position: -100px -1013px; }
+.ms-player  { background-position: -200px -1013px; }
+.ms-ally    { background-position: -250px -1013px; }
+.ms-visited { background-position: -300px -1013px; }
+.ms-unknown { background-position: -300px -1013px; }
+
+.ma-player:hover, .ma-ally:hover, .ma-visited:hover, .ma-unknown:hover { background-position: -150px -1013px !important; }
+.ms-player:hover, .ms-ally:hover, .ms-visited:hover, .ms-unknown:hover { background-position: -350px -1013px !important; }
+
+.mapLocation .outlineText {
+	position: absolute;
+	left: 43px;
+	top: 20px;
+}
+
+.mapLocationName {
+	font-size: 10px !important;
+	font-weight: bold;
+}
+
+.mapLocationCoords {
+	font-size: 9px !important;
+	letter-spacing: -1px;
+}
+
+.ma-player  .mapLocationName, .ms-player  .mapLocationName { color: #01f000; }
+.ma-ally    .mapLocationName, .ms-ally    .mapLocationName { color: #09b9c1; }
+.ma-visited .mapLocationName, .ms-visited .mapLocationName { color: #909090; }
+.ma-unknown .mapLocationName, .ms-unknown .mapLocationName { color: #909090; }
+
+.mapLocation:hover .mapLocationName { color: red; }
+
+.hyperspaceJump {
+	position: absolute !important;
+	width: 7px;
+	height: 7px;
+	margin: -3px 0 0 -3px;
+	background-image: url('images/graphics.png');
+}
+
+.hyperspaceJump-0 { background-position: -450px -640px; }
+.hyperspaceJump-1 { background-position: -457px -640px; }
+.hyperspaceJump-2 { background-position: -464px -640px; }
+
+
+/********************************* SECTEURS **********************************/
+
+#map, #extra, #nebula, #nearStarfield, #farStarfield, #mainNebula {
+	position: absolute !important;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#canvas {
+	position: absolute !important;
+	top: 0;
+	left: 0;
+}
+
+#extra { -moz-user-select: none; }
+
+/* Clipping sur la zone courante */
+#nebula, #nearStarfield, #farStarfield, #mainNebula { z-index: 1; }
+#area  { z-index: 2; }
+#extra { z-index: 3; }
+
+#nearStarfield { background-image: url('images/near-starfield.gif'); }
+#farStarfield  { background-image: url('images/far-starfield.gif'); }
+
+#area {
+	position: absolute;
+	top: 0;
+	left: 0;
+	-moz-user-select: none;
+}
+
+#map  { overflow: hidden !important; }
+#area { overflow: visible !important; }
+
+/* Zone */
+#area { position: relative; }
+
+/* Zone avec un quadrillage */
+#area.grid   { background-image: url('images/grid_bg.gif'); }
+.zoom05.grid { background-image: url('images/grid_half_bg.gif') !important; }
+
+/* Astres, planètes, portes hyperspatiales, centres de commerce */
+#area .system, #area .system *, #area .gate, #area .tradeCenter,
+#area .asteroid, #area .blackhole, #area .spaceStation,
+#area .bank, #area .doodad, #area .marker, #area .extractor,
+#area .ward, #area .star, #area .planet, .environmentPanel .spaceStation,
+#area .triggerRadius, #area .structure, #area .gravityWell, #area .lottery{
+	position: absolute !important;
+	z-index: 6;
+}
+
+#area .system, #area .system * { z-index: 5; }
+
+/* Nom des systèmes et de leur propriétaires */
+#area .name {
+	position: static !important;
+	text-align: center;
+	font-weight: bold;
+}
+
+/* Nom des systèmes */
+#area .systemName {
+	font-size: 18px;
+	margin-bottom: 4px;
+}
+
+/* Nom du propriétaire des systèmes */
+#area .ownerName { font-size: 14px; }
+
+/* Nom de l'alliance du propriétaire des systèmes */
+#area .allyName {
+	font-size: 13px;
+	font-style: italic;
+}
+
+/* Nom des systèmes à l'échelle 1:2 */
+.zoom05 .systemName { font-size: 13px !important; }
+.zoom05 .ownerName  { font-size: 11px !important; }
+.zoom05 .allyName   { font-size: 10px !important; }
+
+.zoom025 .systemName { display: none; }
+.zoom025 .ownerName  { font-size: 9px !important; }
+.zoom025 .allyName   { font-size: 9px !important; }
+
+.zoom0125 .systemName { display: none; }
+.zoom0125 .ownerName  { font-size: 9px !important; }
+.zoom0125 .allyName   { font-size: 9px !important; }
+.zoom0125 .system-uninhabited .name, .zoom0125 .system-unknown .name { display: none; }
+
+#area .system .outlineText {
+	position: absolute;
+	width: 200px;
+	left: 150px;
+	top: 325px;
+}
+
+.zoom05 .system .outlineText {
+	left: 50px !important;
+	top: 187px !important;
+}
+
+.zoom025 .system .outlineText {
+	left: 0px !important;
+	top: 118px !important;
+}
+
+.zoom0125 .system .outlineText {
+	left: -25px !important;
+	top: 84px !important;
+}
+
+#area .system .outlineText .content, #area .system .outlineText .outline { width: 200px; }
+
+/* Centres de commerce */
+#area .tradeCenter {
+	width: 360px;
+	height: 360px;
+	margin: -160px 0 0 -160px;
+	background: url('images/graphics_low.png') 0 -720px no-repeat;
+}
+
+.zoom05 .tradeCenter {
+	width: 180px !important;
+	height: 180px !important;
+	margin: -80px 0 0 -80px !important;
+	background: url('images/graphics_low.png') -360px -720px no-repeat !important;
+}
+
+.zoom025 .tradeCenter {
+	width: 90px !important;
+	height: 90px !important;
+	margin: -40px 0 0 -40px !important;
+	background: url('images/graphics_low.png') -360px -900px no-repeat !important;
+}
+
+.zoom0125 .tradeCenter {
+	width: 32px !important;
+	height: 32px !important;
+	margin: -16px 0 0 -16px !important;
+	background: url('images/graphics.png') -460px -485px no-repeat !important;
+}
+
+/* Banques */
+#area .bank {
+	width: 360px;
+	height: 360px;
+	margin: -160px 0 0 -160px;
+	background: url('images/graphics_low.png') 0 0 no-repeat;
+}
+
+.zoom05 .bank {
+	width: 180px !important;
+	height: 180px !important;
+	margin: -80px 0 0 -80px !important;
+	background: url('images/graphics_low.png') -360px 0 no-repeat !important;
+}
+
+.zoom025 .bank {
+	width: 90px !important;
+	height: 90px !important;
+	margin: -40px 0 0 -40px !important;
+	background: url('images/graphics_low.png') -360px -180px no-repeat !important;
+}
+
+.zoom0125 .bank {
+	width: 32px !important;
+	height: 32px !important;
+	margin: -16px 0 0 -16px !important;
+	background: url('images/graphics.png') -388px -557px no-repeat !important;
+}
+/* Boules de la loterie */
+.lotteryBall, .button-state0.lotteryBall, .button-state1.lotteryBall, .button-state2.lotteryBall, .button-state3.lotteryBall, .button-state4.lotteryBall {
+color: black!important;
+font-weight: bold;
+background: url('images/lottery.png') 0 0 no-repeat!important;
+}
+
+.lotteryBall-selected, .button-state0.lotteryBall-selected, .button-state1.lotteryBall-selected, .button-state2.lotteryBall-selected, .button-state3.lotteryBall-selected, .button-state4.lotteryBall-selected {
+background: url('images/lottery_selected.png') 0 0 no-repeat!important;
+}
+
+.lotteryBall .button-content {
+background: none!important;
+}
+
+.button-icon {
+padding-right: 6px;
+margin-left: -1px;
+}
+
+.button-icon {
+line-height: 27px;
+}
+/* Animation de la Loterie */
+
+.sign {
+width: 75px;
+height: 65px;
+background: url('images/graphics_low.png') -725px -745px no-repeat;
+margin-left: -1px;
+margin-top: -3px;
+}
+
+.zoom05 .sign {
+width: 42px;
+height: 37px;
+background: url('images/graphics_low.png') -924px -805px no-repeat;
+margin-left: -1px;
+margin-top: -2px;
+}
+
+.zoom025 .sign {
+width: 33px;
+height: 29px;
+background: url('images/graphics_low.png') -651px -928px no-repeat;
+margin-left: -1px;
+margin-top: -2px;
+}
+
+.zoom0125 .sign {
+display: none;
+}
+
+/* Loteries */
+#area .lottery { 
+width: 122px;
+height: 122px;
+margin: -41 0 0 -41px;
+background: url('images/graphics_low.png') -566px -748px no-repeat;
+}
+
+.zoom05 .lottery {
+	width: 62px !important;
+	height: 62px !important;
+	margin: -20px 0 0 -20px !important;
+	background: url('images/graphics_low.png') -845px -807px no-repeat !important;
+}
+
+.zoom025 .lottery {
+	width: 49px !important;
+	height: 49px !important;
+	margin: -10px 0 0 -10px!important;
+	background: url('images/graphics_low.png') -589px -930px no-repeat !important;
+}
+
+.zoom0125 .lottery{
+	width: 21px !important;
+	height: 21px !important;
+margin: -5px 0 0 -5px!important;	
+	background: url('images/graphics.png') -361px -504px no-repeat !important;
+}
+
+/* Structures */
+#area .structure { background-image: url('images/structures.png'); }
+
+/* Champ de force */
+#area .structure2 { z-index: 5 !important; }
+
+.zoom0125 .structure .border { display: none; }
+.zoom0125 .structure {
+	width: 14px !important;
+	height: 14px !important;
+	border: 1px solid black;
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	background-image: none !important;
+	margin: -8px 0 0 -8px !important;
+}
+
+#area .structure-highlight {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-color: #48d0e6;
+	opacity: 0.1;
+	-moz-opacity: 0.1;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=10);
+}
+
+#area .structure-deactivated {
+	z-index: 7;
+	position: relative;
+	width: 40px !important;
+	height: 40px !important;
+	margin: -20px 0 0 -20px !important;
+	left: 50%;
+	top: 50%;
+	background: url('images/graphics.png') -480px -407px no-repeat !important;
+}
+
+#area .structure-hullBar {
+	z-index: 19;
+	position: absolute;
+	top: 34px;
+	left: 50%;
+	width: 40px;
+	height: 4px;
+	margin: 0 0 0 -20px;
+	background-color: red;
+}
+
+#area .structure-hullBar .currentHull {
+	height: 4px;
+	background-color: #1c9600;
+}
+
+#area .hullBar {
+	z-index: 19;
+	position: absolute;
+	top: 34px;
+	left: 50%;
+	width: 30px;
+	height: 4px;
+	margin: 0 0 0 -16px;
+    background-color: black;
+    border: 1px solid black;
+}
+
+#area .hullBar .currentFleet {
+	height: 4px;
+	background-color: #6dff46;
+}
+
+/* Masque pour positionner les structures / balises / charges */
+#area .setupMask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #00ff00;
+	opacity: 0.2;
+	-moz-opacity: 0.2;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=20);
+}
+
+.zoom025 .ward .setupMask, .zoom0125 .setupMask {
+	opacity: 1 !important;
+	-moz-opacity: 1 !important;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=100) !important;
+}
+#area .setupMask.invalid { background-color: red !important; }
+
+/* Plateforme pour chantier spatial */
+#area .spaceshipDeck {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	background: url('images/structures.png') -350px -410px no-repeat;
+}
+
+.zoom05 .spaceshipDeck {
+	width: 30px !important;
+	height: 30px !important;
+	background: url('images/structures.png') -410px -410px no-repeat !important;
+}
+
+.zoom025 .spaceshipDeck {
+	width: 15px !important;
+	height: 15px !important;
+	background: url('images/structures.png') -440px -410px no-repeat !important;
+}
+
+.zoom0125 .spaceshipDeck {
+	width: 14px !important;
+	height: 14px !important;
+	border: 1px solid black;
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	background-image: none !important;
+	margin: -8px 0 0 -8px !important;
+	display: none !important;
+}
+
+
+#area .spaceshipDeckClass {
+	width: 20px;
+	height: 20px;
+	margin: 20px;
+	background-image: url('images/structures.png');
+}
+
+.zoom05 .spaceshipDeckClass {
+	width: 10px !important;
+	height: 10px !important;
+	margin: 10px !important;
+}
+
+.zoom025 .spaceshipDeckClass {
+	width: 5px !important;
+	height: 5px !important;
+	margin: 5px !important;
+}
+
+/* Stations spatiales */
+#area .spaceStation, .environmentPanel .spaceStation {
+	width: 360px;
+	height: 360px;
+	margin: -160px 0 0 -160px;
+	background: url('images/graphics_low.png') 0 -360px no-repeat;
+	z-index: 4 !important;
+}
+
+.environmentPanel .spaceStation {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -180px 0 0 -180px;
+}
+
+.zoom05 .spaceStation {
+	width: 180px !important;
+	height: 180px !important;
+	margin: -80px 0 0 -80px !important;
+	background: url('images/graphics_low.png') -360px -360px no-repeat !important;
+}
+
+.zoom025 .spaceStation {
+	width: 90px !important;
+	height: 90px !important;
+	margin: -40px 0 0 -40px !important;
+	background: url('images/graphics_low.png') -360px -540px no-repeat !important;
+}
+
+.zoom0125 .spaceStation {
+	width: 45px !important;
+	height: 45px !important;
+	margin: -20px 0 0 -20px !important;
+	background-image: url('images/graphics.png') !important;
+}
+
+.zoom0125 .spaceStation-ally		{ background-position:      0 -1183px !important; }
+.zoom0125 .spaceStation-allied		{ background-position:  -45px -1183px !important; }
+.zoom0125 .spaceStation-enemy		{ background-position:  -90px -1183px !important; }
+.zoom0125 .spaceStation-neutral 	{ background-position: -135px -1183px !important; }
+
+/* Bouclier des centres de commerce, banques et stations spatiales */
+#area .tradeCenter .shield, #area .bank .shield, #area .spaceStation .shield,
+.environmentPanel .spaceStation .shield, #area .structure .shield {
+	width: 360px;
+	height: 360px;
+	background: url('images/graphics.png') 0 -81px no-repeat;
+}
+
+/* Bouclier à l'échelle 1:2 */
+.zoom05 .tradeCenter .shield, .zoom05 .bank .shield, .zoom05 .spaceStation .shield, .zoom05 .structure .shield {
+	width: 180px !important;
+	height: 180px !important;
+	background: url('images/graphics.png') -360px -81px no-repeat !important;
+}
+
+.zoom025 .tradeCenter .shield, .zoom025 .bank .shield, .zoom025 .spaceStation .shield, .zoom025 .structure .shield {
+	width: 90px !important;
+	height: 90px !important;
+	background: url('images/graphics.png') -300px -1063px no-repeat !important;
+}
+
+.zoom0125 .tradeCenter .shield, .zoom0125 .bank .shield,
+.zoom0125 .spaceStation .shield, .zoom0125 .structure .shield { display: none; }
+
+/* Champs d'astéroïdes */
+#area .infoResourceAsteroid{
+position: absolute;
+right: 20pt;
+bottom: 15pt;
+width: 19px;
+height : 19px;
+background: url('images/graphics.png') -508px -742px no-repeat;
+padding : 4px 3px;
+}
+
+#area .asteroid, .environmentPanel .asteroid {
+	width: 120px;
+	height: 120px;
+	margin: -60px 0 0 -60px;
+	padding: 20px;
+	background-image: url('images/graphics_low.png');
+	background-repeat: no-repeat;
+}
+
+.environmentPanel .asteroid { position: absolute; }
+
+.zoom05 .asteroid {
+	width: 60px !important;
+	height: 60px !important;
+	margin: -30px 0 0 -30px !important;
+	padding: 10px !important;
+}
+
+.zoom025 .asteroid, .zoom0125 .asteroid { display: none; }
+
+/* Environement normal */
+
+
+#area .asteroid.env_normal, 		.environmentPanel .asteroid.env_normal 			{ background-position: -160px -1080px ; }
+#area .asteroid_dense.env_normal,	.environmentPanel .asteroid_dense.env_normal	{ background-position:      0 -1080px; }
+#area .asteroid_low_titanium.env_normal,	.environmentPanel .asteroid_low_titanium.env_normal		{ background-position: -320px -1080px; }
+#area .asteroid_low_crystal.env_normal,	.environmentPanel .asteroid_low_crystal.env_normal			{ background-position:      0 -1500px; }
+#area .asteroid_low_andium.env_normal,		.environmentPanel .asteroid_low_andium.env_normal		{ background-position: -160px -1500px; }
+#area .asteroid_low_antimatter.env_normal,		.environmentPanel .asteroid_low_antimatter.env_normal		{ background-position: -890px -1328px; }
+#area .asteroid_avg_titanium.env_normal,	.environmentPanel .asteroid_avg_titanium.env_normal		{ background-position: -320px -1500px; }
+#area .asteroid_avg_crystal.env_normal,	.environmentPanel .asteroid_avg_crystal.env_normal			{ background-position:      0 -1740px; }
+#area .asteroid_avg_andium.env_normal,		.environmentPanel .asteroid_avg_andium.env_normal		{ background-position: -160px -1740px; }
+#area .asteroid_avg_antimatter.env_normal,		.environmentPanel .asteroid_avg_antimatter.env_normal		{ background-position: -1078px -1328px; }
+#area .asteroid_high_titanium.env_normal,	.environmentPanel .asteroid_high_titanium.env_normal	{ background-position: -320px -1740px; }
+#area .asteroid_high_crystal.env_normal,	.environmentPanel .asteroid_high_crystal.env_normal		{ background-position:      0 -1980px; }
+#area .asteroid_high_andium.env_normal,	.environmentPanel .asteroid_high_andium.env_normal			{ background-position: -160px -1980px; }
+#area .asteroid_high_antimatter.env_normal,		.environmentPanel .asteroid_high_antimatter.env_normal		{ background-position: -1271px -1328px; }
+
+#area .asteroid_vein_titanium.env_normal, .environmentPanel .asteroid_vein_titanium.env_normal { background-position: -320px -1080px; }
+#area .asteroid_lowc_titanium.env_normal, .environmentPanel .asteroid_lowc_titanium.env_normal { background-position: -320px -1080px; }
+#area .asteroid_vein_crystal.env_normal, .environmentPanel .asteroid_vein_crystal.env_normal  { background-position:      0 -1500px; }
+#area  .asteroid_lowc_crystal.env_normal, .environmentPanel .asteroid_lowc_crystal.env_normal { background-position:      0 -1500px; }
+#area .asteroid_vein_andium.env_normal, .environmentPanel .asteroid_vein_andium.env_normal { background-position: -160px -1500px; }
+#area  .asteroid_lowc_andium.env_normal, .environmentPanel .asteroid_lowc_andium.env_normal { background-position: -160px -1500px; }
+#area .asteroid_vein_antimatter.env_normal,		.environmentPanel .asteroid_vein_antimatter.env_normal		{ background-position: -890px -1328px; }
+#area .asteroid_lowc_antimatter.env_normal,		.environmentPanel .asteroid_lowc_antimatter.env_normal		{ background-position: -890px -1328px; }
+
+#area .asteroid_mediumc_titanium.env_normal, .environmentPanel .asteroid_mediumc_titanium.env_normal { background-position: -320px -1500px; }
+#area .asteroid_mediumc_crystal.env_normal, .environmentPanel .asteroid_mediumc_crystal.env_normal { background-position:      0 -1740px; }
+#area .asteroid_mediumc_andium.env_normal, .environmentPanel .asteroid_mediumc_andium.env_normal { background-position: -160px -1740px; }
+#area .asteroid_mediumc_antimatter.env_normal,		.environmentPanel .asteroid_mediumc_antimatter.env_normal		{ background-position: -1078px -1328px; }
+#area .asteroid_important_titanium.env_normal, .environmentPanel  .asteroid_important_titanium.env_normal { background-position: -320px -1500px; }
+#area .asteroid_important_crystal.env_normal, .environmentPanel .asteroid_important_crystal.env_normal { background-position:      0 -1740px; }
+#area .asteroid_important_andium.env_normal, .environmentPanel .asteroid_important_andium.env_normal { background-position: -160px -1740px; }
+#area .asteroid_impotant_antimatter.env_normal,		.environmentPanel .asteroid_important_antimatter.env_normal		{ background-position: -1078px -1328px; }
+
+#area .asteroid_abondant_titanium.env_normal, .environmentPanel .asteroid_abondant_titanium.env_normal { background-position: -320px -1740px; }
+#area .asteroid_abondant_crystal.env_normal, .environmentPanel .asteroid_abondant_crystal.env_normal { background-position:      0 -1980px; }
+#area .asteroid_abondant_andium.env_normal, .environmentPanel .asteroid_abondant_andium.env_normal { background-position: -160px -1980px; }
+#area .asteroid_abondant_antimatter.env_normal,		.environmentPanel .asteroid_abondant_antimatter.env_normal		{ background-position: -1271px -1328px; }
+#area .asteroid_pure_titanium.env_normal, .environmentPanel .asteroid_pure_titanium.env_normal { background-position: -320px -1740px; }
+#area .asteroid_pure_crystal.env_normal, .environmentPanel .asteroid_pure_crystal.env_normal { background-position:      0 -1980px; }
+#area .asteroid_pure_andium.env_normal, .environmentPanel .asteroid_pure_andium.env_normal { background-position: -160px -1980px; }
+#area .asteroid_pure_antimatter.env_normal,		.environmentPanel .asteroid_pure_antimatter.env_normal		{ background-position: -1271px -1328px; }
+
+#area .asteroid_concentrate_titanium.env_normal, .environmentPanel .asteroid_concentrate_titanium.env_normal { background-position: -860px -1980px; }
+#area .asteroid_concentrate_crystal.env_normal, .environmentPanel .asteroid_concentrate_crystal.env_normal { background-position: -320px -1980px; }
+#area .asteroid_concentrate_andium.env_normal, .environmentPanel .asteroid_concentrate_andium.env_normal { background-position: -1016px -1980px; }
+#area .asteroid_concentrate_antimatter.env_normal,		.environmentPanel .asteroid_concentrate_antimatter.env_normal		{ background-position: -891px -1629px; }
+
+
+.zoom05 .asteroid.env_normal 					{ background-position:  -80px -1240px !important; }
+.zoom05 .asteroid_dense.env_normal				{ background-position:      0 -1240px !important; }
+.zoom05 .asteroid_low_titanium.env_normal		{ background-position: -160px -1240px !important; }
+.zoom05 .asteroid_low_crystal.env_normal		{ background-position:      0 -1660px !important; }
+.zoom05 .asteroid_low_andium.env_normal			{ background-position:  -80px -1660px !important; }
+.zoom05 .asteroid_low_antimatter.env_normal			{ background-position:  -905px -1528px !important; }
+.zoom05 .asteroid_avg_titanium.env_normal		{ background-position: -160px -1660px !important; }
+.zoom05 .asteroid_avg_crystal.env_normal		{ background-position:      0 -1900px !important; }
+.zoom05 .asteroid_avg_andium.env_normal			{ background-position:  -80px -1900px !important; }
+.zoom05 .asteroid_avg_antimatter.env_normal			{ background-position:  -998px -1528px !important; }
+.zoom05 .asteroid_high_titanium.env_normal		{ background-position: -160px -1900px !important; }
+.zoom05 .asteroid_high_crystal.env_normal		{ background-position:      0 -2140px !important; }
+.zoom05 .asteroid_high_andium.env_normal		{ background-position:  -80px -2140px !important; }
+.zoom05 .asteroid_high_antimatter.env_normal			{ background-position:  -1145px -1528px !important; }
+
+.zoom05 .asteroid_vein_titanium.env_normal { background-position: -160px -1240px !important; }
+.zoom05 .asteroid_lowc_titanium.env_normal { background-position: -160px -1240px !important; }
+.zoom05 .asteroid_vein_crystal.env_normal { background-position:      0 -1660px !important; }
+.zoom05 .asteroid_lowc_crystal.env_normal { background-position:      0 -1660px !important; }
+.zoom05 .asteroid_vein_andium.env_normal { background-position:  -80px -1660px !important; }
+.zoom05 .asteroid_lowc_andium.env_normal { background-position:  -80px -1660px !important; }
+.zoom05 .asteroid_vein_antimatter.env_normal			{ background-position:  -905px -1528px !important; }
+.zoom05 .asteroid_lowc_antimatter.env_normal			{ background-position:  -905px -1528px !important; }
+
+.zoom05 .asteroid_mediumc_titanium.env_normal { background-position: -160px -1660px !important; }
+.zoom05 .asteroid_mediumc_crystal.env_normal { background-position:      0 -1900px !important; }
+.zoom05 .asteroid_mediumc_andium.env_normal { background-position:  -80px -1900px !important; }
+.zoom05 .asteroid_avg_antimatter.env_normal			{ background-position:  -998px -1528px !important; }
+.zoom05 .asteroid_important_titanium.env_normal { background-position: -160px -1660px !important; }
+.zoom05 .asteroid_important_crystal.env_normal { background-position:      0 -1900px !important; }
+.zoom05 .asteroid_important_andium.env_normal { background-position:  -80px -1900px !important; }
+.zoom05 .asteroid_avg_antimatter.env_normal			{ background-position:  -998px -1528px !important; }
+
+.zoom05 .asteroid_abondant_titanium.env_normal { background-position: -160px -1900px !important; }
+.zoom05 .asteroid_abondant_crystal.env_normal { background-position:      0 -2140px !important; }
+.zoom05 .asteroid_abondant_andium.env_normal { background-position:  -80px -2140px !important; }
+.zoom05 .asteroid_abondant_antimatter.env_normal			{ background-position:  -1145px -1528px !important; }
+.zoom05 .asteroid_pure_titanium.env_normal { background-position: -160px -1900px !important; }
+.zoom05 .asteroid_pure_crystal.env_normal { background-position:      0 -2140px !important; }
+.zoom05 .asteroid_pure_andium.env_normal { background-position:  -80px -2140px !important; }
+.zoom05 .asteroid_pure_antimatter.env_normal			{ background-position:  -1145px -1528px !important; }
+
+.zoom05 .asteroid_concentrate_crystal.env_normal { background-position:  -160px -2140px !important; }
+.zoom05 .asteroid_concentrate_titanium.env_normal { background-position:  -243px -2140px !important; }
+.zoom05 .asteroid_concentrate_andium.env_normal { background-position:  -328px -2140px !important; }
+.zoom05 .asteroid_concentrate_antimatter.env_normal { background-position:  -908px -1819px !important; }
+
+/* Environement glacial */
+
+#area .asteroid.env_glacial, 		.environmentPanel .asteroid.env_glacial			{ background-position: -694px -1078px; }
+#area .asteroid_dense.env_glacial,	.environmentPanel .asteroid_dense.env_glacial	{ background-position: -540px -1074px; }
+#area .asteroid_low_titanium.env_glacial,	.environmentPanel .asteroid_low_titanium.env_glacial		{ background-position: -320px -1080px; }
+#area .asteroid_low_crystal.env_glacial,	.environmentPanel .asteroid_low_crystal.env_glacial			{ background-position:      0 -1500px; }
+#area .asteroid_low_andium.env_glacial,		.environmentPanel .asteroid_low_andium.env_glacial			{ background-position: -160px -1500px; }
+#area .asteroid_avg_titanium.env_glacial,	.environmentPanel .asteroid_avg_titanium.env_glacial		{ background-position: -320px -1500px; }
+#area .asteroid_avg_crystal.env_glacial,	.environmentPanel .asteroid_avg_crystal.env_glacial			{ background-position:      0 -1740px; }
+#area .asteroid_avg_andium.env_glacial,		.environmentPanel .asteroid_avg_andium.env_glacial			{ background-position: -160px -1740px; }
+#area .asteroid_high_titanium.env_glacial,	.environmentPanel .asteroid_high_titanium.env_glacial		{ background-position: -320px -1740px; }
+#area .asteroid_high_crystal.env_glacial,	.environmentPanel .asteroid_high_crystal.env_glacial		{ background-position:      0 -1980px; }
+#area .asteroid_high_andium.env_glacial,	.environmentPanel .asteroid_high_andium.env_glacial			{ background-position: -160px -1980px; }
+
+#area .asteroid_vein_titanium.env_glacial, .environmentPanel .asteroid_vein_titanium.env_glacial { background-position: -320px -1080px; }
+#area .asteroid_lowc_titanium.env_glacial, .environmentPanel .asteroid_lowc_titanium.env_glacial { background-position: -320px -1080px; }
+#area .asteroid_vein_crystal.env_glacial, .environmentPanel .asteroid_vein_crystal.env_glacial  { background-position:      0 -1500px; }
+#area  .asteroid_lowc_crystal.env_glacial, .environmentPanel .asteroid_lowc_crystal.env_glacial { background-position:      0 -1500px; }
+#area .asteroid_vein_andium.env_glacial, .environmentPanel .asteroid_vein_andium.env_glacial { background-position: -160px -1500px; }
+#area  .asteroid_lowc_andium.env_glacial, .environmentPanel .asteroid_lowc_andium.env_glacial { background-position: -160px -1500px; }
+
+#area .asteroid_mediumc_titanium.env_glacial, .environmentPanel .asteroid_mediumc_titanium.env_glacial { background-position: -320px -1500px; }
+#area .asteroid_mediumc_crystal.env_glacial, .environmentPanel .asteroid_mediumc_crystal.env_glacial { background-position:      0 -1740px; }
+#area .asteroid_mediumc_andium.env_glacial, .environmentPanel .asteroid_mediumc_andium.env_glacial { background-position: -160px -1740px; }
+#area .asteroid_important_titanium.env_glacial, .environmentPanel  .asteroid_important_titanium.env_glacial { background-position: -320px -1500px; }
+#area .asteroid_important_crystal.env_glacial, .environmentPanel .asteroid_important_crystal.env_glacial { background-position:      0 -1740px; }
+#area .asteroid_important_andium.env_glacial, .environmentPanel .asteroid_important_andium.env_glacial { background-position: -160px -1740px; }
+
+#area .asteroid_abondant_titanium.env_glacial, .environmentPanel .asteroid_abondant_titanium.env_glacial { background-position: -320px -1740px; }
+#area .asteroid_abondant_crystal.env_glacial, .environmentPanel .asteroid_abondant_crystal.env_glacial { background-position:      0 -1980px; }
+#area .asteroid_abondant_andium.env_glacial, .environmentPanel .asteroid_abondant_andium.env_glacial { background-position: -160px -1980px; }
+#area .asteroid_pure_titanium.env_glacial, .environmentPanel .asteroid_pure_titanium.env_glacial { background-position: -320px -1740px; }
+#area .asteroid_pure_crystal.env_glacial, .environmentPanel .asteroid_pure_crystal.env_glacial { background-position:      0 -1980px; }
+#area .asteroid_pure_andium.env_glacial, .environmentPanel .asteroid_pure_andium.env_glacial { background-position: -160px -1980px; }
+
+#area .asteroid_concentrate_titanium.env_glacial, .environmentPanel .asteroid_concentrate_titanium.env_glacial { background-position: -860px -1980px; }
+#area .asteroid_concentrate_crystal.env_glacial, .environmentPanel .asteroid_concentrate_crystal.env_glacial{ background-position: -320px -1980px; }
+#area .asteroid_concentrate_andium.env_glacial, .environmentPanel .asteroid_concentrate_andium.env_glacial { background-position: -1016px -1980px; }
+
+#area .asteroid_low_antimatter.env_glacial,		.environmentPanel .asteroid_low_antimatter.env_glacial		{ background-position: -890px -1328px; }
+#area .asteroid_avg_antimatter.env_glacial,		.environmentPanel .asteroid_avg_antimatter.env_glacial		{ background-position: -1078px -1328px; }
+#area .asteroid_high_antimatter.env_glacial,		.environmentPanel .asteroid_high_antimatter.env_glacial	{ background-position: -1271px -1328px; }
+#area .asteroid_vein_antimatter.env_glacial,		.environmentPanel .asteroid_vein_antimatter.env_glacial		{ background-position: -890px -1328px; }
+#area .asteroid_lowc_antimatter.env_glacial,		.environmentPanel .asteroid_lowc_antimatter.env_glacial	{ background-position: -890px -1328px; }
+#area .asteroid_mediumc_antimatter.env_glacial,		.environmentPanel .asteroid_mediumc_antimatter.env_glacial		{ background-position: -1078px -1328px; }
+#area .asteroid_impotant_antimatter.env_glacial,		.environmentPanel .asteroid_important_antimatter.env_glacial		{ background-position: -1078px -1328px; }
+#area .asteroid_abondant_antimatter.env_glacial,		.environmentPanel .asteroid_abondant_antimatter.env_glacial		{ background-position: -1271px -1328px; }
+#area .asteroid_pure_antimatter.env_glacial,		.environmentPanel .asteroid_pure_antimatter.env_glacial		{ background-position: -1271px -1328px; }
+#area .asteroid_concentrate_antimatter.env_glacial,		.environmentPanel .asteroid_concentrate_antimatter.env_glacial		{ background-position: -891px -1629px; }
+
+.zoom05 .asteroid.env_glacial					{ background-position: -617px -1240px !important; }
+.zoom05 .asteroid_dense.env_glacial				{ background-position: -536px -1238px !important; }
+.zoom05 .asteroid_low_titanium.env_glacial		{ background-position: -160px -1240px !important; }
+.zoom05 .asteroid_low_crystal.env_glacial		{ background-position:      0 -1660px !important; }
+.zoom05 .asteroid_low_andium.env_glacial		{ background-position:  -80px -1660px !important; }
+.zoom05 .asteroid_avg_titanium.env_glacial		{ background-position: -160px -1660px !important; }
+.zoom05 .asteroid_avg_crystal.env_glacial		{ background-position:      0 -1900px !important; }
+.zoom05 .asteroid_avg_andium.env_glacial		{ background-position:  -80px -1900px !important; }
+.zoom05 .asteroid_high_titanium.env_glacial		{ background-position: -160px -1900px !important; }
+.zoom05 .asteroid_high_crystal.env_glacial		{ background-position:      0 -2140px !important; }
+.zoom05 .asteroid_high_andium.env_glacial		{ background-position:  -80px -2140px !important; }
+
+.zoom05 .asteroid_vein_titanium.env_glacial { background-position: -160px -1240px !important; }
+.zoom05 .asteroid_lowc_titanium.env_glacial { background-position: -160px -1240px !important; }
+.zoom05 .asteroid_vein_crystal.env_glacial { background-position:      0 -1660px !important; }
+.zoom05 .asteroid_lowc_crystal.env_glacial { background-position:      0 -1660px !important; }
+.zoom05 .asteroid_vein_andium.env_glacial { background-position:  -80px -1660px !important; }
+.zoom05 .asteroid_lowc_andium.env_glacial { background-position:  -80px -1660px !important; }
+
+.zoom05 .asteroid_mediumc_titanium.env_glacial { background-position: -160px -1660px !important; }
+.zoom05 .asteroid_mediumc_crystal.env_glacial { background-position:      0 -1900px !important; }
+.zoom05 .asteroid_mediumc_andium.env_glacial { background-position:  -80px -1900px !important; }
+.zoom05 .asteroid_important_titanium.env_glacial { background-position: -160px -1660px !important; }
+.zoom05 .asteroid_important_crystal.env_glacial { background-position:      0 -1900px !important; }
+.zoom05 .asteroid_important_andium.env_glacial { background-position:  -80px -1900px !important; }
+
+.zoom05 .asteroid_abondant_titanium.env_glacial { background-position: -160px -1900px !important; }
+.zoom05 .asteroid_abondant_crystal.env_glacial { background-position:      0 -2140px !important; }
+.zoom05 .asteroid_abondant_andium.env_glacial { background-position:  -80px -2140px !important; }
+.zoom05 .asteroid_pure_titanium.env_glacial { background-position: -160px -1900px !important; }
+.zoom05 .asteroid_pure_crystal.env_glacial { background-position:      0 -2140px !important; }
+.zoom05 .asteroid_pure_andium.env_glacial { background-position:  -80px -2140px !important; }
+
+.zoom05 .asteroid_concentrate_crystal.env_glacial{ background-position:  -160px -2140px !important; }
+.zoom05 .asteroid_concentrate_titanium.env_glacial { background-position:  -243px -2140px !important; }
+.zoom05 .asteroid_concentrate_andium.env_glacial { background-position:  -328px -2140px !important; }
+
+.zoom05 .asteroid_low_antimatter.env_glacial			{ background-position:  -905px -1528px !important; }
+.zoom05 .asteroid_avg_antimatter.env_glacial		{ background-position:  -998px -1528px !important; }
+.zoom05 .asteroid_high_antimatter.env_glacial			{ background-position:  -1145px -1528px !important; }
+.zoom05 .asteroid_vein_antimatter.env_glacial			{ background-position:  -905px -1528px !important; }
+.zoom05 .asteroid_lowc_antimatter.env_glacial			{ background-position:  -905px -1528px !important; }
+.zoom05 .asteroid_avg_antimatter.env_glacial			{ background-position:  -998px -1528px !important; }
+.zoom05 .asteroid_avg_antimatter.env_glacial			{ background-position:  -998px -1528px !important; }
+.zoom05 .asteroid_abondant_antimatter.env_glacial			{ background-position:  -1145px -1528px !important; }
+.zoom05 .asteroid_pure_antimatter.env_glacial			{ background-position:  -1145px -1528px !important; }
+.zoom05 .asteroid_concentrate_antimatter.env_glacial { background-position:  -908px -1819px !important; }
+
+/* Environement desertique */
+
+#area .asteroid.env_desert, 		.environmentPanel .asteroid.env_desert			{ background-position: -694px -1328px; }
+#area .asteroid_dense.env_desert,	.environmentPanel .asteroid_dense.env_desert	{ background-position: -540px -1328px; }
+#area .asteroid_low_titanium.env_desert,	.environmentPanel .asteroid_low_titanium.env_desert		{ background-position: -320px -1080px; }
+#area .asteroid_low_crystal.env_desert,	.environmentPanel .asteroid_low_crystal.env_desert			{ background-position:      0 -1500px; }
+#area .asteroid_low_andium.env_desert,		.environmentPanel .asteroid_low_andium.env_desert		{ background-position: -160px -1500px; }
+#area .asteroid_avg_titanium.env_desert,	.environmentPanel .asteroid_avg_titanium.env_desert		{ background-position: -320px -1500px; }
+#area .asteroid_avg_crystal.env_desert,	.environmentPanel .asteroid_avg_crystal.env_desert			{ background-position:      0 -1740px; }
+#area .asteroid_avg_andium.env_desert,		.environmentPanel .asteroid_avg_andium.env_desert		{ background-position: -160px -1740px; }
+#area .asteroid_high_titanium.env_desert,	.environmentPanel .asteroid_high_titanium.env_desert	{ background-position: -320px -1740px; }
+#area .asteroid_high_crystal.env_desert,	.environmentPanel .asteroid_high_crystal.env_desert		{ background-position:      0 -1980px; }
+#area .asteroid_high_andium.env_desert,	.environmentPanel .asteroid_high_andium.env_desert			{ background-position: -160px -1980px; }
+
+#area .asteroid_vein_titanium.env_desert, .environmentPanel .asteroid_vein_titanium.env_desert { background-position: -320px -1080px; }
+#area .asteroid_lowc_titanium.env_desert, .environmentPanel .asteroid_lowc_titanium.env_desert { background-position: -320px -1080px; }
+#area .asteroid_vein_crystal.env_desert, .environmentPanel .asteroid_vein_crystal.env_desert  { background-position:      0 -1500px; }
+#area  .asteroid_lowc_crystal.env_desert, .environmentPanel .asteroid_lowc_crystal.env_desert { background-position:      0 -1500px; }
+#area .asteroid_vein_andium.env_desert, .environmentPanel .asteroid_vein_andium.env_desert { background-position: -160px -1500px; }
+#area  .asteroid_lowc_andium.env_desert, .environmentPanel .asteroid_lowc_andium.env_desert { background-position: -160px -1500px; }
+
+#area .asteroid_mediumc_titanium.env_desert, .environmentPanel .asteroid_mediumc_titanium.env_desert { background-position: -320px -1500px; }
+#area .asteroid_mediumc_crystal.env_desert, .environmentPanel .asteroid_mediumc_crystal.env_desert { background-position:      0 -1740px; }
+#area .asteroid_mediumc_andium.env_desert, .environmentPanel .asteroid_mediumc_andium.env_desert { background-position: -160px -1740px; }
+#area .asteroid_important_titanium.env_desert, .environmentPanel  .asteroid_important_titanium.env_desert { background-position: -320px -1500px; }
+#area .asteroid_important_crystal.env_desert, .environmentPanel .asteroid_important_crystal.env_desert { background-position:      0 -1740px; }
+#area .asteroid_important_andium.env_desert, .environmentPanel .asteroid_important_andium.env_desert { background-position: -160px -1740px; }
+
+#area .asteroid_abondant_titanium.env_desert, .environmentPanel .asteroid_abondant_titanium.env_desert { background-position: -320px -1740px; }
+#area .asteroid_abondant_crystal.env_desert, .environmentPanel .asteroid_abondant_crystal.env_desert { background-position:      0 -1980px; }
+#area .asteroid_abondant_andium.env_desert, .environmentPanel .asteroid_abondant_andium.env_desert { background-position: -160px -1980px; }
+#area .asteroid_pure_titanium.env_desert, .environmentPanel .asteroid_pure_titanium.env_desert { background-position: -320px -1740px; }
+#area .asteroid_pure_crystal.env_desert, .environmentPanel .asteroid_pure_crystal.env_desert { background-position:      0 -1980px; }
+#area .asteroid_pure_andium.env_desert, .environmentPanel .asteroid_pure_andium.env_desert { background-position: -160px -1980px; }
+
+#area .asteroid_concentrate_titanium.env_desert, .environmentPanel .asteroid_concentrate_titanium.env_desert { background-position: -860px -1980px; }
+#area .asteroid_concentrate_crystal.env_desert, .environmentPanel .asteroid_concentrate_crystal.env_normal { background-position: -320px -1980px; }
+#area .asteroid_concentrate_andium.env_desert, .environmentPanel .asteroid_concentrate_andium.env_desert { background-position: -1016px -1980px; }
+
+#area .asteroid_low_antimatter.env_desert,		.environmentPanel .asteroid_low_antimatter.env_desert		{ background-position: -890px -1328px; }
+#area .asteroid_avg_antimatter.env_desert,		.environmentPanel .asteroid_avg_antimatter.env_desert		{ background-position: -1078px -1328px; }
+#area .asteroid_high_antimatter.env_desert,		.environmentPanel .asteroid_high_antimatter.env_desert		{ background-position: -1271px -1328px; }
+#area .asteroid_vein_antimatter.env_desert,		.environmentPanel .asteroid_vein_antimatter.env_desert		{ background-position: -890px -1328px; }
+#area .asteroid_lowc_antimatter.env_desert,		.environmentPanel .asteroid_lowc_antimatter.env_desert		{ background-position: -890px -1328px; }
+#area .asteroid_mediumc_antimatter.env_desert,		.environmentPanel .asteroid_mediumc_antimatter.env_desert		{ background-position: -1078px -1328px; }
+#area .asteroid_impotant_antimatter.env_desert,		.environmentPanel .asteroid_important_antimatter.env_desert		{ background-position: -1078px -1328px; }
+#area .asteroid_abondant_antimatter.env_desert,		.environmentPanel .asteroid_abondant_antimatter.env_desert		{ background-position: -1271px -1328px; }
+#area .asteroid_pure_antimatter.env_desert,		.environmentPanel .asteroid_pure_antimatter.env_desert		{ background-position: -1271px -1328px; }
+#area .asteroid_concentrate_antimatter.env_desert,		.environmentPanel .asteroid_concentrate_antimatter.env_desert		{ background-position: -891px -1629px; }
+
+.zoom05 .asteroid.env_desert			{ background-position: -617px -1492px !important; }
+.zoom05 .asteroid_dense.env_desert		{ background-position: -536px -1492px !important; }
+.zoom05 .asteroid_low_titanium.env_desert		{ background-position: -160px -1240px !important; }
+.zoom05 .asteroid_low_crystal.env_desert		{ background-position:      0 -1660px !important; }
+.zoom05 .asteroid_low_andium.env_desert			{ background-position:  -80px -1660px !important; }
+.zoom05 .asteroid_avg_titanium.env_desert		{ background-position: -160px -1660px !important; }
+.zoom05 .asteroid_avg_crystal.env_desert		{ background-position:      0 -1900px !important; }
+.zoom05 .asteroid_avg_andium.env_desert			{ background-position:  -80px -1900px !important; }
+.zoom05 .asteroid_high_titanium.env_desert		{ background-position: -160px -1900px !important; }
+.zoom05 .asteroid_high_crystal.env_desert		{ background-position:      0 -2140px !important; }
+.zoom05 .asteroid_high_andium.env_desert		{ background-position:  -80px -2140px !important; }
+
+.zoom05 .asteroid_vein_titanium.env_desert { background-position: -160px -1240px !important; }
+.zoom05 .asteroid_lowc_titanium.env_desert { background-position: -160px -1240px !important; }
+.zoom05 .asteroid_vein_crystal.env_desert { background-position:      0 -1660px !important; }
+.zoom05 .asteroid_lowc_crystal.env_desert { background-position:      0 -1660px !important; }
+.zoom05 .asteroid_vein_andium.env_desert { background-position:  -80px -1660px !important; }
+.zoom05 .asteroid_lowc_andium.env_desert { background-position:  -80px -1660px !important; }
+
+.zoom05 .asteroid_mediumc_titanium.env_desert { background-position: -160px -1660px !important; }
+.zoom05 .asteroid_mediumc_crystal.env_desert { background-position:      0 -1900px !important; }
+.zoom05 .asteroid_mediumc_andium.env_desert { background-position:  -80px -1900px !important; }
+.zoom05 .asteroid_important_titanium.env_desert { background-position: -160px -1660px !important; }
+.zoom05 .asteroid_important_crystal.env_desert { background-position:      0 -1900px !important; }
+.zoom05 .asteroid_important_andium.env_desert { background-position:  -80px -1900px !important; }
+
+.zoom05 .asteroid_abondant_titanium.env_desert { background-position: -160px -1900px !important; }
+.zoom05 .asteroid_abondant_crystal.env_desert { background-position:      0 -2140px !important; }
+.zoom05 .asteroid_abondant_andium.env_desert { background-position:  -80px -2140px !important; }
+.zoom05 .asteroid_pure_titanium.env_desert { background-position: -160px -1900px !important; }
+.zoom05 .asteroid_pure_crystal.env_desert { background-position:      0 -2140px !important; }
+.zoom05 .asteroid_pure_andium.env_desert { background-position:  -80px -2140px !important; }
+
+.zoom05 .asteroid_concentrate_crystal.env_desert { background-position:  -160px -2140px !important; }
+.zoom05 .asteroid_concentrate_titanium.env_desert { background-position:  -243px -2140px !important; }
+.zoom05 .asteroid_concentrate_andium.env_desert { background-position:  -328px -2140px !important; }
+
+.zoom05 .asteroid_low_antimatter.env_desert			{ background-position:  -905px -1528px !important; }
+.zoom05 .asteroid_avg_antimatter.env_desert			{ background-position:  -998px -1528px !important; }
+.zoom05 .asteroid_high_antimatter.env_desert			{ background-position:  -1145px -1528px !important; }
+.zoom05 .asteroid_vein_antimatter.env_desert			{ background-position:  -905px -1528px !important; }
+.zoom05 .asteroid_lowc_antimatter.env_desert			{ background-position:  -905px -1528px !important; }
+.zoom05 .asteroid_avg_antimatter.env_desert			{ background-position:  -998px -1528px !important; }
+.zoom05 .asteroid_avg_antimatter.env_desert			{ background-position:  -998px -1528px !important; }
+.zoom05 .asteroid_abondant_antimatter.env_desert			{ background-position:  -1145px -1528px !important; }
+.zoom05 .asteroid_pure_antimatter.env_desert			{ background-position:  -1145px -1528px !important; }
+.zoom05 .asteroid_concentrate_antimatter.env_desert { background-position:  -908px -1819px !important; }
+
+/* Environement alien */
+
+#area .asteroid.env_alien, 		.environmentPanel .asteroid.env_alien			{ background-position: -707px -1577px; }
+#area .asteroid_dense.env_alien,	.environmentPanel .asteroid_dense.env_alien	{ background-position: -547px -1581px; }
+#area .asteroid_low_titanium.env_alien,	.environmentPanel .asteroid_low_titanium.env_alien			{ background-position: -320px -1080px; }
+#area .asteroid_low_crystal.env_alien,	.environmentPanel .asteroid_low_crystal.env_alien			{ background-position:      0 -1500px; }
+#area .asteroid_low_andium.env_alien,		.environmentPanel .asteroid_low_andium.env_alien		{ background-position: -160px -1500px; }
+#area .asteroid_avg_titanium.env_alien,	.environmentPanel .asteroid_avg_titanium.env_alien			{ background-position: -320px -1500px; }
+#area .asteroid_avg_crystal.env_alien,	.environmentPanel .asteroid_avg_crystal.env_alien			{ background-position:      0 -1740px; }
+#area .asteroid_avg_andium.env_alien,		.environmentPanel .asteroid_avg_andium.env_alien		{ background-position: -160px -1740px; }
+#area .asteroid_high_titanium.env_alien,	.environmentPanel .asteroid_high_titanium.env_alien		{ background-position: -320px -1740px; }
+#area .asteroid_high_crystal.env_alien,	.environmentPanel .asteroid_high_crystal.env_alien			{ background-position:      0 -1980px; }
+#area .asteroid_high_andium.env_alien,	.environmentPanel .asteroid_high_andium.env_alien			{ background-position: -160px -1980px; }
+
+#area .asteroid_vein_titanium.env_alien, .environmentPanel .asteroid_vein_titanium.env_alien { background-position: -320px -1080px; }
+#area .asteroid_lowc_titanium.env_alien, .environmentPanel .asteroid_lowc_titanium.env_alien { background-position: -320px -1080px; }
+#area .asteroid_vein_crystal.env_alien, .environmentPanel .asteroid_vein_crystal.env_alien  { background-position:      0 -1500px; }
+#area  .asteroid_lowc_crystal.env_alien, .environmentPanel .asteroid_lowc_crystal.env_alien { background-position:      0 -1500px; }
+#area .asteroid_vein_andium.env_alien, .environmentPanel .asteroid_vein_andium.env_alien { background-position: -160px -1500px; }
+#area  .asteroid_lowc_andium.env_alien, .environmentPanel .asteroid_lowc_andium.env_alien { background-position: -160px -1500px; }
+
+#area .asteroid_mediumc_titanium.env_alien, .environmentPanel .asteroid_mediumc_titanium.env_alien { background-position: -320px -1500px; }
+#area .asteroid_mediumc_crystal.env_alien, .environmentPanel .asteroid_mediumc_crystal.env_alien { background-position:      0 -1740px; }
+#area .asteroid_mediumc_andium.env_alien, .environmentPanel .asteroid_mediumc_andium.env_alien { background-position: -160px -1740px; }
+#area .asteroid_important_titanium.env_alien, .environmentPanel  .asteroid_important_titanium.env_alien { background-position: -320px -1500px; }
+#area .asteroid_important_crystal.env_alien, .environmentPanel .asteroid_important_crystal.env_alien { background-position:      0 -1740px; }
+#area .asteroid_important_andium.env_alien, .environmentPanel .asteroid_important_andium.env_alien { background-position: -160px -1740px; }
+
+#area .asteroid_abondant_titanium.env_alien, .environmentPanel .asteroid_abondant_titanium.env_alien { background-position: -320px -1740px; }
+#area .asteroid_abondant_crystal.env_alien, .environmentPanel .asteroid_abondant_crystal.env_alien { background-position:      0 -1980px; }
+#area .asteroid_abondant_andium.env_alien, .environmentPanel .asteroid_abondant_andium.env_alien { background-position: -160px -1980px; }
+#area .asteroid_pure_titanium.env_alien, .environmentPanel .asteroid_pure_titanium.env_alien { background-position: -320px -1740px; }
+#area .asteroid_pure_crystal.env_alien, .environmentPanel .asteroid_pure_crystal.env_alien { background-position:      0 -1980px; }
+#area .asteroid_pure_andium.env_alien, .environmentPanel .asteroid_pure_andium.env_alien { background-position: -160px -1980px; }
+
+#area .asteroid_concentrate_titanium.env_alien, .environmentPanel .asteroid_concentrate_titanium.env_alien { background-position: -860px -1980px; }
+#area .asteroid_concentrate_crystal.env_alien, .environmentPanel .asteroid_concentrate_crystal.env_alien { background-position: -320px -1980px; }
+#area .asteroid_concentrate_andium.env_alien, .environmentPanel .asteroid_concentrate_andium.env_alien { background-position: -1016px -1980px; }
+
+#area .asteroid_low_antimatter.env_alien,		.environmentPanel .asteroid_low_antimatter.env_alien		{ background-position: -890px -1328px; }
+#area .asteroid_avg_antimatter.env_alien,		.environmentPanel .asteroid_avg_antimatter.env_alien		{ background-position: -1078px -1328px; }
+#area .asteroid_high_antimatter.env_alien,		.environmentPanel .asteroid_high_antimatter.env_alien		{ background-position: -1271px -1328px; }
+#area .asteroid_vein_antimatter.env_alien,		.environmentPanel .asteroid_vein_antimatter.env_alien		{ background-position: -890px -1328px; }
+#area .asteroid_lowc_antimatter.env_alien,		.environmentPanel .asteroid_lowc_antimatter.env_alien		{ background-position: -890px -1328px; }
+#area .asteroid_mediumc_antimatter.env_alien,		.environmentPanel .asteroid_mediumc_antimatter.env_alien		{ background-position: -1078px -1328px; }
+#area .asteroid_impotant_antimatter.env_alien,		.environmentPanel .asteroid_important_antimatter.env_alien		{ background-position: -1078px -1328px; }
+#area .asteroid_abondant_antimatter.env_alien,		.environmentPanel .asteroid_abondant_antimatter.env_alien		{ background-position: -1271px -1328px; }
+#area .asteroid_pure_antimatter.env_alien,		.environmentPanel .asteroid_pure_antimatter.env_alien		{ background-position: -1271px -1328px; }
+#area .asteroid_concentrate_antimatter.env_alien,		.environmentPanel .asteroid_concentrate_antimatter.env_alien		{ background-position: -891px -1629px; }
+
+.zoom05 .asteroid.env_alien						{ background-position: -621px -1756px !important; }
+.zoom05 .asteroid_dense.env_alien				{ background-position: -541px -1757px !important; }
+.zoom05 .asteroid_low_titanium.env_alien		{ background-position: -160px -1240px !important; }
+.zoom05 .asteroid_low_crystal.env_alien			{ background-position:      0 -1660px !important; }
+.zoom05 .asteroid_low_andium.env_alien			{ background-position:  -80px -1660px !important; }
+.zoom05 .asteroid_avg_titanium.env_alien		{ background-position: -160px -1660px !important; }
+.zoom05 .asteroid_avg_crystal.env_alien			{ background-position:      0 -1900px !important; }
+.zoom05 .asteroid_avg_andium.env_alien			{ background-position:  -80px -1900px !important; }
+.zoom05 .asteroid_high_titanium.env_alien		{ background-position: -160px -1900px !important; }
+.zoom05 .asteroid_high_crystal.env_alien		{ background-position:      0 -2140px !important; }
+.zoom05 .asteroid_high_andium.env_alien			{ background-position:  -80px -2140px !important; }
+
+.zoom05 .asteroid_vein_titanium.env_alien { background-position: -160px -1240px !important; }
+.zoom05 .asteroid_lowc_titanium.env_alien { background-position: -160px -1240px !important; }
+.zoom05 .asteroid_vein_crystal.env_alien { background-position:      0 -1660px !important; }
+.zoom05 .asteroid_lowc_crystal.env_alien { background-position:      0 -1660px !important; }
+.zoom05 .asteroid_vein_andium.env_alien { background-position:  -80px -1660px !important; }
+.zoom05 .asteroid_lowc_andium.env_alien { background-position:  -80px -1660px !important; }
+
+.zoom05 .asteroid_mediumc_titanium.env_alien { background-position: -160px -1660px !important; }
+.zoom05 .asteroid_mediumc_crystal.env_alien { background-position:      0 -1900px !important; }
+.zoom05 .asteroid_mediumc_andium.env_alien { background-position:  -80px -1900px !important; }
+.zoom05 .asteroid_important_titanium.env_alien { background-position: -160px -1660px !important; }
+.zoom05 .asteroid_important_crystal.env_alien { background-position:      0 -1900px !important; }
+.zoom05 .asteroid_important_andium.env_alien { background-position:  -80px -1900px !important; }
+
+.zoom05 .asteroid_abondant_titanium.env_alien { background-position: -160px -1900px !important; }
+.zoom05 .asteroid_abondant_crystal.env_alien { background-position:      0 -2140px !important; }
+.zoom05 .asteroid_abondant_andium.env_alien { background-position:  -80px -2140px !important; }
+.zoom05 .asteroid_pure_titanium.env_alien { background-position: -160px -1900px !important; }
+.zoom05 .asteroid_pure_crystal.env_alien { background-position:      0 -2140px !important; }
+.zoom05 .asteroid_pure_andium.env_alien { background-position:  -80px -2140px !important; }
+
+.zoom05 .asteroid_concentrate_crystal.env_alien { background-position:  -160px -2140px !important; }
+.zoom05 .asteroid_concentrate_titanium.env_alien { background-position:  -243px -2140px !important; }
+.zoom05 .asteroid_concentrate_andium.env_alien { background-position:  -328px -2140px !important; }
+
+.zoom05 .asteroid_low_antimatter.env_alien			{ background-position:  -905px -1528px !important; }
+.zoom05 .asteroid_avg_antimatter.env_alien			{ background-position:  -998px -1528px !important; }
+.zoom05 .asteroid_high_antimatter.env_alien			{ background-position:  -1145px -1528px !important; }
+.zoom05 .asteroid_vein_antimatter.env_alien			{ background-position:  -905px -1528px !important; }
+.zoom05 .asteroid_lowc_antimatter.env_alien			{ background-position:  -905px -1528px !important; }
+.zoom05 .asteroid_avg_antimatter.env_alien			{ background-position:  -998px -1528px !important; }
+.zoom05 .asteroid_avg_antimatter.env_alien			{ background-position:  -998px -1528px !important; }
+.zoom05 .asteroid_abondant_antimatter.env_alien			{ background-position:  -1145px -1528px !important; }
+.zoom05 .asteroid_pure_antimatter.env_alien			{ background-position:  -1145px -1528px !important; }
+.zoom05 .asteroid_concentrate_antimatter.env_alien { background-position:  -908px -1819px !important; }
+
+/* Environement mines */
+
+#area .asteroid.env_mine, 		.environmentPanel .asteroid.env_mine			{ background-position: -721px -1846px; }
+#area .asteroid_dense.env_mine,	.environmentPanel .asteroid_dense.env_mine		{ background-position: -542px -1846px; }
+#area .asteroid_low_titanium.env_mine,	.environmentPanel .asteroid_low_titanium.env_mine		{ background-position: -320px -1080px; }
+#area .asteroid_low_crystal.env_mine,	.environmentPanel .asteroid_low_crystal.env_mine		{ background-position:      0 -1500px; }
+#area .asteroid_low_andium.env_mine,		.environmentPanel .asteroid_low_andium.env_mine		{ background-position: -160px -1500px; }
+#area .asteroid_avg_titanium.env_mine,	.environmentPanel .asteroid_avg_titanium.env_mine		{ background-position: -320px -1500px; }
+#area .asteroid_avg_crystal.env_mine,	.environmentPanel .asteroid_avg_crystal.env_mine		{ background-position:      0 -1740px; }
+#area .asteroid_avg_andium.env_mine,		.environmentPanel .asteroid_avg_andium.env_mine		{ background-position: -160px -1740px; }
+#area .asteroid_high_titanium.env_mine,	.environmentPanel .asteroid_high_titanium.env_mine		{ background-position: -320px -1740px; }
+#area .asteroid_high_crystal.env_mine,	.environmentPanel .asteroid_high_crystal.env_mine		{ background-position:      0 -1980px; }
+#area .asteroid_high_andium.env_mine,	.environmentPanel .asteroid_high_andium.env_mine		{ background-position: -160px -1980px; }
+
+#area .asteroid_vein_titanium.env_mine, .environmentPanel .asteroid_vein_titanium.env_mine { background-position: -320px -1080px; }
+#area .asteroid_lowc_titanium.env_mine, .environmentPanel .asteroid_lowc_titanium.env_mine { background-position: -320px -1080px; }
+#area .asteroid_vein_crystal.env_mine, .environmentPanel .asteroid_vein_crystal.env_mine  { background-position:      0 -1500px; }
+#area  .asteroid_lowc_crystal.env_mine, .environmentPanel .asteroid_lowc_crystal.env_mine { background-position:      0 -1500px; }
+#area .asteroid_vein_andium.env_mine, .environmentPanel .asteroid_vein_andium.env_mine { background-position: -160px -1500px; }
+#area  .asteroid_lowc_andium.env_mine, .environmentPanel .asteroid_lowc_andium.env_mine { background-position: -160px -1500px; }
+
+#area .asteroid_mediumc_titanium.env_mine, .environmentPanel .asteroid_mediumc_titanium.env_mine { background-position: -320px -1500px; }
+#area .asteroid_mediumc_crystal.env_mine, .environmentPanel .asteroid_mediumc_crystal.env_mine { background-position:      0 -1740px; }
+#area .asteroid_mediumc_andium.env_mine, .environmentPanel .asteroid_mediumc_andium.env_mine { background-position: -160px -1740px; }
+#area .asteroid_important_titanium.env_mine, .environmentPanel  .asteroid_important_titanium.env_mine { background-position: -320px -1500px; }
+#area .asteroid_important_crystal.env_mine, .environmentPanel .asteroid_important_crystal.env_mine { background-position:      0 -1740px; }
+#area .asteroid_important_andium.env_mine, .environmentPanel .asteroid_important_andium.env_mine { background-position: -160px -1740px; }
+
+#area .asteroid_abondant_titanium.env_mine, .environmentPanel .asteroid_abondant_titanium.env_mine { background-position: -320px -1740px; }
+#area .asteroid_abondant_crystal.env_mine, .environmentPanel .asteroid_abondant_crystal.env_mine { background-position:      0 -1980px; }
+#area .asteroid_abondant_andium.env_mine, .environmentPanel .asteroid_abondant_andium.env_mine { background-position: -160px -1980px; }
+#area .asteroid_pure_titanium.env_mine, .environmentPanel .asteroid_pure_titanium.env_mine { background-position: -320px -1740px; }
+#area .asteroid_pure_crystal.env_mine, .environmentPanel .asteroid_pure_crystal.env_mine { background-position:      0 -1980px; }
+#area .asteroid_pure_andium.env_mine, .environmentPanel .asteroid_pure_andium.env_mine { background-position: -160px -1980px; }
+
+#area .asteroid_concentrate_titanium.env_mine, .environmentPanel .asteroid_concentrate_titanium.env_mine { background-position: -860px -1980px; }
+#area .asteroid_concentrate_crystal.env_mine, .environmentPanel .asteroid_concentrate_crystal.env_mine { background-position: -320px -1980px; }
+#area .asteroid_concentrate_andium.env_mine, .environmentPanel .asteroid_concentrate_andium.env_mine { background-position: -1016px -1980px; }
+
+#area .asteroid_low_antimatter.env_mine,		.environmentPanel .asteroid_low_antimatter.env_mine		{ background-position: -890px -1328px; }
+#area .asteroid_avg_antimatter.env_mine,		.environmentPanel .asteroid_avg_antimatter.env_mine		{ background-position: -1078px -1328px; }
+#area .asteroid_high_antimatter.env_mine,		.environmentPanel .asteroid_high_antimatter.env_mine		{ background-position: -1271px -1328px; }
+#area .asteroid_vein_antimatter.env_mine,		.environmentPanel .asteroid_vein_antimatter.env_mine		{ background-position: -890px -1328px; }
+#area .asteroid_lowc_antimatter.env_mine,		.environmentPanel .asteroid_lowc_antimatter.env_mine		{ background-position: -890px -1328px; }
+#area .asteroid_mediumc_antimatter.env_mine,		.environmentPanel .asteroid_mediumc_antimatter.env_mine		{ background-position: -1078px -1328px; }
+#area .asteroid_impotant_antimatter.env_mine,		.environmentPanel .asteroid_important_antimatter.env_mine		{ background-position: -1078px -1328px; }
+#area .asteroid_abondant_antimatter.env_mine,		.environmentPanel .asteroid_abondant_antimatter.env_mine		{ background-position: -1271px -1328px; }
+#area .asteroid_pure_antimatter.env_mine,		.environmentPanel .asteroid_pure_antimatter.env_mine		{ background-position: -1271px -1328px; }
+#area .asteroid_concentrate_antimatter.env_mine,		.environmentPanel .asteroid_concentrate_antimatter.env_mine		{ background-position: -891px -1629px; }
+
+.zoom05 .asteroid.env_mine						{ background-position: -789px -1754px !important; }
+.zoom05 .asteroid_dense.env_mine				{ background-position: -708px -1754px !important; }
+.zoom05 .asteroid_low_titanium.env_mine			{ background-position: -160px -1240px !important; }
+.zoom05 .asteroid_low_crystal.env_mine			{ background-position:      0 -1660px !important; }
+.zoom05 .asteroid_low_andium.env_mine			{ background-position:  -80px -1660px !important; }
+.zoom05 .asteroid_avg_titanium.env_mine			{ background-position: -160px -1660px !important; }
+.zoom05 .asteroid_avg_crystal.env_mine			{ background-position:      0 -1900px !important; }
+.zoom05 .asteroid_avg_andium.env_mine			{ background-position:  -80px -1900px !important; }
+.zoom05 .asteroid_high_titanium.env_mine		{ background-position: -160px -1900px !important; }
+.zoom05 .asteroid_high_crystal.env_mine			{ background-position:      0 -2140px !important; }
+.zoom05 .asteroid_high_andium.env_mine			{ background-position:  -80px -2140px !important; }
+
+.zoom05 .asteroid_vein_titanium.env_mine { background-position: -160px -1240px !important; }
+.zoom05 .asteroid_lowc_titanium.env_mine { background-position: -160px -1240px !important; }
+.zoom05 .asteroid_vein_crystal.env_mine { background-position:      0 -1660px !important; }
+.zoom05 .asteroid_lowc_crystal.env_mine { background-position:      0 -1660px !important; }
+.zoom05 .asteroid_vein_andium.env_mine { background-position:  -80px -1660px !important; }
+.zoom05 .asteroid_lowc_andium.env_mine { background-position:  -80px -1660px !important; }
+
+.zoom05 .asteroid_mediumc_titanium.env_mine { background-position: -160px -1660px !important; }
+.zoom05 .asteroid_mediumc_crystal.env_mine { background-position:      0 -1900px !important; }
+.zoom05 .asteroid_mediumc_andium.env_mine { background-position:  -80px -1900px !important; }
+.zoom05 .asteroid_important_titanium.env_mine { background-position: -160px -1660px !important; }
+.zoom05 .asteroid_important_crystal.env_mine { background-position:      0 -1900px !important; }
+.zoom05 .asteroid_important_andium.env_mine { background-position:  -80px -1900px !important; }
+
+.zoom05 .asteroid_abondant_titanium.env_mine { background-position: -160px -1900px !important; }
+.zoom05 .asteroid_abondant_crystal.env_mine { background-position:      0 -2140px !important; }
+.zoom05 .asteroid_abondant_andium.env_mine { background-position:  -80px -2140px !important; }
+.zoom05 .asteroid_pure_titanium.env_mine { background-position: -160px -1900px !important; }
+.zoom05 .asteroid_pure_crystal.env_mine { background-position:      0 -2140px !important; }
+.zoom05 .asteroid_pure_andium.env_mine { background-position:  -80px -2140px !important; }
+
+.zoom05 .asteroid_concentrate_crystal.env_mine{ background-position:  -160px -2140px !important; }
+.zoom05 .asteroid_concentrate_titanium.env_mine{ background-position:  -243px -2140px !important; }
+.zoom05 .asteroid_concentrate_andium.env_mine{ background-position:  -328px -2140px !important; }
+
+.zoom05 .asteroid_low_antimatter.env_mine			{ background-position:  -905px -1528px !important; }
+.zoom05 .asteroid_avg_antimatter.env_mine			{ background-position:  -998px -1528px !important; }
+.zoom05 .asteroid_high_antimatter.env_mine			{ background-position:  -1145px -1528px !important; }
+.zoom05 .asteroid_vein_antimatter.env_mine			{ background-position:  -905px -1528px !important; }
+.zoom05 .asteroid_lowc_antimatter.env_mine			{ background-position:  -905px -1528px !important; }
+.zoom05 .asteroid_avg_antimatter.env_mine			{ background-position:  -998px -1528px !important; }
+.zoom05 .asteroid_avg_antimatter.env_mine			{ background-position:  -998px -1528px !important; }
+.zoom05 .asteroid_abondant_antimatter.env_mine			{ background-position:  -1145px -1528px !important; }
+.zoom05 .asteroid_pure_antimatter.env_mine			{ background-position:  -1145px -1528px !important; }
+.zoom05 .asteroid_concentrate_antimatter.env_mine { background-position:  -908px -1819px !important; }
+
+/* Environement �paves */
+
+#area .asteroid.env_epave, 		.environmentPanel .asteroid.env_epave			{ background-position: -707px -2012px; }
+#area .asteroid_dense.env_epave,	.environmentPanel .asteroid_dense.env_epave	{ background-position: -545px -2012px; }
+#area .asteroid_low_titanium.env_epave,	.environmentPanel .asteroid_low_titanium.env_epave		{ background-position: -320px -1080px; }
+#area .asteroid_low_crystal.env_epave,	.environmentPanel .asteroid_low_crystal.env_epave		{ background-position:      0 -1500px; }
+#area .asteroid_low_andium.env_epave,		.environmentPanel .asteroid_low_andium.env_epave	{ background-position: -160px -1500px; }
+#area .asteroid_avg_titanium.env_epave,	.environmentPanel .asteroid_avg_titanium.env_epave		{ background-position: -320px -1500px; }
+#area .asteroid_avg_crystal.env_epave,	.environmentPanel .asteroid_avg_crystal.env_epave		{ background-position:      0 -1740px; }
+#area .asteroid_avg_andium.env_epave,		.environmentPanel .asteroid_avg_andium.env_epave	{ background-position: -160px -1740px; }
+#area .asteroid_high_titanium.env_epave,	.environmentPanel .asteroid_high_titanium.env_epave	{ background-position: -320px -1740px; }
+#area .asteroid_high_crystal.env_epave,	.environmentPanel .asteroid_high_crystal.env_epave		{ background-position:      0 -1980px; }
+#area .asteroid_high_andium.env_epave,	.environmentPanel .asteroid_high_andium.env_epave		{ background-position: -160px -1980px; }
+
+#area .asteroid_vein_titanium.env_epave, .environmentPanel .asteroid_vein_titanium.env_epave { background-position: -320px -1080px; }
+#area .asteroid_lowc_titanium.env_epave, .environmentPanel .asteroid_lowc_titanium.env_epave { background-position: -320px -1080px; }
+#area .asteroid_vein_crystal.env_epave, .environmentPanel .asteroid_vein_crystal.env_epave  { background-position:      0 -1500px; }
+#area  .asteroid_lowc_crystal.env_epave, .environmentPanel .asteroid_lowc_crystal.env_epave { background-position:      0 -1500px; }
+#area .asteroid_vein_andium.env_epave, .environmentPanel .asteroid_vein_andium.env_epave { background-position: -160px -1500px; }
+#area  .asteroid_lowc_andium.env_epave, .environmentPanel .asteroid_lowc_andium.env_epave { background-position: -160px -1500px; }
+
+#area .asteroid_mediumc_titanium.env_epave, .environmentPanel .asteroid_mediumc_titanium.env_epave { background-position: -320px -1500px; }
+#area .asteroid_mediumc_crystal.env_epave, .environmentPanel .asteroid_mediumc_crystal.env_epave { background-position:      0 -1740px; }
+#area .asteroid_mediumc_andium.env_epave, .environmentPanel .asteroid_mediumc_andium.env_epave { background-position: -160px -1740px; }
+#area .asteroid_important_titanium.env_epave, .environmentPanel  .asteroid_important_titanium.env_epave { background-position: -320px -1500px; }
+#area .asteroid_important_crystal.env_epave, .environmentPanel .asteroid_important_crystal.env_epave { background-position:      0 -1740px; }
+#area .asteroid_important_andium.env_epave, .environmentPanel .asteroid_important_andium.env_epave { background-position: -160px -1740px; }
+
+#area .asteroid_abondant_titanium.env_epave, .environmentPanel .asteroid_abondant_titanium.env_epave { background-position: -320px -1740px; }
+#area .asteroid_abondant_crystal.env_epave, .environmentPanel .asteroid_abondant_crystal.env_epave { background-position:      0 -1980px; }
+#area .asteroid_abondant_andium.env_epave, .environmentPanel .asteroid_abondant_andium.env_epave { background-position: -160px -1980px; }
+#area .asteroid_pure_titanium.env_epave, .environmentPanel .asteroid_pure_titanium.env_epave { background-position: -320px -1740px; }
+#area .asteroid_pure_crystal.env_epave, .environmentPanel .asteroid_pure_crystal.env_epave { background-position:      0 -1980px; }
+#area .asteroid_pure_andium.env_epave, .environmentPanel .asteroid_pure_andium.env_epave { background-position: -160px -1980px; }
+
+#area .asteroid_concentrate_titanium.env_epave, .environmentPanel .asteroid_concentrate_titanium.env_epave { background-position: -860px -1980px; }
+#area .asteroid_concentrate_crystal.env_epave, .environmentPanel .asteroid_concentrate_crystal.env_epave { background-position: -320px -1980px; }
+#area .asteroid_concentrate_andium.env_epave, .environmentPanel .asteroid_concentrate_andium.env_epave { background-position: -1016px -1980px; }
+
+#area .asteroid_low_antimatter.env_epave,		.environmentPanel .asteroid_low_antimatter.env_epave		{ background-position: -890px -1328px; }
+#area .asteroid_avg_antimatter.env_epave,		.environmentPanel .asteroid_avg_antimatter.env_epave		{ background-position: -1078px -1328px; }
+#area .asteroid_high_antimatter.env_epave,		.environmentPanel .asteroid_high_antimatter.env_epave		{ background-position: -1271px -1328px; }
+#area .asteroid_vein_antimatter.env_epave,		.environmentPanel .asteroid_vein_antimatter.env_epave		{ background-position: -890px -1328px; }
+#area .asteroid_lowc_antimatter.env_epave,		.environmentPanel .asteroid_lowc_antimatter.env_epave		{ background-position: -890px -1328px; }
+#area .asteroid_mediumc_antimatter.env_epave,		.environmentPanel .asteroid_mediumc_antimatter.env_epave		{ background-position: -1078px -1328px; }
+#area .asteroid_impotant_antimatter.env_epave,		.environmentPanel .asteroid_important_antimatter.env_epave		{ background-position: -1078px -1328px; }
+#area .asteroid_abondant_antimatter.env_epave,		.environmentPanel .asteroid_abondant_antimatter.env_epave		{ background-position: -1271px -1328px; }
+#area .asteroid_pure_antimatter.env_epave,		.environmentPanel .asteroid_pure_antimatter.env_epave		{ background-position: -1271px -1328px; }
+#area .asteroid_concentrate_antimatter.env_epave,		.environmentPanel .asteroid_concentrate_antimatter.env_epave		{ background-position: -891px -1629px; }
+
+.zoom05 .asteroid.env_epave						{ background-position: -788px -1491px !important; }
+.zoom05 .asteroid_dense.env_epave				{ background-position: -711px -1491px !important; }
+.zoom05 .asteroid_low_titanium.env_epave		{ background-position: -160px -1240px !important; }
+.zoom05 .asteroid_low_crystal.env_epave			{ background-position:      0 -1660px !important; }
+.zoom05 .asteroid_low_andium.env_epave			{ background-position:  -80px -1660px !important; }
+.zoom05 .asteroid_avg_titanium.env_epave		{ background-position: -160px -1660px !important; }
+.zoom05 .asteroid_avg_crystal.env_epave			{ background-position:      0 -1900px !important; }
+.zoom05 .asteroid_avg_andium.env_epave			{ background-position:  -80px -1900px !important; }
+.zoom05 .asteroid_high_titanium.env_epave		{ background-position: -160px -1900px !important; }
+.zoom05 .asteroid_high_crystal.env_epave		{ background-position:      0 -2140px !important; }
+.zoom05 .asteroid_high_andium.env_epave			{ background-position:  -80px -2140px !important; }
+
+.zoom05 .asteroid_vein_titanium.env_epave { background-position: -160px -1240px !important; }
+.zoom05 .asteroid_lowc_titanium.env_epave { background-position: -160px -1240px !important; }
+.zoom05 .asteroid_vein_crystal.env_epave { background-position:      0 -1660px !important; }
+.zoom05 .asteroid_lowc_crystal.env_epave { background-position:      0 -1660px !important; }
+.zoom05 .asteroid_vein_andium.env_epave { background-position:  -80px -1660px !important; }
+.zoom05 .asteroid_lowc_andium.env_epave { background-position:  -80px -1660px !important; }
+
+.zoom05 .asteroid_mediumc_titanium.env_epave { background-position: -160px -1660px !important; }
+.zoom05 .asteroid_mediumc_crystal.env_epave { background-position:      0 -1900px !important; }
+.zoom05 .asteroid_mediumc_andium.env_epave { background-position:  -80px -1900px !important; }
+.zoom05 .asteroid_important_titanium.env_epave { background-position: -160px -1660px !important; }
+.zoom05 .asteroid_important_crystal.env_epave { background-position:      0 -1900px !important; }
+.zoom05 .asteroid_important_andium.env_epave { background-position:  -80px -1900px !important; }
+
+.zoom05 .asteroid_abondant_titanium.env_epave { background-position: -160px -1900px !important; }
+.zoom05 .asteroid_abondant_crystal.env_epave { background-position:      0 -2140px !important; }
+.zoom05 .asteroid_abondant_andium.env_epave { background-position:  -80px -2140px !important; }
+.zoom05 .asteroid_pure_titanium.env_epave { background-position: -160px -1900px !important; }
+.zoom05 .asteroid_pure_crystal.env_epave { background-position:      0 -2140px !important; }
+.zoom05 .asteroid_pure_andium.env_epave { background-position:  -80px -2140px !important; }
+
+.zoom05 .asteroid_concentrate_crystal.env_epave { background-position:  -160px -2140px !important; }
+.zoom05 .asteroid_concentrate_titanium.env_epave { background-position:  -243px -2140px !important; }
+.zoom05 .asteroid_concentrate_andium.env_epave{ background-position:  -328px -2140px !important; }
+
+.zoom05 .asteroid_low_antimatter.env_epave			{ background-position:  -905px -1528px !important; }
+.zoom05 .asteroid_avg_antimatter.env_epave			{ background-position:  -998px -1528px !important; }
+.zoom05 .asteroid_high_antimatter.env_epave			{ background-position:  -1145px -1528px !important; }
+.zoom05 .asteroid_vein_antimatter.env_epave			{ background-position:  -905px -1528px !important; }
+.zoom05 .asteroid_lowc_antimatter.env_epave			{ background-position:  -905px -1528px !important; }
+.zoom05 .asteroid_avg_antimatter.env_epave			{ background-position:  -998px -1528px !important; }
+.zoom05 .asteroid_avg_antimatter.env_epave			{ background-position:  -998px -1528px !important; }
+.zoom05 .asteroid_abondant_antimatter.env_epave			{ background-position:  -1145px -1528px !important; }
+.zoom05 .asteroid_pure_antimatter.env_epave			{ background-position:  -1145px -1528px !important; }
+.zoom05 .asteroid_concentrate_antimatter.env_epave { background-position:  -908px -1819px !important; }
+
+#area .asteroidBounds {
+	width: 120px;
+	height: 120px;
+}
+
+.zoom05 .asteroidBounds {
+	width: 60px !important;
+	height: 60px !important;
+}
+
+.environmentPanel .system {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 120px;
+	height: 120px;
+	margin: -60px 0 0 -60px;
+	background-image: url('images/stars.png');
+}
+
+/* Doodads */
+#area .doodad {
+	width: 60px;
+	height: 60px;
+	margin: -10px 0 0 -10px;
+	background-image: url('images/graphics.png');
+}
+
+.control .doodad {
+	z-index: inherit !important;
+	position: static !important;
+	width: 50px !important;
+	height: 50px !important;
+	margin: 0 !important;
+	background-image: url('images/graphics.png');
+}
+
+/* Doodads à l'échelle 1:2 */
+.zoom05 .doodad {
+	width: 30px !important;
+	height: 30px !important;
+	margin: -5px 0 0 -5px !important;
+}
+
+.zoom025 .doodad, .zoom0125 .doodad { display: none; }
+
+/* Portes hyperspatiales */
+#area .gate {
+	width: 120px;
+	height: 120px;
+	margin: -40px 0 0 -40px;
+	background: url('images/graphics.png') -360px -317px no-repeat;
+}
+
+#area .gate .blocker {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 120px;
+	height: 120px;
+}
+
+/* Portes hyperspatiales à l'échelle 1:2 */
+.zoom05 .gate {
+	width: 60px !important;
+	height: 60px !important;
+	margin: -20px 0 0 -20px !important;
+	background-position: -480px -317px !important;
+}
+
+.zoom05 .gate .blocker {
+	width: 60px !important;
+	height: 60px !important;
+}
+
+.zoom025 .gate {
+	width: 30px !important;
+	height: 30px !important;
+	margin: -10px 0 0 -10px !important;
+	background-position: -480px -377px !important;
+}
+
+.zoom025 .gate .blocker {
+	width: 30px !important;
+	height: 30px !important;
+}
+
+.zoom0125 .gate {
+	width: 40px !important;
+	height: 40px !important;
+	margin: -20px 0 0 -20px !important;
+	background-position: -470px -517px !important;
+}
+
+.zoom0125 .gate .blocker {
+	width: 40px !important;
+	height: 40px !important;
+}
+
+/* Puits gravitationnels */
+#area .gravityWell {
+	width: 200px;
+	height: 200px;
+	margin: -80px 0 0 -80px;
+}
+
+#area .gravityWell-graphics {
+	width: 160px;
+	height: 160px;
+	margin: 20px;
+	background-image: url('images/graphics.png');
+}
+
+.zoom05 .gravityWell {
+	width: 100px !important;
+	height: 100px !important;
+	margin: -40px 0 0 -40px !important;
+}
+
+.zoom05 .gravityWell-graphics {
+	width: 80px !important;
+	height: 80px !important;
+	margin: 10px !important;
+}
+
+.zoom025 .gravityWell {
+	width: 50px !important;
+	height: 50px !important;
+	margin: -20px 0 0 -20px !important;
+}
+
+.zoom025 .gravityWell-graphics {
+	width: 40px !important;
+	height: 40px !important;
+	margin: 5px !important;
+}
+
+.zoom0125 .gravityWell {
+	width: 40px !important;
+	height: 40px !important;
+	margin: -17px 0 0 -17px !important;
+}
+
+.zoom0125 .gravityWell-graphics {
+	width: 40px !important;
+	height: 40px !important;
+	margin: 0 !important;
+}
+
+/* Trous noirs */
+#area .blackhole {
+	width: 200px;
+	height: 200px;
+	margin: -80px 0 0 -80px;
+}
+
+#area .blackhole-graphics {
+	width: 200px;
+	height: 200px;
+	background: url('images/graphics.png') 0 -531px no-repeat;
+}
+
+#area .blackhole .blocker {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 200px;
+	height: 200px;
+}
+
+/* Trous noirs à l'échelle 1:2 */
+.zoom05 .blackhole {
+	width: 100px !important;
+	height: 100px !important;
+	margin: -40px 0 0 -40px !important;
+}
+
+.zoom05 .blackhole-graphics {
+	width: 100px !important;
+	height: 100px !important;
+	background: url('images/graphics.png') -200px -531px no-repeat !important;
+}
+
+.zoom05 .blackhole .blocker {
+	width: 100px !important;
+	height: 100px !important;
+}
+
+.zoom025 .blackhole {
+	width: 50px !important;
+	height: 50px !important;
+	margin: -20px 0 0 -20px !important;
+	background: url('images/graphics.png') -390px -1063px no-repeat !important;
+}
+
+.zoom025 .blackhole-graphics, .zoom0125 .blackhole-graphics { background: none !important; }
+
+.zoom025 .blackhole .blocker {
+	width: 50px !important;
+	height: 50px !important;
+}
+
+.zoom0125 .blackhole {
+	width: 32px !important;
+	height: 32px !important;
+	margin: -16px 0 0 -16px !important;
+	background: url('images/graphics.png') -460px -453px no-repeat !important;
+}
+
+.zoom0125 .blackhole .blocker {
+	width: 32px !important;
+	height: 32px !important;
+}
+
+#area .ward, .control .ward {
+	z-index: 11;
+	margin: 12px 0 0 5px;
+	width: 30px;
+	height: 30px;
+	overflow: visible;
+	background-image: url('images/graphics.png');
+}
+
+.zoom05 .ward {
+	margin: 6px 0 0 2px !important;
+	width: 15px !important;
+	height: 15px !important;
+}
+
+.control .ward { margin: 10px; }
+
+#area .triggerRadius {
+	width: 450px;
+	height: 450px;
+	margin: -205px 0 0 -205px;
+	background: url('images/graphics.png') 0 -1479px no-repeat;
+}
+
+.zoom05 .triggerRadius {
+	width: 225px !important;
+	height: 225px !important;
+	margin: -102px 0 0 -102px !important;
+	background-position: 0 -1929px !important;
+}
+
+.zoom025 .triggerRadius {
+	width: 112px !important;
+	height: 112px !important;
+	margin: -51px 0 0 -51px !important;
+	background-position: -225px -1929px !important;
+}
+
+.zoom0125 .triggerRadius {
+	width: 56px !important;
+	height: 56px !important;
+	margin: -25px 0 0 -25px !important;
+	background-position: -337px -1929px !important;
+}
+
+#area .ward-stun .border, #area .ward-stun-invisible .border {
+	left: 19px;
+	top: 11px;
+}
+
+#area .ward-mine .border, #area .ward-mine-invisible .border {
+	left: 19px;
+	top: 6px;
+}
+
+#area .ward-observer .border, .control .ward-observer .border,
+#area .ward-observer-invisible .border, .control .ward-observer-invisible .border {
+	left: 15px;
+	top: 25px;
+}
+
+#area .ward-sentry .border, .control .ward-sentry .border,
+#area .ward-sentry-invisible .border, .control .ward-sentry-invisible .border {
+	left: 8px;
+	top: 16px;
+}
+
+.zoom05 .ward-stun .border, .zoom05 .ward-stun-invisible .border {
+	left: 10px !important;
+	top: 6px !important;
+}
+
+.zoom05 .ward-mine .border, .zoom05 .ward-mine-invisible .border {
+	left: 10px !important;
+	top: 3px !important;
+}
+
+.zoom05 .ward-observer .border, .zoom05 .ward-observer-invisible .border {
+	left: 8px !important;
+	top: 13px !important;
+}
+
+.zoom05 .ward-sentry .border, .zoom05 .ward-sentry-invisible .border {
+	left: 4px !important;
+	top: 8px !important;
+}
+
+.zoom025 .ward .border, .zoom0125 .ward .border { display: none; }
+
+#area .ward-stun,				.control .ward-stun					{ background-position: -200px -631px; }
+#area .ward-stun-invisible,		.control .ward-stun-invisible		{ background-position: -200px -631px; }
+#area .ward-mine,				.control .ward-mine					{ background-position: -230px -631px; }
+#area .ward-mine-invisible,		.control .ward-mine-invisible		{ background-position: -230px -631px; }
+#area .ward-observer,			.control .ward-observer				{ background-position: -260px -631px; }
+#area .ward-observer-invisible,	.control .ward-observer-invisible	{ background-position: -260px -631px; }
+#area .ward-sentry,				.control .ward-sentry				{ background-position: -290px -631px; }
+#area .ward-sentry-invisible,	.control .ward-sentry-invisible		{ background-position: -290px -631px; }
+
+.zoom05 .ward-stun			 	 { background-position: -320px -631px !important; }
+.zoom05 .ward-stun-invisible 	 { background-position: -320px -631px !important; }
+.zoom05 .ward-mine			 	 { background-position: -335px -631px !important; }
+.zoom05 .ward-mine-invisible 	 { background-position: -335px -631px !important; }
+.zoom05 .ward-observer			 { background-position: -350px -631px !important; }
+.zoom05 .ward-observer-invisible { background-position: -350px -631px !important; }
+.zoom05 .ward-sentry			 { background-position: -365px -631px !important; }
+.zoom05 .ward-sentry-invisible	 { background-position: -365px -631px !important; }
+
+.zoom025 .ward {
+	z-index: 7;
+	width: 6px !important;
+	height: 6px !important;
+	border: 1px solid black;
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	background-image: none !important;
+	margin: 1px 0 0 1px !important;
+}
+
+.zoom0125 .ward {
+	z-index: 7;
+	width: 4px !important;
+	height: 4px !important;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+	background-image: none !important;
+	margin: 0 !important;
+}
+
+.zoom025 .ward-player,   .zoom0125 .ward-player,   .zoom0125 .structure-player   { background-color: #00c000; }
+.zoom025 .ward-ally,     .zoom0125 .ward-ally,     .zoom0125 .structure-ally     { background-color: #09b9c1; }
+.zoom025 .ward-allied,   .zoom0125 .ward-allied,   .zoom0125 .structure-allied   { background-color: #0080d0; }
+.zoom025 .ward-neutral,  .zoom0125 .ward-neutral,  .zoom0125 .structure-neutral  { background-color: #909090; }
+.zoom025 .ward-enemy,    .zoom0125 .ward-enemy,	   .zoom0125 .structure-enemy    { background-color: #ff0000; }
+.zoom025 .ward-selected, .zoom0125 .ward-selected, .zoom0125 .structure-selected { background-color: #ffffff; }
+
+.ward-stun-invisible, .ward-mine-invisible,
+.ward-observer-invisible, .ward-sentry-invisible {
+	opacity: 0.6;
+	-moz-opacity: 0.6;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+}
+
+#area .star {
+	width: 120px;
+	height: 120px;
+	margin: -60px 0 0 -60px;
+	background-image: url('images/stars.png');
+}
+
+.zoom05 .star {
+	width: 60px !important;
+	height: 60px !important;
+	margin: -30px 0 0 -30px !important;
+	background-image: url('images/stars.png') !important;
+}
+
+.zoom025 .star {
+	width: 30px !important;
+	height: 30px !important;
+	margin: -15px 0 0 -15px !important;
+	background-image: url('images/stars.png') !important;
+}
+
+.zoom0125 .system .star	{
+	width: 40px !important;
+	height: 40px !important;
+	margin: -20px 0 0 -20px !important;
+	background-image: url('images/graphics.png') !important;
+}
+
+.zoom0125 .system-player .star	 { background-position: -180px -1183px !important; }
+.zoom0125 .system-ally .star	 { background-position: -220px -1183px !important; }
+.zoom0125 .system-allied .star	 { background-position: -260px -1183px !important; }
+.zoom0125 .system-enemy .star	 { background-position: -300px -1183px !important; }
+.zoom0125 .system-neutral .star  { background-position: -340px -1183px !important; }
+.zoom0125 .system-selected .star { background-position: -380px -1183px !important; }
+.zoom0125 .system-uninhabited .star, .zoom0125 .system-unknown .star {
+	background-position: -420px -1183px !important;
+}
+
+.zoom0125 .system-neutral .name { color: #909090; }
+
+#area .planet {
+	width: 30px;
+	height: 30px;
+	margin: -15px 0 0 -15px;
+	background-image: url('images/stars.png');
+}
+
+.zoom05 .planet {
+	width: 15px !important;
+	height: 15px !important;
+	margin: -7px 0 0 -7px !important;
+	background-image: url('images/stars.png') !important;
+}
+
+.zoom025 .planet {
+	width: 8px !important;
+	height: 8px !important;
+	margin: -4px 0 0 -4px !important;
+	background-image: url('images/stars.png') !important;
+}
+
+.zoom0125  .planet { display: none; }
+
+#area .asteroidBelt {
+	width: 260px;
+	height: 260px;
+	margin: -130px 0 0 -130px;
+	background-image: url('images/graphics_low.png');
+}
+
+.zoom05 .asteroidBelt {
+	width: 130px !important;
+	height: 130px !important;
+	margin: -65px 0 0 -65px !important;
+}
+
+#area .asteroidBelt0 { display: none; }
+
+/* Environement normal */
+#area .asteroidBelt1.env_normal { background-position:      0 -2220px; }
+#area .asteroidBelt2.env_normal { background-position: -260px -2220px; }
+
+.zoom05 .asteroidBelt1.env_normal { background-position:      0 -2480px !important; }
+.zoom05 .asteroidBelt2.env_normal { background-position: -130px -2480px !important; }
+
+/* Environement glacial */
+#area .asteroidBelt1.env_glacial { background-position: -524px -2220px; }
+#area .asteroidBelt2.env_glacial { background-position: -784px -2220px; }
+
+.zoom05 .asteroidBelt1.env_glacial { background-position: -532px -2480px !important; }
+.zoom05 .asteroidBelt2.env_glacial { background-position: -665px -2480px !important; }
+
+/* Environement d�sertique */
+#area .asteroidBelt1.env_desert { background-position: -250px -2508px; }
+#area .asteroidBelt2.env_desert { background-position: -782px -2437px; }
+
+.zoom05 .asteroidBelt1.env_desert { background-position: -540px -2624px !important; }
+.zoom05 .asteroidBelt2.env_desert { background-position: -670px -2620px !important; }
+
+/* Environement alien */
+#area .asteroidBelt1.env_alien { background-position: -1061px -2225px; }
+#area .asteroidBelt2.env_alien { background-position: -1319px -2225px; }
+
+.zoom05 .asteroidBelt1.env_alien { background-position: -1069px -2502px !important; }
+.zoom05 .asteroidBelt2.env_alien { background-position: -1200px -2502px !important; }
+
+/* Environement mines */
+#area .asteroidBelt1.env_mine { background-position:      0 -2220px; }
+#area .asteroidBelt2.env_mine { background-position: -260px -2220px; }
+
+.zoom05 .asteroidBelt1.env_mine { background-position:      0 -2480px !important; }
+.zoom05 .asteroidBelt2.env_mine { background-position: -130px -2480px !important; }
+
+/* Environement epaves */
+#area .asteroidBelt1.env_epave { background-position:      0 -2220px; }
+#area .asteroidBelt2.env_epave { background-position: -260px -2220px; }
+
+.zoom05 .asteroidBelt1.env_epave { background-position:      0 -2480px !important; }
+.zoom05 .asteroidBelt2.env_epave { background-position: -130px -2480px !important; }
+
+.zoom025 .asteroidBelt, .zoom0125 .asteroidBelt { display: none; }
+
+/* Frontières des systèmes */
+#area .border {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	margin: -8px 0 0 -8px;
+	background-image: url('images/graphics.png');
+}
+
+.zoom05 .border {
+	width: 12px !important;
+	height: 12px !important;
+	margin: -6px 0 0 -6px !important;
+}
+
+.zoom025 .border {
+	width: 8px !important;
+	height: 8px !important;
+	margin: -4px 0 0 -4px !important;
+}
+
+.zoom0125 .border { display: none; }
+
+/* Types de frontières */
+#area .border-player      { background-position: -360px -301px; }
+#area .border-ally        { background-position: -376px -301px; }
+#area .border-allied      { background-position: -392px -301px; }
+#area .border-neutral     { background-position: -408px -301px; }
+#area .border-enemy       { background-position: -424px -301px; }
+#area .border-uninhabited { background-position: -440px -301px; }
+
+#area .border-over1 .border { background-position: -440px -285px; }
+#area .border-over2 .border { background-position: -456px -285px; }
+#area .border-over3 .border { background-position: -472px -285px; }
+#area .border-selected		{ background-position: -472px -285px; }
+
+.zoom05 .border-player      { background-position: -456px -301px !important; }
+.zoom05 .border-ally        { background-position: -468px -301px !important; }
+.zoom05 .border-allied      { background-position: -480px -301px !important; }
+.zoom05 .border-neutral     { background-position: -492px -301px !important; }
+.zoom05 .border-enemy       { background-position: -504px -301px !important; }
+.zoom05 .border-uninhabited { background-position: -516px -301px !important; }
+
+.zoom05 .border-over1 .border { background-position: -488px -289px !important; }
+.zoom05 .border-over2 .border { background-position: -500px -289px !important; }
+.zoom05 .border-over3 .border { background-position: -512px -289px !important; }
+.zoom05 .border-selected	  { background-position: -512px -289px !important; }
+
+.zoom025 .border-player      { background-position: -440px -277px !important; }
+.zoom025 .border-ally        { background-position: -448px -277px !important; }
+.zoom025 .border-allied      { background-position: -456px -277px !important; }
+.zoom025 .border-neutral     { background-position: -464px -277px !important; }
+.zoom025 .border-enemy       { background-position: -472px -277px !important; }
+.zoom025 .border-uninhabited { background-position: -480px -277px !important; }
+
+.zoom025 .border-over1 .border { background-position: -488px -277px !important; }
+.zoom025 .border-over2 .border { background-position: -496px -277px !important; }
+.zoom025 .border-over3 .border { background-position: -504px -277px !important; }
+.zoom025 .border-selected	   { background-position: -504px -277px !important; }
+
+/* Balises */
+#area .marker {
+	width: 14px;
+	height: 14px;
+	margin: 26px 0 0 0;
+	z-index: 12;
+	background: url('images/graphics.png') -403px -56px no-repeat;
+}
+
+/* Balises à l'échelle 1:2 */
+.zoom05 .marker   { margin: 6px 0 0 0 !important; }
+.zoom025 .marker  { margin: 3px 0 0 0 !important; }
+.zoom0125 .marker { margin: -2px 0 0 -2px !important; }
+
+.zoom05 .fleet .npcTalk, .zoom05 .fleet .npcMission {
+	bottom: -2px !important;
+	right: -10px !important;
+}
+
+#area .missionMarker {
+	width: 20px;
+	margin: 26px 0 0 20px;
+	background: url('images/graphics.png') -437px -56px no-repeat;
+}
+
+.zoom05 .missionMarker   { margin: 6px 0 0 3px !important; }
+.zoom025 .missionMarker  { margin: 3px 0 0 0 !important; }
+.zoom0125 .missionMarker { margin: -2px 0 0 -5px !important; }
+
+#area .effect {
+	z-index: 13;
+	width: 0;
+	height: 0;
+	margin: 20px;
+	overflow: visible;
+}
+
+.zoom05 .effect { margin: 10px !important; }
+
+.zoom025 .effect, .zoom0125 .effect { display: none; }
+
+#area .effect .sprite {
+	position: absolute;
+	background-image: url('images/effects.png');
+}
+
+#area .sprite-destruction {
+	width: 100px;
+	height: 100px;
+	margin: -50px 0 0 -50px;
+}
+
+#area .sprite-explosion {
+	width: 32px;
+	height: 32px;
+	margin: -16px 0 0 -16px;
+}
+
+#area .wardDestruction .sprite-explosion { margin-top: -4px; }
+
+#area .sprite-emp {
+	width: 70px;
+	height: 70px;
+	margin: -35px 0 0 -35px;
+}
+
+
+/********************************* FLOTTES ***********************************/
+
+/* Flotte */
+#area .fleet {
+	position: absolute;
+	z-index: 10;
+	width: 54px;
+	height: 54px;
+	margin: -7px 0 0 -7px;
+}
+
+/* Flotte a l'échelle 1:2 */
+.zoom05 .fleet {
+	width: 27px !important;
+	height: 27px !important;
+	margin: -4px 0 0 -4px !important;
+}
+
+.zoom025 .fleet {
+	width: 13px !important;
+	height: 13px !important;
+	margin: -1px 0 0 -1px !important;
+}
+
+.zoom0125 .fleet {
+	width: 7px !important;
+	height: 7px !important;
+	margin: 0 !important;
+}
+
+/* Flotte pirate */
+#area .fleet .pirate {
+	width: 16px;
+	height: 11px;
+	background: url('images/graphics.png') -387px -56px no-repeat;
+}
+
+.zoom025 .fleet .pirate, .zoom0125 .fleet .pirate { display: none; }
+
+/* Flotte qui entre / sort d'hyperespace */
+#area .fleet .hyperspace, #area .hyperspaceSignature, .battlePanel .hyperspace {
+	position: absolute;
+	width: 54px;
+	height: 54px;
+	background-image: url('images/graphics.png');
+}
+
+#area .fleet .hyperspaceOut { background-position: -420px -557px; }
+#area .fleet .hyperspaceIn, .battlePanel .hyperspaceIn { background-position: -474px -557px; }
+
+.zoom05 .fleet .hyperspaceOut { background-position: -420px -611px !important; }
+.zoom05 .fleet .hyperspaceIn  { background-position: -447px -611px !important; }
+
+/* Signature hyperspatiale d'une flotte */
+#area .hyperspaceSignature  {
+	z-index: 7;
+	margin: -7px 0 0 -7px;
+	background-position: -420px -557px;
+}
+
+.zoom05 .hyperspaceSignature {
+	width: 27px !important;
+	height: 27px !important;
+	margin: -3px 0 0 -3px !important;
+	background-position: -420px -611px !important;
+}
+
+/* Flotte qui sort d'hyperespace à l'échelle 1:2 */
+.zoom05 .fleet .hyperspace {
+	width: 27px !important;
+	height: 27px !important;
+}
+
+.zoom025 .fleet .hyperspace, .zoom025 .hyperspaceSignature,
+.zoom0125 .fleet .hyperspace, .zoom0125 .hyperspaceSignature { display: none; }
+
+/* PNJ qui souhaite discuter */
+#area .fleet .npcTalk, #area .fleet .npcMission {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 20px;
+	height: 14px;
+}
+
+#area .fleet .npcTalk    { background: url('images/graphics.png') -417px -56px no-repeat; }
+#area .fleet .npcMission { background: url('images/graphics.png') -437px -56px no-repeat; }
+
+.zoom05 .fleet .npcTalk, .zoom05 .fleet .npcMission {
+	bottom: -2px !important;
+	right: -10px !important;
+}
+
+.zoom025 .fleet .npcTalk, .zoom025 .fleet .npcMission,
+.zoom0125 .fleet .npcTalk, .zoom0125 .fleet .npcMission { display: none; }
+
+/* Nom du propriétaire de la flotte */
+#area .fleet .owner {
+	font-size: 9px !important;
+	text-align: center !important;
+}
+
+/* Ic�ne en ligne/hor-ligne*/
+.ownerConnection {
+	background:none;
+}
+
+.ownerConnection.connected {
+	background-image:url(images/graphics.png);
+	background-repeat:no-repeat;
+	background-position: -519px -720px;
+	width:21px;
+	height:8px;
+}
+
+#area .fleet .owner .outlineText {
+	position: absolute;
+	width: 104px;
+	left: -25px;
+}
+
+#area .fleet .owner .outlineText .outline,
+#area .fleet .owner .outlineText .content { width: 104px; }
+
+.zoom05 .fleet .owner, .zoom025 .fleet .owner, .zoom0125 .fleet .owner { display: none; }
+
+/* Couleur du propriétaire de la flotte */
+.owner-neutral         { color: #ffb401; }
+.owner-enemy           { color: #ff0000; }
+.owner-allied          { color: #0080d0; }
+.owner-player          { color: #00c000; }
+.owner-ally            { color: #09b9c1; }
+.owner-uninhabited     { color: #808080; }
+
+/* Niveau de puissance de la flotte */
+#area .fleet .fleetPower {
+	position: absolute;
+	font-weight: bold;
+	color: #e6e6e6;
+	text-align: center !important;
+	margin: 20px 0 0 6px;
+	width: 48px;
+}
+
+#area .fleet .fleetPower, #area .fleet .fleetPower * { font-size: 12px !important; }
+
+.zoom05 .fleet .fleetPower {
+	margin: 8px 0 0 0 !important;
+	width: 27px !important;
+}
+
+.zoom05 .fleet .fleetPower img, .zoom025 .fleet .fleetPower,
+.zoom0125 .fleet .fleetPower { display: none; }
+
+/* Image de la flotte */
+#area .fleet .graphics {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 40px;
+	height: 40px;
+	margin: 7px;
+	background-image: url('images/graphics.png');
+}
+
+/* Image de la flotte a l'échelle 1:2 */
+.zoom05 .fleet .graphics {
+	width: 20px !important;
+	height: 20px !important;
+	margin: 3px 4px 4px 3px !important;
+}
+
+.zoom025 .fleet .graphics, .zoom0125 .fleet .graphics { display: none; }
+
+#area .fleet .fleetOutline {
+	position: absolute;
+	width: 54px;
+	height: 54px;
+	background-image: url('images/graphics.png');
+}
+
+.zoom05 .fleet .fleetOutline {
+	width: 27px !important;
+	height: 27px !important;
+}
+
+.zoom025 .fleet .fleetOutline {
+	width: 10px !important;
+	height: 10px !important;
+	border: 1px solid black;
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	background-image: none !important;
+}
+
+.zoom0125 .fleet .fleetOutline {
+	width: 6px !important;
+	height: 6px !important;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+	background-image: none !important;
+}
+
+/* Cercle indiquant le propriétaire de la flotte */
+#area .fleetOutline-player   { background-position:      0 0; }
+#area .fleetOutline-ally     { background-position:  -54px 0; }
+#area .fleetOutline-allied   { background-position: -108px 0; }
+#area .fleetOutline-neutral  { background-position: -162px 0; }
+#area .fleetOutline-npc		 { background-position: -324px 0; }
+#area .fleetOutline-enemy    { background-position: -216px 0; }
+#area .fleetOutline-pirate   { background-position: -324px 0; }
+
+#area .fleet-over1 .fleetOutline { background-position: -200px -677px; }
+#area .fleet-over2 .fleetOutline { background-position: -254px -677px; }
+#area .fleet-over3 .fleetOutline { background-position: -308px -677px; }
+#area .fleet .fleetOutline-selected   { background-position: -270px 0; }
+
+/* Cercle indiquant le propriétaire de la flotte a l'échelle 1:2 */
+.zoom05 .fleetOutline-player   { background-position:      0 -54px !important; }
+.zoom05 .fleetOutline-ally     { background-position:  -27px -54px !important; }
+.zoom05 .fleetOutline-allied   { background-position:  -54px -54px !important; }
+.zoom05 .fleetOutline-neutral  { background-position:  -81px -54px !important; }
+.zoom05 .fleetOutline-npc	   { background-position:  -162px -54px !important; }
+.zoom05 .fleetOutline-enemy    { background-position: -108px -54px !important; }
+.zoom05 .fleetOutline-selected { background-position: -135px -54px !important; }
+.zoom05 .fleetOutline-pirate   { background-position: -162px -54px !important; }
+
+.zoom05 .fleet-over1 .fleetOutline { background-position: -362px -677px !important; }
+.zoom05 .fleet-over2 .fleetOutline { background-position: -389px -677px !important; }
+.zoom05 .fleet-over3 .fleetOutline { background-position: -416px -677px !important; }
+.zoom05 .fleet .fleetOutline-selected   { background-position: -135px -54px !important; }
+
+.zoom025 .fleetOutline-player,   .zoom0125 .fleetOutline-player   { background-color: #00c000; }
+.zoom025 .fleetOutline-ally,     .zoom0125 .fleetOutline-ally     { background-color: #09b9c1; }
+.zoom025 .fleetOutline-allied,   .zoom0125 .fleetOutline-allied   { background-color: #0080d0; }
+.zoom025 .fleetOutline-neutral,  .zoom0125 .fleetOutline-neutral  { background-color: #909090; }
+.zoom025 .fleetOutline-npc,  	 .zoom0125 .fleetOutline-npc	  { background-color: #ffb401; }
+.zoom025 .fleetOutline-enemy,    .zoom0125 .fleetOutline-enemy    { background-color: #ff0000; }
+.zoom025 .fleetOutline-selected, .zoom0125 .fleetOutline-selected { background-color: #ffffff; }
+.zoom025 .fleetOutline-pirate,   .zoom0125 .fleetOutline-pirate   { background-color: #808080; }
+
+/* Liens entre flottes */
+#area .fleet .link {
+	position: absolute;
+	width: 54px;
+	height: 54px;
+	background-image: url('images/graphics.png');
+}
+
+.zoom05 .fleet .link {
+	width: 27px !important;
+	height: 27px !important;
+}
+
+.zoom025 .fleet .link, .zoom0125 .fleet .link { display: none; }
+
+/* Compétences des flottes */
+.skill, .skillPoint {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	font-weight: bold;
+	font-size: 14px;
+	margin: 1px 4px;
+	color: #3270b1;
+	background: url('images/graphics.png') 0 -731px no-repeat;
+}
+
+.miniSkill, .miniSkillPoint {
+	float: left;
+	width: 20px;
+	height: 20px;
+	color: #3270b1;
+	background: url('images/graphics.png') 0 -771px no-repeat;
+}
+
+.miniSkill.ultimate { color: #69e900; }
+
+.skillPoint, .miniSkillPoint { color: #ffcc01; }
+
+.xp-mini {
+	width: 80px;
+	height: 10px;
+	background: url('images/graphics_low.png') -360px -1040px no-repeat;
+	-moz-user-select: none;
+}
+
+.current-xp-mini {
+	position: absolute;
+	height: 10px;
+	background: url('images/graphics_low.png') -360px -1050px no-repeat;
+}
+
+.xp-mini .name {
+	position: absolute;
+	width: 80px;
+	line-height: 9px;
+	text-align: center;
+}
+
+
+/******************************** VUE EMPIRE *********************************/
+
+#empireView {
+	position: absolute;
+	overflow: visible !important;
+	width: 0;
+	z-index: 60;
+}
+
+#empireView .empireRow {
+	clear: both;
+	height: 40px;
+}
+
+#empireView .view {
+	position: relative !important;
+	float: left;
+	width: 40px;
+	height: 40px;
+	overflow: hidden;
+}
+
+#empireView .view.selected {
+	background: url('images/graphics.png') -245px -2045px no-repeat !important;
+}
+
+.lowres #empireView .view.selected {
+	background: url('images/graphics.png') -328px -2045px no-repeat !important;
+}
+
+.lowres #empireView .empireRow, .lowres #empireView .view { height: 34px !important; }
+.lowres #empireView .view { width: 34px !important; }
+
+#empireView .mask {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 65;
+}
+
+#empireView .view:hover { background: url('images/graphics.png') -398px 0 no-repeat !important; }
+
+#empireView .view.selected:hover { background: url('images/graphics.png') -245px -2045px no-repeat !important; }
+
+#empireView .area:hover, #empireView .sector:hover, #empireView .galaxy:hover {
+	background: url('images/graphics.png') -378px 0 no-repeat !important;
+}
+#empireView .empty:hover, #empireView .empireScroll:hover { background: none !important; }
+
+.lowres #empireView .view:hover { background: url('images/graphics.png') -481px 0 no-repeat !important; }
+.lowres #empireView .view.selected:hover { background: url('images/graphics.png') -328px -2045px no-repeat !important; }
+
+.lowres #empireView .area:hover, .lowres #empireView .sector:hover, .lowres #empireView .galaxy:hover {
+	background: url('images/graphics.png') -468px 0 no-repeat !important;
+}
+.lowres #empireView .empty:hover, .lowres #empireView .empireScroll:hover { background: none !important; }
+
+#empireView .area, #empireView .sector, #empireView .galaxy, #empireView .empty,
+#empireView .empireScroll {
+	clear: both;
+	width: 80px !important;
+}
+.lowres #empireView .area, .lowres #empireView .sector, .lowres #empireView .galaxy,
+.lowres #empireView .empty, .lowres #empireView .empireScroll {
+	width: 60px !important;
+}
+
+#empireView .area .type, #empireView .sector .type {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	margin: 2px 0 0 25px;
+}
+
+.lowres #empireView .area .type, .lowres #empireView .sector .type {
+	margin: 2px 0 0 15px !important;
+}
+
+#empireView .galaxy .type {
+	position: absolute;
+	width: 80px;
+	height: 34px;
+	margin: 3px 10px;
+}
+
+#empireView .area .type   { background: url('images/graphics.png') -430px -1013px no-repeat; }
+#empireView .sector .type { background: url('images/graphics.png') -400px -1013px no-repeat; }
+#empireView .galaxy .type { background: url('images/graphics.png') -370px -264px no-repeat !important; }
+
+#empireView .empireScroll .content {
+	width: 30px;
+	height: 30px;
+	margin: 5px 0 0 25px;
+}
+
+.lowres #empireView .empireScroll .content { margin: 2px 0 0 15px; }
+
+.empireScrollUp			.content { background: url('images/graphics.png') -490px -1013px no-repeat; }
+.empireScrollDown		.content { background: url('images/graphics.png') -460px -1013px no-repeat; }
+.empireScrollUp:hover	.content { background: url('images/graphics.png') -490px -1043px no-repeat; }
+.empireScrollDown:hover	.content { background: url('images/graphics.png') -460px -1043px no-repeat; }
+
+.lowres #empireView .galaxy {
+	margin: 0 !important;
+}
+
+.lowres #empireView .galaxy .type { margin: 0 !important; }
+
+#empireView .area .name, #empireView .sector .name {
+	position: absolute;
+	overflow: hidden;
+	width: 80px;
+	height: 12px;
+	margin: 24px 0 0 0;
+}
+
+.lowres #empireView .area .name, .lowres #empireView .sector .name {
+	width: 60px !important;
+	margin: 22px 0 0 0 !important;
+}
+
+#empireView .area .name, #empireView .sector .name {
+	font-weight: normal !important;
+	font-size: 10px !important;
+	text-align: center;
+	color: #008000;
+	margin: 22px 0 0 0 !important;
+}
+
+#empireView .system .star {
+	width: 30px;
+	height: 30px;
+	margin: 5px;
+	background-image: url('images/stars.png');
+}
+
+.lowres #empireView .system .star { margin: 2px !important; }
+
+#empireView .generator .graphics {
+	width: 30px;
+	height: 30px;
+	margin: 5px;
+	background-image: url('images/structures.png');
+}
+
+.lowres #empireView .generator .graphics { margin: 2px !important; }
+
+#empireView .fleet .tag {
+	position: absolute;
+	margin: 0 0 0 5px;
+}
+
+.lowres #empireView .fleet .tag {
+	margin: -2px -3px -3px 2px;
+}
+
+#empireView .shortcut {
+	position: absolute;
+	top: 18px;
+	left: 29px;
+	font-weight: bold;
+	font-size: 9px !important;
+}
+
+.lowres #empireView .shortcut {
+	top: 13px;
+	left: 24px;
+}
+
+#empireView .row1, #empireView .row2 {
+	position: absolute;
+	left: 5px;
+	width: 30px;
+	height: 3px;
+}
+
+.lowres #empireView .row1, .lowres #empireView .row2 {
+	left: 4px;
+	width: 26px;
+}
+
+#empireView .row1 { top: 30px; }
+#empireView .row2 { top: 34px; }
+
+.lowres #empireView .row1 { top: 24px !important; }
+.lowres #empireView .row2 { top: 28px !important; }
+
+#empireView .progressBar {
+	height: 2px;
+	font-size: 1px;
+}
+
+
+/* Plus indiquant que des points de comp�tences sont inutilis�s */
+#empireView .skillPoints {
+	width:9px;
+	height:9px;
+	background: url('images/graphics.png') -475px -719px no-repeat !important;
+	margin-left:30px;
+	margin-top:1px;
+}
+
+.lowres #empireView .skillPoints {
+	margin-left:26px;
+	margin-top:0;
+}
+
+/* Barre pour le mouvement des flottes et pour la construction de bâtiments */
+#empireView .progressBar-movement, #empireView .progressBar-build {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	border-top: 1px solid #067100;
+	background-color: #003d00;
+}
+
+/* Barre pour la construction des vaisseaux */
+#empireView .progressBar-buildShip {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	background-color: #3d2d00;
+	border-top: 1px solid #876400;
+}
+
+/* Barre pour les sauts hyperspatiaux des flottes */
+#empireView .progressBar-hyperspace, #empireView .progressBar-hyperspaceOut {
+	border-top: 1px solid #c00000;
+	background-color: #800000;
+}
+
+#empireView .progressBar-hyperspace {
+	position: absolute;
+	left: 0;
+	width: 15px;
+}
+
+#empireView .progressBar-hyperspaceOut {
+	position: absolute;
+	right: 0;
+	width: 14px;
+}
+
+/* Barre pour le rechargement du mouvement des flottes */
+#empireView .progressBar-movementReload {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	border-top: 1px solid #0062b0;
+	background-color: #00325e;
+}
+
+#empireView .progressBar .currentProgress {
+	position: absolute;
+	top: -1px;
+	height: 2px;
+	font-size: 1px;
+}
+
+
+#empireView .infoShipsRow{
+position: absolute;
+left: 0;
+width: 19px;
+height : 19px;
+background: url('images/graphics.png') -508px -742px no-repeat;
+padding : 1px 2px;
+}
+
+#empireView .infoShipsRow .currentShip{
+height: 16px;
+width: 16px;
+background : url('images/small_ships.png') 0 0 no-repeat;
+padding : 3px 0px;
+}
+
+#empireView .progressBar-movement .currentProgress,
+#empireView .progressBar-build .currentProgress {
+	background-color: #1c9600;
+	border-top: 1px solid #2dea00;
+}
+
+#empireView .progressBar-buildShip .currentProgress {
+	border-top: 1px solid #ffbc00;
+	background-color: #bc7000;
+}
+
+#empireView .progressBar-hyperspace .currentProgress { top: -1px; }
+
+#empireView .progressBar-hyperspace .currentProgress,
+#empireView .progressBar-hyperspaceOut .currentProgress {
+	border-top: 1px solid #fd6951;
+	background-color: red;
+}
+
+#empireView .progressBar-movementReload .currentProgress {
+	background-color: #0088e4;
+	border-top: 1px solid #6ddaff;
+}
+
+
+/********************************* MINIMAP ***********************************/
+
+.miniMap {
+	position: absolute;
+	z-index: 20;
+	-moz-user-select: none;
+}
+
+/* Contenu de la minimap */
+.miniMap-content {
+	position: relative;
+	overflow: hidden;
+	width: 160px;
+	height: 160px;
+}
+
+/* Contenu de la minimap en petite résolution */
+.lowres .miniMap-content {
+	width: 120px;
+	height: 120px;
+}
+
+/* Masque sur la minimap */
+.miniMap .miniMapMask {
+	position: absolute;
+	z-index: 30;
+	width: 160px;
+	height: 160px;
+}
+
+/* Masque sur la minimap en petite résolution */
+.lowres .miniMap .miniMapMask {
+	width: 120px !important;
+	height: 120px !important;
+}
+
+/* Représentation de la zone visible de l'écran sur la minimap */
+.miniMap .view {
+	position: absolute !important;
+	z-index: 25;
+	border: 1px solid white;
+}
+
+/* Objets sur la minimap */
+.miniMap .system,
+.miniMap .fleet,
+.miniMap .blackhole,
+.miniMap .gate,
+.miniMap .tradeCenter,
+.miniMap .bank,
+.miniMap .lottery,
+.miniMap .spaceStation,
+.miniMap .marker,
+.miniMap .missionMarker,
+.miniMap .ward,
+.miniMap .asteroid,
+.miniMap .structure,
+.miniMap .gravityWell {
+	position: absolute !important;
+	font-size: 1px;
+	z-index: 11;
+}
+
+/* Systèmes sur la minimap */
+.miniMap .system {
+	width: 10px;
+	height: 10px;
+	margin: -5px 0 0 -5px;
+	background-image: url('images/graphics.png');
+}
+
+.miniMap-zoom2 .system {
+	width: 15px;
+	height: 15px;
+	margin: -8px 0 0 -8px;
+}
+
+.miniMap-zoom4 .system {
+	width: 20px;
+	height: 20px;
+	margin: -10px 0 0 -10px;
+}
+
+/* Flottes sur la minimap */
+.miniMap .fleet {
+	width: 3px;
+	height: 3px;
+	margin: -1px 0 0 -1px;
+	border-bottom: 1px solid #060606;
+	border-right: 1px solid #060606;
+}
+
+.miniMap .fleet-neutral {
+	width: 2px;
+	height: 2px;
+}
+
+.miniMap .fleet-player {
+	width: 4px;
+	height: 4px;
+	margin: -2px 0 0 -2px;
+}
+
+.miniMap-zoom2 .fleet {
+	width: 4px;
+	height: 4px;
+	margin: -2px 0 0 -2px;
+	border: 1px solid #060606;
+}
+
+.miniMap-zoom2 .fleet-neutral {
+	width: 3px;
+	height: 3px;
+	margin: -1px 0 0 -1px;
+	border: 0;
+	border-bottom: 1px solid #060606;
+	border-right: 1px solid #060606;
+}
+
+.miniMap-zoom2 .fleet-player {
+	width: 5px;
+	height: 5px;
+	margin: -2px 0 0 -2px;
+}
+
+.miniMap-zoom4 .fleet {
+	width: 5px;
+	height: 5px;
+	margin: -3px 0 0 -3px;
+	border: 1px solid #060606;
+	border-bottom: 2px solid #060606;
+	border-right: 2px solid #060606;
+}
+
+.miniMap-zoom4 .fleet-neutral {
+	width: 4px;
+	height: 4px;
+	margin: -2px 0 0 -2px;
+	border-bottom: 1px solid #060606;
+	border-right: 1px solid #060606;
+}
+
+.miniMap-zoom4 .fleet-player {
+	width: 6px;
+	height: 6px;
+	margin: -3px 0 0 -3px;
+}
+
+/* Balises */
+.miniMap .ward {
+	width: 2px;
+	height: 2px;
+	margin: -1px 0 0 -1px;
+	border-bottom: 1px solid #060606;
+	border-right: 1px solid #060606;
+}
+
+.miniMap .ward-player {
+	width: 3px;
+	height: 3px;
+	margin: -1px 0 0 -1px;
+}
+
+.miniMap-zoom4 .ward {
+	width: 3px;
+	height: 3px;
+	margin: -1px 0 0 -1px;
+}
+
+.miniMap-zoom4 .ward-player {
+	width: 4px;
+	height: 4px;
+	margin: -2px 0 0 -2px;
+}
+
+/* Structures */
+.miniMap .structure {
+	width: 4px;
+	height: 4px;
+	margin: -2px 0 0 -2px;
+	border-bottom: 1px solid #060606;
+	border-right: 1px solid #060606;
+}
+
+.control .structure {
+	width: 50px;
+	height: 50px;
+	background-image: url('images/structures.png');
+}
+
+.miniMap-zoom2 .structure {
+	width: 5px;
+	height: 5px;
+	margin: -2px 0 0 -2px;
+	border: 1px solid #060606;
+}
+
+.miniMap-zoom4 .structure {
+	width: 6px;
+	height: 6px;
+	margin: -3px 0 0 -3px;
+	border: 1px solid #060606;
+	border-bottom: 2px solid #060606;
+	border-right: 2px solid #060606;
+}
+
+/* Puits gravitationnels */
+.miniMap .gravityWell {
+	width: 20px;
+	height: 20px;
+	margin: -10px 0 0 -10px;
+	background: url('images/graphics.png') -380px -467px no-repeat;
+}
+
+.miniMap-zoom2 .gravityWell {
+	width: 30px;
+	height: 30px;
+	margin: -15px 0 0 -15px;
+	background-position: -380px -487px;
+}
+
+.miniMap-zoom4 .gravityWell {
+	width: 40px;
+	height: 40px;
+	margin: -20px 0 0 -20px;
+	background-position: -380px -517px;
+}
+
+/* Astéroïdes */
+.miniMap .asteroid {
+	width: 9px;
+	height: 9px;
+	margin: -4px 0 0 -4px;
+	background-image: url('images/graphics.png');
+}
+
+.miniMap-zoom2 .asteroid {
+	width: 13px;
+	height: 13px;
+	margin: -6px 0 0 -6px;
+}
+
+.miniMap-zoom4 .asteroid {
+	width: 17px;
+	height: 17px;
+	margin: -8px 0 0 -8px;
+}
+
+.miniMap .asteroid_low_titanium, .miniMap .asteroid_avg_titanium,
+.miniMap .asteroid_high_titanium, .miniMap .asteroid_vein_titanium,
+.miniMap .asteroid_lowc_titanium, .miniMap .asteroid_mediumc_titanium,
+.miniMap .asteroid_important_titanium, .miniMap .asteroid_abondant_titanium,
+.miniMap .asteroid_pure_titanium , .miniMap .asteroid_concentrate_titanium { background-position: -300px -568px; }
+
+.miniMap .asteroid_low_crystal, .miniMap .asteroid_avg_crystal,
+.miniMap .asteroid_high_crystal, .miniMap .asteroid_vein_crystal,
+.miniMap .asteroid_lowc_crystal, .miniMap .asteroid_mediumc_crystal,
+.miniMap .asteroid_important_crystal, .miniMap .asteroid_abondant_crystal,
+.miniMap .asteroid_pure_crystal, .miniMap .asteroid_concentrate_crystal	 { background-position: -309px -568px; }
+
+
+.miniMap .asteroid_low_andium, .miniMap .asteroid_avg_andium,
+.miniMap .asteroid_high_andium, .miniMap .asteroid_vein_andium,
+.miniMap .asteroid_lowc_andium, .miniMap .asteroid_mediumc_andium,
+.miniMap .asteroid_important_andium, .miniMap .asteroid_abondant_andium,
+.miniMap .asteroid_pure_andium, .miniMap .asteroid_concentrate_andium	 { background-position: -318px -568px; }
+
+
+.miniMap .asteroid_low_antimatter, .miniMap .asteroid_avg_antimatter,
+.miniMap .asteroid_high_antimatter, .miniMap .asteroid_vein_antimatter,
+.miniMap .asteroid_lowc_antimatter, .miniMap .asteroid_mediumc_antimatter,
+.miniMap .asteroid_important_antimatter, .miniMap .asteroid_abondant_antimatter,
+.miniMap .asteroid_pure_antimatter, .miniMap .asteroid_concentrate_antimatter	 { background-position: -350px -545px; }
+
+.miniMap-zoom2 .asteroid_low_titanium, .miniMap-zoom2 .asteroid_avg_titanium,
+.miniMap-zoom2 .asteroid_high_titanium, .miniMap-zoom2 .asteroid_vein_titanium,
+.miniMap-zoom2 .asteroid_lowc_titanium, .miniMap-zoom2 .asteroid_mediumc_titanium,
+.miniMap-zoom2 .asteroid_important_titanium, .miniMap-zoom2 .asteroid_abondant_titanium,
+.miniMap-zoom2 .asteroid_pure_titanium, .miniMap-zoom2 .asteroid_concentrate_titanium  { background-position: -330px -529px; }
+.miniMap-zoom2 .asteroid_low_crystal, .miniMap-zoom2 .asteroid_avg_crystal,
+.miniMap-zoom2 .asteroid_high_crystal, .miniMap-zoom2 .asteroid_vein_crystal,
+.miniMap-zoom2 .asteroid_lowc_crystal, .miniMap-zoom2 .asteroid_mediumc_crystal,
+.miniMap-zoom2 .asteroid_important_crystal, .miniMap-zoom2 .asteroid_abondant_crystal,
+.miniMap-zoom2 .asteroid_pure_crystal, .miniMap-zoom2 .asteroid_concentrate_crystal  { background-position: -330px -542px; }
+.miniMap-zoom2 .asteroid_low_andium, .miniMap-zoom2 .asteroid_avg_andium,
+.miniMap-zoom2 .asteroid_high_andium, .miniMap-zoom2 .asteroid_vein_andium,
+.miniMap-zoom2 .asteroid_lowc_andium, .miniMap-zoom2 .asteroid_mediumc_andium,
+.miniMap-zoom2 .asteroid_important_andium, .miniMap-zoom2 .asteroid_abondant_andium,
+.miniMap-zoom2 .asteroid_pure_andium, .miniMap-zoom2 .asteroid_concentrate_andium  { background-position: -330px -555px; }
+
+.miniMap-zoom2 .asteroid_low_antimatter, .miniMap-zoom2 .asteroid_avg_antimatter,
+.miniMap-zoom2 .asteroid_high_antimatter, .miniMap-zoom2 .asteroid_vein_antimatter,
+.miniMap-zoom2 .asteroid_lowc_antimatter, .miniMap-zoom2 .asteroid_mediumc_antimatter,
+.miniMap-zoom2 .asteroid_important_antimatter, .miniMap-zoom2 .asteroid_abondant_antimatter,
+.miniMap-zoom2 .asteroid_pure_antimatter, .miniMap-zoom2 .asteroid_concentrate_antimatter  { background-position: -366px -542px; }
+
+.miniMap-zoom4 .asteroid_low_titanium, .miniMap-zoom4 .asteroid_avg_titanium,
+.miniMap-zoom4 .asteroid_high_titanium, .miniMap-zoom4 .asteroid_vein_titanium,
+.miniMap-zoom4 .asteroid_lowc_titanium, .miniMap-zoom4 .asteroid_mediumc_titanium,
+.miniMap-zoom4 .asteroid_important_titanium, .miniMap-zoom4 .asteroid_abondant_titanium,
+.miniMap-zoom4 .asteroid_pure_titanium, .miniMap-zoom4 .asteroid_concentrate_titanium { background-position: -313px -517px; }
+.miniMap-zoom4 .asteroid_low_crystal, .miniMap-zoom4 .asteroid_avg_crystal,
+.miniMap-zoom4 .asteroid_high_crystal, .miniMap-zoom4 .asteroid_vein_crystal,
+.miniMap-zoom4 .asteroid_lowc_crystal, .miniMap-zoom4 .asteroid_mediumc_crystal,
+.miniMap-zoom4 .asteroid_important_crystal, .miniMap-zoom4 .asteroid_abondant_crystal,
+.miniMap-zoom4 .asteroid_pure_crystal, .miniMap-zoom4 .asteroid_concentrate_crystal  { background-position: -313px -534px; }
+.miniMap-zoom4 .asteroid_low_andium, .miniMap-zoom4 .asteroid_avg_andium,
+.miniMap-zoom4 .asteroid_high_andium, .miniMap-zoom4 .asteroid_vein_andium,
+.miniMap-zoom4 .asteroid_lowc_andium, .miniMap-zoom4 .asteroid_mediumc_andium,
+.miniMap-zoom4 .asteroid_important_andium, .miniMap-zoom4 .asteroid_abondant_andium,
+.miniMap-zoom4 .asteroid_pure_andium , .miniMap-zoom4 .asteroid_concentrate_andium    { background-position: -313px -551px; }
+
+.miniMap-zoom4 .asteroid_low_antimatter, .miniMap-zoom4 .asteroid_avg_antimatter,
+.miniMap-zoom4 .asteroid_high_antimatter, .miniMap-zoom4 .asteroid_vein_antimatter,
+.miniMap-zoom4 .asteroid_lowc_antimatter, .miniMap-zoom4 .asteroid_mediumc_antimatter,
+.miniMap-zoom4 .asteroid_important_antimatter, .miniMap-zoom4 .asteroid_abondant_antimatter,
+.miniMap-zoom4 .asteroid_pure_antimatter , .miniMap-zoom4 .asteroid_concentrate_antimatter    { background-position: -348px -528px; }
+
+.miniMap .system        { z-index: 13; }
+.miniMap .system-allied,
+.miniMap .system-ally   { z-index: 14; }
+.miniMap .system-enemy  { z-index: 15; }
+.miniMap .system-player { z-index: 16; }
+.miniMap .fleet         { z-index: 17; }
+.miniMap .fleet-npc     { z-index: 18; }
+.miniMap .fleet-allied,
+.miniMap .fleet-pirate,
+.miniMap .fleet-ally    { z-index: 19; }
+.miniMap .fleet-enemy   { z-index: 20; }
+.miniMap .fleet-player  { z-index: 21; }
+
+.miniMap .system-uninhabited, .miniMap .system-unknown { background-position: -500px -647px; }
+.miniMap .system-neutral { background-position: -490px -647px; }
+.miniMap .system-enemy	 { background-position: -480px -647px; }
+.miniMap .system-allied	 { background-position: -470px -647px; }
+.miniMap .system-player	 { background-position: -450px -647px; }
+.miniMap .system-ally	 { background-position: -460px -647px; }
+
+.miniMap .spaceStation-ally		{ background-position: -300px -577px; }
+.miniMap .spaceStation-allied	{ background-position: -312px -577px; }
+.miniMap .spaceStation-enemy	{ background-position: -324px -577px; }
+.miniMap .spaceStation-neutral	{ background-position: -336px -577px; }
+
+.miniMap-zoom2 .system-uninhabited, .miniMap-zoom2 .system-unknown { background-position: -525px -657px; }
+.miniMap-zoom2 .system-neutral	{ background-position: -510px -657px; }
+.miniMap-zoom2 .system-enemy	{ background-position: -495px -657px; }
+.miniMap-zoom2 .system-allied	{ background-position: -480px -657px; }
+.miniMap-zoom2 .system-player	{ background-position: -450px -657px; }
+.miniMap-zoom2 .system-ally	 	{ background-position: -465px -657px; }
+
+.miniMap-zoom2 .spaceStation-ally		{ background-position: -300px -589px; }
+.miniMap-zoom2 .spaceStation-allied		{ background-position: -318px -589px; }
+.miniMap-zoom2 .spaceStation-enemy		{ background-position: -336px -589px; }
+.miniMap-zoom2 .spaceStation-neutral 	{ background-position: -354px -589px; }
+
+.miniMap-zoom4 .system-uninhabited, .miniMap-zoom4 .system-unknown { background-position: -470px -692px; }
+.miniMap-zoom4 .system-neutral	{ background-position: -450px -692px; }
+.miniMap-zoom4 .system-enemy	{ background-position: -510px -672px; }
+.miniMap-zoom4 .system-allied	{ background-position: -490px -672px; }
+.miniMap-zoom4 .system-player	{ background-position: -450px -672px; }
+.miniMap-zoom4 .system-ally	 	{ background-position: -470px -672px; }
+
+.miniMap-zoom4 .spaceStation-ally		{ background-position: -300px -607px; }
+.miniMap-zoom4 .spaceStation-allied		{ background-position: -324px -607px; }
+.miniMap-zoom4 .spaceStation-enemy		{ background-position: -348px -607px; }
+.miniMap-zoom4 .spaceStation-neutral	{ background-position: -372px -607px; }
+
+/* Couleur des systèmes / flottes / extracteurs, en fonction du traité avec le propriétaire */
+.miniMap .fleet-pirate														 { background-color: #404040; }
+.miniMap .fleet-neutral, .miniMap .ward-neutral, .miniMap .structure-neutral { background-color: #909090; }
+.miniMap .fleet-npc															 { background-color: #ffb401; }
+.miniMap .fleet-pirate														 { background-color: #ff6000; }
+.miniMap .fleet-enemy,   .miniMap .ward-enemy,	 .miniMap .structure-enemy   { background-color: #ff0000; }
+.miniMap .fleet-allied,  .miniMap .ward-allied,	 .miniMap .structure-allied  { background-color: #0080d0; }
+.miniMap .fleet-player,  .miniMap .ward-player,	 .miniMap .structure-player  { background-color: #ffffff; }
+.miniMap .fleet-ally,    .miniMap .ward-ally,	 .miniMap .structure-ally    { background-color: #09b9c1; }
+
+/* Trous noirs sur la minimap */
+.miniMap .blackhole {
+	width: 16px;
+	height: 16px;
+	margin: -8px 0 0 -8px;
+	background: url('images/graphics.png') -420px -453px no-repeat;
+}
+
+.miniMap-zoom2 .blackhole {
+	width: 24px;
+	height: 24px;
+	margin: -12px 0 0 -12px;
+	background-position: -436px -453px;
+}
+
+.miniMap-zoom4 .blackhole {
+	width: 32px;
+	height: 32px;
+	margin: -16px 0 0 -16px;
+	background-position: -460px -453px;
+}
+
+/* Portes hyperspatiales sur la minimap */
+.miniMap .gate {
+	z-index: 11;
+	width: 20px;
+	height: 20px;
+	margin: -10px 0 0 -10px;
+	background: url('images/graphics.png') -420px -517px no-repeat;
+}
+
+.miniMap-zoom2 .gate {
+	width: 30px;
+	height: 30px;
+	margin: -15px 0 0 -15px;
+	background-position: -440px -517px;
+}
+
+.miniMap-zoom4 .gate {
+	width: 40px;
+	height: 40px;
+	margin: -20px 0 0 -20px;
+	background-position: -470px -517px;
+}
+
+/* Centres de commerce, banques et bases pirate */
+.miniMap .tradeCenter {
+	width: 16px;
+	height: 16px;
+	margin: -8px 0 0 -8px;
+	background: url(images/graphics.png) -420px -485px no-repeat;
+}
+
+.miniMap-zoom2 .tradeCenter {
+	width: 24px;
+	height: 24px;
+	margin: -12px 0 0 -12px;
+	background-position: -436px -485px;
+}
+
+.miniMap-zoom4 .tradeCenter {
+	width: 32px;
+	height: 32px;
+	margin: -16px 0 0 -16px;
+	background-position: -460px -485px;
+}
+
+.miniMap .bank {
+	width: 16px;
+	height: 16px;
+	margin: -8px 0 0 -8px;
+	background: url(images/graphics.png) -348px -557px no-repeat;
+}
+
+.miniMap-zoom2 .bank {
+	width: 24px;
+	height: 24px;
+	margin: -12px 0 0 -12px;
+	background-position: -364px -557px;
+}
+
+.miniMap-zoom4 .bank {
+	width: 32px;
+	height: 32px;
+	margin: -16px 0 0 -16px;
+	background-position: -388px -557px;
+}
+
+.miniMap .lottery {
+	width: 14px;
+	height: 14px;
+	margin: -8px 0 0 -8px;
+	background: url(images/graphics.png) -316px -504px no-repeat;
+}
+
+.miniMap-zoom2 .lottery {
+	width: 26px;
+	height: 26px;
+	margin: -12px 0 0 -12px;
+	background-position: -336px -504px;
+}
+
+.miniMap-zoom4 .lottery {
+	width: 21px;
+	height: 21px;
+	margin: -16px 0 0 -16px;
+	background-position: -361px -504px;
+}
+
+.miniMap .spaceStation {
+	width: 12px;
+	height: 12px;
+	margin: -6px 0 0 -6px;
+	background-image: url('images/graphics.png');
+}
+
+.miniMap-zoom2 .spaceStation {
+	width: 16px;
+	height: 16px;
+	margin: -8px 0 0 -8px;
+}
+
+.miniMap-zoom4 .spaceStation {
+	width: 24px;
+	height: 24px;
+	margin: -12px 0 0 -12px;
+}
+
+/* Balises */
+.miniMap .marker {
+	width: 8px;
+	height: 8px;
+	margin: -4px 0 0 -4px;
+	z-index: 21;
+	background: url('images/minimap_markers.gif') 0 0 no-repeat;
+}
+
+.miniMap .missionMarker {
+	width: 10px;
+	height: 8px;
+	margin: -5px 0 0 -4px;
+	z-index: 21;
+	background: url('images/minimap_markers.gif') -8px 0 no-repeat;
+}
+
+.miniMap .lineOfSight { position: absolute; }
+
+.miniMap .lineOfSight-ally   { z-index:  8; }
+.miniMap .lineOfSight-player { z-index:  9; }
+.miniMap .lineOfSight-over   { z-index: 10; }
+
+
+/************************************ CHAT ***********************************/
+
+#chatBar .textfield {
+	clear: both;
+	margin: 0 !important;
+	height: 12px !important;
+}
+
+#chatBar .textfield input { font-size: 11px !important; }
+
+#chatBar .channel {
+	float: left;
+	height: 14px;
+	line-height: 14px;
+	padding: 0 6px;
+	margin-right: 1px;
+	font-size: 10px !important;
+	font-weight: bold;
+	color: #a0a0a0;
+	background-color: #101010;
+	-moz-user-select: none;
+}
+
+#chatBar .channel-active, #chatBar .channel:hover { background-color: #303030; }
+
+#chatBar .channel-active { font-size: 11px !important; }
+
+#chatBar:hover .textfield { border: 1px solid #303030 !important; }
+
+.chat, .chat * { font-size: 11px !important; }
+
+.chat .msg table, .chat .msg td {
+	margin: 0;
+	padding: 0;
+}
+
+/* Couleur en fonction du type de message */
+.chat .msg.info			{ color: #009fda; }
+.chat .msg.self			{ background-color: #101010; }
+.chat .msg.action		{ color: gray; }
+.chat .msg.whisper		{ color: #00c000; }
+.chat .msg.notification	{ color: #00c000; }
+.chat .msg.error		{ color: red; }
+.chat .msg.moderation	{ color: red; }
+
+
+#chatBar .channel:hover { color: white; }
+
+/* Couleur en fonction du canal */
+#chatBar .channel-active.channel-public      { color: #ffff40 !important; }
+#chatBar .channel-active.channel-ally        { color: #2fb1ff !important; }
+#chatBar .channel-active.channel-selfEmbassy { color: #2fff94 !important; }
+#chatBar .channel-active.channel-embassy     { color: #ae6bd7 !important; }
+#chatBar .channel-active.channel-custom  	 { color: #ff9a2f !important; }
+#chatBar .channel-active.channel-moderation  { color: #00aa00 !important; }
+.chat .channel-public .sender      { color: #ffff40; }
+.chat .channel-ally .sender        { color: #2fb1ff; }
+.chat .channel-selfEmbassy .sender { color: #2fff94; }
+.chat .channel-embassy .sender     { color: #ae6bd7; }
+.chat .channel-custom .sender      { color: #ff9a2f; }
+.chat .channel-moderation .sender  { color: #00aa00; }
+.chat .msg .friend				   { color: #9966BB; }
+.chat .msg .author:hover 		   { color: red; }
+
+/* Couleur en fonction du rang */
+.chat .msg .sender .text{ color: #FFFFFF; }
+.chat .msg .sender.administrator .text{ color: #e96200; }
+.chat .msg .sender.moderator .text{ color: #77B5FE;}
+
+.chat .msg .sender.administrator,
+.chat .msg .sender.moderator{ padding-left: 14px; background: url('images/graphics.png') -490px -717px no-repeat; }
+
+#chatBar .channel-state {
+	width: 13px;
+	height: 12px;
+	vertical-align: middle;
+	background-image: url('images/graphics.png');
+}
+
+#chatBar .channel-state				   { background-position: -300px -520px; }
+#chatBar .channel-state-disabled	   { background-position: -300px -532px; }
+#chatBar .channel-state:hover	 	   { background-position: -300px -544px; }
+#chatBar .channel-state-disabled:hover { background-position: -300px -556px; }
+
+/* Tags d'alliance */
+.chat .msg .allyTag {
+	width: 33px;
+	text-align: right;
+	padding-right: 1px;
+	line-height: 12px;
+	vertical-align: top;
+}
+
+.inlineAllyTag, .chat .msg .allyTag {
+	font-size: 9px !important;
+	color: #808080;
+}
+
+/* Liens hypertexte */
+.chat a { color: red; }
+
+/* Smilies */
+.smiley {
+	width: 10px;
+	height: 10px;
+	background: url('images/graphics_low.png') 0 0 no-repeat;
+}
+
+.smiley.s0  { background-position: -360px -1060px; }
+.smiley.s1  { background-position: -370px -1060px; }
+.smiley.s2  { background-position: -380px -1060px; }
+.smiley.s3  { background-position: -390px -1060px; }
+.smiley.s4  { background-position: -400px -1060px; }
+.smiley.s5  { background-position: -410px -1060px; }
+.smiley.s6  { background-position: -420px -1060px; }
+.smiley.s7  { background-position: -430px -1060px; }
+.smiley.s8  { background-position: -440px -1060px; }
+.smiley.s9  { background-position: -450px -1060px; }
+.smiley.s10 { background-position: -460px -1060px; }
+.smiley.s11 { background-position: -470px -1060px; }
+.smiley.s12 { background-position: -480px -1060px; }
+.smiley.s13 { background-position: -490px -1060px; }
+.smiley.s14 { background-position: -500px -1060px; }
+.smiley.s15 { background-position: -360px -1070px; }
+.smiley.s16 { background-position: -370px -1070px; }
+.smiley.s17 { background-position: -380px -1070px; }
+.smiley.s18 { background-position: -390px -1070px; }
+.smiley.s19 { background-position: -400px -1070px; }
+.smiley.s20 { background-position: -410px -1070px; }
+.smiley.s21 { background-position: -420px -1070px; }
+.smiley.s22 { background-position: -430px -1070px; }
+.smiley.s23 { background-position: -440px -1070px; }
+.smiley.s24 { background-position: -450px -1070px; }
+.smiley.s25 { background-position: -460px -1070px; }
+.smiley.s26 { background-position: -470px -1070px; }
+.smiley.s27 { background-position: -480px -1070px; }
+.smiley.s28 { background-position: -490px -1070px; }
+.smiley.s29 { background-position: -500px -1070px; }
+.smiley.s30 { background-position: -510px -1060px; }
+.smiley.s31 { background-position: -510px -1070px; }
+.smiley.s32 { background-position: -520px -1060px; }
+.smiley.s33 { background-position: -520px -1070px; }
+.smiley.s34 { background-position: -470px -1050px; }
+.smiley.s35 { background-position: -460px -1050px; }
+.smiley.s36 { background-position: -450px -1050px; }
+.smiley.s37 { background-position: -440px -1050px; }
+.smiley.s38 { background-position: -480px -1050px; }
+.smiley.s39 { background-position: -490px -1050px; }
+.smiley.s40 { background-position: -500px -1050px; }
+.smiley.s41 { background-position: -510px -1050px; }
+
+/* Joueurs online/offline */
+.online {
+        width: 10px;
+        height: 11px;
+        background: url('images/graphics.png') -244px -2086px no-repeat;
+}
+ 
+.away {
+        width: 8px;
+        height: 11px;
+        background: url('images/graphics.png') -254px -2086px no-repeat;
+}
+ 
+.offline {
+        width: 10px;
+        height: 11px;
+        background: url('images/graphics.png') -262px -2086px no-repeat;
+}
+
+/********************************* EVENEMENTS ********************************/
+
+.events .date   {
+	font-size: 11px;
+	color: #808080;
+	text-align: center;
+}
+.events .e-war  { color: red; }
+.events .e-ally { color: #009fda; }
+.events .e-info { color: #00c000; }
+
+.priority5 { color: red; }
+.priority4 { color: #ff4000; }
+.priority3 { color: #ff7000; }
+.priority2 { color: #ffa000; }
+.priority1 { color: #ffd000; }
+
+
+/********************************* CONTROLES *********************************/
+
+.control .frontLine, .control .backLine {
+	position: absolute;
+	top: 1px;
+	left: 1px;
+	width: 48px;
+	height: 16px;
+	background-image: url('images/graphics.png');
+}
+
+.control .frontLine { background-position: -440px -261px; }
+.control .backLine  { background-position: -490px -261px; }
+
+/* Rangs des membres dans les alliances et secteurs sous domination */
+.control .level, .allyRank, .combobox.election .star, .domination, .premium {
+	width: 10px;
+	height: 10px;
+	background: url('images/graphics.png') -359px -56px no-repeat;
+}
+
+.control .buildingLevel .level { width: 9px !important; }
+
+.control .progress {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50px;
+	height: 50px;
+	opacity: 0.4;
+	-moz-opacity: 0.4;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=40);
+	background-image: url('images/progress.png');
+}
+
+.control .tag { margin: 10px; }
+
+.controlRow {
+	margin-top: 1px;
+	clear: both;
+	height: 50px;
+}
+
+.control {
+	float: left;
+	position: relative;
+	width: 50px;
+	height: 50px;
+	margin-left: 1px;
+	background: url('images/controls.png') 0 0 no-repeat;
+}
+
+.control.build				{ background-position:  -50px 0; }
+.control.cancel				{ background-position: -100px 0; }
+.control.colonize			{ background-position: -150px 0; }
+.control.selfdestruct		{ background-position: -200px 0; }
+.control.content			{ background-position: -250px 0; }
+.control.transfer			{ background-position: -300px 0; }
+.control.r0					{ background-position: -350px 0; }
+.control.r1					{ background-position: -400px 0; }
+.control.r2					{ background-position: -450px 0; }
+.control.r3					{ background-position: -500px 0; }
+.control.r4					{ background-position: -4751px 0; }
+.control.default			{ background-position: -550px 0; }
+.control.laboratory			{ background-position: -600px 0; }
+.control.storehouse			{ background-position: -650px 0; }
+.control.spaceshipYard		{ background-position: -700px 0; }
+.control.defensiveDeck		{ background-position: -750px 0; }
+.control.exploitation0		{ background-position: -800px 0; }
+.control.exploitation1		{ background-position: -850px 0; }
+.control.exploitation2		{ background-position: -900px 0; }
+.control.exploitation3		{ background-position: -950px 0; }
+.control.extractorCenter	{ background-position: -1000px 0; }
+.control.civilianInfrastructures { background-position: -1050px 0; }
+.control.corporations		{ background-position: -1100px 0; }
+.control.tradePort			{ background-position: -1150px 0; }
+.control.researchCenter		{ background-position: -1200px 0; }
+.control.factory			{ background-position: -1250px 0; }
+.control.refinery			{ background-position: -1300px 0; }
+.control.hyperspace			{ background-position: -2200px 0; }
+.control.cancelHyperspace	{ background-position: -2250px 0; }
+.control.selected			{ background-position: -2300px 0; }
+.control.tactics			{ background-position: -2350px 0; }
+.control.buildShips			{ background-position: -2400px 0; }
+.control.systemContent		{ background-position: -2450px 0; }
+.control.buildBuilding		{ background-position: -2500px 0; }
+.control.shipsContent		{ background-position: -2550px 0; }
+.control.trade				{ background-position: -2600px 0; }
+.control.training			{ background-position: -2650px 0; }
+.control.destroyWard		{ background-position: -2700px 0; }
+.control.spaceStation		{ background-position: -2750px 0; }
+.control.leaveSystem		{ background-position: -2800px 0; }
+.control.cancelColonization	{ background-position: -2850px 0; }
+.control.bank				{ background-position: -2900px 0; }
+.control.pushFleets			{ background-position: -2950px 0; }
+.control.defuse				{ background-position: -3000px 0; }
+.control.module0			{ background-position: -3050px 0; }
+.control.module1			{ background-position: -3100px 0; }
+.control.module2			{ background-position: -3150px 0; }
+.control.module3			{ background-position: -3200px 0; }
+.control.module4			{ background-position: -3250px 0; }
+.control.deactivate			{ background-position: -3300px 0; }
+.control.activate			{ background-position: -3350px 0; }
+.control.dismount			{ background-position: -3400px 0; }
+.control.mount				{ background-position: -3450px 0; }
+.control.repair				{ background-position: -3500px 0; }
+.control.module5			{ background-position: -3600px 0; }
+.control.module6			{ background-position: -3650px 0; }
+.control.module7			{ background-position: -3700px 0; }
+.control.module8			{ background-position: -3750px 0; }
+.control.module9			{ background-position: -3800px 0; }
+.control.module10			{ background-position: -3850px 0; }
+.control.module11			{ background-position: -3900px 0; }
+.control.module12			{ background-position: -3950px 0; }
+.control.moduleSpaceshipDecks { background-position: -4000px 0; }
+.control.disabled.laboratory		{ background-position: -1350px 0 !important; }
+.control.disabled.storehouse		{ background-position: -1400px 0 !important; }
+.control.disabled.spaceshipYard		{ background-position: -1450px 0 !important; }
+.control.disabled.defensiveDeck		{ background-position: -1500px 0 !important; }
+.control.disabled.exploitation0		{ background-position: -1550px 0 !important; }
+.control.disabled.exploitation1		{ background-position: -1600px 0 !important; }
+.control.disabled.exploitation2		{ background-position: -1650px 0 !important; }
+.control.disabled.exploitation3		{ background-position: -1700px 0 !important; }
+.control.disabled.extractorCenter	{ background-position: -1750px 0 !important; }
+.control.disabled.civilianInfrastructures { background-position: -1800px 0 !important; }
+.control.disabled.corporations		{ background-position: -1850px 0 !important; }
+.control.disabled.tradePort			{ background-position: -1900px 0 !important; }
+.control.disabled.researchCenter	{ background-position: -1950px 0 !important; }
+.control.disabled.factory			{ background-position: -2000px 0 !important; }
+.control.disabled.refinery			{ background-position: -2050px 0 !important; }
+.control.disabled.hyperspace		{ background-position: -1350px -50px !important; }
+.control.disabled.colonize			{ background-position: -1400px -50px !important; }
+.control.disabled.transfer			{ background-position: -1450px -50px !important; }
+.control.next						{ background-position: -2100px 0; }
+.control.buyFleet					{ background-position: -2150px 0; }
+.control.buildStruct				{ background-position: -4050px 0; }
+.control.buildStruct:hover			{ background-position: -4050px -50px; }
+.control:hover						{ background: url('images/controls.png') 0 -50px no-repeat; }
+.control.build:hover				{ background-position:  -50px -50px; }
+.control.cancel:hover				{ background-position: -100px -50px; }
+.control.colonize:hover				{ background-position: -150px -50px; }
+.control.selfdestruct:hover			{ background-position: -200px -50px; }
+.control.content:hover				{ background-position: -250px -50px; }
+.control.transfer:hover				{ background-position: -300px -50px; }
+.control.r0:hover					{ background-position: -350px -50px; }
+.control.r1:hover					{ background-position: -400px -50px; }
+.control.r2:hover					{ background-position: -450px -50px; }
+.control.r3:hover					{ background-position: -500px -50px; }
+.control.default:hover				{ background-position: -550px -50px; }
+.control.laboratory:hover			{ background-position: -600px -50px; }
+.control.storehouse:hover			{ background-position: -650px -50px; }
+.control.spaceshipYard:hover		{ background-position: -700px -50px; }
+.control.defensiveDeck:hover		{ background-position: -750px -50px; }
+.control.exploitation0:hover		{ background-position: -800px -50px; }
+.control.exploitation1:hover		{ background-position: -850px -50px; }
+.control.exploitation2:hover		{ background-position: -900px -50px; }
+.control.exploitation3:hover		{ background-position: -950px -50px; }
+.control.extractorCenter:hover		{ background-position: -1000px -50px; }
+.control.civilianInfrastructures:hover { background-position: -1050px -50px; }
+.control.corporations:hover			{ background-position: -1100px -50px; }
+.control.tradePort:hover			{ background-position: -1150px -50px; }
+.control.researchCenter:hover		{ background-position: -1200px -50px; }
+.control.factory:hover				{ background-position: -1250px -50px; }
+.control.refinery:hover				{ background-position: -1300px -50px; }
+.control.next:hover					{ background-position: -2100px -50px; }
+.control.buyFleet:hover				{ background-position: -2150px -50px; }
+.control.hyperspace:hover			{ background-position: -2200px -50px; }
+.control.cancelHyperspace:hover		{ background-position: -2250px -50px; }
+.control.selected:hover				{ background-position: -2300px -50px; }
+.control.tactics:hover				{ background-position: -2350px -50px; }
+.control.buildShips:hover			{ background-position: -2400px -50px; }
+.control.systemContent:hover		{ background-position: -2450px -50px; }
+.control.buildBuilding:hover		{ background-position: -2500px -50px; }
+.control.shipsContent:hover			{ background-position: -2550px -50px; }
+.control.trade:hover				{ background-position: -2600px -50px; }
+.control.training:hover				{ background-position: -2650px -50px; }
+.control.destroyWard:hover			{ background-position: -2700px -50px; }
+.control.spaceStation:hover			{ background-position: -2750px -50px; }
+.control.leaveSystem:hover			{ background-position: -2800px -50px; }
+.control.cancelColonization:hover	{ background-position: -2850px -50px; }
+.control.bank:hover					{ background-position: -2900px -50px; }
+.control.pushFleets:hover			{ background-position: -2950px -50px; }
+.control.defuse:hover				{ background-position: -3000px -50px; }
+.control.module0:hover				{ background-position: -3050px -50px; }
+.control.module1:hover				{ background-position: -3100px -50px; }
+.control.module2:hover				{ background-position: -3150px -50px; }
+.control.module3:hover				{ background-position: -3200px -50px; }
+.control.module4:hover				{ background-position: -3250px -50px; }
+.control.deactivate:hover			{ background-position: -3300px -50px; }
+.control.activate:hover				{ background-position: -3350px -50px; }
+.control.dismount:hover				{ background-position: -3400px -50px; }
+.control.mount:hover				{ background-position: -3450px -50px; }
+.control.repair:hover				{ background-position: -3500px -50px; }
+.control.disabled.repair			{ background-position: -3550px 0 !important; }
+.control.module5:hover				{ background-position: -3600px -50px; }
+.control.module6:hover				{ background-position: -3650px -50px; }
+.control.module7:hover				{ background-position: -3700px -50px; }
+.control.module8:hover				{ background-position: -3750px -50px; }
+.control.module9:hover				{ background-position: -3800px -50px; }
+.control.module10:hover				{ background-position: -3850px -50px; }
+.control.module11:hover				{ background-position: -3900px -50px; }
+.control.module12:hover				{ background-position: -3950px -50px; }
+.control.moduleSpaceshipDecks:hover             { background-position: -4000px -50px; }
+.control.lottery				{ background-position: -4700px 0; }
+.control.lottery:hover				{ background-position: -4700px -50px; }
+.control.reloading                         {background-position: -4750px 0px;}
+.control.reloading:hover                        {background-position: -4750px -50px;}
+
+
+
+.control.module13				{ background-position: -4100px 0; }
+.control.module14				{ background-position: -4150px 0; }
+.control.module15				{ background-position: -4200px 0; }
+.control.module16				{ background-position: -4250px 0; }
+.control.module13:hover			{ background-position: -4100px -50px; }
+.control.module14:hover			{ background-position: -4150px -50px; }
+.control.module15:hover			{ background-position: -4200px -50px; }
+.control.module16:hover			{ background-position: -4250px -50px; }
+
+.control.module17				{ background-position: -4400px 0; }
+.control.module17:hover			{ background-position: -4400px -50px; }
+.control.module18				{ background-position: -4450px 0; }
+.control.module18:hover			{ background-position: -4450px -50px; }
+
+
+.control.module20				{ background-position: -4550px 0; }
+.control.module20:hover			{ background-position: -4550px -50px; }
+.control.module21				{ background-position: -4650px 0; }
+.control.module21:hover			{ background-position: -4650px -50px; }
+.control.module22				{ background-position: -4600px 0; }
+.control.module22:hover			{ background-position: -4600px -50px; }
+
+
+
+.control.migration				{ background-position: -4300px 0; }
+.control.migration:hover		{ background-position: -4300px -50px; }
+.control.cancelMigration		{ background-position: -4350px 0; }
+.control.cancelMigration:hover	{ background-position: -4350px -50px; }
+
+.control.skillStasis { background: url('images/abilities.png') -750px 0 no-repeat; }
+
+.control .skillLevel, .control .buildingLevel {
+	position: absolute;
+	top: 36px;
+	width: 48px;
+	font-size: 10px !important;
+	font-weight: bold !important;
+	text-align: center !important;
+	color: #ffcc01;
+}
+
+.control .buildingLevel { top: 38px; }
+
+.control .inset {
+	position: absolute;
+	font-size: 12px !important;
+	font-weight: bold;
+	padding: 2px;
+}
+
+.control .buildTime {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50px;
+	padding-top: 20px;
+	text-align: center !important;
+	font-size: 10px !important;
+	font-weight: bold;
+}
+
+.control .buildTime .outline, .control .buildTime .content { width: 50px; }
+
+.control .spaceship, .control.resource, .control .structure {
+	height: 12px !important;
+	padding-top: 38px !important;
+	font-size: 10px !important;
+	font-weight: bold !important;
+	text-align: center !important;
+}
+
+.control .actionIndex {
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	color: #ffcc00;
+	font-size: 12px !important;
+	font-weight: bold !important;
+}
+
+.control .selection {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 46px;
+	height: 46px;
+	border: 2px solid white;
+	z-index:999999;
+	box-shadow:0 0 100px white,0 0 100px white ;
+	-moz-box-shadow:0 0 100px white,0 0 100px white ;
+	-op-box-shadow:0 0 100px white,0 0 100px white ;
+	-webkit-box-shadow:0 0 100px white,0 0 100px white ;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-op-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.control-selected .selection { display: block; }
+
+.control .tradeValue {
+	position: absolute;
+	top: 2px;
+	left: 0;
+}
+
+.control .tradeValue * { font-size: 11px !important; }
+
+
+/******************************** RECHERCHE **********************************/
+
+/* Arbre des technologies */
+.technologiesTree {
+	overflow: hidden;
+	background-image: url('images/technologies_bg.png');
+}
+
+/* Panel scrollable contenant l'arbre des technologies */
+.technologiesTree .scrollarea { position: absolute; }
+
+/* Technologie dans l'arbre des technologies */
+.technology {
+	position: absolute;
+	width: 174px;
+	height: 44px;
+	z-index: 999999;
+	margin: -7px 0 0 -7px;
+	background: url('images/graphics.png') 0 -1288px no-repeat;
+}
+
+/* Technologie complètement recherchée */
+.technology.researched { background-position: -174px -1288px !important; }
+
+/* Technologie au survol de la souris et technologie en cours de recherche */
+.technology:hover, .technology.current { background-position: -348px -1288px; }
+
+/* Nom d'une technologie */
+.technology .name {
+	position: absolute;
+	top: 7px;
+	padding: 0 10px;
+	line-height: 14px;
+	font-size: 9px;
+	font-weight: bold;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: black;
+}
+
+/* Barre de progression du développement d'une technologie */
+.technology .progress {
+	position: absolute;
+	left: 9px;
+	top: 22px;
+	height: 13px;
+	width: 156px;
+	font-size: 1px;
+}
+
+.technology .currentProgress {
+	height: 13px;
+	background: url('images/graphics.png') 0 -1332px no-repeat;
+}
+
+/* Barre de progression de la technologie en cours de recherche */
+.technology.current    .currentProgress,
+.technology:hover      .currentProgress { background-position: 0 -1358px; }
+.technology.researched .currentProgress { background-position: 0 -1345px; }
+
+/* Temps restant pour développer une technologie */
+.technology .length {
+	position: absolute;
+	left: 0;
+	top: 24px;
+	width: 160px;
+	text-align: center;
+	font-size: 9px;
+}
+
+
+/********************************* CURSEURS **********************************/
+
+/* Curseur pour déplacer les flottes */
+#tileCursor {
+	position: absolute;
+	z-index: 14;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-weight: bold;
+	background: url('images/cursors/cursor.gif') 0 0 no-repeat;
+}
+
+#tileCursor.move {
+	color: #01e000;
+	background-position: 0 0;
+}
+
+#tileCursor.enemy {
+	color: red;
+	background-position: -40px 0;
+}
+
+#tileCursor.action {
+	color: white;
+	background-position: -80px 0;
+}
+
+#tileCursor.scheduledMove {
+	color: #fab300;
+	font-size: 11px;
+	background-position: -160px 0;
+}
+
+#tileCursor.unreachable {
+	background-position: -120px 0;
+}
+
+.zoom05 #tileCursor, .zoom025 #tileCursor, .zoom0125 #tileCursor {
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 11px;
+	background: url('images/cursors/cursor_half.gif') 0 0 no-repeat;
+}
+
+.zoom025 #tileCursor  { margin: -5px 0 0 -5px; }
+.zoom0125 #tileCursor { margin: -7px 0 0 -7px; }
+
+.zoom05 #tileCursor.move, 		   .zoom025 #tileCursor, 		 		zoom0125 #tileCursor 		       { background-position:     0 0; }
+.zoom05 #tileCursor.enemy,		   .zoom025 #tileCursor.enemy,		   .zoom0125 #tileCursor.enemy         { background-position: -20px 0; }
+.zoom05 #tileCursor.action,		   .zoom025 #tileCursor.action,		   .zoom0125 #tileCursor.action        { background-position: -40px 0; }
+.zoom05 #tileCursor.unreachable,   .zoom025 #tileCursor.unreachable,   .zoom0125 #tileCursor.unreachable   { background-position: -60px 0; }
+.zoom05 #tileCursor.scheduledMove, .zoom025 #tileCursor.scheduledMove, .zoom0125 #tileCursor.scheduledMove { background-position: -80px 0; }
+
+.loading-script {
+	width: 140px;
+	height: 30px;
+	float: right;
+	margin-top: 3px;
+	background: url('images/loading.gif') 0 0 no-repeat;

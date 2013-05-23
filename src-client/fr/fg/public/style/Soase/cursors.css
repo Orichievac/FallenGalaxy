@@ -1,0 +1,8 @@
+body			 { cursor: url('style/Soase/images/cursors/cursor.ico'), default; }
+.dialog-close    { cursor: url('style/Soase/images/cursors/cursor.ico'), default !important; }
+.button          { cursor: url('style/Soase/images/cursors/cursor.ico'), default !important; }
+.listItem        { cursor: url('style/Soase/images/cursors/cursor.ico'), default !important; }
+.tab   		     { cursor: url('style/Soase/images/cursors/cursor.ico'), default !important; }
+.moveCursor      { cursor: url('style/Soase/images/cursors/move.ico'),   move !important; }
+.textfield input { cursor: url('style/Soase/images/cursors/text.ico'),   text !important; }
+.textarea input  { cursor: url('style/Soase/images/cursors/text.ico'),   text !important; }

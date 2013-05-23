@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app 
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+		http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	
+	<display-name>Fallen Galaxy</display-name>
+	
+	<listener>
+		<description>Start / stop server operations</description>
+		<listener-class>fr.fg.server.servlet.ServerController</listener-class>
+	</listener>
+	
+	<context-param>
+		<param-name>org.mortbay.jetty.servlet.SessionPath</param-name>
+		<param-value>/</param-value>
+	</context-param>
+	
+	<!-- ========================================= Servlets definition ==== -->
+	
+	<servlet>
+	    <servlet-name>jsp</servlet-name>
+	    <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+	    <init-param>
+	        <param-name>compilerSourceVM</param-name>
+	        <param-value>1.6</param-value>
+	    </init-param>
+	    <init-param>
+	        <param-name>compilerTargetVM</param-name>
+	        <param-value>1.6</param-value>
+	    </init-param>
+	    <load-on-startup>3</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Controller</servlet-name>
+		<servlet-class>fr.fg.server.servlet.ActionServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Polling</servlet-name>
+		<servlet-class>fr.fg.server.servlet.PollingServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ThemeProxy</servlet-name>
+		<servlet-class>fr.fg.server.servlet.ThemeProxyServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Userbar</servlet-name>
+		<servlet-class>fr.fg.server.servlet.export.UserbarServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>RssEvents</servlet-name>
+		<servlet-class>fr.fg.server.servlet.export.RssEventsServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Ships</servlet-name>
+		<servlet-class>fr.fg.server.servlet.export.ShipsServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Ladder</servlet-name>
+		<servlet-class>fr.fg.server.servlet.export.LadderServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>IndividualLadder</servlet-name>
+		<servlet-class>fr.fg.server.servlet.export.IndividualLadderServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>EmailConfirmation</servlet-name>
+		<servlet-class>fr.fg.server.servlet.EmailConfirmationServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Economy</servlet-name>
+		<servlet-class>fr.fg.server.servlet.export.EconomyServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Territory</servlet-name>
+		<servlet-class>fr.fg.server.servlet.TerritoryMapServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>RecoverPassword</servlet-name>
+		<servlet-class>fr.fg.server.servlet.RecoverPasswordServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>CloseAccount</servlet-name>
+		<servlet-class>fr.fg.server.servlet.CloseAccountServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>LineOfSight</servlet-name>
+		<servlet-class>fr.fg.server.servlet.LineOfSightServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>GetEkey</servlet-name>
+		<servlet-class>fr.fg.server.servlet.export.GetEkeyServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>GetOnlinePlayers</servlet-name>
+		<servlet-class>fr.fg.server.servlet.export.GetOnlinePlayersServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>Battle</servlet-name>
+		<jsp-file>/jsp/index.jsp</jsp-file>
+	</servlet>
+	
+	
+	<!-- ============================================ Servlets mapping ==== -->
+	
+	<servlet-mapping>
+		<servlet-name>Polling</servlet-name>
+		<url-pattern>/polling.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ThemeProxy</servlet-name>
+		<url-pattern>/themeproxy</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Controller</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Userbar</servlet-name>
+		<url-pattern>/player/*</url-pattern>
+		<url-pattern>/ally/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>RssEvents</servlet-name>
+		<url-pattern>/rss/events/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Ladder</servlet-name>
+		<url-pattern>/ladder/players/*</url-pattern>
+		<url-pattern>/ladder/allies/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>IndividualLadder</servlet-name>
+		<url-pattern>/ladder/player/*</url-pattern>
+		<url-pattern>/ladder/ally/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Economy</servlet-name>
+		<url-pattern>/economy</url-pattern>
+		<url-pattern>/economy.xml</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Territory</servlet-name>
+		<url-pattern>/territory/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>EmailConfirmation</servlet-name>
+		<url-pattern>/confirm/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>RecoverPassword</servlet-name>
+		<url-pattern>/recover/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>CloseAccount</servlet-name>
+		<url-pattern>/delete/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Battle</servlet-name>
+		<url-pattern>/battle/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>Ships</servlet-name>
+		<url-pattern>/ships</url-pattern>
+		<url-pattern>/ships.xml</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>LineOfSight</servlet-name>
+		<url-pattern>/los/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>GetEkey</servlet-name>
+		<url-pattern>/special/ekey/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>GetOnlinePlayers</servlet-name>
+		<url-pattern>/special/online/</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>/jsp/index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

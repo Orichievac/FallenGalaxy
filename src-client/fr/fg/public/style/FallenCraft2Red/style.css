@@ -1,0 +1,91 @@
+/*-------------------------------------------------------------- OPENJWT ----*/
+
+/********************************* IMPORTS ***********************************/
+
+@import url('../FallenCraft2/base.css');
+
+
+/********************************* GENERAL ***********************************/
+
+/* Liens hypertexte */
+a { color: red; }
+
+
+/********************************* DIALOGS ***********************************/
+
+/* Barre de titre du dialogue */
+.dialog-titlebar	{ background: url('images/ojwt.png') 100% -510px no-repeat; }
+
+/* Titre du dialogue */
+.dialog-title		{ background: url('images/ojwt.png') 0 -510px no-repeat; }
+
+/* Bouton pour fermer le dialogue */
+.dialog-close		{ background-image: url('images/ojwt.png'); }
+
+/* Bouton pour fermer le dialogue au survol de la souris */
+.dialog-close:hover	{ background-image: url('images/ojwt.png'); }
+
+/* Bordure droite du dialogue */
+.dialog-right		{ background: url('images/ojwt.png') 100% 100% no-repeat; }
+
+/* Contenu du dialogue */
+.dialog-content		{ background: url('images/ojwt.png') -136px 100% no-repeat; }
+
+
+/********************************* BUTTONS ***********************************/
+
+/* Arrière-plan des boutons */
+.button				{ background-image: url('images/ojwt.png'); }
+.button-content		{ background-image: url('images/ojwt.png'); }
+
+
+/******************************** SCROLLPANES ********************************/
+
+/* Arrière-plan de la piste de la barre de défilement */
+.scrollTrack		{ background-image: url('images/ojwt.png'); }
+
+/* Poignée sur la barre de défilement */
+.scrollBubble, .scrollBubble .button-content, .scrollBubble .button-icon {
+	background-image: url('images/ojwt.png');
+}
+
+/* Boutons défilement vers le haut / bas */
+.scrollUp, .scrollDown { background-image: url('images/ojwt.png'); }
+
+
+/********************************* TABBEDPANE ********************************/
+
+.tabbedPane { background-image: url('images/ojwt.png'); }
+
+.tab		 { background-image: url('images/ojwt.png'); }
+.tab-content { background-image: url('images/ojwt.png'); }
+
+
+/*-------------------------------------------------------- FALLEN GALAXY ----*/
+
+body { cursor: url('images/cursors/cursor.ico'), default; }
+
+/* Curseurs personnalisés */
+.dialog-close    { cursor: url('images/cursors/cursor.ico'), default; }
+.button          { cursor: url('images/cursors/cursor.ico'), default; }
+.listItem        { cursor: url('images/cursors/cursor.ico'), default; }
+.tab		     { cursor: url('images/cursors/cursor.ico'), default; }
+.moveCursor      { cursor: url('images/cursors/move.ico'),   move; }
+.textfield input { cursor: url('images/cursors/text.ico'),   text; }
+.textarea input  { cursor: url('images/cursors/text.ico'),   text; }
+
+.title { color: red; }
+
+.premiumPayment .keyword, .premiumPayment .code,
+.premiumPayment .phone-number, .premiumPayment .shortcode { color: red; }
+
+#toolbar, #namePanel, #controlPanel, #selectionInfo .info,
+#progressBar, .miniMap, .miniMap .miniMapMask, .powerBar, .xpView {
+	background-image: url('images/gui.png');
+}
+
+.lowres #toolbar, .lowres #namePanel, .lowres #controlPanel,
+.lowres #selectionInfo .info, .lowres #progressBar,
+.lowres .miniMap, .lowres .miniMap .miniMapMask, .lowres .powerBar, .lowres .xpView {
+	background-image: url('images/gui_small.png') !important;
+}

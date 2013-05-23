@@ -1,0 +1,1557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE db-mapping SYSTEM "db-mapping.dtd">
+
+<db-mapping package="fr.fg.server.data">
+	<!-- =============================================== AccountAction ==== -->
+	
+	<table name="account_action">
+		<column name="login"		type="string"/>
+		<column name="action"		type="string"	enum-values="registered,closed,idle"/>
+		<column name="email"		type="string"/>
+		<column name="birthday"		type="long"/>
+		<column name="date"			type="long"/>
+		<column name="ip"			type="int"/>
+		<column name="played_time"	type="long"/>
+		<column name="reason"		type="string"/>
+		
+		<primary-key name="login"/>
+	</table>
+	
+	<!-- ================================================ Achievements ==== -->
+	
+	<table name="achievement">
+		<column name="id_player"	type="int"/>
+		<column name="type"			type="int"/>
+		<column name="score"		type="long"/>
+		
+		<primary-key name="id_player"/>
+		<primary-key name="type"/>
+		
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ================================================= Advancement ==== -->
+	
+	<table name="advancement">
+		<column name="id_player"	type="int"/>
+		<column name="type"			type="int"/>
+		<column name="level"		type="int"/>
+		
+		<primary-key name="id_player"/>
+		<primary-key name="type"/>
+		
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ======================================================== Ally ==== -->
+	
+	<table name="ally">
+		<column name="id"						type="int"		db-type="mediumint" signed="false"/>
+		<column name="name"						type="string"/>
+		<column name="tag"						type="string"	db-type="char"/>
+		<column name="ai"						type="boolean"/>
+		<column name="color"					type="int"		db-type="tinyint" signed="false"/>
+		<column name="organization"				type="string"	enum-values="tyranny,warmonger,democracy,oligarchy,anarchy"/>
+		<column name="description"				type="string"	db-type="text"/>
+		<column name="birthdate"				type="long"		db-type="int" signed="false"/>
+		<column name="points"					type="long"		signed="false"/>
+		<column name="right_accept"				type="int"		db-type="tinyint" signed="false"/>
+		<column name="right_manage_news"		type="int"		db-type="tinyint" signed="false"/>
+		<column name="right_manage_stations"	type="int"		db-type="tinyint" signed="false"/>
+		<column name="right_manage_diplomacy"	type="int"		db-type="tinyint" signed="false"/>
+		<column name="right_manage_description"	type="int"		db-type="tinyint" signed="false"/>
+		<column name="right_manage_contracts"	type="int"		db-type="tinyint" signed="false"/>
+		<column name="id_creator"				type="int"		signed="false"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<index name="name"/>
+		<index name="tag"/>
+		
+		<foreign-key name="id_creator">
+			<references table="player" column="id" on-delete="set-zero"/>
+		</foreign-key>
+	</table>
+	
+	<!-- =============================================== AllyInfluence ==== -->
+	
+	<table name="ally_influence">
+		<column name="id_ally"			type="int"/>
+		<column name="id_sector"		type="int"/>
+		<column name="influence_coef"	type="double"/>
+		<column name="influence_value"	type="int"/>
+		<column name="systems_count"	type="int"/>
+		
+		<primary-key name="id_ally"/>
+		<primary-key name="id_sector"/>
+		
+		<foreign-key name="id_ally">
+			<references table="ally" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_sector">
+			<references table="sector" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ==================================================== AllyNews ==== -->
+	
+	<table name="ally_news">
+		<column name="id"			type="int"		signed="false"/>
+		<column name="title"		type="string"	db-type="text"/>
+		<column name="content"		type="string"/>
+		<column name="date"			type="long"		db-type="int" signed="false"/>
+		<column name="id_author"	type="int"		db-type="int" signed="false"/>
+		<column name="id_vote"		type="int"		db-type="int" signed="false"/>
+		<column name="id_election"	type="int"		db-type="int" signed="false"/>
+		<column name="id_applicant"	type="int"		db-type="int" signed="false"/>
+		<column name="id_ally"		type="int"		db-type="mediumint" signed="false"/>
+		<column name="id_parent"	type="int"		db-type="int" signed="false"/>
+		<column name="sticky"		type="boolean"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<index name="id_ally" type="multiple"/>
+		
+		<foreign-key name="id_author">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_vote">
+			<references table="ally_vote" column="id" on-delete="set-zero"/>
+		</foreign-key>
+		<foreign-key name="id_election">
+			<references table="election" column="id" on-delete="set-zero"/>
+		</foreign-key>
+		<foreign-key name="id_applicant">
+			<references table="player" column="id" on-delete="set-zero"/>
+		</foreign-key>
+		<foreign-key name="id_ally">
+			<references table="ally" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_parent">
+			<references table="ally_news" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ==================================================== AllyNews ==== -->
+	
+	<table name="ally_news_read">
+		<column name="id_ally_news"			type="int"/>
+		<column name="id_player"			type="int"/>
+		
+		<primary-key name="id_ally_news"/>
+		<primary-key name="id_player"/>
+		
+		<foreign-key name="id_ally_news">
+			<references table="ally_news" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+		
+	<!-- ================================================== AllyTreaty ==== -->
+	
+	<table name="ally_treaty">
+		<column name="id_ally1"			type="int"/>
+		<column name="id_ally2"			type="int"/>
+		<column name="type"				type="string"	enum-values="war,ally,defensive,total"/>
+		<column name="date"				type="long"/>
+		<column name="last_activity"	type="long"/>
+		<column name="source"			type="int"/>
+		
+		<primary-key name="id_ally1"/>
+		<primary-key name="id_ally2"/>
+		
+		<foreign-key name="id_ally1">
+			<references table="ally" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_ally2">
+			<references table="ally" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ==================================================== AllyVote ==== -->
+	
+	<table name="ally_vote">
+		<column name="id"			type="int"/>
+		<column name="type"			type="string"	enum-values="accept,kick"/>
+		<column name="yes"			type="int"/>
+		<column name="no"			type="int"/>
+		<column name="date"			type="long"/>
+		<column name="id_player"	type="int"/>
+		<column name="id_ally"		type="int"/>
+		<column name="id_initiator"	type="int"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<index name="id_ally" type="multiple"/>
+		<index name="id_player"/>
+		
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_ally">
+			<references table="ally" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_initiator">
+			<references table="player" column="id" on-delete="set-zero"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ==================================================== AllyVoter ==== -->
+	
+	<table name="ally_voter">
+		<column name="id_vote"		type="int"/>
+		<column name="id_player"	type="int"/>
+		
+		<primary-key name="id_vote"/>
+		<primary-key name="id_player"/>
+		
+		<foreign-key name="id_vote">
+			<references table="ally_vote" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- =================================================== Applicant ==== -->
+	
+	<table name="applicant">
+		<column name="id_ally"		type="int"/>
+		<column name="id_player"	type="int"/>
+		<column name="date"			type="long"/>
+		
+		<primary-key name="id_player"/>
+		
+		<index name="id_ally" type="multiple"/>
+		
+		<foreign-key name="id_ally">
+			<references table="ally" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ======================================================== Area ==== -->
+	
+	<table name="area">
+		<column name="id"					type="int"		db-type="smallint" signed="false"/>
+		<column name="name"					type="string"	db-type="char"/>
+		<column name="width"				type="int"		db-type="smallint" signed="false"/>
+		<column name="height"				type="int"		db-type="smallint" signed="false"/>
+		<column name="x"					type="int"		db-type="smallint"/>
+		<column name="y"					type="int"		db-type="smallint"/>
+		<column name="type"					type="int"		db-type="tinyint" signed="false"/>
+		<column name="space_stations_limit"	type="int"		db-type="tinyint" signed="false"/>
+		<column name="product"				type="int"		db-type="smallint" signed="false"/>
+		<column name="full"					type="boolean"/>
+		<column name="last_name_update"		type="long"		db-type="int" signed="false"/>
+		<column name="id_dominating_ally"	type="int"		signed="false"/>
+		<column name="id_sector"			type="int"		db-type="int" signed="false"/>
+		<column name="environment"			type="string"	enum-values="normal,glacial,desert,alien,mine,epave"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<index name="name"/>
+		
+		<foreign-key name="id_dominating_ally">
+			<references table="ally" column="id" on-delete="set-zero"/>
+		</foreign-key>
+		<foreign-key name="id_sector">
+			<references table="sector" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ======================================================== Bank ==== -->
+	
+	<table name="bank">
+		<column name="id_bank"			type="int"/>
+		<column name="base_rate"		type="double"/>
+		<column name="variable_rate"	type="double"/>
+		<column name="fees"				type="long"/>
+		
+		<primary-key name="id_bank"/>
+		
+		<foreign-key name="id_bank">
+			<references table="object" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ================================================= BankAccount ==== -->
+	
+	<table name="bank_account">
+		<column name="id_bank"			type="int"		signed="false"/>
+		<column name="id_player"		type="int"		db-type="smallint" signed="false"/>
+		<column name="resource0"		type="double"	db-type="float" signed="false"/>
+		<column name="resource1"		type="double"	db-type="float" signed="false"/>
+		<column name="resource2"		type="double"	db-type="float" signed="false"/>
+		<column name="resource3"		type="double"	db-type="float" signed="false"/>
+		<column name="last_update"		type="long"		db-type="int" signed="false"/>
+		
+		<primary-key name="id_bank"/>
+		<primary-key name="id_player"/>
+		
+		<foreign-key name="id_bank">
+			<references table="object" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+		<!-- =================================================== Ban ==== -->
+	
+	<table name="ban">
+		<column name="id"			type="int"/>
+		<column name="id_player"	type="int"/>
+		<column name="date"			type="long"/>
+		<column name="ban_type"		type="int"/>
+		<column name="ban_reason"	type="string"/>
+		
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- =================================================== Changelog ==== -->
+	
+	<table name="changelog">
+		<column name="id"			type="long"/>
+		<column name="text"			type="string"/>
+		<column name="date"			type="long"/>
+		
+		<primary-key name="id" generator="increment"/>
+	</table>
+	
+	<!-- ================================================== Connection ==== -->
+	
+	<table name="connection">
+		<column name="id"			type="long"/>
+		<column name="ip"			type="int"/>
+		<column name="start"		type="long"/>
+		<column name="end"			type="long"/>
+		<column name="id_player"	type="int"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ===================================================== Contact ==== -->
+	
+	<table name="contact">
+		<column name="id_player"	type="int"/>
+		<column name="id_contact"	type="int"/>
+		<column name="type"			type="string"	enum-values="friend,ignore"/>
+		
+		<primary-key name="id_player"/>
+		<primary-key name="id_contact"/>
+		
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_contact">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ==================================================== Contract ==== -->
+	
+	<table name="contract">
+		<column name="id"				type="long"/>
+		<column name="type"				type="string"/>
+		<column name="variant"			type="string"/>
+		<column name="target"			type="string"	enum-values="player,ally,all"/>
+		<column name="max_attendees"	type="int"/>
+		<column name="state"			type="string"	enum-values="waiting,running,finalizing"/>
+		<column name="step"				type="int"/>
+		<column name="difficulty"		type="long"/>
+		<column name="state_date"		type="long"/>
+		
+		<primary-key name="id" generator="increment"/>
+	</table>
+	
+	<!-- ================================================ ContractArea ==== -->
+	
+	<table name="contract_area">
+		<column name="id"			type="long"		db-type="int" signed="false"/>
+		<column name="id_contract"	type="long"		db-type="int" signed="false"/>
+		<column name="id_area"		type="int"		db-type="smallint" signed="false"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<foreign-key name="id_contract">
+			<references table="contract" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_area">
+			<references table="area" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ============================================ ContractAttendee ==== -->
+	
+	<table name="contract_attendee">
+		<column name="id_contract"	type="long"/>
+		<column name="id_player"	type="int"/>
+		<column name="id_ally"		type="int"/>
+		<column name="registered"	type="boolean"/>
+		<column name="date"			type="long"/>
+		
+		<primary-key name="id_contract"/>
+		<primary-key name="id_player"/>
+		<primary-key name="id_ally"/>
+		
+		<foreign-key name="id_contract">
+			<references table="contract" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_ally">
+			<references table="ally" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ============================================== ContractDialog ==== -->
+	
+	<table name="contract_dialog">
+		<column name="id_fleet"			type="int"/>
+		<column name="id_player"		type="int"/>
+		<column name="current_entry"	type="string"/>
+		
+		<primary-key name="id_fleet"/>
+		<primary-key name="id_player"/>
+		
+		<foreign-key name="id_fleet">
+			<references table="fleet" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- =========================================== ContractParameter ==== -->
+	
+	<table name="contract_parameter">
+		<column name="id"					type="long"/>
+		<column name="name"					type="string"/>
+		<column name="type"					type="string"	enum-values="value,array,map"/>
+		<column name="id_contract"			type="long"/>
+		<column name="id_player"			type="int"/>
+		<column name="id_ally"				type="int"/>
+		
+		<primary-key name="id" generator="increment"/>
+		<index name="id_contract" type="multiple"/>
+		<index name="id_player" type="multiple"/>
+		
+		<foreign-key name="id_contract">
+			<references table="contract" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_ally">
+			<references table="ally" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ====================================== ContractParameterValue ==== -->
+	
+	<table name="contract_parameter_value">
+		<column name="id_contract_parameter"	type="long"/>
+		<column name="key_name"					type="string"/>
+		<column name="value"					type="string"/>
+		
+		<primary-key name="id_contract_parameter"/>
+		<primary-key name="key_name"/>
+		
+		<foreign-key name="id_contract_parameter">
+			<references table="contract_parameter" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ============================================== ContractReward ==== -->
+	
+	<table name="contract_reward">
+		<column name="id"			type="long"/>
+		<column name="id_contract"	type="long"/>
+		<column name="type"			type="string"	enum-values="xp,fleet_xp,resource,credit,ship"/>
+		<column name="key_name"		type="int"/>
+		<column name="value"		type="long"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<foreign-key name="id_contract">
+			<references table="contract" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ======================================== ContractRelationship ==== -->
+	
+	<table name="contract_relationship">
+		<column name="id_contract"	type="long"/>
+		<column name="id_ally"		type="int"/>
+		<column name="modifier"		type="int"/>
+		
+		<primary-key name="id_contract"/>
+		<primary-key name="id_ally"/>
+		
+		<foreign-key name="id_contract">
+			<references table="contract" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_ally">
+			<references table="ally" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ==================================================== Election ==== -->
+	
+	<table name="election">
+		<column name="id"			type="int"/>
+		<column name="date"			type="long"/>
+		<column name="id_ally"		type="int"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<index name="id_ally"/>
+		
+		<foreign-key name="id_ally">
+			<references table="ally" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- =============================================== ElectionVoter ==== -->
+	
+	<table name="election_voter">
+		<column name="id_election"	type="int"	db-type="mediumint" signed="false"/>
+		<column name="id_player"	type="int"	signed="false"/>
+		<column name="id_candidate"	type="int"	signed="false"/>
+		
+		<primary-key name="id_election"/>
+		<primary-key name="id_player"/>
+		
+		<foreign-key name="id_election">
+			<references table="election" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_candidate">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ======================================================= Event ==== -->
+	
+	<table name="event">
+		<column name="id"			type="int"		signed="false"/>
+		<column name="type"			type="int"		db-type="tinyint" signed="false"/>
+		<column name="arg1"			type="string"/>
+		<column name="arg2"			type="string"/>
+		<column name="arg3"			type="string"/>
+		<column name="arg4"			type="string"/>
+		<column name="date"			type="long"/>
+		<column name="id_area"		type="int"		db-type="smallint" signed="false"/>
+		<column name="x"			type="int"		db-type="smallint"/>
+		<column name="y"			type="int"		db-type="smallint"/>
+		<column name="target"		type="string"	enum-values="ally,player"/>
+		<column name="id_target"	type="int"		signed="false"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<index name="id_target" type="multiple"/>
+		
+		<foreign-key name="id_target">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ======================================================= Fleet ==== -->
+	
+	<table name="fleet">
+		<column name="id"							type="int"		signed="false"/>
+		<column name="name"							type="string"/>
+		<column name="tag"							type="int"		db-type="tinyint" signed="false"/>
+		<column name="shortcut"						type="int"		db-type="bit"/>
+		<column name="npc_type"						type="string"/>
+		<column name="current_action"				type="string"	enum-values="none,jump,mine,build_structure,build_ward,attack_structure,attack_ward,colonize,pick_up,defuse,battle,dismount_structure,mount_structure,repair_structure,migrate"/>
+		<column name="stealth"						type="boolean"/>
+		<column name="x"							type="int"		db-type="smallint" signed="false"/>
+		<column name="y"							type="int"		db-type="smallint" signed="false"/>
+		<column name="scheduled_move"				type="boolean"/>
+		<column name="scheduled_x"					type="int"		db-type="smallint"/>
+		<column name="scheduled_y"					type="int"		db-type="smallint"/>
+		<column name="unstuckable"					type="boolean"/>
+		<column name="stuck_count"					type="int"		db-type="tinyint" signed="false"/>
+		<column name="movement_left"				type="int"		db-type="tinyint" signed="false"/>
+		<column name="last_move"					type="long"		db-type="int" signed="false"/>
+		<column name="movement_reload"				type="long"		db-type="int" signed="false"/>
+		<column name="hyperspace_id_area"			type="int"		db-type="smallint" signed="false"/>
+		<column name="hyperspace_x"					type="int"		db-type="smallint" signed="false"/>
+		<column name="hyperspace_y"					type="int"		db-type="smallint" signed="false"/>
+		<column name="xp"							type="long"		db-type="int" signed="false"/>
+		<column name="encoded_skill0"				type="int"		db-type="tinyint" signed="false"/>
+		<column name="encoded_skill1"				type="int"		db-type="tinyint" signed="false"/>
+		<column name="encoded_skill2"				type="int"		db-type="tinyint" signed="false"/>
+		<column name="encoded_skill_ultimate"		type="int"		db-type="tinyint" signed="false"/>
+		<column name="skill0_reload"				type="long"		db-type="int" signed="false"/>
+		<column name="skill1_reload"				type="long"		db-type="int" signed="false"/>
+		<column name="skill2_reload"				type="long"		db-type="int" signed="false"/>
+		<column name="skill_ultimate_reload"		type="long"		db-type="int" signed="false"/>
+		<column name="skill0_last_use"				type="long"		db-type="int" signed="false"/>
+		<column name="skill1_last_use"				type="long"		db-type="int" signed="false"/>
+		<column name="skill2_last_use"				type="long"		db-type="int" signed="false"/>
+		<column name="skill_ultimate_last_use"		type="long"		db-type="int" signed="false"/>
+		<column name="encoded_skirmish_slots"		type="string"	db-type="char"/>
+		<column name="encoded_skirmish_abilities"	type="string"	db-type="char"/>
+		<column name="encoded_battle_slots"			type="string"	db-type="char"/>
+		<column name="encoded_battle_abilities"		type="string"	db-type="char"/>
+		<column name="tactics_defined"				type="boolean"/>
+		<column name="resource0"					type="long"		db-type="int" signed="false"/>
+		<column name="resource1"					type="long"		db-type="int" signed="false"/>
+		<column name="resource2"					type="long"		db-type="int" signed="false"/>
+		<column name="resource3"					type="long"		db-type="int" signed="false"/>
+		<column name="slot0_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot0_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot0_front"					type="boolean"/>
+		<column name="slot1_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot1_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot1_front"					type="boolean"/>
+		<column name="slot2_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot2_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot2_front"					type="boolean"/>
+		<column name="slot3_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot3_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot3_front"					type="boolean"/>
+		<column name="slot4_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot4_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot4_front"					type="boolean"/>
+		<column name="id_owner"						type="int"		db-type="int" signed="false"/>
+		<column name="id_area"						type="int"		db-type="smallint" signed="false"/>
+		<column name="id_contract"					type="long"		db-type="int" signed="false"/>
+		<column name="id_system_migrate"			type="int"		db-type="int" signed="false"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<index name="unstuckable" type="multiple"/>
+		<index name="id_owner" type="multiple"/>
+		<index name="id_area" type="multiple"/>
+		<index name="hyperspace_id_area" type="multiple"/>
+		<index name="id_contract" type="multiple"/>
+		<index name="id_system_migrate" type="multiple"/>
+		
+		<foreign-key name="id_owner">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_area">
+			<references table="area" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_contract">
+			<references table="contract" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_system_migrate">
+			<references table="system" column="id" on-delete="no-action"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ====================================================== FleetLink ==== -->
+	
+	<table name="fleet_link">
+		<column name="id_src_fleet"	type="int"/>
+		<column name="id_dst_fleet"	type="int"/>
+		<column name="link"			type="string"	enum-values="defensive,offensive,delude"/>
+		<column name="date"			type="long"/>
+		
+		<primary-key name="id_src_fleet"/>
+		<primary-key name="id_dst_fleet"/>
+		<primary-key name="link"/>
+		
+		<foreign-key name="id_src_fleet">
+			<references table="fleet" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_dst_fleet">
+			<references table="fleet" column="id" on-delete="cascade"/>
+		</foreign-key>	
+	</table>
+	
+	<!-- =============================================== ItemContainer ==== -->
+	
+	<table name="item_container">
+		<column name="id"					type="long"/>
+		<column name="item0_type"			type="int"/>
+		<column name="item0_id"				type="long"/>
+		<column name="item0_id_structure"	type="long"/>
+		<column name="item0_count"			type="double"/>
+		<column name="item1_type"			type="int"/>
+		<column name="item1_id"				type="long"/>
+		<column name="item1_id_structure"	type="long"/>
+		<column name="item1_count"			type="double"/>
+		<column name="item2_type"			type="int"/>
+		<column name="item2_id"				type="long"/>
+		<column name="item2_id_structure"	type="long"/>
+		<column name="item2_count"			type="double"/>
+		<column name="item3_type"			type="int"/>
+		<column name="item3_id"				type="long"/>
+		<column name="item3_id_structure"	type="long"/>
+		<column name="item3_count"			type="double"/>
+		<column name="id_fleet"				type="int"/>
+		<column name="id_structure"			type="long"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<foreign-key name="id_fleet">
+			<references column="id" table="fleet" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_structure">
+			<references column="id" table="structure" on-delete="set-zero"/>
+		</foreign-key>
+	</table>
+	
+	 <!-- =============================================== LotteryTicket ==== -->
+       
+        <table name="lottery_ticket">
+                <column name="id"                               type="int"/>
+                <column name="id_player"                        type="int"/>
+                <column name="level"                            type="int"/>
+                <column name="number"                           type="int"/>
+                <column name="date"                                     type="long"/>
+               
+                <primary-key name="id" generator="increment"/>
+ 
+                <index name="id_player"/>
+               
+                <foreign-key name="id_player">
+                        <references column="id" table="player" on-delete="cascade"/>
+                </foreign-key>
+        </table>
+	
+	<!-- ====================================================== Marker ==== -->
+	
+	<table name="marker">
+		<column name="id"			type="int"/>
+		<column name="x"			type="int"/>
+		<column name="y"			type="int"/>
+		<column name="message"		type="string"/>
+		<column name="visibility"	type="string"	enum-values="player,ally,allied"/>
+		<column name="galaxy"		type="boolean"/>
+		<column name="date"			type="long"/>
+		<column name="id_area"		type="int"/>
+		<column name="id_owner"		type="int"/>
+		<column name="id_contract"	type="long"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<index name="id_area" type="multiple"/>
+		<index name="id_owner" type="multiple"/>
+		
+		<foreign-key name="id_area">
+			<references table="area" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_owner">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_contract">
+			<references table="contract" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ===================================================== Message ==== -->
+	
+	<table name="message">
+		<column name="id"			type="int"/>
+		<column name="title"		type="string"/>
+		<column name="content"		type="string"/>
+		<column name="date"			type="long"/>
+		<column name="id_author"	type="int"/>
+		<column name="id_player"	type="int"/>
+		<column name="deleted"		type="int"/>
+		<column name="opened"			type="boolean"/>
+		<column name="bookmarked"	type="boolean"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<index name="id_player" type="multiple"/>
+		
+		<foreign-key name="id_author">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ====================================================== Motd ==== -->
+	
+	<table name="motd"	class="MessageOfTheDay">
+		<column name="id"			type="int"		db-type="tinyint"/>
+		<column name="message"		type="string"/>
+		<column name="date"			type="int"/>
+		
+		<primary-key name="id"/>
+		<index name="id" type="unique" />
+		
+	</table>
+	
+	<!-- ====================================================== Object ==== -->
+	
+	<table name="object" class="StellarObject">
+		<column name="id"		type="int"/>
+		<column name="x"		type="int"/>
+		<column name="y"		type="int"/>
+		<column name="type"		type="string"	enum-values="gate,tradecenter,pirates,bank,asteroid,asteroid_dense,asteroid_low_titanium,asteroid_low_crystal,asteroid_low_andium,asteroid_avg_titanium,asteroid_avg_crystal,asteroid_avg_andium,asteroid_high_titanium,asteroid_high_crystal,asteroid_high_andium,blackhole,doodad,gravity_well,asteroid_vein_titanium,asteroid_vein_crystal,asteroid_vein_andium,asteroid_lowc_titanium,asteroid_lowc_crystal,asteroid_lowc_andium,asteroid_mediumc_titanium,asteroid_mediumc_crystal,asteroid_mediumc_andium,asteroid_important_titanium,asteroid_important_crystal,asteroid_important_andium,asteroid_abondant_titanium,asteroid_abondant_crystal,asteroid_abondant_andium,asteroid_pure_titanium,asteroid_pure_crystal,asteroid_pure_andium"/>
+		<column name="variant"	type="int"/>
+		<column name="id_area"	type="int"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<index name="type" type="multiple"/>
+		<index name="id_area" type="multiple"/>
+		
+		<foreign-key name="id_area">
+			<references table="area" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ====================================================== Planet ==== -->
+	
+	<table name="planet">
+		<column name="id"				type="int"/>
+		<column name="angle"			type="double"/>
+		<column name="distance"			type="int"/>
+		<column name="rotation_speed"	type="double"/>
+		<column name="image"			type="int"/>
+		<column name="id_system"		type="int"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<index name="id_system" type="multiple"/>
+		
+		<foreign-key name="id_system">
+			<references table="system" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+		
+	<!-- ====================================================== Player ==== -->
+	
+	<table name="player">
+		<column name="id"							type="int"		db-type="smallint" signed="false"/>
+		<column name="login"						type="string"	db-type="char"/>
+		<column name="password" 					type="string"/>
+		<column name="ekey" 						type="string"/>
+		<column name="ban_chat" 					type="long"		db-type="int" signed="false"/>
+		<column name="ban_game" 					type="long"		db-type="int" signed="false"/>
+		<column name="avatar"						type="string"/>
+		<column name="ai"							type="boolean"/>
+		<column name="sex"							type="boolean"/>
+		<column name="rights"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="premium_hours"				type="int"/>
+		<column name="email"						type="string"/>
+		<column name="registration"					type="string"/>
+		<column name="recover_email"				type="string"/>
+		<column name="recover_password"				type="string"/>
+		<column name="close_account_hash"			type="string"/>
+		<column name="close_account_reason"			type="string"/>
+		<column name="birthday"						type="long"		db-type="int" signed="false"/>
+		<column name="ally_rank"					type="int"		db-type="tinyint" signed="false"/>
+		<column name="points"						type="long"		signed="false"/>
+		<column name="xp"							type="long"		db-type="int" signed="false"/>
+		<column name="credits"						type="long"		signed="false"/>
+		<column name="events_read_date"				type="long"		db-type="int" signed="false"/>
+		<column name="tutorial"						type="long"		db-type="int" signed="false"/>
+		<column name="diplomacy_activated"			type="boolean"/>
+		<column name="switch_diplomacy_date"		type="long"		db-type="int" signed="false"/>
+		<column name="settings_grid_visible"		type="boolean"/>
+		<column name="settings_brightness"			type="int"		db-type="tinyint" signed="false"/>
+		<column name="settings_fleet_skin"			type="int"		db-type="tinyint" signed="false"/>
+		<column name="settings_music"				type="int"		db-type="tinyint" signed="false"/>
+		<column name="settings_theme"				type="string"/>
+		<column name="settings_chat"				type="int"		db-type="smallint" signed="false"/>
+		<column name="settings_censorship"			type="boolean"/>
+		<column name="settings_general_volume"		type="int"		db-type="tinyint" signed="false"/>
+		<column name="settings_sound_volume"		type="int"		db-type="tinyint" signed="false"/>
+		<column name="settings_music_volume"		type="int"		db-type="tinyint" signed="false"/>
+		<column name="settings_graphics"			type="int"		db-type="tinyint" signed="false"/>
+		<column name="settings_optimize_connection"	type="boolean"/>
+		<column name="settings_fleet_name_prefix"	type="string"/>
+		<column name="settings_fleet_name_suffix"	type="int"		db-type="tinyint" signed="false"/>
+		<column name="last_connection"				type="long"		db-type="int" signed="false"/>
+		<column name="id_ally"						type="int"		db-type="mediumint" signed="false"/>
+		<column name="registration_date"			type="long"		db-type="int" signed="false"/>
+		<column name="id_contract"					type="long"		db-type="int" signed="false"/>
+		<column name="end_premium"					type="long"		db-type="int" signed="false"/>
+		<column name="last_ally_in"					type="long"		db-type="int" signed="false"/>
+		<column name="id_sponsor"					type="int"		db-type="smallint" signed="false"/>
+		<column name="description"					type="string"	db-type="text"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<index name="login"/>
+		<index name="email"/>
+		<index name="registration"/>
+		<index name="id_ally" type="multiple"/>
+		<index name="recover_email"/>
+		<index name="close_account_hash"/>
+		<index name="ekey"/>
+		
+		<foreign-key name="id_ally">
+			<references table="ally" column="id" on-delete="set-zero"/>
+		</foreign-key>
+		<foreign-key name="id_contract">
+			<references table="contract" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_sponsor">
+			<references table="player" column="id" on-delete="set-zero"/>
+		</foreign-key>
+	</table>
+	
+		<!-- ================================================== PnjDefender ==== -->
+	
+	<table name="pnj_defender">
+		<column name="id"							type="int"		db-type="smallint" signed="false"/>
+		<column name="id_player"					type="int"		db-type="mediumint" signed="false"/>
+		<column name="id_pnj"						type="int"		db-type="mediumint" signed="false"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<index name="id_player"/>
+		<index name="id_pnj"/>
+		
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_pnj">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ========================================== PremiumTransaction ==== -->
+	
+	<table name="premium_transaction" cache="false">
+		<column name="id"						type="long"/>
+		<column name="id_player"				type="int"/>
+		<column name="code"						type="string"/>
+		<column name="date"						type="long"/>
+		<column name="remaining_hours"			type="int"/>
+		<column name="bought_hours"				type="int"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<foreign-key name="id_player">
+			<references column="id" table="player" on-delete="no-action"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ================================================== RandomName ==== -->
+	
+	<table name="random_name" cache="false">
+		<column name="type"						type="string"	enum-values="location,male_fname,female_fname,lname,ally"/>
+		<column name="name"						type="string"/>
+		
+		<index name="type" type="multiple"/>
+	</table>
+	
+	<!-- ================================================ Relationship ==== -->
+	
+	<table name="relationship">
+		<column name="id_player"	type="int"/>
+		<column name="id_ally"		type="int"/>
+		<column name="value"		type="double"/>
+		
+		<primary-key name="id_player"/>
+		<primary-key name="id_ally"/>
+		
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_ally">
+			<references table="ally" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+		<!-- ================================================ AllyRelationship ==== -->
+	
+	<table name="ally_relationship">
+		<column name="id_playerAlly"	type="int"/>
+		<column name="id_ally"			type="int"/>
+		<column name="value"			type="double"/>
+		
+		<primary-key name="id_playerAlly"/>
+		<primary-key name="id_ally"/>
+		
+		<foreign-key name="id_playerAlly">
+			<references table="ally" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_ally">
+			<references table="ally" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ====================================================== Report ==== -->
+	
+	<table name="report">
+		<column name="id"						type="int"/>
+		<column name="id_player_attacking"		type="int"/>
+		<column name="id_player_defending"		type="int"/>
+		<column name="date"						type="long"/>
+		<column name="hash"						type="string"/>
+		<column name="hits"						type="int"/>
+		<column name="last_view"				type="long"/>
+		<column name="attacker_environment"		type="string"/>
+		<column name="defender_environment"		type="string"/>
+		<column name="attacker_damage_factor"	type="double"/>
+		<column name="defender_damage_factor"	type="double"/>
+		<column name="retreat"					type="boolean"/>
+		<column name="id_area"					type="int"/>
+		<column name="attacker_xp_gain"			type="int"/>
+		<column name="defender_xp_gain"			type="int"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<index name="id_player_attacking" type="multiple"/>
+		<index name="id_player_defending" type="multiple"/>
+		<index name="hash"/>
+		
+		<foreign-key name="id_player_attacking">
+			<references table="player" column="id" on-delete="set-zero"/>
+		</foreign-key>
+		<foreign-key name="id_player_defending">
+			<references table="player" column="id" on-delete="set-zero"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ================================================ ReportAction ==== -->
+	
+	<table name="report_action" cache="false">
+		<column name="id"						type="long"/>
+		<column name="action_index"				type="int"/>
+		<column name="slot_index"				type="int"/>
+		<column name="front_slots"				type="int"/>
+		<column name="modifiers"				type="int"/>
+		<column name="id_report"				type="int"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<foreign-key name="id_report">
+			<references table="report" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ========================================= ReportActionAbility ==== -->
+	
+	<table name="report_action_ability" cache="false">
+		<column name="id_report_action"			type="long"/>
+		<column name="position"					type="int"/>
+		<column name="slot_id"					type="int"/>
+		<column name="ability"					type="int"/>
+		
+		<primary-key name="id_report_action"/>
+		<primary-key name="position"/>
+		
+		<foreign-key name="id_report_action">
+			<references table="report_action" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ================================================ ReportDamage ==== -->
+	
+	<table name="report_damage" cache="false">
+		<column name="target_position"			type="int"/>
+		<column name="damage"					type="long"/>
+		<column name="kills"					type="int"/>
+		<column name="hull_damage"				type="int"/>
+		<column name="modifiers"				type="int"/>
+		<column name="stealed_resource0"		type="double"/>
+		<column name="stealed_resource1"		type="double"/>
+		<column name="stealed_resource2"		type="double"/>
+		<column name="stealed_resource3"		type="double"/>
+		<column name="id_report_action"			type="long"/>
+		
+		<primary-key name="target_position"/>
+		<primary-key name="id_report_action"/>
+		
+		<foreign-key name="id_report_action">
+			<references table="report_action" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ================================================== ReportSlot ==== -->
+	
+	<table name="report_slot" cache="false">
+		<column name="id"						type="long"/>
+		<column name="position"					type="int"/>
+		<column name="slot_id"					type="int"/>
+		<column name="slot_count"				type="long"/>
+		<column name="slot_front"				type="boolean"/>
+		<column name="available_abilities"		type="int"/>
+		<column name="id_report"				type="int"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<foreign-key name="id_report">
+			<references table="report" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ============================================= ReportSlotState ==== -->
+	
+	<table name="report_slot_state" cache="false">
+		<column name="position"					type="int"/>
+		<column name="id_report_action"			type="long"/>
+		<column name="damage_modifier"			type="double"/>
+		<column name="protection_modifier"		type="int"/>
+		<column name="hull_modifier"			type="double"/>
+		
+		<primary-key name="position"/>
+		<primary-key name="id_report_action"/>
+		
+		<foreign-key name="id_report_action">
+			<references table="report_action" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ==================================================== Research ==== -->
+	
+	<table name="research">
+		<column name="id_technology"			type="int"/>
+		<column name="progress"					type="double"/>
+		<column name="queue_position"			type="int"/>
+		<column name="id_player"				type="int"/>
+		
+		<primary-key name="id_technology"/>
+		<primary-key name="id_player"/>
+		
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ====================================================== Sector ==== -->
+	
+	<table name="sector">
+		<column name="id"						type="int"		db-type="int" signed="false"/>
+		<column name="name"						type="string"	db-type="char"/>
+		<column name="x"						type="int"		db-type="smallint"/>
+		<column name="y"						type="int"		db-type="smallint"/>
+		<column name="type"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="nebula"					type="int"		db-type="tinyint" signed="false"/>
+		<column name="strategic_value"			type="int"		signed="false"/>
+		
+		<primary-key name="id" generator="increment"/>
+	</table>
+	
+	<!-- =============================================== ShipContainer ==== -->
+	
+	<table name="ship_container">
+		<column name="id"							type="long"		db-type="int" signed="false"/>
+		<column name="slot0_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot0_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot0_front"					type="boolean"/>
+		<column name="slot1_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot1_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot1_front"					type="boolean"/>
+		<column name="slot2_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot2_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot2_front"					type="boolean"/>
+		<column name="slot3_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot3_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot3_front"					type="boolean"/>
+		<column name="slot4_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot4_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot4_front"					type="boolean"/>
+		<column name="slot5_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot5_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot5_front"					type="boolean"/>
+		<column name="slot6_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot6_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot6_front"					type="boolean"/>
+		<column name="slot7_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot7_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot7_front"					type="boolean"/>
+		<column name="slot8_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot8_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot8_front"					type="boolean"/>
+		<column name="slot9_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot9_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot9_front"					type="boolean"/>
+		<column name="encoded_skirmish_slots"		type="string"	db-type="char"/>
+		<column name="encoded_skirmish_abilities"	type="string"	db-type="char"/>
+		<column name="encoded_battle_slots"			type="string"	db-type="char"/>
+		<column name="encoded_battle_abilities"		type="string"	db-type="char"/>
+		<column name="tactics_defined"				type="boolean"/>
+		<column name="id_fleet"						type="int"		signed="false"/>
+		<column name="id_structure"					type="long"		db-type="int" signed="false"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<foreign-key name="id_fleet">
+			<references column="id" table="fleet" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_structure">
+			<references column="id" table="structure" on-delete="set-zero"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ================================================ SpaceStation ==== -->
+	
+	<table name="space_station">
+		<column name="id"						type="int"/>
+		<column name="name"						type="string"/>
+		<column name="level"					type="int"/>
+		<column name="hull"						type="int"/>
+		<column name="x"						type="int"/>
+		<column name="y"						type="int"/>
+		<column name="credits"					type="long"/>
+		<column name="resource0"				type="long"/>
+		<column name="resource1"				type="long"/>
+		<column name="resource2"				type="long"/>
+		<column name="resource3"				type="long"/>
+		<column name="date"						type="long"/>
+		<column name="id_ally"					type="int"/>
+		<column name="id_area"					type="int"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<foreign-key name="id_ally">
+			<references table="ally" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_area">
+			<references table="area" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- =================================================== Structure ==== -->
+	
+	<table name="structure">
+		<column name="id"							type="long"/>
+		<column name="type"							type="int"/>
+		<column name="name"							type="string"/>
+		<column name="hull"							type="int"/>
+		<column name="x"							type="int"/>
+		<column name="y"							type="int"/>
+		<column name="shared"						type="boolean"/>
+		<column name="shortcut"						type="int"/>
+		<column name="id_energy_supplier_structure"	type="long"/>
+		<column name="id_owner"						type="int"/>
+		<column name="id_area"						type="int"/>
+		<column name="id_item_container"			type="long"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<foreign-key name="id_owner">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_area">
+			<references table="area" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_item_container">
+			<references table="item_container" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_energy_supplier_structure">
+			<references table="structure" column="id" on-delete="set-zero"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ========================================= StorehouseResources ==== -->
+	
+	<table name="storehouse_resources">
+		<column name="id_area"						type="int"/>
+		<column name="id_player"					type="int"/>
+		<column name="resource0"					type="long"/>
+		<column name="resource1"					type="long"/>
+		<column name="resource2"					type="long"/>
+		<column name="resource3"					type="long"/>
+		
+		<primary-key name="id_area"/>
+		<primary-key name="id_player"/>
+		
+		<foreign-key name="id_area">
+			<references table="area" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ============================================= StructureModule ==== -->
+	
+	<table name="structure_module">
+		<column name="id_structure"					type="long"/>
+		<column name="type"							type="int"/>
+		<column name="level"						type="int"/>
+		
+		<primary-key name="id_structure"/>
+		<primary-key name="type"/>
+		
+		<foreign-key name="id_structure">
+			<references table="structure" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ============================================== StructureSkill ==== -->
+	
+	<table name="structure_skill">
+		<column name="id_structure"					type="long"/>
+		<column name="type"							type="int"/>
+		<column name="last_use"						type="long"/>
+		<column name="reload"						type="long"/>
+		
+		<primary-key name="id_structure"/>
+		<primary-key name="type"/>
+		
+		<foreign-key name="id_structure">
+			<references table="structure" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ====================================== StructureSpaceshipYard ==== -->
+	
+	<table name="structure_spaceship_yard">
+		<column name="id_structure"					type="long"/>
+		<column name="slot0_id"						type="int"/>
+		<column name="slot0_count"					type="long"/>
+		<column name="slot1_id"						type="int"/>
+		<column name="slot1_count"					type="long"/>
+		<column name="slot2_id"						type="int"/>
+		<column name="slot2_count"					type="long"/>
+		<column name="slot3_id"						type="int"/>
+		<column name="slot3_count"					type="long"/>
+		<column name="slot4_id"						type="int"/>
+		<column name="slot4_count"					type="long"/>
+		<column name="build_slot0_id"				type="int"/>
+		<column name="build_slot0_count"			type="double"/>
+		<column name="build_slot0_ordered"			type="long"/>
+		<column name="build_slot1_id"				type="int"/>
+		<column name="build_slot1_count"			type="double"/>
+		<column name="build_slot1_ordered"			type="long"/>
+		<column name="build_slot2_id"				type="int"/>
+		<column name="build_slot2_count"			type="double"/>
+		<column name="build_slot2_ordered"			type="long"/>
+		<column name="last_bought_fleet"			type="long"/>
+		<column name="last_update"					type="long"/>
+		
+		<primary-key name="id_structure"/>
+		
+		<foreign-key name="id_structure">
+			<references table="structure" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ====================================================== System ==== -->
+	
+	<table name="system" class="StarSystem">
+		<column name="id"							type="int"		db-type="smallint" signed="false"/>
+		<column name="name"							type="string"	db-type="char"/>
+		<column name="x"							type="int"		db-type="smallint" signed="false"/>
+		<column name="y"							type="int"		db-type="smallint" signed="false"/>
+		<column name="shortcut"						type="int"		db-type="bit"/>
+		<column name="ai"							type="boolean"/>
+		<column name="star_image"					type="int"		db-type="smallint" signed="false"/>
+		<column name="asteroid_belt"				type="int"		db-type="tinyint" signed="false"/>
+		<column name="population"					type="double"	signed="false"/>
+		<column name="available_space"				type="int"		db-type="smallint" signed="false"/>
+		<column name="encoded_available_resources"	type="long"		db-type="int" signed="false"/>
+		<column name="resource0"					type="double"	db-type="float" signed="false"/>
+		<column name="resource1"					type="double"	db-type="float" signed="false"/>
+		<column name="resource2"					type="double"	db-type="float" signed="false"/>
+		<column name="resource3"					type="double"	db-type="float" signed="false"/>
+		<column name="laboratory"					type="long"		db-type="int" signed="false"/>
+		<column name="storehouse"					type="long"		db-type="int" signed="false"/>
+		<column name="spaceship_yard"				type="long"		db-type="int" signed="false"/>
+		<column name="defensive_deck"				type="long"		db-type="int" signed="false"/>
+		<column name="exploitation0"				type="long"		db-type="int" signed="false"/>
+		<column name="exploitation1"				type="long"		db-type="int" signed="false"/>
+		<column name="exploitation2"				type="long"		db-type="int" signed="false"/>
+		<column name="exploitation3"				type="long"		db-type="int" signed="false"/>
+		<column name="extractor_center"				type="long"		db-type="int" signed="false"/>
+		<column name="civilian_infrastructures"		type="long"		db-type="int" signed="false"/>
+		<column name="corporations"					type="long"		db-type="int" signed="false"/>
+		<column name="trade_port"					type="long"		db-type="int" signed="false"/>
+		<column name="research_center"				type="long"		db-type="int" signed="false"/>
+		<column name="factory"						type="long"		db-type="int" signed="false"/>
+		<column name="refinery"						type="long"		db-type="int" signed="false"/>
+		<column name="encoded_current_building"		type="int"		db-type="tinyint" signed="false"/>
+		<column name="current_building_end"			type="long"		db-type="int" signed="false"/>
+		<column name="encoded_next_building"		type="int"		db-type="tinyint" signed="false"/>
+		<column name="next_building_end"			type="long"		db-type="int" signed="false"/>
+		<column name="encoded_third_building"		type="int"		db-type="tinyint" signed="false"/>
+		<column name="third_building_end"			type="long"		db-type="int" signed="false"/>
+		<column name="last_update"					type="long"		db-type="int" signed="false"/>
+		<column name="last_research_update"			type="long"		db-type="int" signed="false"/>
+		<column name="last_population_update"		type="long"		db-type="int" signed="false"/>
+		<column name="slot0_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot0_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot1_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot1_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot2_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot2_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot3_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot3_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot4_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot4_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot5_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot5_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot6_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot6_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot7_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot7_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot8_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot8_count"					type="long"		db-type="int" signed="false"/>
+		<column name="slot9_id"						type="int"		db-type="tinyint" signed="false"/>
+		<column name="slot9_count"					type="long"		db-type="int" signed="false"/>
+		<column name="build_slot0_id"				type="int"		db-type="tinyint" signed="false"/>
+		<column name="build_slot0_count"			type="double"	db-type="float" signed="false"/>
+		<column name="build_slot0_ordered"			type="long"		db-type="int" signed="false"/>
+		<column name="build_slot1_id"				type="int"		db-type="tinyint" signed="false"/>
+		<column name="build_slot1_count"			type="double"	db-type="float" signed="false"/>
+		<column name="build_slot1_ordered"			type="long"		db-type="int" signed="false"/>
+		<column name="build_slot2_id"				type="int"		db-type="tinyint" signed="false"/>
+		<column name="build_slot2_count"			type="double"	db-type="float" signed="false"/>
+		<column name="build_slot2_ordered"			type="long"		db-type="int" signed="false"/>
+		<column name="colonization_date"			type="long"		db-type="int" signed="false"/>
+		<column name="id_area"						type="int"		db-type="smallint" signed="false"/>
+		<column name="id_owner"						type="int"		db-type="smallint" signed="false"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<index name="id_area" type="multiple"/>
+		<index name="id_owner" type="multiple"/>
+		
+		<foreign-key name="id_area">
+			<references table="area" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_owner">
+			<references table="player" column="id" on-delete="set-zero"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ====================================================== Tactic ==== -->
+	
+	<table name="tactic">
+		<column name="id_player"		type="int"/>
+		<column name="name"				type="string"/>
+		<column name="hash"				type="string"/>
+		<column name="slot_id_0"		type="int"  db-type="smallint" signed="false"/>
+		<column name="tactic_slot0_count"		type="long" db-type="int" signed="false"/>
+		<column name="slot_id_1"		type="int" db-type="smallint" signed="false"/>
+		<column name="tactic_slot1_count"		type="long" db-type="int" signed="false"/>
+		<column name="slot_id_2"		type="int" db-type="smallint" signed="false"/>
+		<column name="tactic_slot2_count"		type="long" db-type="int" signed="false"/>
+		<column name="slot_id_3"		type="int" db-type="smallint" signed="false"/>
+		<column name="tactic_slot3_count"		type="long" db-type="int" signed="false"/>
+		<column name="slot_id_4"		type="int" db-type="smallint" signed="false"/>
+		<column name="tactic_slot4_count"		type="long" db-type="int" signed="false"/>
+		<column name="date"				type="long"/>
+		
+		<primary-key name="id_player"/>
+		<primary-key name="hash"/>
+		
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ================================================= Tradecenter ==== -->
+	
+	<table name="tradecenter">
+		<column name="id_tradecenter"	type="int"/>
+		<column name="rate0"			type="double"/>
+		<column name="rate1"			type="double"/>
+		<column name="rate2"			type="double"/>
+		<column name="rate3"			type="double"/>
+		<column name="variation"		type="double"/>
+		<column name="fees"				type="double"/>
+		
+		<primary-key name="id_tradecenter"/>
+		
+		<foreign-key name="id_tradecenter">
+			<references table="object" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ===================================================== Transations ==== -->
+	
+	<table name="transactions">
+		<column name="id"			type="int"	signed="false"/>
+		<column name="idPlayer"		type="int"	signed="false"/>
+		<column name="code"			type="string"/>
+		<column name="idTransaction"	type="string"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<foreign-key name="idPlayer">
+			<references table="player" column="id" on-delete="no-action"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ====================================================== Treaty ==== -->
+	
+	<table name="treaty">
+		<column name="id_player1"		type="int"/>
+		<column name="id_player2"		type="int"/>
+		<column name="type"				type="string"	enum-values="war,ally,defensive,total"/>
+		<column name="date"				type="long"/>
+		<column name="last_activity"	type="long"/>
+		<column name="source"			type="int"/>
+		
+		<primary-key name="id_player1"/>
+		<primary-key name="id_player2"/>
+		
+		<foreign-key name="id_player1">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_player2">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ================================================= VisitedArea ==== -->
+	
+	<table name="visited_area">
+		<column name="id_player"	type="int"/>
+		<column name="id_area"		type="int"/>
+		<column name="date"			type="long"/>
+		
+		<primary-key name="id_player"/>
+		<primary-key name="id_area"/>
+		
+		<foreign-key name="id_player">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_player">
+			<references table="area" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+	
+	<!-- ======================================================== Ward ==== -->
+	
+	<table name="ward">
+		<column name="id"			type="int"		signed="false"/>
+		<column name="x"			type="int"		db-type="smallint" signed="false"/>
+		<column name="y"			type="int"		db-type="smallint" signed="false"/>
+		<column name="type"			type="string"	enum-values="observer,observer_invisible,sentry,sentry_invisible,stun,stun_invisible,mine,mine_invisible"/>
+		<column name="power"		type="int"		db-type="tinyint" signed="false"/>
+		<column name="date"			type="long"		db-type="int" signed="false"/>
+		<column name="id_area"		type="int"		db-type="smallint" signed="false"/>
+		<column name="id_owner"		type="int"		db-type="smallint" signed="false"/>
+		
+		<primary-key name="id" generator="increment"/>
+		
+		<foreign-key name="id_area">
+			<references table="area" column="id" on-delete="cascade"/>
+		</foreign-key>
+		<foreign-key name="id_owner">
+			<references table="player" column="id" on-delete="cascade"/>
+		</foreign-key>
+	</table>
+</db-mapping>

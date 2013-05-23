@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dialogs SYSTEM "../dialog/dialogs.dtd">
+
+<dialogs>
+	<key name="shipName" value="getShipNameToDeliver"/>
+	<key name="shipCount" value="getShipsCountFleetMayDeliver"/>
+	<key name="iconXp" value="getXpImg"/>
+	
+	<dialog type="recipientWaiting">
+		<entry name="&init;">
+			<option target="transfer" condition="mayFleetDeliverShips"/>
+			<option target="hurryUp"/>
+		</entry>
+		<entry name="transfer">
+			<option target="&eod;"/>
+		</entry>
+		<entry name="hurryUp">
+			<option target="&eod;"/>
+		</entry>
+	</dialog>
+	
+	<dialog type="recipientDelivered">
+		<entry name="&init;">
+			<option target="&eod;"/>
+		</entry>
+	</dialog>
+	
+	<dialog type="recipientReward">
+		<entry name="&init;">
+			<option target="&eod;"/>
+		</entry>
+	</dialog>
+</dialogs>

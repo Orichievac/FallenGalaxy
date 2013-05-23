@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module>
+	<inherits name="com.google.gwt.user.User"/>
+	<inherits name="com.google.gwt.i18n.I18N"/>
+	
+	<!--
+	<define-property name="mobile" values="true,false"/>
+	-->
+	<define-property name="mobile" values="false"/>
+	
+	<property-provider name="mobile"><![CDATA[
+		var ua = navigator.userAgent.toLowerCase();
+		
+		if (ua.indexOf("iphone") != -1 || ua.indexOf("ipod") != -1) {
+		  return "true";
+		}
+		return "false";
+	]]></property-provider>
+	
+	<define-property name="gecko1_9_1" values="true,false"/>
+	
+	<!-- Firefox 3.5 et + -->
+	<property-provider name="gecko1_9_1"><![CDATA[
+   		var ua = navigator.userAgent.toLowerCase();
+		var makeVersionGecko = function(result) {
+		  if (result.length == 3)
+		    return (parseInt(result[1]) * 100) + parseInt(result[2]) * 10;
+		  else
+		    return (parseInt(result[1]) * 100) + parseInt(result[2]) * 10 + parseInt(result[3]);
+		};
+		
+		if (ua.indexOf("gecko") != -1) {
+		  var result = /rv:([0-9]+)\.([0-9]+)\.([0-9]+)/.exec(ua);
+		  
+		  if (result && result.length == 4) {
+		    if (makeVersionGecko(result) >= 191) {
+		      return "true";
+		    }
+		  } else {
+		    result = /rv:([0-9]+)\.([0-9]+)/.exec(ua);
+		    if (result && result.length == 3) {
+		      if (makeVersionGecko(result) >= 191) {
+		        return "true";
+		      }
+		    }
+		  }
+		}
+      	return "false";
+	]]></property-provider>
+  
+	<replace-with class="fr.fg.client.openjwt.core.impl.ConfigImplMobile">
+		<when-type-is class="fr.fg.client.openjwt.core.impl.ConfigImpl"/>
+		<when-property-is name="mobile" value="true"/>
+	</replace-with>
+	
+	<replace-with class="fr.fg.client.openjwt.core.impl.OutlineTextImplIE6">
+		<when-type-is class="fr.fg.client.openjwt.core.impl.OutlineTextImpl"/>
+		<when-property-is name="user.agent" value="ie6"/>
+	</replace-with>
+	
+	<replace-with class="fr.fg.client.openjwt.core.impl.OutlineTextImplAdvanced">
+		<when-type-is class="fr.fg.client.openjwt.core.impl.OutlineTextImpl"/>
+		<when-property-is name="user.agent" value="safari"/>
+	</replace-with>
+	
+	<replace-with class="fr.fg.client.openjwt.core.impl.OutlineTextImplAdvanced">
+		<when-type-is class="fr.fg.client.openjwt.core.impl.OutlineTextImpl"/>
+		<when-property-is name="user.agent" value="opera"/>
+	</replace-with>
+	
+	<replace-with class="fr.fg.client.openjwt.core.impl.OutlineTextImplAdvanced">
+		<when-type-is class="fr.fg.client.openjwt.core.impl.OutlineTextImpl"/>
+		<when-property-is name="gecko1_9_1" value="true"/>
+	</replace-with>
+</module>

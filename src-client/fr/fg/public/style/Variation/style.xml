@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<style>
+	<component type="Button">
+		<property>
+			<key>height</key>
+			<value>26</value>
+		</property>
+		<property>
+			<key>horizontalMargin</key>
+			<value>12</value>
+		</property>
+		<property>
+			<key>verticalMargin</key>
+			<value>4</value>
+		</property>
+	</component>
+
+	<component type="Label">
+		<property>
+			<key>height</key>
+			<value>26</value>
+		</property>
+	</component>
+
+	<component type="TextField">
+		<property>
+			<key>height</key>
+			<value>26</value>
+		</property>
+		<property>
+			<key>horizontalMargin</key>
+			<value>4</value>
+		</property>
+		<property>
+			<key>verticalMargin</key>
+			<value>4</value>
+		</property>
+	</component>
+
+	<component type="PasswordField">
+		<property>
+			<key>height</key>
+			<value>26</value>
+		</property>
+		<property>
+			<key>horizontalMargin</key>
+			<value>4</value>
+		</property>
+		<property>
+			<key>verticalMargin</key>
+			<value>4</value>
+		</property>
+	</component>
+
+	<component type="ComboBox">
+		<property>
+			<key>height</key>
+			<value>26</value>
+		</property>
+	</component>
+	
+	<component type="Dialog">
+		<property>
+			<key>innerHtml</key>
+			<value><![CDATA[<div id="${titlebar}" class="dialog-titlebar"><div id="${close}" class="dialog-close"></div><div id="${title}"></div></div><div id="${content}"></div>]]></value>
+		</property>
+	</component>
+	
+	<component type="TabbedPane">
+		<property>
+			<key>verticalMargin</key>
+			<value>1</value>
+		</property>
+	</component>
+	
+	<component type="Tab">
+		<property>
+			<key>horizontalMargin</key>
+			<value>13</value>
+		</property>
+		<property>
+			<key>verticalMargin</key>
+			<value>9</value>
+		</property>
+	</component>
+</style>
