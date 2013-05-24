@@ -26,13 +26,14 @@ public class GameConstants {
 
 	// Nombre d'heures de premium lors de la saisie d'un code allopass
 	// Valeur : 30jours
+//TODO Check That o/
 	public final static int ALLOPASS_CODE_PREMIUM_HOURS = 24 * 30;
 	
 	// Limite du niveau d'XP joueur
 	public final static int PLAYER_LEVEL_LIMIT = 200;
 	
 	// Limite du nombre de membres dans une alliance
-	public final static int ALLY_MAX_MEMBERS = 20;
+	public final static int ALLY_MAX_MEMBERS = 30;
 	
 	// Unité de temps du serveur, en secondes (1 seconde par défaut)
 	// Ex : une valeur de 10 multiplie par 10 la vitesse du serveur
@@ -55,6 +56,7 @@ public class GameConstants {
 	public final static int BLACKHOLE_GRAVITY_RADIUS = 10;
 	
 	// Rayon des stations spatiales, en cases
+	//TODO WHAT DA FOCK ?
 	public final static double SPACE_STATION_RADIUS = 4.5;
 	
 	// Population maximale des systèmes
@@ -67,7 +69,7 @@ public class GameConstants {
 	public final static int SYSTEM_STORAGE_CAPACITY = 5000;
 	
 	// Nombre de cases constructibles dans les systèmes
-	public final static int SYSTEM_BUILDING_LAND = 22;
+	public final static int SYSTEM_BUILDING_LAND = 25;
 	
 	// Croissance de la population, en % de la population maximale du système
 	// par seconde
@@ -89,69 +91,76 @@ public class GameConstants {
 	public final static int SYSTEM_SLOT_COUNT = 10;
 	
 	// Taille de la file d'attente pour construire des vaisseaux
-	public final static int SHIPS_QUEUE_LENGTH = 3;
+	public final static int SHIPS_QUEUE_LENGTH = 4;
 	
 	// Temps en secondes avant que le mouvement restant d'une flotte soit
 	// réinitialisé à son mouvement maximal
-	// Valeur : 1 min
-	public final static int MOVEMENT_RELOAD = 10 / TIME_UNIT;
+	// Valeur : 5s
+	public final static int MOVEMENT_RELOAD = 5 / TIME_UNIT;
 	
 	// Temps en secondes avant que le mouvement restant d'une flotte soit
 	// réinitialisé à son mouvement maximal après avoir exécuté une action
-	// Valeur : 1h
-	public final static int ACTION_MOVEMENT_RELOAD = 3600 / TIME_UNIT;
+	// Valeur : 30min
+	public final static int ACTION_MOVEMENT_RELOAD = 1800 / TIME_UNIT;
 	
 	// Temps en secondes avant que le mouvement restant d'une flotte soit
 	// réinitialisé à son mouvement maximal après avoir saboté une station
 	// Valeur : 2h
+	//TODO WHAT DA FOCK ?
 	public final static int DESTROY_SPACE_STATION_MOVEMENT_RELOAD = 7200 / TIME_UNIT;
 	
 	// Temps en secondes avant que le mouvement restant d'une flotte soit
 	// réinitialisé à son mouvement maximal après avoir attaqué une structure
-	// Valeur : 4h
-	public final static int ATTACK_STRUCTURE_MOVEMENT_RELOAD = 14400 / TIME_UNIT;
+	// Valeur : 3h
+	public final static int ATTACK_STRUCTURE_MOVEMENT_RELOAD = 10800 / TIME_UNIT;
 	
 	// Temps en secondes avant que le mouvement restant d'une flotte soit
 	// réinitialisé à son mouvement maximal après avoir réparé une structure
-	// Valeur : 4h
-	public final static int REPAIR_STRUCTURE_MOVEMENT_RELOAD = 14400 / TIME_UNIT;
+	// Valeur : 3h
+	public final static int REPAIR_STRUCTURE_MOVEMENT_RELOAD = 10800 / TIME_UNIT;
 	
 	// Temps en secondes avant que le mouvement restant d'une flotte soit
 	// réinitialisé à son mouvement maximal après une escarmouche
-	// Valeur : 2h
-	public final static int SKIRMISH_MOVEMENT_RELOAD = 2 * 3600;
+	// Valeur : 30min
+	public final static int SKIRMISH_MOVEMENT_RELOAD = 1800;
 	
 	// Temps en secondes avant que le mouvement restant d'une flotte soit
 	// réinitialisé à son mouvement maximal après une bataille
-	// Valeur : 4h
-	public final static int BATTLE_MOVEMENT_RELOAD = 4 * 3600;
+	// Valeur : 2h
+	public final static int BATTLE_MOVEMENT_RELOAD = 2 * 3600;
 	
 	// Durée d'un voyage hyperspatial entre deux secteurs, en secondes
-	// Valeur : 3h
-	public final static int HYPERSPACE_AREAS_TRAVEL_LENGTH = 10800 / TIME_UNIT;
+	// Valeur : 1h30
+	public final static int HYPERSPACE_AREAS_TRAVEL_LENGTH = 5400 / TIME_UNIT;
 
 	// Durée d'un voyage hyperspatial entre deux secteurs, en secondes
-	// Valeur : 6h
-	public final static int HYPERSPACE_SECTORS_TRAVEL_LENGTH = 21600 / TIME_UNIT;
+	// Valeur : 3h
+	public final static int HYPERSPACE_SECTORS_TRAVEL_LENGTH = 10800 / TIME_UNIT;
 	
 	// Distance maximale entre deux secteurs pour faire un saut vers un secteur
 	// inconnu
+	//TODO WHAT DA FOCK ?!?
 	public final static int HYPERSPACE_DISTANCE_MAX = 10;
 	
 	// Distance maximale entre une flotte et une porte hyperspatiale pour
 	// pouvoir faire un saut hyperspatial
+	//TODO A modifier Si Negi refait son 1K Flottes.
 	public final static int HYPERGATE_JUMP_RADIUS = 10;
 	
 	// Ligne de vue des flottes
+	//TODO Modifier la vue de distance dans le brouillard de guerre des flottes ?
 	public final static int LOS_FLEET = 25;
 	
 	// Ligne de vue des systèmes
+	//TODO Voir ligne dessus, remplacer flotte par planète, flemme.
 	public final static int LOS_SYSTEM = 10;
 
 	// Ligne de vue des balises d'observation
+	//TODO Voir au dessus, pareil pour les balises.
 	public final static int LOS_WARD = 50;
 	
 	// Ligne de vue des stations spatiales
+	//TODO WHAT DA FOCK ?!?
 	public final static int LOS_SPACE_STATION = 10;
 	
 	// Durée de vie des charges IEM / explosives
@@ -193,11 +202,11 @@ public class GameConstants {
 	
 	// Durée de vie des messages
 	// Valeur : 5 jours
-	public final static int MESSAGE_LIFESPAN = 5 * 24 * 3600;
+	public final static int MESSAGE_LIFESPAN = 15 * 24 * 3600;
 	
 	// Durée de vie des messages en premium
 	// Valeur : 15 jours
-	public final static int MESSAGE_LIFESPAN_PREMIUM = 15 * 24 * 3600;
+	public final static int MESSAGE_LIFESPAN_PREMIUM = 30 * 24 * 3600;
 	
 	// Durée de vie des news
 	public final static int NEWS_LIFESPAN = 10 * 24 * 3600;
@@ -255,6 +264,7 @@ public class GameConstants {
 	public final static int MAX_ALLY_EVENTS = 15;
 	
 	// Liste des thèmes disponibles
+	//TODO Check That !
 	public final static String[] THEMES = {
 		Config.getMediaURL() + "style/FallenCraft2Red",
 		Config.getMediaURL() + "style/FallenCraft2Blue",
@@ -273,12 +283,13 @@ public class GameConstants {
 	
 	// Temps avant de pouvoir rejoindre une ally quand on vient d'en quitter une
 	// Une semaine
-	public final static int ALLY_REJOIN = 7 * 3600 * 24;
+	public final static int ALLY_REJOIN = 1 * 3600 * 24;
 	
 	//Temps minimum de minage
 	public final static int MINIMUM_MINING_TIME = 30 * 60; // = 30 min
 	
 	//Limitation des flottes à la puissance X 
+	//TODO Check That !
 	public final static int FLEET_MAX_POWERLEVEL = 50; 
 	
 	//Niveau d'écart max entre les joueurs dans un contrat pvp
